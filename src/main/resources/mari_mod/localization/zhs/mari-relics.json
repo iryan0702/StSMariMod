@@ -1,0 +1,99 @@
+{
+  "MariMod:MariTheSpark": {
+    "NAME": "闪耀之光",
+    "FLAVOR": "\"SHIIIIIIIIINY!\" – 小原鞠莉，偶尔。",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得 #y5 金币。 你每在战斗中 花费 #y40 金币，",
+      " NL 下一次战斗奖励获得一次额外掉落 #y罕见 卡牌的机会。"
+    ]
+  },
+  "MariMod:MariDiploma": {
+    "NAME": "毕业证书",
+    "FLAVOR": "“那段季节已经过去，稍纵即逝。”",
+    "DESCRIPTIONS": [
+      "你的回合开始时获得 [E] 。相应的， #y闪耀 每回合减少 #b2 层。"
+    ]
+  },
+  "MariMod:MariStewshine": {
+    "NAME": "Shiny煮！",
+    "FLAVOR": "小原鞠莉独家配方，十万一碗即刻品尝！",
+    "DESCRIPTIONS": [
+      "拾取时，从 #b20 张随机卡牌中选择 #b3 张。将卡牌描述和所需费用组合为一张 消耗 的技能牌。",
+      "选择 1 张牌来组合。",
+      "选择 2 张牌来组合。",
+      "选择 3 张牌来组合。"
+    ]
+  },
+  "MariMod:MariToySailboat": {
+    "NAME": "玩具帆船",
+    "FLAVOR": "谢谢你，曜酱。",
+    "DESCRIPTIONS": [
+      "你每打出 #b2 张 #y能力牌，获得 #b7 点 #y格挡。"
+    ]
+  },
+  "MariMod:MariOldLollipop": {
+    "NAME": "旧式棒糖",
+    "FLAVOR": "谢谢你，露比酱。",
+    "DESCRIPTIONS": [
+      "每当你对敌人造成伤害时，减少其最大生命值 #b5 点（但不会少于1）。"
+    ]
+  },
+  "MariMod:MariJuicyTangerine": {
+    "NAME": "多汁蜜柑",
+    "FLAVOR": "谢谢你，千歌亲。",
+    "DESCRIPTIONS": [
+      "战斗开始时，给予所有角色 #b,",
+      " 层 #y闪耀 。",
+      "1 或 #b3 层 #y闪耀 。（基于角色决定）"
+    ]
+  },
+  "MariMod:MariMiniaturePiano": {
+    "NAME": "迷你钢琴",
+    "FLAVOR": "谢谢你，梨子酱。",
+    "DESCRIPTIONS": [
+      "你每打出 #b3 张牌，抽一张牌。(每回合一次)"
+    ]
+  },
+  "MariMod:MariFlowerRing": {
+    "NAME": "锦簇花团",
+    "FLAVOR": "谢谢你，花丸酱。",
+    "DESCRIPTIONS": [
+      "你在每场战斗中第一次损伤生命时，生命损伤减少 #b4 点 。"
+    ]
+  },
+  "MariMod:MariDevilsCharm": {
+    "NAME": "恶魔之诱",
+    "FLAVOR": "谢谢你，善子酱。",
+    "DESCRIPTIONS": [
+      "你每受到 #b6 点或更多的未被格挡的伤害，获得 #b1 点力量。"
+    ]
+  },
+  "MariMod:MariDolphinTrinket": {
+    "NAME": "海豚挂饰",
+    "FLAVOR": "谢谢你，果南。",
+    "DESCRIPTIONS": [
+      "每当你向卡组中添加 #y罕见 牌时，恢复 #b8 点生命值。"
+    ]
+  },
+  "MariMod:MariUmeBlossom": {
+    "NAME": "绽放之梅",
+    "FLAVOR": "谢谢你，黛雅…酱！",
+    "DESCRIPTIONS": [
+      "每当你在篝火处升级卡牌时，增加最大生命值 #b7 点（不会影响你的当前生命值）。"
+    ]
+  },
+  "MariMod:MariFestivalBadge": {
+    "NAME": "祭典徽章",
+    "FLAVOR": "除了使用相同卡牌，你也可以用一张UR贴纸来进行特别练习。",
+    "DESCRIPTIONS": [
+      "每当你的卡组中有两张未升级的同名卡牌时，升级它们。"
+    ]
+  },
+  "MariMod:MariCursedDoll ALL RELICS BEYOND THIS POINT ARE REMOVED/UNUSED": {
+    "NAME": "诅咒玩偶（TEMP）",
+    "FLAVOR": "巨大的恐惧让你无法停止大笑。",
+    "DESCRIPTIONS": [
+      "每层 #y闪耀 现在使你额外造成20%伤害。 [#EFC851]闪耀[] 现在被视为负面效果，并且会伤害你。"
+    ]
+  }
+}

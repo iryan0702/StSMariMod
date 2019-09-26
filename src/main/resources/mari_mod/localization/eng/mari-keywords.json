@@ -1,0 +1,24 @@
+[
+  {
+    "PROPER_NAME": "Radiance",
+    "NAMES":[
+      "Radiance",
+      "radiance",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Whenever an #renemy gains Radiance, it takes damage equal to its total Radiance. If #pyou have Radiance, you deal 10% more attack damage per stack. At the end of a character's turn, it loses #b1 Radiance."
+  },
+  {
+    "PROPER_NAME": "Kindle",
+    "NAMES":[
+      "Kindle",
+      "kindle",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "You can target #yANY character with this card. Consume #b1 Radiance from the character to trigger an effect."
+  }
+]

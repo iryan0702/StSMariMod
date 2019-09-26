@@ -1,0 +1,40 @@
+mariHelicopter.atlas
+size: 1750, 172
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mariHelicopter1
+  rotate: false
+  xy: 0, 0
+  size: 350, 172
+  orig: 350, 172
+  offset: 0, 0
+  index: -1
+mariHelicopter2
+  rotate: false
+  xy: 350, 0
+  size: 350, 172
+  orig: 350, 172
+  offset: 0, 0
+  index: -1
+mariHelicopter3
+  rotate: false
+  xy: 700, 0
+  size: 350, 172
+  orig: 350, 172
+  offset: 0, 0
+  index: -1
+mariHelicopter4
+  rotate: false
+  xy: 1050, 0
+  size: 350, 172
+  orig: 350, 172
+  offset: 0, 0
+  index: -1
+mariHelicopter5
+  rotate: false
+  xy: 1400, 0
+  size: 350, 172
+  orig: 350, 172
+  offset: 0, 0
+  index: -1

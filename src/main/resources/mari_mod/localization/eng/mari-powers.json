@@ -1,0 +1,184 @@
+{
+  "MariMod:Radiance_Power": {
+    "NAME": "Radiance",
+    "DESCRIPTIONS": ["Whenever a creature gains Radiance, it takes damage equal to its total Radiance. Decreases by #b1 at the end of this creature's turn.",
+    "Mari is very #yShiny! (Decreases by #b1 at the end of your turn.)",
+      "Mari deals #b",
+      "% more damage! (Decreases by #b10% at the end of turn.)",
+      "% more damage! (Decreases by #b20% at the end of turn.)"]
+  },
+  "MariMod:Choreography_Power": {
+    "NAME": "Choreography",
+    "DESCRIPTIONS": ["Whenever you spend less energy on a card than the previous on the same turn, draw a card.",
+      "Whenever you spend less energy on a card than the previous on the same turn, draw #b",
+      " cards.",
+    " (You haven't played a card this turn.)",
+    " (The last card you played costs #b",
+    " [REMOVE_SPACE].)"]
+  },
+  "MariMod:Devilish_Assistant_Power": {
+    "NAME": "Devilish Assistant",
+    "DESCRIPTIONS": ["At the start your turn, play the last card you played on the same target for free.",
+      "At the start your turn, play the last card you played on the same target for free #b",
+      " times."]
+  },
+  "MariMod:Character_Development_Power": {
+    "NAME": "Character Development",
+    "DESCRIPTIONS": ["Whenever you fully lose a debuff, gain #b",
+      " Strength."]
+  },
+  "MariMod:Cash_Back_Power": {
+    "NAME": "Cash Back",
+    "DESCRIPTIONS": ["Whenever you [#fbccff]spend[] gold, regain #b",
+      "% of it."]
+  },
+  "MariMod:Delicacy_Power": {
+    "NAME": "Delicacy",
+    "DESCRIPTIONS": ["Whenever your health is restored, draw a card.",
+      "Whenever your health is restored, draw #b",
+      " cards."]
+  },
+  "MariMod:Flaunt_Power": {
+    "NAME": "Flaunt",
+    "DESCRIPTIONS": ["Whenever you [#fbccff]spend[] gold, deal #b",
+      " damage to a random enemy."]
+  },
+  "MariMod:Excitement_Power": {
+    "NAME": "Excitement",
+    "DESCRIPTIONS": ["Whenever you apply #yRadiance, draw a card that applies #yRadiance.",
+      "Whenever you apply #yRadiance, draw #b",
+      " cards that applies #yRadiance."]
+  },
+  "MariMod:The_Light_We_Chase_Power": {
+    "NAME": "The Light We Chase",
+    "DESCRIPTIONS": ["Whenever an enemy gains Radiance, you gain ",
+      " Radiance."]
+  },
+  "MariMod:No_Problem_Power": {
+    "NAME": "No Problem!",
+    "DESCRIPTIONS": ["Ignore Frail, Weak, and Vulnerable this turn.",
+      "Ignore Frail and Weak for #b",
+      " turns."]
+  },
+  "MariMod:Supervision_Power": {
+    "NAME": "Supervision",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " [E] ."]
+  },
+  "MariMod:Practice_Outfit_Buff_Power": {
+    "NAME": "\"Ehehe...\"",
+    "DESCRIPTIONS": ["You take no damage until the end of this turn.",
+      "You take no damage for #b",
+      " turns."]
+  },
+  "MariMod:Practice_Outfit_Debuff_Power": {
+    "NAME": "\"...We're just practicing!\"",
+    "DESCRIPTIONS": ["You deal no attack damage until the end of this turn.",
+      "You deal no attack damage for #b",
+      " turns."]
+  },
+  "MariMod:Limelight_Power": {
+    "NAME": "Limelight",
+    "DESCRIPTIONS": ["At the end of your turn, apply #b",
+      " #yRadiance to ALL characters."]
+  },
+  "MariMod:From_Zero_Power": {
+    "NAME": "From Zero...",
+    "DESCRIPTIONS": ["Whenever you spend 0 [E] on a card, #yExhaust the card, draw #b",
+      " card,",
+      " cards,",
+      " and apply #b",
+      " #yRadiance to a random enemy."]
+  },
+  "MariMod:Gold_Loss_Start_Of_Turn_Power": {
+  "NAME": "Gold Loss: Turn Start",
+  "DESCRIPTIONS": ["At the start of your next turn, lose #b",
+    " Gold. Decreases when you [#fbccff]spend[] gold."]
+  },
+  "MariMod:Flawless_Form_Power": {
+    "NAME": "Flawless Form",
+    "DESCRIPTIONS": [
+      "Whenever you spend more energy on a card than the previous on the same turn, refund the energy spent.",
+      " (You haven't played a card this turn)",
+      " (The last card you played costs #b",
+      " [REMOVE_SPACE].)"
+    ]
+  },
+  "MariMod:Gold_Gain_Start_Of_Turn_Power": {
+    "NAME": "Gold Gain: Turn Start",
+    "DESCRIPTIONS": ["At the start of your next turn, gain #b",
+      " Gold."]
+  },
+  "MariMod:Lock_On_Power": {
+    "NAME": "\"LOOOOOOCKED ON!\"",
+    "DESCRIPTIONS": ["You are locked on to a #b",
+      " [REMOVE_SPACE]! Whenever you target it with a card, gain #b",
+      " [E] [REMOVE_SPACE].",
+      "This monster is locked on!"]
+  },
+  "MariMod:Oh_My_God_Power": {
+    "NAME": "\"OH MY GOD!\"",
+    "DESCRIPTIONS": ["AAAAAAHHHHHHHHHHHHHHHHHHHH!!!!!!"]
+  },
+  "MariMod:Withdrawal_Power": {
+    "NAME": "Withdrawal",
+    "DESCRIPTIONS": ["Increases attack damage and #yBlock gained from cards by #b",
+      " (Your Vulnerable)."]
+  },
+  "MariMod:Research_Power": {
+    "NAME": "Research",
+    "DESCRIPTIONS": ["Whenever you kindle an enemy, reduce the cost of a random card in your hand by #b",
+      " [REMOVE_SPACE]."]
+  },
+  "MariMod:Administrator_Privilege_Power": {
+    "NAME": "Administrator Privilege",
+    "DESCRIPTIONS": ["At the start of your turn, choose cards from the draw pile to put into your hand instead of regularly drawing."]
+  },
+  "MariMod:Lie_In_Wait_Power": {
+    "NAME": "Lie In Wait",
+    "DESCRIPTIONS": ["At the start of your next turn, deal #b",
+      " damage to ALL enemies."]
+  },
+  "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
+    "NAME": "Gleam and Glean",
+    "DESCRIPTIONS": ["Whenever you apply #yRadiance to an enemy, gain #b",
+      " Gold."]
+  },
+  "MariMod:Indulgence_Power": {
+    "NAME": "Indulgence",
+    "DESCRIPTIONS": ["Whenever you [#fbccff]spend[] 3 or more [E] on a card, reduce the cost of other cards in your hand by #b",
+      " this combat (but not less than 1)."]
+  },
+  "MariMod:Desserts_Power": {
+    "NAME": "Desserts",
+    "DESCRIPTIONS": ["Whenever you end a turn with 1 unspent [E], gain 1 [E] at the start of your next turn.",
+      "Whenever you end a turn with #b",
+      " or less [E] [REMOVE_SPACE], gain that much [E] at the start of your next turn."]
+  },
+  "MariMod:Gold_Gain_Not_Damaged_Power": {
+    "NAME": "Gold Gain: Not Damaged",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " gold. (Cancelled if damaged)"]
+  },
+  "MariMod:Gold_Gain_No_Block_Power": {
+    "NAME": "Gold Gain: No Block",
+    "DESCRIPTIONS": ["At the end of your turn, gain #b",
+      " gold if you have no Block."]
+  },
+  "MariMod:Gold_Gain_Debuff_Power": {
+    "NAME": "Gold Gain: Debuff",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " gold if you have a debuff."]
+  },
+  "MariMod:Supervision_Power_Old": {
+    "NAME": "Supervision",
+    "DESCRIPTIONS": ["Whenever you spend 3 or more [E] [REMOVE_SPACE], [#fbccff]spend[] #b",
+      " Gold to gain [E] [E] [E] ."]
+  },
+  "MariMod:Excitement_Power_Old": {
+    "NAME": "Excitement",
+    "DESCRIPTIONS": ["For each #yRadiance you have, your attacks deal #b",
+      "% more damage. (Currently gives #b",
+      "% more damage)"]
+  }
+}

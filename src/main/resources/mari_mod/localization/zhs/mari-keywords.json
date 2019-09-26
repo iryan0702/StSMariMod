@@ -1,0 +1,24 @@
+﻿[
+  {
+    "PROPER_NAME": "闪耀",
+    "NAMES":[
+      "闪耀",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "当 #r敌人 获得闪耀时，受到闪耀层数的伤害。 如果 #r你 获得闪耀时，每拥有一层闪耀层数，额外造成10%伤害。回合结束时，闪耀层数减少 #b1 层。"
+  },
+  {
+    "PROPER_NAME": "激发",
+    "NAMES":[
+      "激发",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "你可以用含有此关键词的卡牌对 #y任意 角色使用。消耗该角色的 #b1 层闪耀效果来触发某些特效。"
+  }
+]

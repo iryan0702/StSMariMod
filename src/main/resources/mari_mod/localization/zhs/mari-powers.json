@@ -1,0 +1,184 @@
+{
+  "MariMod:Radiance_Power": {
+    "NAME": "闪耀",
+    "DESCRIPTIONS": ["当这个角色获得闪耀时，受到等同于其拥有的闪耀层数的伤害。这个角色行动结束后减少 #b1 层。",
+    "鞠莉非常 #y闪耀！ （回合结束时减少 #b1 层。）",
+      "鞠莉造成 #b",
+      "% 额外伤害！ （回合结束时减少 #b10% 。）",
+      "% 额外伤害！ （回合结束时减少 #b20% 。）"]
+  },
+  "MariMod:Choreography_Power": {
+    "NAME": "舞蹈编排",
+    "DESCRIPTIONS": ["在同一回合中，当你在一张牌上花费的能量比前一张少时，抽1张牌。",
+      "在同一回合中，当你在一张牌上花费的能量比前一张少时，抽 #b",
+      " 张牌。",
+    " （本回合你还没有打出过卡牌。）",
+    " （你上一张打出的拍费用为 #b",
+    " [REMOVE_SPACE]点。）"]
+  },
+  "MariMod:Devilish_Assistant_Power": {
+    "NAME": "小恶魔贤内助",
+    "DESCRIPTIONS": ["你的回合开始时，对上回合的相同目标免费打出你上回合打出的最后一张牌。",
+      "你的回合开始时，对上回合的相同目标免费打出你上回合的最后一张牌 #b",
+      " 次。"]
+  },
+  "MariMod:Character_Development_Power": {
+    "NAME": "自我救赎",
+    "DESCRIPTIONS": ["每当你完全失去一种负面效果时，获得 #b",
+      " 点力量。"]
+  },
+  "MariMod:Cash_Back_Power": {
+    "NAME": "返现",
+    "DESCRIPTIONS": ["当你 花费  金币时，返还 #b",
+      "%。"]
+  },
+  "MariMod:Delicacy_Power": {
+    "NAME": "美味点心",
+    "DESCRIPTIONS": ["当你 花费  金币时，抽 1 张牌。",
+      "当你 花费  金币时，抽 #b",
+      " 张牌。"]
+  },
+  "MariMod:Flaunt_Power": {
+    "NAME": "炫耀",
+    "DESCRIPTIONS": ["当你 花费  金币时，对一名随机敌人造成 #b",
+      " 点伤害。"]
+  },
+  "MariMod:Excitement_Power": {
+    "NAME": "欢乐时光",
+    "DESCRIPTIONS": ["当你给予 #y闪耀 时，抽一张可以给予# y闪耀 的牌。",
+      "当你给予 #y闪耀 时，抽 #b",
+      " 张可以给予# y闪耀 的牌。"]
+  },
+  "MariMod:The_Light_We_Chase_Power": {
+    "NAME": "我们追寻的光芒",
+    "DESCRIPTIONS": ["当一名敌人获得闪耀时，你获得",
+      " 层闪耀。"]
+  },
+  "MariMod:No_Problem_Power": {
+    "NAME": "No Problem!",
+    "DESCRIPTIONS": ["本回合内无视 脆弱， 虚弱 和 易伤 。",
+      "#b",
+      " 回合内无视 脆弱， 虚弱 和 易伤 。"]
+  },
+  "MariMod:Supervision_Power": {
+    "NAME": "家教森严",
+    "DESCRIPTIONS": ["你的回合开始时， 获得 #b",
+      "点 [E] 。"]
+  },
+  "MariMod:Practice_Outfit_Buff_Power": {
+    "NAME": "\“欸嘿嘿……\”",
+    "DESCRIPTIONS": ["本回合结束前你不会受到伤害。",
+      "#b",
+      " 回合内你不会受到伤害。"]
+  },
+  "MariMod:Practice_Outfit_Debuff_Power": {
+    "NAME": "\“……我们还在练习！\”",
+    "DESCRIPTIONS": ["本回合结束前你无法造成伤害。",
+      "#b",
+      " 回合内你无法造成伤害。"]
+  },
+  "MariMod:Limelight_Power": {
+    "NAME": "万众瞩目",
+    "DESCRIPTIONS": ["你的回合结束时，给予所有角色 #b",
+      "层 #y闪耀 。"]
+  },
+  "MariMod:From_Zero_Power": {
+    "NAME": "从0开始……",
+    "DESCRIPTIONS": ["当你打出一张费用为0 [E] 的牌时， #y消耗这张牌，抽 #b",
+      " 张牌，",
+      " 张牌，",
+      " 并给予一名随机敌人 #b",
+      "层 #y闪耀 。"]
+  },
+  "MariMod:Gold_Loss_Start_Of_Turn_Power": {
+  "NAME": "失去金币：回合开始",
+  "DESCRIPTIONS": ["你的下回合开始时，失去 #b",
+    " 点金币。 快点 花费  一些金币！"]
+  },
+  "MariMod:Flawless_Form_Power": {
+    "NAME": "完美形态",
+    "DESCRIPTIONS": [
+      "在本回合中，当你在一张牌上花费的能量比前一张多时，返还花费的能量。",
+      " （本回合你还没有打出过牌！）",
+      " （你上一张打出的牌费用为 #b",
+      " [REMOVE_SPACE] 点。）"
+    ]
+  },
+  "MariMod:Gold_Gain_Start_Of_Turn_Power": {
+    "NAME": "获得金币：回合开始",
+    "DESCRIPTIONS": ["你的回合开始时，获得 #b",
+      " 点金币。"]
+  },
+  "MariMod:Lock_On_Power": {
+    "NAME": "\"锁定！\"",
+    "DESCRIPTIONS": ["你已经锁定了 #b",
+      " [REMOVE_SPACE]！ 每次对该敌人使用卡牌时获得 #b",
+      " [E] [REMOVE_SPACE]。",
+      "这个怪物已经被锁定了！"]
+  },
+  "MariMod:Oh_My_God_Power": {
+    "NAME": "\"OH MY GOD!\"",
+    "DESCRIPTIONS": ["啊啊啊啊啊啊啊啊啊！！！！！！！！！"]
+  },
+  "MariMod:Withdrawal_Power": {
+    "NAME": "让步",
+    "DESCRIPTIONS": ["你造成的伤害和从卡牌中获得的 #y格挡 提升 #b",
+      " （你的易伤层数）点。"]
+  },
+  "MariMod:Research_Power": {
+    "NAME": "研究",
+    "DESCRIPTIONS": ["每当你激发一名敌人时，减少一张随机手牌的费用 #b",
+      " [REMOVE_SPACE]点。"]
+  },
+  "MariMod:Administrator_Privilege_Power": {
+    "NAME": "特殊权限",
+    "DESCRIPTIONS": ["你的每回合开始时，用从抽牌堆中选择卡牌并加入手牌的方式来替代标准的抽牌。"]
+  },
+  "MariMod:Lie_In_Wait_Power": {
+    "NAME": "埋伏",
+    "DESCRIPTIONS": ["下一个回合开始时，对所有敌人造成 #b",
+      " 点伤害。"]
+  },
+  "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
+    "NAME": "Gleam and Glean",
+    "DESCRIPTIONS": ["Whenever you apply #yRadiance to an enemy, gain #b",
+      " Gold."]
+  },
+  "MariMod:Indulgence_Power": {
+    "NAME": "Indulgence",
+    "DESCRIPTIONS": ["Whenever you [#fbccff]spend[] 3 or more [E] on a card, reduce the cost of other cards in your hand by #b",
+      " this combat (but not less than 1)."]
+  },
+  "MariMod:Desserts_Power": {
+    "NAME": "Desserts",
+    "DESCRIPTIONS": ["Whenever you end a turn with 1 unspent [E], gain 1 [E] at the start of your next turn.",
+      "Whenever you end a turn with #b",
+      " or less [E] [REMOVE_SPACE], gain that much [E] at the start of your next turn."]
+  },
+  "MariMod:Gold_Gain_Not_Damaged_Power": {
+    "NAME": "Gold Gain: Not Damaged",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " gold. (Cancelled if damaged)"]
+  },
+  "MariMod:Gold_Gain_No_Block_Power": {
+    "NAME": "Gold Gain: No Block",
+    "DESCRIPTIONS": ["At the end of your turn, gain #b",
+      " gold if you have no Block."]
+  },
+  "MariMod:Gold_Gain_Debuff_Power": {
+    "NAME": "Gold Gain: Debuff",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
+      " gold if you have a debuff."]
+  },
+  "MariMod:Supervision_Power_Old": {
+    "NAME": "Supervision",
+    "DESCRIPTIONS": ["Whenever you spend 3 or more [E] [REMOVE_SPACE], [#fbccff]spend[] #b",
+      " Gold to gain [E] [E] [E] ."]
+  },
+  "MariMod:Excitement_Power_Old": {
+    "NAME": "Excitement",
+    "DESCRIPTIONS": ["For each #yRadiance you have, your attacks deal #b",
+      "% more damage. (Currently gives #b",
+      "% more damage)"]
+  }
+}

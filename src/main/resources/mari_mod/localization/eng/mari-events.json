@@ -1,0 +1,48 @@
+{
+  "MariMod:SnackShack": {
+    "NAME": "Snack Shack",
+    "DESCRIPTIONS": [
+      "As you realize that you are running low on #yGold you come a cross a familiar-looking shack. A voice shrieks from the closed blinds. @\"DO@ @YOU@ @HAVE@ @SOMETHING@ @TO@ @SELL,@ @YOUNG@ @LADY?\"@ NL NL ...It seems like you can place something on the counter to sell it.",
+      "You place #pThe #pSpark on the counter. A hand shoots out from the blinds and removes the relic. @\"THANKS@ @FOR@ @THE@ @RELIC,@ @YOUNG@ @LADY!\"@",
+      "@\"HEY!@ @DON'T@ @FORGET@ @YOUR@ #y@GOLD!\"@",
+      "Whew. Almost forgot about that.",
+      "You place a card on the counter. A hand shoots out from the blinds and takes the card. A moment of silence passes before you hear the voice again. @\"ARE@ @YOU@ @SOME@ @KIND@ @OF@ @A@ @FAMOUS@ @IDOL,@ @YOUNG@ @LADY?@ @CAN@ @YOU@ @ALSO@ @SIGN@ @THIS@ @CARD?\"@",
+      "\"...please?\"",
+      "\"...I'll even give you #y10 #yextra #ygold for it\"",
+      "\"Thank y- @THANK@ @YOU@ @VERY@ @MUCH!\"@",
+      "\"Thank y- @THANK@ @YOU@ @VERY@ @MUCH!@ @HERE'S@ @YOUR@ #y@GOLD!\"@",
+      "@\"FINE,@ @TAKE@ @YOUR@ #y@GOLD@ @AND@ @LEAVE!\"@",
+      "You grab a dagger on the counter and lightly cut the palm of your hand. #rBlood #r~drips~ ~down~ onto the surface in front of you. @\"GROSS!@ @WHAT@ @ARE@ @YOUR@ @DOING!?@ @T-TAKE@ @YOUR@ #y@GOLD@ @AND@ @LEAVE!\"@",
+      "Who was that?"
+    ],
+    "OPTIONS": [
+      "[Sell Relic] #rLose #pThe #pSpark",
+      "[Sell Card] #rLose ",
+      "[Sell Blood] #rLose #r8 #rHP",
+      ". #yGain #y",
+      " #yGold.",
+      "[Leave] Walk away slowly",
+      "[Locked] Requires: The Spark",
+      "[Locked] Requires: Uncommon or Rare card",
+      "[Say Thanks and Leave]",
+      "[Leave]",
+      "[Take #y",
+      " #yGold and Leave]",
+      "[Sign the Card]",
+      "[Sign the Card] #yGain #y",
+      " #ymore #yGold.",
+      "[Don't]",
+      "[Leave]"
+    ]
+    },
+  "MariMod:Falling": {
+    "NAME": "Falling Addendum",
+    "DESCRIPTIONS": [
+      "While in free fall you consider your options: NL Land safely with your greatest techniques. NL Channel a Power to survive the fall. NL Strike at the wall to hang on to it. NL NL Or maybe...?",
+      "A set of ropes appears before your eyes, you latch on as the helicopter slowly lowers you to the ground."
+    ],
+    "OPTIONS": [
+      "[Phone] #gCall #gin #gyour #gpersonal #gHelicopter."
+    ]
+  }
+}

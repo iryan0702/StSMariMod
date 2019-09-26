@@ -1,0 +1,99 @@
+{
+  "MariMod:MariTheSpark": {
+    "NAME": "The Spark",
+    "FLAVOR": "\"SHIIIIIIIIINY!\" – Mari Ohara, Probably.",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #y5 Gold. For every #y",
+      " Gold you [#fbccff]spend[] in combat, NL gain an extra #yuncommon card reward in your next combat reward."
+    ]
+  },
+  "MariMod:MariDiploma": {
+    "NAME": "Diploma",
+    "FLAVOR": "We all fade eventually.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. #yRadiance now decays by #b2 instead."
+    ]
+  },
+  "MariMod:MariStewshine": {
+    "NAME": "Stewshine!",
+    "FLAVOR": "Personal recipe by Mari Ohara, only costs 100,000¥ a bowl.",
+    "DESCRIPTIONS": [
+      "Upon pickup, select #b3 cards from #b20 random cards. Combine their cost and card text into one exhaust skill.",
+      "Choose 1 card to combine.",
+      "Choose 2 cards to combine.",
+      "Choose 3 cards to combine."
+    ]
+  },
+  "MariMod:MariToySailboat": {
+    "NAME": "Toy Sailboat",
+    "FLAVOR": "Thank you, You-chan.",
+    "DESCRIPTIONS": [
+      "Every time you play #b2 #yPowers, gain #b7 #yBlock."
+    ]
+  },
+  "MariMod:MariOldLollipop": {
+    "NAME": "Old Lollipop",
+    "FLAVOR": "Thank you, Ruby-chan.",
+    "DESCRIPTIONS": [
+      "Whenever you deal attack damage to an enemy, reduce its max HP by #b5 (but not less than 1)."
+    ]
+  },
+  "MariMod:MariJuicyTangerine": {
+    "NAME": "Juicy Tangerine",
+    "FLAVOR": "Thank you, Chika-chi.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, apply #b",
+      " #yRadiance to ALL characters.",
+      "1 or #b3 (depending on your character) "
+    ]
+  },
+  "MariMod:MariMiniaturePiano": {
+    "NAME": "Miniature Piano",
+    "FLAVOR": "Thank you, Riko-chan.",
+    "DESCRIPTIONS": [
+      "Everytime you play #b3 cards, draw a card. (Triggers once per turn)"
+    ]
+  },
+  "MariMod:MariFlowerRing": {
+    "NAME": "Flower Ring",
+    "FLAVOR": "Thank you, Hanamaru-chan.",
+    "DESCRIPTIONS": [
+      "The first time you lose HP each combat, lose #b4 less HP."
+    ]
+  },
+  "MariMod:MariDevilsCharm": {
+    "NAME": "Devil's Charm",
+    "FLAVOR": "Thank you, Yoshiko-chan.",
+    "DESCRIPTIONS": [
+      "Whenever you take #b6 or more unblocked damage, gain #b1 Strength."
+    ]
+  },
+  "MariMod:MariDolphinTrinket": {
+    "NAME": "Dolphin Trinket",
+    "FLAVOR": "Thank you, Kanan.",
+    "DESCRIPTIONS": [
+      "Whenever you add an #yUncommon card to your deck, heal #b8 HP."
+    ]
+  },
+  "MariMod:MariUmeBlossom": {
+    "NAME": "Ume Blossom",
+    "FLAVOR": "Thank you, Dia-...chan!",
+    "DESCRIPTIONS": [
+      "Whenever you smith, increase your max HP by #b7 (does not affect current HP)."
+    ]
+  },
+  "MariMod:MariFestivalBadge": {
+    "NAME": "Festival Badge",
+    "FLAVOR": "Alternatively, you can use a UR sticker.",
+    "DESCRIPTIONS": [
+      "Whenever you have a pair of unupgraded cards with the same name in your deck, upgrade them."
+    ]
+  },
+  "MariMod:MariCursedDoll ALL RELICS BEYOND THIS POINT ARE REMOVED/UNUSED": {
+    "NAME": "Cursed Doll",
+    "FLAVOR": "You can't stop laughing from the immense dread.",
+    "DESCRIPTIONS": [
+      "#yRadiance now gives you 20% more damage per stack. [#EFC851]Radiance[] now damages you and is considered a debuff."
+    ]
+  }
+}
