@@ -1,5 +1,5 @@
 # StSMariMod
-<<<<<<< HEAD
+<<<<<<< PRETTY BOMBER HEAD
 Shiny.
 =======
 >>>>>>> first commit
