@@ -89,6 +89,22 @@
       "Whenever you have a pair of unupgraded cards with the same name in your deck, upgrade them."
     ]
   },
+  "MariMod:MariBottledBrilliance": {
+    "NAME": "Bottled Brilliance",
+    "FLAVOR": "The bottle beams brilliantly.",
+    "DESCRIPTIONS": [
+      "At the start of combat, increase the #yRadiance value of all cards in your hand by #b1."
+    ]
+  },
+  "MariMod:MariStageDirections": {
+    "NAME": "Stage Directions",
+    "FLAVOR": "[MARI enters stage Right.]    [ENEMY exits stage life.]    ",
+    "DESCRIPTIONS": [
+      "Your #yFrail and #yVunerable last until the end of combat. These debuffs modify your #yBlock gain and damage taken by #b10% and #b25% instead.",
+      "Gain #b10% less #yBlock from cards this combat.",
+      "Receive #b25% more damage from #yAttacks this combat."
+    ]
+  },
   "MariMod:MariCursedDoll ALL RELICS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Cursed Doll",
     "FLAVOR": "You can't stop laughing from the immense dread.",
