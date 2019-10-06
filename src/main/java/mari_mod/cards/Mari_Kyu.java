@@ -32,7 +32,7 @@ public class Mari_Kyu extends AbstractMariCard {
     public Mari_Kyu(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseRadiance = RADIANCE_COUNT;
-        this.radiance = this.baseMagicNumber;
+        this.radiance = this.baseRadiance;
         this.tags.add(MariCustomTags.QUOTATIONS);
         this.tags.add(MariCustomTags.RADIANCE);
         this.exhaust = true;

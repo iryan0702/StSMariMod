@@ -50,7 +50,7 @@ public class MariRadianceKey extends DynamicVariable {
 
     public Color getIncreasedValueColor()
     {
-        return Settings.GREEN_TEXT_COLOR;
+        return Color.GOLD.cpy();
     }
 
     public Color getDecreasedValueColor()

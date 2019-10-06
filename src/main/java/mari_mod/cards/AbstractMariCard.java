@@ -46,13 +46,13 @@ public abstract class AbstractMariCard extends CustomCard {
     private static final float FPS_SCALE = (240f / Settings.MAX_FPS);
     public ArrayList<KindleParticle> particles;
 
-    protected void upgradeGoldCost(int amount) {
+    public void upgradeGoldCost(int amount) {
         this.baseGoldCost += amount;
         this.goldCost = this.baseGoldCost;
         this.upgradedGoldCost = true;
     }
 
-    protected void upgradeRadiance(int amount) {
+    public void upgradeRadiance(int amount) {
         this.baseRadiance += amount;
         this.radiance = this.baseRadiance;
         this.upgradedRadiance = true;
