@@ -13,35 +13,44 @@ import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.helpers.EventHelper;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
 import mari_mod.MariMod;
 import mari_mod.cards.MariCustomTags;
 import mari_mod.events.AllMariModEvents;
 import mari_mod.events.MariSnackShackEvent;
+import mari_mod.powers.No_Problem_Power;
 import mari_mod.relics.MariStageDirections;
 
 
-public class MariStageDirectionsPatch {
+public class MariExistingDebuffsPatch {
+
+    //VULNERABLE
+
     @SpirePatch(clz = VulnerablePower.class, method = "atDamageReceive",
             paramtypez = {
                     float.class, DamageInfo.DamageType.class})
-    public static class MariStageDirectionsVulnerableModifierPatch {
+    public static class MariVulnerableModifierPatch {
 
         @SpirePrefixPatch
         public static SpireReturn<Float> Prefix(VulnerablePower power, float damage, DamageInfo.DamageType damageType) {
 
-            if (damageType == DamageInfo.DamageType.NORMAL && power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
-
-                return SpireReturn.Return(damage * 1.25F);
+            if (damageType == DamageInfo.DamageType.NORMAL && power.owner.isPlayer){
+                if(AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
+                    return SpireReturn.Return(damage);
+                }
+                if(AbstractDungeon.player.hasRelic(MariStageDirections.ID)){
+                    return SpireReturn.Return(damage * 1.25F);
+                }
             }
-
             return SpireReturn.Continue();
+
         }
     }
 
     @SpirePatch(clz = VulnerablePower.class, method = "atEndOfRound")
-    public static class MariStageDirectionsVulnerableDecayPatch {
+    public static class MariVulnerableDecayPatch {
 
         @SpirePrefixPatch
         public static SpireReturn Prefix(VulnerablePower power) {
@@ -55,7 +64,7 @@ public class MariStageDirectionsPatch {
     }
 
     @SpirePatch(clz = VulnerablePower.class, method = "updateDescription")
-    public static class MariStageDirectionsVulnerableDescriptionPatch {
+    public static class MariVulnerableDescriptionPatch {
 
         @SpirePostfixPatch
         public static void Postfix(VulnerablePower power) {
@@ -65,25 +74,50 @@ public class MariStageDirectionsPatch {
         }
     }
 
-    @SpirePatch(clz = FrailPower.class, method = "modifyBlock",
+    //WEAK
+
+    @SpirePatch(clz = WeakPower.class, method = "atDamageGive",
             paramtypez = {
-                    float.class})
-    public static class MariStageDirectionsFrailModifierPatch {
+                    float.class, DamageInfo.DamageType.class})
+    public static class MariWeakModifierPatch {
 
         @SpirePrefixPatch
-        public static SpireReturn<Float> Prefix(FrailPower power, float block) {
+        public static SpireReturn<Float> Prefix(WeakPower power, float damage, DamageInfo.DamageType damageType) {
 
 
-            if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
-                return SpireReturn.Return(block * 0.9F);
+            if (power.owner.isPlayer && AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID) && damageType == DamageInfo.DamageType.NORMAL) {
+                return SpireReturn.Return(damage);
             }
 
             return SpireReturn.Continue();
         }
     }
 
+    //FRAIL
+
+    @SpirePatch(clz = FrailPower.class, method = "modifyBlock",
+            paramtypez = {
+                    float.class})
+    public static class MariFrailModifierPatch {
+
+        @SpirePrefixPatch
+        public static SpireReturn<Float> Prefix(FrailPower power, float block) {
+
+            if (power.owner.isPlayer) {
+                if (AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
+                    return SpireReturn.Return(block);
+                }
+                if (AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
+                    return SpireReturn.Return(block * 0.9F);
+                }
+            }
+            return SpireReturn.Continue();
+
+        }
+    }
+
     @SpirePatch(clz = FrailPower.class, method = "atEndOfRound")
-    public static class MariStageDirectionsFrailDecayPatch {
+    public static class MariFrailDecayPatch {
 
         @SpirePrefixPatch
         public static SpireReturn Prefix(FrailPower power) {
@@ -97,7 +131,7 @@ public class MariStageDirectionsPatch {
     }
 
     @SpirePatch(clz = FrailPower.class, method = "updateDescription")
-    public static class MariStageDirectionsFrailDescriptionPatch {
+    public static class MariFrailDescriptionPatch {
 
         @SpirePostfixPatch
         public static void Postfix(FrailPower power) {

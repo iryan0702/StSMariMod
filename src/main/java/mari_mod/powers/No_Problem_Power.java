@@ -60,7 +60,7 @@ public class No_Problem_Power extends AbstractPower
         }
     }
 
-
+    /*
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL && AbstractDungeon.player.hasPower(WeakPower.POWER_ID)) {
             return !this.owner.isPlayer && AbstractDungeon.player.hasRelic("Paper Crane") ? damage / 0.6F : damage / 0.75F;
@@ -83,7 +83,7 @@ public class No_Problem_Power extends AbstractPower
             return !this.owner.isPlayer && AbstractDungeon.player.hasRelic("Odd Mushroom") ? damage / 1.25F : damage / 1.5F;
         }
         return damage;
-    }
+    }*/
 
     public void updateDescription() {
         if(this.amount == 1) {
