@@ -33,6 +33,7 @@ public abstract class AbstractMariCard extends CustomCard {
     public int baseGoldCost = 0;
     public int goldCost = 0;
     public boolean upgradedGoldCost = false;
+    public boolean limitedByGoldCost = true;
 
     public int baseRadiance = 0;
     public int radiance = 0;
@@ -96,15 +97,18 @@ public abstract class AbstractMariCard extends CustomCard {
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean canUse = super.canUse(p, m);
-        if(!canUse){
-            return false;
-        }else {
-            if (AbstractDungeon.player.gold < this.goldCost) {
-                canUse = false;
-                this.cantUseMessage = "I don't have enough gold!";
+        if(limitedByGoldCost) {
+            if (!canUse) {
+                return false;
+            } else {
+                if (AbstractDungeon.player.gold < this.goldCost) {
+                    canUse = false;
+                    this.cantUseMessage = "I don't have enough gold!";
+                }
+                return canUse;
             }
-            return canUse;
         }
+        return canUse;
     }
 
     @Override
@@ -246,11 +250,11 @@ public abstract class AbstractMariCard extends CustomCard {
             double random = Math.random();
 
             if(random < 0.01){
-                color = Colors.get("PURPLE").cpy();;
+                color = Colors.get("PURPLE").cpy();
             }else if(random < 0.013){
-                color = Colors.get("CYAN").cpy();;
+                color = Colors.get("CYAN").cpy();
             }else if(random < 0.015){
-                color = Colors.get("RED").cpy();;
+                color = Colors.get("RED").cpy();
             }else if(random < 0.265) {
                 color = Colors.get("ORANGE").cpy();
             }

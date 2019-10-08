@@ -33,6 +33,7 @@ public class Mari_Higher_Ups extends AbstractMariCard {
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
         this.exhaust = true;
+        this.limitedByGoldCost = false;
     }
 
     @Override
@@ -40,18 +41,6 @@ public class Mari_Higher_Ups extends AbstractMariCard {
         AbstractDungeon.actionManager.addToBottom(new MariHigherUpsAction(this.upgraded, BASE_GOLD_COST));
     }
 
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p, m);
-        if(!canUse){
-            return false;
-        }else {
-            /*if (AbstractDungeon.player.gold < this.goldCost) {
-                canUse = false;
-                this.cantUseMessage = "I don't have enough gold!";
-            }*/
-            return canUse;
-        }
-    }
 
     @Override
     public AbstractCard makeCopy() {
