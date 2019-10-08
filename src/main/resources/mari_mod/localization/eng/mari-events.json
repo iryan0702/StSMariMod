@@ -39,10 +39,45 @@
     "NAME": "Falling Addendum",
     "DESCRIPTIONS": [
       "While in free fall you consider your options: NL Land safely with your greatest techniques. NL Channel a Power to survive the fall. NL Strike at the wall to hang on to it. NL NL Or maybe...?",
-      "A set of ropes appears before your eyes, you latch on as the helicopter slowly lowers you to the ground."
+      "A set of ropes appears before your eyes, you latch on as the helicopter safely lowers you to the ground."
     ],
     "OPTIONS": [
       "[Phone] #gCall #gin #gyour #gpersonal #gHelicopter."
+    ]
+  },
+  "MariMod:Shining Light": {
+    "NAME": "Shining Light Addendum",
+    "DESCRIPTIONS": [
+      "You put your knowledge of #yradiance to use and begin manipulating the #ymass #yof #ylight. It follows your movements as you command it into a nearby bottle. NL NL You almost feel bad for trapping this light. NL Not like it's alive ...right?"
+    ],
+    "OPTIONS": [
+      "[Command] #gObtain #ga #gspecial #gRelic. #rBecome #rCursed #r- #rDoubt."
+    ]
+  },
+  "MariMod:Liars Game": {
+    "NAME": "Liars Game Addendum",
+    "DESCRIPTIONS": [
+      "\"What? You say you can already buy everything?\" NL ~\"Don't~ ~play~ ~gamesss~ ~with~ ~me,~ #r~liar\"~",
+      "You 'conjure' some #ygold from your pockets and toss them at the serpent. Frightened, it retreats back into its hole. NL ~\"I'm~ ~going~ ~to~ ~need~ ~a~ ~few~ ~ssssecondss~ ~to~ ~think~ ~about~ ~thisss.\"~ NL NL Having fooled this serpent, you feel a little #pmore #prich."
+    ],
+    "OPTIONS": [
+      "[Confuse] #rLose #r20 #rGold. #gAdd #g80 #gcharges #gto #pThe #pSpark.",
+      "[Throw Gold]"
+    ]
+  },
+  "MariMod:Masked Bandits": {
+    "NAME": "Masked Bandits Addendum",
+    "DESCRIPTIONS": [
+      "You wanna join us, young lady? NL I'm afraid this gold isn't enough! You'd need a ~cool~ #r~Red~ #r~Mask~ like ours to be a #rTRUE #rbandit. NL ...Hey Bear! Go fetch my old mask from our camp. NL We're making a sale today!",
+      "Since you're clearly interested in our style. NL I'll give you a small discount! NL Only @HALF@ your #ygold for one #rRed #rMask. NL Now @THAT'S@ a reasonable offer!",
+      "Sweet! NL Nice doing a deal with you, young lady. NL It's wonderful that no one had to get hurt, you know? NL Now go on! ~Have~ ~fun~ ~stealing~ ~from~ ~people!~",
+      "You like #yshinies too, huh?"
+    ],
+    "OPTIONS": [
+      "[Ask to Join] #rPay #r[JOIN] #rGold.",
+      "[Locked] Requires: [JOIN] Gold.",
+      "[Buy] #rPay #r[BUY] #rGold. #gObtain #gRed #gMask.",
+      "[Ambush]"
     ]
   }
 }

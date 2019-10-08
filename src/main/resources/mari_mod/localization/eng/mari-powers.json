@@ -56,8 +56,8 @@
   },
   "MariMod:No_Problem_Power": {
     "NAME": "No Problem!",
-    "DESCRIPTIONS": ["Ignore Frail, Weak, and Vulnerable this turn.",
-      "Ignore Frail and Weak for #b",
+    "DESCRIPTIONS": ["Ignore #yFrail, #yWeak, and #yVulnerable this turn.",
+      "Ignore #yFrail, #yWeak, and #yVulnerable for #b",
       " turns."]
   },
   "MariMod:Supervision_Power": {
