@@ -54,7 +54,26 @@ public class Mari_Expenses extends AbstractMariCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        this.applyPowers();
+        int scaling = SCALING;
+        if(upgraded) scaling += UPGRADE_SCALING;
+
+        int dam = DAMAGE;
+
+        this.baseDamage = dam + scaling * (MariMod.timesMariSpentGoldThisCombat);
+        this.damage =  this.baseDamage;
+
+        super.calculateCardDamage(mo);
+
+        if(this.damage > 0) {
+            String desc;
+            if(upgraded){
+                desc = UPGRADE_DESCRIPTION;
+            }else{
+                desc = DESCRIPTION;
+            }
+            this.rawDescription = desc + EXTENDED_DESCRIPTION[0];
+            this.initializeDescription();
+        }
 
         this.forgetBlock();
     }
