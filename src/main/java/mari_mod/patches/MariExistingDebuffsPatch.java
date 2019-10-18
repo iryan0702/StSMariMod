@@ -22,6 +22,7 @@ import mari_mod.events.AllMariModEvents;
 import mari_mod.events.MariSnackShackEvent;
 import mari_mod.powers.No_Problem_Power;
 import mari_mod.relics.MariStageDirections;
+import mari_mod.relics.MariTheaterScript;
 
 
 public class MariExistingDebuffsPatch {
@@ -37,7 +38,7 @@ public class MariExistingDebuffsPatch {
         public static SpireReturn<Float> Prefix(VulnerablePower power, float damage, DamageInfo.DamageType damageType) {
 
             if (damageType == DamageInfo.DamageType.NORMAL && power.owner.isPlayer){
-                if(AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
+                if(AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
                     return SpireReturn.Return(damage);
                 }
                 if(AbstractDungeon.player.hasRelic(MariStageDirections.ID)){
@@ -55,7 +56,7 @@ public class MariExistingDebuffsPatch {
         @SpirePrefixPatch
         public static SpireReturn Prefix(VulnerablePower power) {
 
-            if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
+            if (power.owner.isPlayer && (AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasRelic(MariStageDirections.ID))) {
                 return SpireReturn.Return(null);
             }
 
@@ -70,6 +71,10 @@ public class MariExistingDebuffsPatch {
         public static void Postfix(VulnerablePower power) {
             if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
                 power.description = AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[2];
+            }
+
+            if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariTheaterScript.ID)) {
+                power.description = AbstractDungeon.player.getRelic(MariTheaterScript.ID).DESCRIPTIONS[2];
             }
         }
     }
@@ -104,7 +109,7 @@ public class MariExistingDebuffsPatch {
         public static SpireReturn<Float> Prefix(FrailPower power, float block) {
 
             if (power.owner.isPlayer) {
-                if (AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
+                if (AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
                     return SpireReturn.Return(block);
                 }
                 if (AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
@@ -122,7 +127,7 @@ public class MariExistingDebuffsPatch {
         @SpirePrefixPatch
         public static SpireReturn Prefix(FrailPower power) {
 
-            if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
+            if (power.owner.isPlayer && (AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasRelic(MariStageDirections.ID))) {
                 return SpireReturn.Return(null);
             }
 
@@ -137,6 +142,9 @@ public class MariExistingDebuffsPatch {
         public static void Postfix(FrailPower power) {
             if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
                 power.description = AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[1];
+            }
+            if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariTheaterScript.ID)) {
+                power.description = AbstractDungeon.player.getRelic(MariTheaterScript.ID).DESCRIPTIONS[1];
             }
         }
     }

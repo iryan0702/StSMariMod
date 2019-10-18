@@ -6,30 +6,33 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import mari_mod.MariMod;
+import mari_mod.actions.MariJarOfLightAction;
+import mari_mod.actions.MariIncreaseRadianceInHandAction;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.Mari_Strike;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //
 import java.util.function.Predicate;
 
-public class MariBottledBrilliance extends AbstractMariRelic implements CustomBottleRelic
+public class MariJarOfLight extends AbstractMariRelic
 {
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public static final String ID = "MariMod:MariBottledBrilliance";
-    public MariBottledBrilliance()
+    public static final String ID = "MariMod:MariJarOfLight";
+    public MariJarOfLight()
     {
         super(ID, RelicTier.SPECIAL, LandingSound.CLINK);
     }
 
     @Override
-    public Predicate<AbstractCard> isOnCard() {
-        //some changes
-        return null;
+    public void atBattleStart() {
+        AbstractDungeon.actionManager.addToBottom(new MariJarOfLightAction(5));
     }
 
     @Override
-    public void onMasterDeckChange() {
-        super.onMasterDeckChange();
+    protected void initializeTips() {
+        super.initializeTips();
+        this.tips.remove(tips.size()-1);
     }
 
     public String getUpdatedDescription()
@@ -39,6 +42,6 @@ public class MariBottledBrilliance extends AbstractMariRelic implements CustomBo
 
     public AbstractRelic makeCopy()
     {
-        return new MariBottledBrilliance();
+        return new MariJarOfLight();
     }
 }
