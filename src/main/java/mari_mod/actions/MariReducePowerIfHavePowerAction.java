@@ -32,6 +32,7 @@ public class MariReducePowerIfHavePowerAction extends AbstractGameAction {
         this.source = source;
         this.amount = amount;
         this.powerID = powerID;
+        this.duration = Settings.ACTION_DUR_XFAST;
     }
 
     public void update() {
