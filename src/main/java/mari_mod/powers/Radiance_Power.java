@@ -45,7 +45,6 @@ public class Radiance_Power extends AbstractPower
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    private boolean fastTrigger;
     ArrayList<RadianceParticle> radianceParticles;
     private DamageInfo radianceInfo;
     private float particleDelay;
@@ -66,15 +65,14 @@ public class Radiance_Power extends AbstractPower
         this.amount = bufferAmt;
         this.isTurnBased = true;
         this.updateDescription();
-        this.fastTrigger = false;
         MariMod.setPowerImages(this);
-        if(this.amount <= 0) AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         this.particleDelay = 0.0F;
+        logger.info("initialize: amount " + bufferAmt);
     }
 
     public void stackPower(int stackAmount)
     {
-        logger.info("this stacks: " + stackAmount);
+        logger.info("this stacks: by" + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         if(stackAmount > 0 && (!this.owner.isPlayer || AbstractDungeon.player.hasRelic(MariCursedDoll.ID))) {
@@ -83,14 +81,21 @@ public class Radiance_Power extends AbstractPower
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.FIRE, true));
         }
         if(stackAmount > 0) burstOfParticles(stackAmount*4);
-        if(this.amount <= 0) AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+        if(this.amount <= 0){
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+            logger.info("removing radiance from stack power");
+        }
         updateDescription();
     }
 
     @Override
     public void reducePower(int reduceAmount) {
+        logger.info("reducing power: by " + reduceAmount);
         super.reducePower(reduceAmount);
-        if(this.amount <= 0) AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+        if(this.amount <= 0){
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+            logger.info("removing radiance from reduce power");
+        }
         updateDescription();
     }
 
@@ -101,6 +106,7 @@ public class Radiance_Power extends AbstractPower
     }
 
     public void onInitialApplication() {
+        logger.info("power initial app: currently " + this.amount);
         if(!this.owner.isPlayer || AbstractDungeon.player.hasRelic(MariCursedDoll.ID)) {
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.FIRE, true));
@@ -113,7 +119,7 @@ public class Radiance_Power extends AbstractPower
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         float damageBoost = (AbstractDungeon.player.hasRelic(MariCursedDoll.ID) ? 0.20F : 0.10F);
         if(this.owner.isPlayer) {
-            return type == DamageInfo.DamageType.NORMAL ? damage * (float)(1.0F +(this.amount * damageBoost)): damage;
+            return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F +(this.amount * damageBoost)): damage;
         }
         else
             return damage;
@@ -182,7 +188,6 @@ public class Radiance_Power extends AbstractPower
             this.x += Settings.scale * (MathUtils.random(owner.hb_w * -0.2F, owner.hb_w * 0.2F) + 5.0F);
             this.y += Settings.scale * (MathUtils.random(owner.hb_h * -0.2F, owner.hb_h * 0.2F) + 5.0F);
         }
-
         public RadianceParticle(AbstractCreature owner, boolean isKindleSpark) {
             this.img = ImageMaster.ROOM_SHINE_2;
             this.effectDuration = MathUtils.random(1.0F, 3.0F);
@@ -190,7 +195,7 @@ public class Radiance_Power extends AbstractPower
             this.startingDuration = this.effectDuration;
             this.x = owner.hb.cX + (owner.hb_w * MathUtils.random(-0.4F, 0.4F));
             this.y = owner.hb.cY + (owner.hb_h * MathUtils.random(-0.5F, 0.4F));
-            this.vY = MathUtils.random(10.0F, 50.0F) * Settings.scale;
+            this.vY = MathUtils.random(20.0F, 60.0F) * Settings.scale;
             this.alpha = MathUtils.random(0.7F, 1.0F);
             if(isKindleSpark && MariMod.currentlyKindledCard == null) {
                 this.masterAlpha = 0.0F;
@@ -209,7 +214,7 @@ public class Radiance_Power extends AbstractPower
         public void update() {
             if (this.vY != 0.0F) {
                 this.y += this.vY * Gdx.graphics.getDeltaTime();
-                MathUtils.lerp(this.vY, 0.0F, Gdx.graphics.getDeltaTime() * 10.0F);
+                this.vY = MathUtils.lerp(this.vY, 0.0F, Gdx.graphics.getDeltaTime() * 1.0F);
                 if (this.vY < 0.5F) {
                     this.vY = 0.0F;
                 }
@@ -217,10 +222,6 @@ public class Radiance_Power extends AbstractPower
 
             if (this.vX != 0.0F) {
                 this.x += this.vX * Gdx.graphics.getDeltaTime();
-                MathUtils.lerp(this.vX, 0.0F, Gdx.graphics.getDeltaTime() * 10.0F);
-                if (Math.abs(this.vX) < 0.01F){
-                    this.vX = 0.0F;
-                }
             }
 
             if (MariMod.currentKindleTarget != null && MariMod.currentKindleTarget.equals(this.owner) && MariMod.currentlyKindledCard != null){
@@ -254,8 +255,7 @@ public class Radiance_Power extends AbstractPower
             float tmp = Interpolation.bounceOut.apply(0.01F, this.targetScale, t);
             this.scale = tmp * tmp * Settings.scale;
             this.duration -= Gdx.graphics.getDeltaTime();
-            if (this.duration < 0.0F) {
-            } else if (this.duration < this.effectDuration / 2.0F) {
+            if (this.duration >= 0.0F && this.duration < this.effectDuration / 2.0F) {
                 this.color.a = Interpolation.exp5In.apply(0.0F, this.alpha, this.duration / (this.effectDuration / 2.0F)) * this.masterAlpha;
             }
         }
@@ -267,9 +267,6 @@ public class Radiance_Power extends AbstractPower
                 sb.draw(this.img, this.x - (float) this.img.packedWidth / 2.0F, this.y - (float) this.img.packedHeight / 2.0F, (float) this.img.packedWidth / 2.0F, (float) this.img.packedHeight / 2.0F, (float) this.img.packedWidth, (float) this.img.packedHeight, this.scale * this.masterScale * MathUtils.random(0.9F, 1.1F) , this.scale * this.masterScale * MathUtils.random(0.7F, 1.3F), this.rotation);
                 sb.setBlendFunction(770, 771);
             }
-        }
-
-        public void dispose() {
         }
     }
 }
