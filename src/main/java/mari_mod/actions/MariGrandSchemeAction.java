@@ -55,9 +55,10 @@ public class MariGrandSchemeAction extends AbstractGameAction {
         if (effect > 0) {
             for(int i = 0; i < effect; ++i) {
                 if(!this.upgraded || i != 0) AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Gold_Gain_Start_Of_Turn_Power(p, this.goldReturn),this.goldReturn));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(p, 1),1));
             }
+
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Gold_Gain_Start_Of_Turn_Power(p, this.goldReturn*effect),this.goldReturn*effect));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(p, effect),effect));
 
             if (!this.freeToPlayOnce) {
                 this.p.energy.use(EnergyPanel.totalCount);
