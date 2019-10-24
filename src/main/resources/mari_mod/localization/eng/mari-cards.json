@@ -30,7 +30,7 @@
   },
   "MariMod:Mari_Its_Joke": {
     "NAME": "\"It's Joke!\"",
-    "DESCRIPTION": "Deal !D! damage to an enemy, then restore the enemy's HP back to its original value."
+    "DESCRIPTION": "Deal !D! damage, then heal the enemy for each unblock damage dealt (up to !M!)."
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",

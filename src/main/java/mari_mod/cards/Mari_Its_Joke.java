@@ -28,7 +28,7 @@ public class Mari_Its_Joke extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final int COST = 0;
-    private static final int ATTACK_DMG = 12;
+    private static final int ATTACK_DMG = 10;
     private static final int UPGRADE_ATTACK_DMG = 3;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -39,14 +39,15 @@ public class Mari_Its_Joke extends AbstractMariCard {
         this.baseDamage = ATTACK_DMG;
         this.damage = this.baseDamage;
         this.tags.add(MariCustomTags.QUOTATIONS);
+        this.baseMagicNumber = ATTACK_DMG;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        logger.info("USING ITS JOKE! DAMAGE IS " + this.damage);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-        AbstractDungeon.actionManager.addToBottom(new MariItsJokeAction(m, m.currentHealth));
+        AbstractDungeon.actionManager.addToBottom(new MariItsJokeAction(m, m.currentHealth, this.magicNumber));
     }
 
     @Override
@@ -68,6 +69,7 @@ public class Mari_Its_Joke extends AbstractMariCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_ATTACK_DMG);
+            upgradeMagicNumber(UPGRADE_ATTACK_DMG);
         }
     }
 }
