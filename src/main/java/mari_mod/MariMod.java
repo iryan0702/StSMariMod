@@ -29,7 +29,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.GameCursor;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.EffectHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -45,8 +47,7 @@ import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import mari_mod.actions.MariUpdateRecentPowersAction;
 import mari_mod.charSelectScreen.MariCharacterSelectScreen;
-import mari_mod.events.AllMariModEvents;
-import mari_mod.events.MariFallingEvent;
+import mari_mod.events.*;
 import mari_mod.powers.*;
 import mari_mod.relics.*;
 import mari_mod.screens.MariReminisceScreen;
@@ -429,6 +430,9 @@ public class MariMod implements
         BaseMod.addSaveField("saveableKeeper", this);
 
         BaseMod.addEvent(MariFallingEvent.ID, MariFallingEvent.class, TheBeyond.ID);
+        BaseMod.addEvent(MariShiningLightEvent.ID, MariShiningLightEvent.class, Exordium.ID);
+        BaseMod.addEvent(MariSssserpent.ID, MariSssserpent.class, Exordium.ID);
+        BaseMod.addEvent(MariMaskedBandits.ID, MariMaskedBandits.class, TheCity.ID);
         /*for(int i = 0; i < 100; i++) {
             BaseMod.addEvent(AllMariModEvents.ID + i, AllMariModEvents.class);
         }*/
@@ -474,6 +478,8 @@ public class MariMod implements
         BaseMod.addRelicToCustomPool(new MariTheSpark(), CardColorEnum.MARI);
         BaseMod.addRelicToCustomPool(new MariDiploma(), CardColorEnum.MARI);
         BaseMod.addRelicToCustomPool(new MariStewshine(), CardColorEnum.MARI);
+
+        BaseMod.addRelicToCustomPool(new MariJarOfLight(), CardColorEnum.MARI);
         //BaseMod.addRelicToCustomPool(new MariCursedDoll(), CardColorEnum.MARI);
         BaseMod.addRelic(new MariOldLollipop(), RelicType.SHARED);
         BaseMod.addRelic(new MariFlowerRing(), RelicType.SHARED);
