@@ -140,6 +140,21 @@ public class MariMod implements
             power.updateDescription();
         }
 
+        if(p.hasPower(VulnerablePower.POWER_ID)){
+            AbstractPower power = p.getPower(VulnerablePower.POWER_ID);
+            vulnerableAmount = power.amount;
+        }else{
+            vulnerableAmount = 0;
+        }
+
+        if(p.hasPower(FrailPower.POWER_ID)){
+            AbstractPower power = p.getPower(FrailPower.POWER_ID);
+            frailAmount = power.amount;
+        }else{
+            frailAmount = 0;
+        }
+
+        p.hand.glowCheck();
     }
 
     @Override
@@ -224,6 +239,8 @@ public class MariMod implements
         played2Cost = false;
         played3Cost = false;
         perfectPerformance = false;
+        vulnerableAmount = 0;
+        frailAmount = 0;
     }
 
             @Override
