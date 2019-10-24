@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -364,8 +365,22 @@ public class MariMod implements
         new MariMod();
     }
 
+    public static Texture cardMedalDramaTexture;
+    public static Texture cardMedalDramaLargeTexture;
+    public static Texture cardMedalEnergyTexture;
+    public static Texture cardMedalEnergyLargeTexture;
+    public static ModPanel settingsPanel;
+    public static ShaderProgram goldShader;
     @Override
     public void receivePostInitialize() {
+        goldShader = new ShaderProgram(Gdx.files.internal("mari_mod/shaders/golden/vertexShader.vs").readString(),Gdx.files.internal("mari_mod/shaders/golden/fragShader.fs").readString());
+
+
+        cardMedalDramaTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/cardDramaMedal.png");
+        cardMedalDramaLargeTexture = ImageMaster.loadImage("mari_mod/images/cardui/1024/cardDramaMedal.png");
+        cardMedalEnergyTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/cardEnergyMedal.png");
+        cardMedalEnergyLargeTexture = ImageMaster.loadImage("mari_mod/images/cardui/1024/cardEnergyMedal.png");
+
         logger.info("initialize mod badge");
         // Mod badge
 
