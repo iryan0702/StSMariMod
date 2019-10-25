@@ -89,9 +89,6 @@ public class MariMod implements
     public static final String AUTHOR = "iryan72";
     public static final String DESCRIPTION = "Adds a new character: Mari Ohara.";
 
-    public static AbstractCard currentlyKindledCard = null;
-    public static AbstractCreature currentKindleTarget = null;
-
     public static MariReminisceScreen mariReminisceScreen;
     // card trail effect
     public static final Color WHITE = new Color(255, 255, 255, 255);

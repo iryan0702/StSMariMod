@@ -197,7 +197,7 @@ public class Radiance_Power extends AbstractPower
             this.y = owner.hb.cY + (owner.hb_h * MathUtils.random(-0.5F, 0.4F));
             this.vY = MathUtils.random(20.0F, 60.0F) * Settings.scale;
             this.alpha = MathUtils.random(0.7F, 1.0F);
-            if(isKindleSpark && MariMod.currentlyKindledCard == null) {
+            if(isKindleSpark && AbstractMariCard.currentlyKindledCard == null) {
                 this.masterAlpha = 0.0F;
             }else{
                 this.masterAlpha = 1.0F;
@@ -224,8 +224,8 @@ public class Radiance_Power extends AbstractPower
                 this.x += this.vX * Gdx.graphics.getDeltaTime();
             }
 
-            if (MariMod.currentKindleTarget != null && MariMod.currentKindleTarget.equals(this.owner) && MariMod.currentlyKindledCard != null){
-                if(this.x > MariMod.currentlyKindledCard.current_x){
+            if (AbstractMariCard.currentKindleTarget != null && AbstractMariCard.currentKindleTarget.equals(this.owner) && AbstractMariCard.currentlyKindledCard != null){
+                if(this.x > AbstractMariCard.currentlyKindledCard.current_x){
                     vX -= 0.8F * Settings.scale;
                 }else{
                     vX += 0.8F * Settings.scale;

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import mari_mod.MariMod;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.powers.No_Problem_Power;
 import mari_mod.relics.MariStageDirections;
 import mari_mod.relics.MariTheaterScript;
@@ -25,7 +26,7 @@ public class MariCardRenderShaderPatch {
 
         @SpirePrefixPatch
         public static void Prefix(AbstractCard instance, SpriteBatch sb) {
-            if(instance.color == CardColorEnum.MARI && MariMod.currentlyKindledCard == instance) {
+            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance) {
                 sb.end();
                 sb.setShader(MariMod.goldShader);
                 sb.begin();

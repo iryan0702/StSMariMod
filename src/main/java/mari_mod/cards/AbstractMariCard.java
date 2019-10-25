@@ -9,11 +9,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ShaderHelper;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import basemod.abstracts.CustomCard;
@@ -30,6 +34,12 @@ import java.util.ArrayList;
 //TODO: CREDIT CARD KINDLE PARTICLES: BLANK THE EVIL
 
 public abstract class AbstractMariCard extends CustomCard {
+
+
+    private static final UIStrings noGoldDialogue = CardCrawlGame.languagePack.getUIString("NoGoldDialogue");
+
+    public static AbstractCard currentlyKindledCard;
+    public static AbstractCreature currentKindleTarget;
 
     public int baseGoldCost = 0;
     public int goldCost = 0;
@@ -104,7 +114,7 @@ public abstract class AbstractMariCard extends CustomCard {
             } else {
                 if (AbstractDungeon.player.gold < this.goldCost) {
                     canUse = false;
-                    this.cantUseMessage = "I don't have enough gold!";
+                    this.cantUseMessage = noGoldDialogue.TEXT[0];
                 }
                 return canUse;
             }
@@ -116,9 +126,9 @@ public abstract class AbstractMariCard extends CustomCard {
     public void update() {
         super.update();
         isKindled = false;
-        if(MariMod.currentlyKindledCard == this) {
-            MariMod.currentlyKindledCard = null;
-            MariMod.currentKindleTarget = null;
+        if(AbstractMariCard.currentlyKindledCard == this) {
+            AbstractMariCard.currentlyKindledCard = null;
+            AbstractMariCard.currentKindleTarget = null;
         }
         if(isAnyTarget && AbstractDungeon.player != null) {
             AbstractPlayer p = AbstractDungeon.player;
@@ -139,8 +149,8 @@ public abstract class AbstractMariCard extends CustomCard {
                         this.applyPowers();
                     }
                     if(hoveredEnemy.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
-                        MariMod.currentlyKindledCard = this;
-                        MariMod.currentKindleTarget = hoveredEnemy;
+                        AbstractMariCard.currentlyKindledCard = this;
+                        AbstractMariCard.currentKindleTarget = hoveredEnemy;
                         isKindled = true;
                     }
                 } else {
@@ -151,8 +161,8 @@ public abstract class AbstractMariCard extends CustomCard {
                         this.applyPowers();
                     }
                     if(p.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
-                        MariMod.currentlyKindledCard = this;
-                        MariMod.currentKindleTarget = p;
+                        AbstractMariCard.currentlyKindledCard = this;
+                        AbstractMariCard.currentKindleTarget = p;
                         isKindled = true;
                     }
                 }

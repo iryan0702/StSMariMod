@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
 import mari_mod.MariMod;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.MariCustomTags;
 
 @SpirePatch(clz= CardGlowBorder.class,method = SpirePatch.CONSTRUCTOR,
@@ -23,7 +24,7 @@ public class KindleGlowEffectPatch {
     @SpirePostfixPatch
     public static void Postfix(CardGlowBorder obj, AbstractCard card) {
 
-            if (MariMod.currentlyKindledCard != null && MariMod.currentlyKindledCard.equals(card) && card.hasTag(MariCustomTags.KINDLE))
+            if (AbstractMariCard.currentlyKindledCard != null && AbstractMariCard.currentlyKindledCard.equals(card) && card.hasTag(MariCustomTags.KINDLE))
                 ReflectionHacks.setPrivate(obj, AbstractGameEffect.class, "color", new Color(Color.GOLD));
 
             }
