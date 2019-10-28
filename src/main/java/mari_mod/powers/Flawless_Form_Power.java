@@ -62,6 +62,7 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
 
     @Override
     public void atStartOfTurnPostDraw() {
+        MariMod.previousCardCost = 9999;
         super.atStartOfTurnPostDraw();
         this.lastCost = 9999;
         this.amount2 = -1;

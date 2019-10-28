@@ -121,6 +121,11 @@ public class MariMod implements
     public static boolean played2Cost = false;
     public static boolean played3Cost = false;
     public static boolean perfectPerformance = false;
+    public static int vulnerableAmount = 0;
+    public static int frailAmount = 0;
+    public static int choreographyAmount = 0;
+    public static int flawlessFormAmount = 0;
+    public static int previousCardCost = 0;
     @Override
     public void receivePowersModified() {
 
@@ -150,6 +155,20 @@ public class MariMod implements
             frailAmount = power.amount;
         }else{
             frailAmount = 0;
+        }
+
+        if(p.hasPower(Choreography_Power.POWER_ID)){
+            AbstractPower power = p.getPower(Choreography_Power.POWER_ID);
+            choreographyAmount = power.amount;
+        }else{
+            choreographyAmount = 0;
+        }
+
+        if(p.hasPower(Flawless_Form_Power.POWER_ID)){
+            AbstractPower power = p.getPower(Flawless_Form_Power.POWER_ID);
+            flawlessFormAmount = power.amount;
+        }else{
+            flawlessFormAmount = 0;
         }
 
         p.hand.glowCheck();
@@ -239,6 +258,8 @@ public class MariMod implements
         perfectPerformance = false;
         vulnerableAmount = 0;
         frailAmount = 0;
+        choreographyAmount = 0;
+        flawlessFormAmount = 0;
     }
 
             @Override
@@ -320,6 +341,7 @@ public class MariMod implements
         int cost = card.costForTurn;
         if(card.cost == -1) cost = card.energyOnUse;
         if(card.freeToPlayOnce) cost = 0;
+        previousCardCost = cost;
         if(cost == 1) played1Cost = true;
         if(cost == 2) played2Cost = true;
         if(cost == 3) played3Cost = true;
@@ -384,6 +406,8 @@ public class MariMod implements
     public static Texture cardMedalDramaLargeTexture;
     public static Texture cardMedalEnergyTexture;
     public static Texture cardMedalEnergyLargeTexture;
+    public static Texture flawlessFormIndicatorTexture;
+    public static Texture choreographyFormIndicatorTexture;
     public static ModPanel settingsPanel;
     public static ShaderProgram goldShader;
     @Override
@@ -395,6 +419,8 @@ public class MariMod implements
         cardMedalDramaLargeTexture = ImageMaster.loadImage("mari_mod/images/cardui/1024/cardDramaMedal.png");
         cardMedalEnergyTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/cardEnergyMedal.png");
         cardMedalEnergyLargeTexture = ImageMaster.loadImage("mari_mod/images/cardui/1024/cardEnergyMedal.png");
+        flawlessFormIndicatorTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/flawlessFormIndicator.png");
+        choreographyFormIndicatorTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/choreographyIndicator.png");
 
         logger.info("initialize mod badge");
         // Mod badge
