@@ -27,6 +27,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
 import mari_mod.patches.CardColorEnum;
+import mari_mod.patches.MariKindleArrowPatch;
 import mari_mod.powers.Radiance_Power;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public abstract class AbstractMariCard extends CustomCard {
 
     public static AbstractCard currentlyKindledCard;
     public static AbstractCreature currentKindleTarget;
+    public static float kindleTimer;
 
     public int baseGoldCost = 0;
     public int goldCost = 0;
@@ -53,6 +55,7 @@ public abstract class AbstractMariCard extends CustomCard {
     public boolean isAnyTarget = false;
     private boolean targetingEnemy = false;
     private boolean isKindled = false;
+    private boolean stillKindled = false;
 
 
     private static final float FPS_SCALE = (240f / Settings.MAX_FPS);
@@ -141,6 +144,7 @@ public abstract class AbstractMariCard extends CustomCard {
                 }
                 if (hoveredEnemy != null) {
                     if(!this.targetingEnemy) {
+                        AbstractMariCard.kindleTimer = 0.0f;
                         this.targetingEnemy = true;
                         p.inSingleTargetMode = true;
                         this.target = CardTarget.ENEMY;
@@ -152,9 +156,11 @@ public abstract class AbstractMariCard extends CustomCard {
                         AbstractMariCard.currentlyKindledCard = this;
                         AbstractMariCard.currentKindleTarget = hoveredEnemy;
                         isKindled = true;
+                        stillKindled = true;
                     }
                 } else {
                     if(this.targetingEnemy) {
+                        AbstractMariCard.kindleTimer = 0.0f;
                         this.targetingEnemy = false;
                         p.inSingleTargetMode = false;
                         this.target = CardTarget.SELF;
@@ -164,6 +170,7 @@ public abstract class AbstractMariCard extends CustomCard {
                         AbstractMariCard.currentlyKindledCard = this;
                         AbstractMariCard.currentKindleTarget = p;
                         isKindled = true;
+                        stillKindled = true;
                     }
                 }
             }else if(this.targetingEnemy){
@@ -172,11 +179,18 @@ public abstract class AbstractMariCard extends CustomCard {
             }
         }
 
+        if(stillKindled && isKindled){
+            AbstractMariCard.kindleTimer += Gdx.graphics.getDeltaTime();
+        }else if(stillKindled){
+            stillKindled = false;
+            AbstractMariCard.kindleTimer = 0.0f;
+        }
+
         for(KindleParticle p : particles){
             p.update();
         }
         particles.removeIf(KindleParticle::isDead);
-        if(isKindled) {
+        if(isKindled && kindleTimer > MariKindleArrowPatch.MariKindleArrowTailPatch.kindleTime) {
             if (this.particles.size() < 40 && !Settings.DISABLE_EFFECTS) {
                 for (int i = 0; i < FPS_SCALE; i++) {
                     if (Math.random() < 0.1) {
