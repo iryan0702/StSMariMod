@@ -166,11 +166,26 @@ public class Mari extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<String>();
-        retVal.add(MariTheSpark.ID);
-        UnlockTracker.markRelicAsSeen(MariTheSpark.ID);
+
+        String starterRelic = getChosenRelic(MariCharacterSelectScreen.chosenRelic);
+
+        if(starterRelic == "oh no"){
+            starterRelic = Circlet.ID;
+        }
+
+        retVal.add(starterRelic);
+        UnlockTracker.markRelicAsSeen(starterRelic);
         return retVal;
     }
 
+    public static String getChosenRelic(int index){
+        switch(index){
+            case 0: return MariTheSpark.ID;
+            case 1: return MariStageDirections.ID;
+            case 2: return MariPinkHandbag.ID;
+            default: return "oh no";
+        }
+    }
 
     public AbstractCard getStartCardForEvent() {
         return new Mari_Strike();
@@ -180,17 +195,17 @@ public class Mari extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         CharSelectInfo a = new CharSelectInfo(
-            characterStrings.NAMES[0],
-            characterStrings.TEXT[0],
-            START_HP,
-            START_HP,
-            MAX_ORBS,
-            START_GOLD,
-            CARD_DRAW,
-            this,
-            getStartingRelics(),
-            getStartingDeck(),
-            false);
+                characterStrings.NAMES[0],
+                characterStrings.TEXT[0],
+                START_HP,
+                START_HP,
+                MAX_ORBS,
+                START_GOLD,
+                CARD_DRAW,
+                this,
+                getStartingRelics(),
+                getStartingDeck(),
+                false);
         return a;
     }
 }
