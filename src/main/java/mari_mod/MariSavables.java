@@ -1,5 +1,6 @@
 package mari_mod;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardSave;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +10,7 @@ public class MariSavables {
 
     //GAME STATES
     public boolean firstEventYet;
+    public AbstractCard.CardTags currentClass;
 
     //STEWSHINE SAVES
     public CardSave stewshineCardA;
@@ -38,6 +40,7 @@ public class MariSavables {
         this.tester = loadedSavables.tester;
 
         this.firstEventYet = loadedSavables.firstEventYet;
+        this.currentClass = loadedSavables.currentClass;
 
         this.stewshineCardA = loadedSavables.stewshineCardA;
         this.stewshineCardB = loadedSavables.stewshineCardB;
@@ -57,6 +60,7 @@ public class MariSavables {
 
     public void resetStats(){
         this.firstEventYet = false;
+        //this.currentClass = null; //do not reset – setter is handled beforehand in initializeCardPoolsPatch
         this.stewshineCardA = null;
         this.stewshineCardB = null;
         this.stewshineCardC = null;
