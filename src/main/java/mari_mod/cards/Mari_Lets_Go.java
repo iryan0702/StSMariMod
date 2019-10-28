@@ -62,10 +62,10 @@ public class Mari_Lets_Go extends AbstractMariCard {
         this.costForTurn = this.cost;
     }
 
-    @Override //TY VEX YOU CUTIE
+    @Override
     public void update() {
         super.update();
-        if (AbstractDungeon.player != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+        if (AbstractDungeon.player != null && AbstractDungeon.getCurrMapNode() != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
             applyPowers();
             this.isCostModified = true;
         }else{
