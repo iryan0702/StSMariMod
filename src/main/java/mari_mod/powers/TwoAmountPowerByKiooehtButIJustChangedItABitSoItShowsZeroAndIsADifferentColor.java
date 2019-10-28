@@ -27,10 +27,8 @@ public abstract class TwoAmountPowerByKiooehtButIJustChangedItABitSoItShowsZeroA
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
         super.renderAmount(sb, x, y, c);
         if (this.amount2 >= 0) {
-            if (!this.isTurnBased) {
-                this.displayColor2.a = c.a;
-                c = this.displayColor2;
-            }
+            this.displayColor2.a = c.a;
+            c = this.displayColor2;
 
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount2), x, y + 15.0F * Settings.scale, this.fontScale, c);
         } else if (this.amount2 < 0 && this.canGoNegative2) {

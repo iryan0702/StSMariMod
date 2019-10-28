@@ -297,7 +297,7 @@
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
-    "DESCRIPTION": "Whenever you spend more energy on a card than the previous on the same turn, [#fff6e2]refund[] the energy spent.",
+    "DESCRIPTION": "!M! times each turn, whenever you spend more energy on a card than the previous on the same turn, [#fff6e2]refund[] the energy spent.",
     "UPGRADE_DESCRIPTION": "Innate. NL Whenever you spend more energy on a card than the previous on the same turn, [#fff6e2]refund[] the energy spent."
   },
   "MariMod:Mari_Heavy_Metal": {

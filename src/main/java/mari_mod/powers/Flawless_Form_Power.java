@@ -28,16 +28,19 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     private int lastCost;
+    private int amountPerTurn;
     //private boolean justApplied = false;
-    public Flawless_Form_Power(AbstractCreature owner)
+    public Flawless_Form_Power(AbstractCreature owner, int amount)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.isTurnBased = false;
-        this.updateDescription();
+        this.amount = amount;
+        this.amountPerTurn = amount;
+        this.isTurnBased = true;
         this.displayColor2 = Color.PURPLE.cpy();
+        this.updateDescription();
         MariMod.setPowerImages(this);
     }
 
@@ -46,6 +49,7 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
+        this.amountPerTurn += stackAmount;
     }
 
     @Override
@@ -66,6 +70,7 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
         super.atStartOfTurnPostDraw();
         this.lastCost = 9999;
         this.amount2 = -1;
+        this.amount = this.amountPerTurn;
         updateDescription();
     }
 
@@ -73,7 +78,8 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
         int cost = card.costForTurn;
         if(card.cost == -1) cost = card.energyOnUse;
         if(card.freeToPlayOnce) cost = 0;
-        if(cost > this.lastCost){
+        if(cost > this.lastCost && this.amount > 0){
+            this.amount--;
             AbstractDungeon.actionManager.addToBottom(new MariDelayedDelayedActionActionAction(new GainEnergyAction(cost)));
             this.flashWithoutSound();
         }
@@ -84,11 +90,11 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
 
     public void updateDescription() {
         String wholeDescription;
-        wholeDescription = DESCRIPTION[0];
+        wholeDescription = DESCRIPTION[0] + this.amountPerTurn + DESCRIPTION[1];
         if(this.lastCost == 9999) {
-            wholeDescription += DESCRIPTION[1];
+            wholeDescription += DESCRIPTION[2];
         }else{
-            wholeDescription += DESCRIPTION[2] + this.lastCost + DESCRIPTION[3];
+            wholeDescription += DESCRIPTION[3] + this.lastCost + DESCRIPTION[4];
         }
         this.description = wholeDescription;
     }
