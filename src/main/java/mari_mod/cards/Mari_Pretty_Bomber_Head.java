@@ -31,6 +31,7 @@ public class Mari_Pretty_Bomber_Head extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseMagicNumber = EXTRA_DRAW;
         this.magicNumber = this.baseMagicNumber;
+        this.tags.add(MariCustomTags.QUOTATIONS);
     }
 
     @Override
