@@ -362,7 +362,8 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "Gain 1 Frail. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card."
+    "DESCRIPTION": "Gain 1 Frail. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card.",
+    "UPGRADE_DESCRIPTION": "Gain 1 Frail and !M! Radiance. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card."
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",

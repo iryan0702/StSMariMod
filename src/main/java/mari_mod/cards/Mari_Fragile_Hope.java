@@ -24,6 +24,7 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
     private static final int COST = 0;
     private static final int RADIANCE_GAIN = 1;
     private static final int RADIANCE_GAIN_UPGRADE = 1;
+    private static final int EXTRA_RADIANCE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -33,12 +34,17 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
         this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = RADIANCE_GAIN;
         this.radiance = this.baseRadiance;
+        this.baseMagicNumber = 0;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, 1, false), 1));
         AbstractDungeon.actionManager.addToBottom(new MariFragileHopeAction(this.radiance));
+        if(this.magicNumber > 0 && this.upgraded){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new Radiance_Power(p, this.magicNumber), this.magicNumber));
+        }
     }
 
     @Override
@@ -50,7 +56,9 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.upgradeRadiance(RADIANCE_GAIN_UPGRADE);
+            upgradeMagicNumber(EXTRA_RADIANCE);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 }
