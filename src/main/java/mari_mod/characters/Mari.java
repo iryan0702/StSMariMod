@@ -3,6 +3,7 @@ package mari_mod.characters;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,35 +12,39 @@ import com.megacrit.cardcrawl.cards.green.BouncingFlask;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.relics.Circlet;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import mari_mod.abstracts.MariOrb;
-import mari_mod.relics.MariCursedDoll;
+import mari_mod.charSelectScreen.MariCharacterSelectScreen;
+import mari_mod.relics.*;
 import mari_mod.screens.MariReminisceScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import mari_mod.MariMod;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.patches.PlayerClassEnum;
-import mari_mod.relics.MariTheSpark;
 import mari_mod.cards.*;
 
 import java.util.ArrayList;
 
 public class Mari extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("MariMod:Mari");
+    public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("MariMod:Mari");
 
     public static final int START_HP = 72;
     public static final int CARD_DRAW = 5;
     public static final int MAX_ORBS = 0;
     public static final int ENERGY = 3;
     public static final int START_GOLD = 136;
+
+    public IconBubble iconBubble;
 
     public static final String[] orbTextures = {
             "mari_mod/images/characters/Mari/orb/layer1.png",
@@ -67,6 +72,8 @@ public class Mari extends CustomPlayer {
         if (MariMod.mariReminisceScreen == null) {
             MariMod.mariReminisceScreen = new MariReminisceScreen();
         }
+
+        iconBubble = new IconBubble(Settings.scale * -80, Settings.scale * 250);
     }
 
     @Override
@@ -191,6 +198,17 @@ public class Mari extends CustomPlayer {
         return new Mari_Strike();
     }
 
+    @Override
+    public void update() {
+        super.update();
+        iconBubble.update();
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        super.render(sb);
+        iconBubble.render(sb, this.drawX + this.animX, this.drawY + this.animY);
+    }
 
     @Override
     public CharSelectInfo getLoadout() {
