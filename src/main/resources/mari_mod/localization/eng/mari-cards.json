@@ -92,7 +92,7 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !MARI_RADIANCE! Radiance and !B! Block."
   },
   "MariMod:Mari_The_Beach_Episode": {
     "NAME": "The Beach Episode",

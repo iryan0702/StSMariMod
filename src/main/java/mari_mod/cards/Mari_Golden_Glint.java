@@ -1,6 +1,7 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -21,8 +22,10 @@ public class Mari_Golden_Glint extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 0;
     private static final int BASE_GOLD_COST = 5;
-    private static final int BASE_RADIANCE_GAIN = 3;
+    private static final int BASE_RADIANCE_GAIN = 2;
     private static final int UPGRADE_RADIANCE_GAIN = 1;
+    private static final int BASE_BLOCK = 3;
+    private static final int UPGRADE_BLOCK_GAIN = 2;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -34,31 +37,22 @@ public class Mari_Golden_Glint extends AbstractMariCard {
         this.radiance = this.baseRadiance;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
+        this.baseBlock = BASE_BLOCK;
+        this.block = this.baseBlock;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
-    }
-
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p, m);
-        if(!canUse){
-            return false;
-        }else {
-            if (AbstractDungeon.player.gold < this.goldCost) {
-                canUse = false;
-                this.cantUseMessage = "I don't have enough gold!";
-            }
-            return canUse;
-        }
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
             upgradeRadiance(UPGRADE_RADIANCE_GAIN);
+            upgradeBlock(UPGRADE_BLOCK_GAIN);
         }
     }
 }
