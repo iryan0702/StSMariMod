@@ -14,6 +14,8 @@ public class MariStageDirections extends AbstractMariRelic
 {
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     public static final String ID = "MariMod:MariStageDirections";
+    public static final float VULN_MULTIPLIER = 0.10f;
+    public static final float FRAIL_MULTIPLIER = 0.05f;
     public MariStageDirections()
     {
         super(ID, RelicTier.STARTER, LandingSound.FLAT);

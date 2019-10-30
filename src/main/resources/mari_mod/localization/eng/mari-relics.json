@@ -100,9 +100,11 @@
     "NAME": "Stage Directions",
     "FLAVOR": "[MARI enters stage Right.]\n[ENEMY exits stage life.]",
     "DESCRIPTIONS": [
-      "Your #yFrail and #yVunerable last until the end of combat. These debuffs modify your #yBlock gain and damage taken by #b10% and #b25% instead.",
-      "Gain #b10% less #yBlock from cards this combat.",
-      "Receive #b25% more damage from #yAttacks this combat."
+      "Your #yFrail and #yVunerable last until the end of combat. These debuffs modify your #yBlock gain and damage taken by #b5% and #b10% per stack instead.",
+      "Gain #b",
+      "% less #yBlock from cards this combat.",
+      "Receive #b",
+      "% more damage from #yAttacks this combat."
     ]
   },
   "MariMod:MariTheaterScript": {

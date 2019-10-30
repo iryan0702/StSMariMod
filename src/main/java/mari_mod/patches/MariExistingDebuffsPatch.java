@@ -42,7 +42,7 @@ public class MariExistingDebuffsPatch {
                     return SpireReturn.Return(damage);
                 }
                 if(AbstractDungeon.player.hasRelic(MariStageDirections.ID)){
-                    return SpireReturn.Return(damage * 1.25F);
+                    return SpireReturn.Return(damage * (1 + power.amount * MariStageDirections.VULN_MULTIPLIER));
                 }
             }
             return SpireReturn.Continue();
@@ -70,7 +70,7 @@ public class MariExistingDebuffsPatch {
         @SpirePostfixPatch
         public static void Postfix(VulnerablePower power) {
             if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
-                power.description = AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[2];
+                power.description = AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[3] + (int) (power.amount * MariStageDirections.VULN_MULTIPLIER * 100f) + AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[4];
             }
 
             if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariTheaterScript.ID)) {
@@ -113,7 +113,7 @@ public class MariExistingDebuffsPatch {
                     return SpireReturn.Return(block);
                 }
                 if (AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
-                    return SpireReturn.Return(block * 0.9F);
+                    return SpireReturn.Return(Math.max(0.0F, block * (1 - power.amount * MariStageDirections.FRAIL_MULTIPLIER)));
                 }
             }
             return SpireReturn.Continue();
@@ -141,7 +141,7 @@ public class MariExistingDebuffsPatch {
         @SpirePostfixPatch
         public static void Postfix(FrailPower power) {
             if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {
-                power.description = AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[1];
+                power.description = AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[1] + (int) (power.amount * MariStageDirections.FRAIL_MULTIPLIER * 100f) + AbstractDungeon.player.getRelic(MariStageDirections.ID).DESCRIPTIONS[2];
             }
             if (power.owner.isPlayer && AbstractDungeon.player.hasRelic(MariTheaterScript.ID)) {
                 power.description = AbstractDungeon.player.getRelic(MariTheaterScript.ID).DESCRIPTIONS[1];
