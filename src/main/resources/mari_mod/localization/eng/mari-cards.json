@@ -193,7 +193,7 @@
   },
   "MariMod:Mari_The_GOLDEN_STATUE": {
     "NAME": "The GOLDEN STATUE",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL deal !D! damage and NL gain !B! Block."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block and deal !D! damage."
   },
   "MariMod:Mari_The_HELICOPTER": {
     "NAME": "The HELICOPTER",
