@@ -41,6 +41,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.Turnip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
@@ -83,7 +84,8 @@ public class MariMod implements
         PostDungeonInitializeSubscriber,
         PostDrawSubscriber,
         PostPowerApplySubscriber,
-        CustomSavable<MariSavables>
+        CustomSavable<MariSavables>,
+        RelicGetSubscriber
         {
     public static final String MODNAME = "Mari";
     public static final String AUTHOR = "iryan72";
@@ -244,6 +246,14 @@ public class MariMod implements
             }
         }
 
+    }
+
+    @Override
+    public void receiveRelicGet(AbstractRelic abstractRelic) {
+        if(abstractRelic instanceof Turnip && AbstractDungeon.player.chosenClass == PlayerClassEnum.MARI){
+            abstractRelic.img = ImageMaster.getRelicImg("Turnip");
+            abstractRelic.tips.remove(0);
+        }
     }
 
     private void resetBattleStats(){
@@ -408,6 +418,7 @@ public class MariMod implements
     public static Texture cardMedalEnergyLargeTexture;
     public static Texture flawlessFormIndicatorTexture;
     public static Texture choreographyFormIndicatorTexture;
+    public static Texture badTurnipTexture;
     public static ModPanel settingsPanel;
     public static ShaderProgram goldShader;
     @Override
@@ -421,6 +432,7 @@ public class MariMod implements
         cardMedalEnergyLargeTexture = ImageMaster.loadImage("mari_mod/images/cardui/1024/cardEnergyMedal.png");
         flawlessFormIndicatorTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/flawlessFormIndicator.png");
         choreographyFormIndicatorTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/choreographyIndicator.png");
+        badTurnipTexture = ImageMaster.loadImage("mari_mod/images/relics/MariWarningTurnip.png");
 
         logger.info("initialize mod badge");
         // Mod badge
