@@ -37,16 +37,14 @@ public class MariOhMyGodAction extends AbstractGameAction {
     }
 
     public void update() {
-        boolean isAnyoneAttacking = false;
-        for(AbstractMonster aMonster : AbstractDungeon.getMonsters().monsters) {
-            if (aMonster == null || aMonster.getIntentBaseDmg() < 0) {
+        boolean isEnemyAttacking = false;
+        if (this.monster == null || this.monster.getIntentBaseDmg() < 0) {
 
-            }else{
-                isAnyoneAttacking = true;
-            }
+        }else{
+            isEnemyAttacking = true;
         }
 
-        if(!isAnyoneAttacking) {
+        if(!isEnemyAttacking) {
             AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0F, this.failMessage, true));
         }else {
             MariMod.timesOMGUsedThisTurn++; //Edge case infinite protection

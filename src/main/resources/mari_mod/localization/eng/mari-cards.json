@@ -332,9 +332,9 @@
   },
   "MariMod:Mari_Oh_My_God": {
     "NAME": "\"Oh My God!\"",
-    "DESCRIPTION": "If any enemy intends to attack, play copies of up to !M! random cards in your hand on a target for free. NL (Except \"Oh My God!\")",
+    "DESCRIPTION": "If the enemy intends to attack, play copies of up to !M! random cards in your hand on the enemy for free. NL (Except \"Oh My God!\") NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
-      "Calm down! Nothing's attacking!"
+      "Calm down! It's not attacking!"
     ]
   },
   "MariMod:Mari_Old_Costume": {

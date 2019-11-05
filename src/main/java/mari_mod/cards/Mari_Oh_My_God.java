@@ -32,6 +32,7 @@ public class Mari_Oh_My_God extends AbstractMariCard {
         this.baseMagicNumber = PLAY_CARDS;
         this.magicNumber = this.baseMagicNumber;
         this.tags.add(MariCustomTags.QUOTATIONS);
+        this.exhaust = true;
     }
 
     @Override
