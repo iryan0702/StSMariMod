@@ -22,9 +22,10 @@ public class Mari_Choreography extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int DRAW = 1;
-    private static final int UPGRADE_DRAW = 1;
+    //private static final int UPGRADE_DRAW = 1;
+    private static final int UPGRADE_COST = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -45,7 +46,8 @@ public class Mari_Choreography extends AbstractMariCard {
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
             upgradeName();
-            upgradeMagicNumber(UPGRADE_DRAW);
+            upgradeBaseCost(UPGRADE_COST);
+            //upgradeMagicNumber(UPGRADE_DRAW);
         }
     }
 }
