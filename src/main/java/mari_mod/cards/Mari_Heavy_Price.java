@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import mari_mod.MariMod;
 import mari_mod.actions.MariHeavyPriceAction;
 import mari_mod.relics.MariStewshine;
@@ -54,7 +55,11 @@ public class Mari_Heavy_Price extends AbstractMariCard {
         int damage = 0;
         for(AbstractCard costCheckCard : AbstractDungeon.player.hand.group){
             int costCheckCost = costCheckCard.costForTurn;
-            if(costCheckCost>0 && costCheckCard!=this) damage += costCheckCost;
+            if(costCheckCost>0 && costCheckCard!=this) {
+                damage += costCheckCost;
+            }else if(costCheckCard.cost == -1){
+                damage += EnergyPanel.getCurrentEnergy();
+            }
 
             if(costCheckCard instanceof Mari_Stewshine){
                 Mari_Stewshine stewshine = (Mari_Stewshine) costCheckCard;
