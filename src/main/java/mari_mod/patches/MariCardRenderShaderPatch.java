@@ -26,7 +26,7 @@ public class MariCardRenderShaderPatch {
 
         @SpirePrefixPatch
         public static void Prefix(AbstractCard instance, SpriteBatch sb) {
-            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance) {
+            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance && AbstractMariCard.kindleTimer > MariKindleArrowPatch.MariKindleArrowTailPatch.kindleTime) {
                 sb.end();
                 sb.setShader(MariMod.goldShader);
                 sb.begin();
