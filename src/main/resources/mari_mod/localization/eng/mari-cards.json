@@ -289,7 +289,7 @@
   },
   "MariMod:Mari_Wishing_Fountain": {
     "NAME": "Wishing Fountain",
-    "DESCRIPTION": "Gain !M! Gold. NL Lose any unspent Gold from this card at the start of your next turn. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Gold and [E]. NL Lose any unspent Gold from this card at the start of your next turn. NL Exhaust."
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
