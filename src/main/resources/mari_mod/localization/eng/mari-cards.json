@@ -38,7 +38,7 @@
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL remove ALL your debuffs and gain !B! Block."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block now and at the start of your turns. Each turn, the Block gain is halved."
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",

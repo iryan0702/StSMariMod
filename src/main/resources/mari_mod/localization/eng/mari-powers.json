@@ -170,6 +170,16 @@
     "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " gold if you have a debuff."]
   },
+  "MariMod:Debuff_Energy_Power": {
+    "NAME": "UntitledPowerGame",
+    "DESCRIPTIONS": ["You can spend stacks of #yFrail as [E] [REMOVE_SPACE].",
+      "You can spend stacks of #yFrail and #yVulnerable as [E] [REMOVE_SPACE]. NL #yFrail is consumed before #yVulnerable [REMOVE_SPACE]."]
+  },
+  "MariMod:The_Mansion_Power": {
+    "NAME": "Well-protected",
+    "DESCRIPTIONS": ["At the start of your turns, gain #b",
+      " Block, then halve this Block gain for future turns."]
+  },
   "MariMod:Supervision_Power_Old": {
     "NAME": "Supervision",
     "DESCRIPTIONS": ["Whenever you spend 3 or more [E] [REMOVE_SPACE], [#fbccff]spend[] #b",

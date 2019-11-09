@@ -14,20 +14,24 @@ import org.apache.logging.log4j.Logger;
 
 public class MariTheMANSIONAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariTheMANSIONAction.class.getName());
+    int extraBlockPerDebuff;
 
-    public MariTheMANSIONAction(int blockAmount) {
+    public MariTheMANSIONAction(int blockAmount, int extraBlockPerDebuff) {
         this.actionType = ActionType.DAMAGE;
         this.amount = blockAmount;
+        this.extraBlockPerDebuff = extraBlockPerDebuff;
     }
 
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
+        int extraBlock = 0;
         for(AbstractPower powerToCheck : p.powers) {
             if (powerToCheck.type == AbstractPower.PowerType.DEBUFF) {
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, powerToCheck));
+                //AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, powerToCheck));
+                extraBlock += extraBlockPerDebuff;
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.amount));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.amount + extraBlock));
         this.isDone = true;
     }
 }
