@@ -78,23 +78,20 @@ public class Radiance_Power extends AbstractPower
         if(stackAmount > 0 && (!this.owner.isPlayer || AbstractDungeon.player.hasRelic(MariCursedDoll.ID))) {
             this.flash();
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
-            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.FIRE, true));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
         if(stackAmount > 0) burstOfParticles(stackAmount*4);
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-            logger.info("removing radiance from stack power");
         }
         updateDescription();
     }
 
     @Override
     public void reducePower(int reduceAmount) {
-        logger.info("reducing power: by " + reduceAmount);
         super.reducePower(reduceAmount);
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-            logger.info("removing radiance from reduce power");
         }
         updateDescription();
     }
@@ -106,10 +103,9 @@ public class Radiance_Power extends AbstractPower
     }
 
     public void onInitialApplication() {
-        logger.info("power initial app: currently " + this.amount);
         if(!this.owner.isPlayer || AbstractDungeon.player.hasRelic(MariCursedDoll.ID)) {
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
-            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.FIRE, true));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
         burstOfParticles(this.amount*4);
         updateDescription();
