@@ -256,11 +256,7 @@
   },
   "MariMod:Mari_Slap": {
     "NAME": "Slap!",
-    "DESCRIPTION": "Deal !M! damage. NL Deals !B! more damage for each stack of Vulnerable you have.",
-    "UPGRADE_DESCRIPTION": "Deal !M! damage. NL Deals !B! more damage for each stack of Vulnerable you have.",
-    "EXTENDED_DESCRIPTION": [
-      " NL (Deals !D! damage)"
-    ]
+    "DESCRIPTION": "Deal !D! damage. NL If you have Vulnerable, deals !M! more damage. NL If you have Frail, deals !M! more damage."
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import mari_mod.actions.MariDefianceAction;
 import mari_mod.actions.MariSlapAction;
@@ -20,12 +21,10 @@ public class Mari_Slap extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final int COST = 1;
-    private static final int DAMAGE = 9;
-    private static final int UPGRADE_DAMAGE = 3;
-    private static final int SCALING = 6;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_DAMAGE = 2;
+    private static final int SCALING = 4;
     private static final int UPGRADE_SCALING = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -34,82 +33,65 @@ public class Mari_Slap extends AbstractMariCard {
     public Mari_Slap(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
 
-        this.baseBlock = SCALING;
-        this.block = this.baseBlock;
-
         this.baseDamage = DAMAGE;
         this.damage = this.baseDamage;
 
-        this.baseMagicNumber = DAMAGE;
+        this.baseMagicNumber = SCALING;
         this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { //TODO: FIX INTERACTION WITH STEWSHINE
+    public void use(AbstractPlayer p, AbstractMonster m) {
 
-        /*int scaling = SCALING;
-        if(upgraded) scaling += UPGRADE_SCALING;
-
-        int dam = DAMAGE;
-        if(upgraded) dam += UPGRADE_DAMAGE;
-
-        AbstractDungeon.actionManager.addToBottom(new MariSlapAction(m,dam,scaling));
-        */
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        int originalBase = this.baseDamage;
+
+        int vulnDamage = 0;
+        if(AbstractDungeon.player.hasPower(VulnerablePower.POWER_ID)) vulnDamage += this.magicNumber;
+        int frailDamage = 0;
+        if(AbstractDungeon.player.hasPower(FrailPower.POWER_ID)) frailDamage += this.magicNumber;
+
+
+        this.baseDamage = originalBase + vulnDamage + frailDamage;
+        this.damage =  this.baseDamage;
+
         super.calculateCardDamage(mo);
-        forgetBlock();
+
+        this.baseDamage = originalBase;
+        this.isDamageModified = this.baseDamage != this.damage;
     }
 
     @Override
     public void applyPowers() {
 
-        int scaling = SCALING;
-        if(upgraded) scaling += UPGRADE_SCALING;
+        int originalBase = this.baseDamage;
 
-        int dam = DAMAGE;
-        if(upgraded) dam += UPGRADE_DAMAGE;
-
-        int vulnStacks = 0;
-        if(AbstractDungeon.player.hasPower(VulnerablePower.POWER_ID)) vulnStacks += AbstractDungeon.player.getPower(VulnerablePower.POWER_ID).amount;
+        int vulnDamage = 0;
+        if(AbstractDungeon.player.hasPower(VulnerablePower.POWER_ID)) vulnDamage += this.magicNumber;
+        int frailDamage = 0;
+        if(AbstractDungeon.player.hasPower(FrailPower.POWER_ID)) frailDamage += this.magicNumber;
 
 
-        this.baseDamage = dam + scaling * vulnStacks;
+        this.baseDamage = originalBase + vulnDamage + frailDamage;
         this.damage =  this.baseDamage;
 
         super.applyPowers();
 
-        if(this.damage > 0) {
-            String desc;
-            if(upgraded){
-                desc = UPGRADE_DESCRIPTION;
-            }else{
-                desc = DESCRIPTION;
-            }
-            this.rawDescription = desc + EXTENDED_DESCRIPTION[0];
-            this.initializeDescription();
-        }
-
-        forgetBlock();
+        this.baseDamage = originalBase;
+        this.isDamageModified = this.baseDamage != this.damage;
     }
 
-    public void forgetBlock(){
-        this.baseBlock = SCALING;
-        if(this.upgraded) this.baseBlock += UPGRADE_SCALING;
-        this.block = this.baseBlock;
-        this.isBlockModified = false;
-    }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_DAMAGE);
-            upgradeBlock(UPGRADE_SCALING);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_SCALING);
+            upgradeDamage(UPGRADE_DAMAGE);
             this.initializeDescription();
         }
     }
