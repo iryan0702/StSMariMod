@@ -270,18 +270,16 @@ public abstract class AbstractMariCard extends CustomCard {
 
             lifeSpan = MathUtils.random(0.5f, 1.5f);
 
-            color = Color.YELLOW.cpy();
+            color = new Color(1.0F, MathUtils.random(0.5F, 1.0F), MathUtils.random(0.0F, 0.2F), 1.0F);
 
             double random = Math.random();
 
-            if(random < 0.01){
+            if(random < 0.008){
                 color = Colors.get("PURPLE").cpy();
-            }else if(random < 0.013){
+            }else if(random < 0.011){
                 color = Colors.get("CYAN").cpy();
-            }else if(random < 0.015){
+            }else if(random < 0.013){
                 color = Colors.get("RED").cpy();
-            }else if(random < 0.265) {
-                color = Colors.get("ORANGE").cpy();
             }
 
 
