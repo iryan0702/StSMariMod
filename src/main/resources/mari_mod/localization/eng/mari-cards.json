@@ -441,5 +441,10 @@
   "MariMod:Mari_$Second_Light": {
     "NAME": "Second Light",
     "DESCRIPTION": "Apply !M! Radiance. NL Exhaust."
+  },
+  "MariMod:Mari_Test_Card": {
+    "NAME": "Test Card",
+    "DESCRIPTION": "For the rest of combat, your stacks of Frail can be used as [E].",
+    "UPGRADE_DESCRIPTION": "For the rest of combat, your stacks of Frail and Vulnerable can be used as [E]."
   }
 }

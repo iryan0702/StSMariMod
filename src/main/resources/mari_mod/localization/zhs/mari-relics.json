@@ -95,5 +95,12 @@
     "DESCRIPTIONS": [
       "每层 #y闪耀 现在使你额外造成20%伤害。 [#EFC851]闪耀[] 现在被视为负面效果，并且会伤害你。"
     ]
+  },
+  "MariMod:MariBottledBrilliance": {
+    "NAME": "Bottled Brilliance",
+    "FLAVOR": "The bottle beams brilliantly.",
+    "DESCRIPTIONS": [
+      "At the start of combat, increase the #yRadiance value of all cards in your hand by #b1."
+    ]
   }
 }

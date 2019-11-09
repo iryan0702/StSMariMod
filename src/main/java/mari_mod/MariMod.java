@@ -642,6 +642,9 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Unveiled_Secret());
             BaseMod.addCard(new Mari_Reckless_Spending());
 
+            BaseMod.addCard(new Mari_Drama1());
+            BaseMod.addCard(new Mari_Drama2());
+
             /*
             //ATTACKS COMMON
             //ATTACKS UNCOMMON
@@ -670,6 +673,7 @@ public class MariMod implements
             //Powers RARE
             */
 
+            BaseMod.addCard(new Mari_Test_Card());
             BaseMod.addCard(new Mari_Stewshine());
 
         } catch (Exception e) {

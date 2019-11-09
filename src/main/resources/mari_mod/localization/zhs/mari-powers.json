@@ -56,9 +56,9 @@
   },
   "MariMod:No_Problem_Power": {
     "NAME": "No Problem!",
-    "DESCRIPTIONS": ["本回合内无视 脆弱， 虚弱 和 易伤 。",
+    "DESCRIPTIONS": ["本回合内无视 #y脆弱， #y虚弱 和 #y易伤 。",
       "#b",
-      " 回合内无视 脆弱， 虚弱 和 易伤 。"]
+      " 回合内无视 #y脆弱， #y虚弱 和 #y易伤 。"]
   },
   "MariMod:Supervision_Power": {
     "NAME": "家教森严",
@@ -66,13 +66,13 @@
       "点 [E] 。"]
   },
   "MariMod:Practice_Outfit_Buff_Power": {
-    "NAME": "\“欸嘿嘿……\”",
+    "NAME": "“欸嘿嘿……”",
     "DESCRIPTIONS": ["本回合结束前你不会受到伤害。",
       "#b",
       " 回合内你不会受到伤害。"]
   },
   "MariMod:Practice_Outfit_Debuff_Power": {
-    "NAME": "\“……我们还在练习！\”",
+    "NAME": "“……我们还在练习！”",
     "DESCRIPTIONS": ["本回合结束前你无法造成伤害。",
       "#b",
       " 回合内你无法造成伤害。"]
