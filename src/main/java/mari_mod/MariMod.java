@@ -367,10 +367,12 @@ public class MariMod implements
         if(costReductionOnDraw > 0) {
             if (c.cost > minimumCostAfterReductionOnDraw) {
                 c.cost = Math.max(minimumCostAfterReductionOnDraw,c.cost - costReductionOnDraw);
+                AbstractDungeon.actionManager.addToBottom(new CardFlashAction(c));
                 c.isCostModified = true;
             }
             if (c.costForTurn > minimumCostAfterReductionOnDraw) {
                 c.costForTurn = Math.max(minimumCostAfterReductionOnDraw,c.costForTurn - costReductionOnDraw);
+                AbstractDungeon.actionManager.addToBottom(new CardFlashAction(c));
                 c.isCostModified = true;
             }
         }
