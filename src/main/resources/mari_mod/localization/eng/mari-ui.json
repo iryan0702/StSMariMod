@@ -9,5 +9,10 @@
       "You may not want this!",
       "Eww... it's a turnip. They make kimchi out of this stuff."
     ]
+  },
+  "MariJarOfLight": {
+    "TEXT": [
+      "Grant up to 3 cards 1 additional Radiance."
+    ]
   }
 }

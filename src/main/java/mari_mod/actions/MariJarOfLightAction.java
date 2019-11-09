@@ -6,18 +6,15 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.cards.AbstractMariCard;
-import mari_mod.powers.Radiance_Power;
+import mari_mod.effects.MariShowCardBrieflyEffect;
 
 import java.util.Iterator;
 
@@ -58,15 +55,10 @@ public class MariJarOfLightAction extends AbstractGameAction {
 
             while(var3.hasNext()) {
                 AbstractMariCard c = (AbstractMariCard)var3.next();
-                c.radiance--;
+                c.radiance++;
                 c.stopGlowing();
+                AbstractDungeon.effectList.add(new MariShowCardBrieflyEffect(c));
             }
-
-            AbstractPlayer p = AbstractDungeon.player;
-            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new Radiance_Power(mo, AbstractDungeon.gridSelectScreen.selectedCards.size()), AbstractDungeon.gridSelectScreen.selectedCards.size()));
-            }
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, AbstractDungeon.gridSelectScreen.selectedCards.size()), AbstractDungeon.gridSelectScreen.selectedCards.size()));
 
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
         }
@@ -75,7 +67,7 @@ public class MariJarOfLightAction extends AbstractGameAction {
     }
 
     static {
-        uiStrings = CardCrawlGame.languagePack.getUIString("ReprogramAction");
+        uiStrings = CardCrawlGame.languagePack.getUIString("MariJarOfLight");
         TEXT = uiStrings.TEXT;
     }
 }

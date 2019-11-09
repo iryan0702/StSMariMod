@@ -93,7 +93,7 @@
     "NAME": "Jar of Light",
     "FLAVOR": "The jar is warm to the touch.",
     "DESCRIPTIONS": [
-      "At the start of each combat, remove #b1 #yRadiance from up to #b5 cards in your draw pile. Apply the #yRadiance removed to ALL characters."
+      "At the start of each combat, select up to #b3 cards in your draw pile that apply Radiance. Increase their Radiance by #b1."
     ]
   },
   "MariMod:MariStageDirections": {

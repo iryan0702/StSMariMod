@@ -26,7 +26,7 @@ public class MariJarOfLight extends AbstractMariRelic
 
     @Override
     public void atBattleStart() {
-        AbstractDungeon.actionManager.addToBottom(new MariJarOfLightAction(5));
+        AbstractDungeon.actionManager.addToBottom(new MariJarOfLightAction(3));
     }
 
     @Override
