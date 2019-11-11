@@ -66,7 +66,7 @@
     "DESCRIPTION": "Whenever you fully lose a debuff, NL gain 2 Strength."
   },
   "MariMod:Mari_Shining_Tornado": {
-    "NAME": "Shining Tornado",
+    "NAME": "\"Mari's Shining Tornado!\"",
     "DESCRIPTION": "Deal !D! damage and apply !MARI_RADIANCE! Radiance to a random enemy !M! times. Exhaust."
   },
   "MariMod:Mari_Tough_Front": {

@@ -39,6 +39,7 @@ public class Mari_Shining_Tornado extends AbstractMariCard {
     public Mari_Shining_Tornado(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.RADIANCE);
+        this.tags.add(MariCustomTags.QUOTATIONS);
 
         this.baseDamage = ATTACK_DMG;
         this.damage = this.baseDamage;
