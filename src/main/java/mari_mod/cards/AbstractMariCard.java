@@ -191,9 +191,9 @@ public abstract class AbstractMariCard extends CustomCard {
         }
         particles.removeIf(KindleParticle::isDead);
         if(isKindled && kindleTimer > MariKindleArrowPatch.MariKindleArrowTailPatch.kindleTime) {
-            if (this.particles.size() < 40 && !Settings.DISABLE_EFFECTS) {
+            if (this.particles.size() < 100 && !Settings.DISABLE_EFFECTS) {
                 for (int i = 0; i < FPS_SCALE; i++) {
-                    if (Math.random() < 0.1) {
+                    if (Math.random() < 0.2) {
                         Vector2 point = generateRandomPointAlongEdgeOfHitbox();
                         particles.add(new KindleParticle(point.x, point.y, this.drawScale, this.upgraded, false));
                     }
