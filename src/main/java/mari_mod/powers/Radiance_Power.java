@@ -67,6 +67,7 @@ public class Radiance_Power extends AbstractPower
         this.updateDescription();
         MariMod.setPowerImages(this);
         this.particleDelay = 0.0F;
+        this.priority = 99;
         logger.info("initialize: amount " + bufferAmt);
     }
 
