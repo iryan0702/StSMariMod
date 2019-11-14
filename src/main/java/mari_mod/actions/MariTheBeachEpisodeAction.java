@@ -63,7 +63,7 @@ public class MariTheBeachEpisodeAction extends AbstractGameAction {
         rewardStacks += targetBlock/5;
         rewardStacks += targetFrail;
         if(rewardStacks > 0) {
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new Radiance_Power(p, rewardStacks), rewardStacks));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new Radiance_Power(p, rewardStacks * this.amount), rewardStacks * this.amount));
         }
         this.isDone = true;
     }
