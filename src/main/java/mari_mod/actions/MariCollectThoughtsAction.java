@@ -1,5 +1,6 @@
 package mari_mod.actions;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
@@ -29,15 +30,20 @@ public class MariCollectThoughtsAction extends AbstractGameAction {
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
         ArrayList<AbstractCard> cardCopies = new ArrayList<>();
+        ArrayList<AbstractCard> cardsInHand = new ArrayList<>();
         for(AbstractCard cardToCopy : p.hand.group){
-            cardCopies.add(cardToCopy.makeStatEquivalentCopy());
+            cardCopies.add(0, cardToCopy.makeStatEquivalentCopy());
+            cardsInHand.add(cardToCopy);
         }
         int handSize = AbstractDungeon.player.hand.size();
         for(AbstractCard cardToAdd : cardCopies){
             if(this.upgraded && cardToAdd.canUpgrade()) cardToAdd.upgrade();
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(cardToAdd, 1));
         }
-        AbstractDungeon.actionManager.addToTop(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, handSize, false));
+        for(AbstractCard cardsToMove : cardsInHand){
+            if(this.upgraded && cardsToMove.canUpgrade()) cardsToMove.upgrade();
+            AbstractDungeon.player.hand.moveToDeck(cardsToMove,true);
+        }
 
         this.isDone = true;
     }
