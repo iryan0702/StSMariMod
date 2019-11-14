@@ -54,7 +54,7 @@ public class MariShiningLightEvent extends AbstractImageEvent {
         }
 
 
-        this.imageEventText.setDialogOption(ADDITIONAL_OPTIONS[0], CardLibrary.getCard(Doubt.ID));
+        this.imageEventText.setDialogOption(ADDITIONAL_OPTIONS[0], CardLibrary.getCard(Doubt.ID), new MariJarOfLight());
 
         if (AbstractDungeon.player.masterDeck.hasUpgradableCards()) {
             this.imageEventText.setDialogOption(OPTIONS[0] + this.damage + OPTIONS[1]);
