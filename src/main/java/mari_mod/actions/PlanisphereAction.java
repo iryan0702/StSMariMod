@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import mari_mod.cards.Mari_The_Planisphere;
@@ -23,13 +24,11 @@ import mari_mod.powers.Radiance_Power;
 public class PlanisphereAction extends AbstractGameAction {
     private boolean retrieveCard = false;
     private CardType cardType = null;
-    private Mari_The_Planisphere calledByCard = null;
 
-    public PlanisphereAction(Mari_The_Planisphere card, AbstractMonster targetMonster) {
+    public PlanisphereAction(AbstractMonster targetMonster) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = Settings.ACTION_DUR_FAST;
         this.target = targetMonster;
-        this.calledByCard = card;
     }
 
     public void update() {
@@ -52,7 +51,14 @@ public class PlanisphereAction extends AbstractGameAction {
                         AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(disCard, (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                     }
 
-                    this.calledByCard.doTheThing(disCard.cost, this.target);
+                    int damage = (disCard.cost == -1) ? EnergyPanel.getCurrentEnergy() : disCard.cost;
+
+                    if(damage >= 0) {
+                        if (damage > 0) {
+                            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new Radiance_Power(target, damage), damage));
+                        }
+                        AbstractDungeon.actionManager.addToTop(new MariImmediatelyDealPowerAppliedDamageAction(target, new DamageInfo(AbstractDungeon.player, damage), AttackEffect.FIRE));
+                    }
                     AbstractDungeon.cardRewardScreen.discoveryCard = null;
                 }
 

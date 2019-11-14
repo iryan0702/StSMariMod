@@ -37,19 +37,7 @@ public class Mari_The_Planisphere extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new PlanisphereAction(this, m));
-    }
-
-    public void doTheThing(int amount, AbstractCreature target){
-
-        this.baseDamage = Math.max(0, amount);
-        this.damage = this.baseDamage;
-        this.calculateCardDamage((AbstractMonster)null);
-
-        if(amount > 0) {
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new Radiance_Power(target, amount), amount));
-        }
-        AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(AbstractDungeon.player, this.damage)));
+        AbstractDungeon.actionManager.addToBottom(new PlanisphereAction(m));
     }
 
     @Override
