@@ -9,7 +9,8 @@
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "Apply, remove, and apply !MARI_RADIANCE! Radiance. NL Exhaust."
+    "DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Exhaust."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
