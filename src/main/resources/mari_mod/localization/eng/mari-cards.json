@@ -38,7 +38,7 @@
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block now and at the start of your turns. Each turn, the Block gain is halved."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !M! Block at the end of your turns. Each turn, the Block gain is halved."
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",

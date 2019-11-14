@@ -55,7 +55,7 @@ public class The_Mansion_Power extends AbstractPower
     }
 
     @Override
-    public void atStartOfTurn() {
+    public void atEndOfTurn(boolean isPlayer) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.amount));
         AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, this, (this.amount+1)/2));
     }

@@ -27,8 +27,8 @@ public class Mari_The_MANSION extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
     private static final int BASE_GOLD_COST = 10;
-    private static final int BLOCK_AMT = 32;
-    private static final int UPGRADE_BLOCK_AMT = 8;
+    private static final int BLOCK_AMT = 26;
+    private static final int UPGRADE_BLOCK_AMT = 6;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -36,8 +36,8 @@ public class Mari_The_MANSION extends AbstractMariCard {
     public Mari_The_MANSION(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.SPEND);
-        this.baseBlock = BLOCK_AMT;
-        this.block = this.baseBlock;
+        this.baseMagicNumber = BLOCK_AMT;
+        this.magicNumber = this.baseMagicNumber;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
     }
@@ -45,8 +45,7 @@ public class Mari_The_MANSION extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new The_Mansion_Power(p, this.block/2),this.block/2));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new The_Mansion_Power(p, this.magicNumber),this.magicNumber));
         //AbstractDungeon.actionManager.addToBottom(new MariTheMANSIONAction(BLOCK_AMT, 3));
     }
 
@@ -59,7 +58,7 @@ public class Mari_The_MANSION extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_BLOCK_AMT);
+            upgradeMagicNumber(UPGRADE_BLOCK_AMT);
         }
     }
 }
