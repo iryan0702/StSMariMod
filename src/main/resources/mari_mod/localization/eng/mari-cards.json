@@ -106,11 +106,7 @@
   },
   "MariMod:Mari_Expenses": {
     "NAME": "Expenses",
-    "DESCRIPTION": "Deal !M! damage. NL Deals !B! more for each time you spent Gold this combat.",
-    "UPGRADE_DESCRIPTION": "Deal !M! damage. NL Deals !B! more for each time you spent Gold this combat.",
-    "EXTENDED_DESCRIPTION": [
-      " NL (Deals !D! damage)"
-    ]
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for every 5 Gold spent this combat."
   },
   "MariMod:Mari_The_Planisphere": {
     "NAME": "The Planisphere",
