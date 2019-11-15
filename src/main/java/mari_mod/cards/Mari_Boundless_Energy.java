@@ -25,8 +25,8 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 2;
-    private static final int INITIAL_ENERGY_GAIN = 3;
-    private static final int BASE_GOLD_COST = 10;
+    private static final int INITIAL_ENERGY_GAIN = 4;
+    private static final int BASE_GOLD_COST = 5;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
