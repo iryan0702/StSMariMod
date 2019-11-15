@@ -26,7 +26,7 @@ public class MariStartShiningTornadoAction extends AbstractGameAction {
         AbstractPlayer p = AbstractDungeon.player;
         AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
 
-        AbstractDungeon.actionManager.addToTop(new MariShiningTornadoAction(randomMonster, this.radianceAmount, this.radianceAmount, this.damage));
+        AbstractDungeon.actionManager.addToTop(new MariShiningTornadoAction(randomMonster, this.radianceAmount, this.bounceAmount, this.damage));
 
         if (randomMonster != null) {
             AbstractDungeon.actionManager.addToTop(new VFXAction(new MariShiningTornadoFirstTossEffect(p.hb.cX, p.hb.cY, randomMonster.hb.cX, p.hb.cY), 0.2F));
