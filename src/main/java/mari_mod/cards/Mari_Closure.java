@@ -22,9 +22,9 @@ public class Mari_Closure extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final int COST = 2;
-    private static final int UPGRADE_BLOCK_INCREASE = 6;
+    private static final int UPGRADE_BLOCK_INCREASE = 8;
     private static final int BLOCK_DECREASE = -2;
-    private static final int BASE_BLOCK_AMT = 22;
+    private static final int BASE_BLOCK_AMT = 20;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
