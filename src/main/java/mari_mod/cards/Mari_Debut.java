@@ -23,11 +23,10 @@ public class Mari_Debut extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int BASE_GOLD_COST = 5;
-    private static final int ATTACK_DMG = 8;
     private static final int BASE_RADIANCE = 2;
-    private static final int UPGRADE_COST = 0;
+    private static final int UPGRADE_RADIANCE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -38,7 +37,6 @@ public class Mari_Debut extends AbstractMariCard {
         this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = BASE_RADIANCE;
         this.radiance = this.baseRadiance;
-        this.baseDamage = ATTACK_DMG;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
         this.exhaust = true;
@@ -61,7 +59,7 @@ public class Mari_Debut extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeRadiance(UPGRADE_RADIANCE);
         }
     }
 }

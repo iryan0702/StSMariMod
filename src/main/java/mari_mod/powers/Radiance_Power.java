@@ -38,7 +38,7 @@ import mari_mod.MariMod;
 import java.util.ArrayList;
 
 
-public class Radiance_Power extends AbstractPower
+public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABitSoItShowsZeroAndIsADifferentColor
 {
     public static final String POWER_ID = "MariMod:Radiance_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -48,11 +48,15 @@ public class Radiance_Power extends AbstractPower
     ArrayList<RadianceParticle> radianceParticles;
     private DamageInfo radianceInfo;
     private float particleDelay;
+    private int radianceDecayThisTurn;
 
     private static final float FPS_SCALE = (240f / Settings.MAX_FPS);
 
     public Radiance_Power(AbstractCreature owner, int bufferAmt)
     {
+        this.radianceDecayThisTurn = 0;
+        this.amount2 = -1;
+        this.displayColor2 = Color.GOLD.cpy();
         this.name = NAME;
         this.owner = owner;
         if(this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCursedDoll.ID)) {
@@ -81,11 +85,15 @@ public class Radiance_Power extends AbstractPower
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
-        if(stackAmount > 0) burstOfParticles(stackAmount*4);
+        if(stackAmount > 0){
+            burstOfParticles(stackAmount*4);
+            radianceDecayThisTurn += 1;
+        }
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
         updateDescription();
+        this.amount2 = this.amount - radianceDecayThisTurn;
     }
 
     @Override
@@ -95,11 +103,17 @@ public class Radiance_Power extends AbstractPower
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
         updateDescription();
+        if(radianceDecayThisTurn > 0){
+            this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
+        }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        this.reducePower((AbstractDungeon.player.hasRelic(MariDiploma.ID) ? 2 : 1));
+        //this.reducePower((AbstractDungeon.player.hasRelic(MariDiploma.ID) ? 2 : 1));
+        this.reducePower(radianceDecayThisTurn);
+        radianceDecayThisTurn = 0;
+        this.amount2 = -1;
         updateDescription();
     }
 
@@ -110,6 +124,8 @@ public class Radiance_Power extends AbstractPower
         }
         burstOfParticles(this.amount*4);
         updateDescription();
+        radianceDecayThisTurn += 1;
+        this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
     }
 
 

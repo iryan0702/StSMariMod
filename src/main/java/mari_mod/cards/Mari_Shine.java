@@ -24,7 +24,7 @@ public class Mari_Shine extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
-    private static final int RADIANCE = 3;
+    private static final int RADIANCE = 4;
     private static final int UPGRADE_RADIANCE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;

@@ -24,7 +24,7 @@ public class Mari_Sparkle extends AbstractMariCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
     private static final int ATTACK_DMG = 6;
-    private static final int RADIANCE = 2;
+    private static final int RADIANCE = 3;
     private static final int UPGRADE_RADIANCE = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
