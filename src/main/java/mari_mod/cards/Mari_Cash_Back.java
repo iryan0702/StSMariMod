@@ -19,7 +19,7 @@ public class Mari_Cash_Back extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-    private static final int CASH_BACK_AMOUNT = 40;
+    private static final int CASH_BACK_AMOUNT = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -27,14 +27,14 @@ public class Mari_Cash_Back extends AbstractMariCard {
     public Mari_Cash_Back(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.SPEND);
-        this.baseMagicNumber = CASH_BACK_AMOUNT;
+        this.baseMagicNumber = Cash_Back_Power.CASH_BACK_AMOUNT;
         this.magicNumber = this.baseMagicNumber;
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Cash_Back_Power(p, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Cash_Back_Power(p, CASH_BACK_AMOUNT), CASH_BACK_AMOUNT));
     }
 
     public void upgrade() {

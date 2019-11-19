@@ -2,6 +2,7 @@ package mari_mod.powers;
 
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Cash_Back_Power extends AbstractPower
+public class Cash_Back_Power extends TwoAmountPowerByKiooehtButIJustChangedItABitSoItShowsZeroAndIsADifferentColor
 {
     public static final String POWER_ID = "MariMod:Cash_Back_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -23,14 +24,17 @@ public class Cash_Back_Power extends AbstractPower
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public Cash_Back_Power(AbstractCreature owner, int bufferAmt)
+    public static final int CASH_BACK_AMOUNT = 60;
+    public Cash_Back_Power(AbstractCreature owner, int perTurn)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = bufferAmt;
+        this.amount = perTurn;
+        this.amount2 = perTurn;
         this.isTurnBased = false;
+        this.canGoNegative = true;
         this.updateDescription();
         MariMod.setPowerImages(this);
     }
@@ -40,11 +44,31 @@ public class Cash_Back_Power extends AbstractPower
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if(this.amount > 80) this.amount = 80;
+        this.amount2 += stackAmount;
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        this.amount2 = this.amount;
+        super.atStartOfTurn();
+    }
+
+    public void onGoldTrigger(int goldSpent){
+        if(this.amount2 > 0){
+            AbstractDungeon.player.gainGold ((int)((float) goldSpent * CASH_BACK_AMOUNT * 0.01f));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
+            this.flashWithoutSound();
+        }
+        this.amount2--;
     }
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
+        if(this.amount > 1){
+            this.description = DESCRIPTION[0];
+        }else{
+            this.description = DESCRIPTION[1] + this.amount + DESCRIPTION[2];
+        }
+        this.description += CASH_BACK_AMOUNT + DESCRIPTION[3];
     }
 }

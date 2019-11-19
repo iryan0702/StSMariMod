@@ -80,8 +80,8 @@
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
-    "DESCRIPTION": "Whenever you [#fbccff]spend[] Gold, regain !M! NL percent of it. NL (Max 80 percent)",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you [#fbccff]spend[] Gold, regain !M! NL percent of it. NL (Max 80 percent)"
+    "DESCRIPTION": "The first time you [#fbccff]spend[] Gold each turn, regain !M! percent of Gold [#fbccff]spent[] and draw a card.",
+    "UPGRADE_DESCRIPTION": "Innate. NL The first time you [#fbccff]spend[] Gold each turn, regain !M! percent of Gold [#fbccff]spent[] and draw a card."
   },
   "MariMod:Mari_Delicacy": {
     "NAME": "Delicacy",
