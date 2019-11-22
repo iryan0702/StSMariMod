@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import mari_mod.patches.MariMusicalAttackEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,7 +40,7 @@ public class MariHeavyMetalAction extends AbstractGameAction {
         for(AbstractMonster m: monstersList) {
             if(!(m.isDead || m.halfDead)){
                 this.info = new DamageInfo(p, this.amount, DamageInfo.DamageType.NORMAL);
-                AbstractDungeon.actionManager.addToTop(new MariImmediatelyDealPowerAppliedDamageAction(m, this.info, AttackEffect.BLUNT_HEAVY));
+                AbstractDungeon.actionManager.addToTop(new MariImmediatelyDealPowerAppliedDamageAction(m, this.info, MariMusicalAttackEffect.MUSICAL));
             }
         }
 
