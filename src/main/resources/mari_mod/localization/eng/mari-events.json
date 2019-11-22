@@ -79,5 +79,16 @@
       "[Buy] #rPay #r[BUY] #rGold. #gObtain #gRed #gMask.",
       "[Ambush]"
     ]
+  },
+  "MariMod:Golden Idol": {
+    "NAME": "Golden Idol Addendum",
+    "DESCRIPTIONS": [
+      "As you reach towards the #yGolden #yIdol, it begins to hum and transform with a #y@violent@ #y@glow.@ You are so entranced by the Idol that you barely notice a giant boulder rolling towards you. NL NL ...but if you move now, you will interrupt the transformation.",
+      "#ySuddenly, #ythe #yIdol #yfills #ythe #yroom #ywith #ya #yburst #yof #ylight. NL #y~The~ #y~relic's~ #y~humming~ #y~grows~ #y~louder~ #y~into~ #y~a~ #y~cacophony~ #y~of~ #y~tones,~ #y~into~ #y~a~ #y~reminiscent~ #y~melody~ #y~which~ #y~you~ #y– NL NL –wait, what are you doing? @MOVE!@"
+    ],
+    "OPTIONS": [
+      "[Wait] #gObtain #gThe #yShining #yIdol #ginstead. #rAll #rescape #roptions #rbecome #rworse.",
+      "[Outrun] #rBecome #rCursed #r- #rWrithe."
+    ]
   }
 }

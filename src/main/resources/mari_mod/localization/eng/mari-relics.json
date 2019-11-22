@@ -123,6 +123,13 @@
       "At the end of your turn, #yRetain a random highest-cost card in your hand."
     ]
   },
+  "MariMod:MariShiningIdol": {
+    "NAME": "Shining Idol",
+    "FLAVOR": "Objects of pure gold hums with energy in your presence.",
+    "DESCRIPTIONS": [
+      "Enemies drop #b100% more gold, decreased by #b0.5% for each gold you have."
+    ]
+  },
   "MariMod:MariCursedDoll ALL RELICS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Cursed Doll",
     "FLAVOR": "You can't stop laughing from the immense dread.",
