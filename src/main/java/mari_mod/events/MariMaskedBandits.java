@@ -34,6 +34,7 @@ public class MariMaskedBandits extends AbstractEvent {
     public static final String[] ADDITIONAL_DESCRIPTIONS;
     public static final String[] ADDITIONAL_OPTIONS;
     private MariMaskedBandits.CurScreen screen;
+    public boolean isAmbushMode = false;
 
     public static final int JOIN_GOLD_COST = 40;
     int halfGold = 0;
@@ -47,7 +48,7 @@ public class MariMaskedBandits extends AbstractEvent {
         if(AbstractDungeon.player.gold >= JOIN_GOLD_COST) {
             this.roomEventText.addDialogOption(ADDITIONAL_OPTIONS[0].replace("[JOIN]", "" + JOIN_GOLD_COST));
         }else{
-            this.roomEventText.addDialogOption(ADDITIONAL_OPTIONS[1].replace("[JOIN]", "" + JOIN_GOLD_COST));
+            this.roomEventText.addDialogOption(ADDITIONAL_OPTIONS[1].replace("[JOIN]", "" + JOIN_GOLD_COST), true);
         }
         this.roomEventText.addDialogOption(OPTIONS[0]);
         this.roomEventText.addDialogOption(OPTIONS[1]);
@@ -127,6 +128,7 @@ public class MariMaskedBandits extends AbstractEvent {
                     this.screen = CurScreen.BUY;
                     return;
                 case 1:
+                    isAmbushMode = true;
                     if (Settings.isDailyRun) {
                         AbstractDungeon.getCurrRoom().addGoldToRewards(AbstractDungeon.miscRng.random(30));
                     } else {
