@@ -382,6 +382,19 @@
     "NAME": "Reckless Spending",
     "DESCRIPTION": "Ethereal. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn. NL Exhaust."
   },
+  "MariMod:Mari_Drama1": {
+    "NAME": "Drama 1",
+    "DESCRIPTION": "For the rest of combat, your stacks of Frail can be used as [E].",
+    "UPGRADE_DESCRIPTION": "For the rest of combat, your stacks of Frail and Vulnerable can be used as [E]."
+  },
+  "MariMod:Mari_Drama2": {
+    "NAME": "Drama 2",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL Swap your Frail and Vulnerable. Gain 1 Frail."
+  },
+  "MariMod:Mari_Repressed_Strike": {
+    "NAME": "Repressed Strike",
+    "DESCRIPTION": "Gain [E] and deal !D! damage, then deal !D! damage for each card in your hand that cannot be played."
+  },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
     "DESCRIPTION": "Swap any character's Radiance with this card's. Has !M! Radiance."
