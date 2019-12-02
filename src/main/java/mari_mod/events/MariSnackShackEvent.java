@@ -65,9 +65,9 @@ public class MariSnackShackEvent extends AbstractImageEvent {
     private static final String SELL_BLOOD_RESULT;
     private static final String SELL_NOTHING_RESULT;
 
-    private static final int RELIC_GOLD_GAIN = 90;
-    private static final int CARD_RARE_GOLD_GAIN = 60;
-    private static final int CARD_UNCOMMON_GOLD_GAIN = 50;
+    private static final int RELIC_GOLD_GAIN = 110;
+    private static final int CARD_RARE_GOLD_GAIN = 90;
+    private static final int CARD_UNCOMMON_GOLD_GAIN = 75;
     private static final int CARD_EXTRA_GOLD_GAIN = 10;
     private static final int BLOOD_GOLD_GAIN = 75;
 
