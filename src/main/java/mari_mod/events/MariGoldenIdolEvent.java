@@ -8,6 +8,7 @@ package mari_mod.events;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.curses.Injury;
+import com.megacrit.cardcrawl.cards.curses.Pain;
 import com.megacrit.cardcrawl.cards.curses.Writhe;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -174,7 +175,7 @@ public class MariGoldenIdolEvent extends AbstractImageEvent {
             case 0:
                 CardCrawlGame.screenShake.shake(ShakeIntensity.HIGH, ShakeDur.MED, false);
                 this.imageEventText.updateBodyText(DIALOG_CHOSE_RUN);
-                AbstractCard curse = new Writhe();
+                AbstractCard curse = new Pain();
                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(curse, (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                 this.screenNum = 3;
                 this.imageEventText.updateDialogOption(0, OPTIONS[1]);
