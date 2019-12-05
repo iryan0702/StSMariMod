@@ -42,12 +42,18 @@ public class MariDevilishAssistantAction extends AbstractGameAction {
             tmp.freeToPlayOnce = true;
             tmp.costForTurn = 0;
 
-            if (this.lastTarget != null) {
-                tmp.calculateCardDamage(this.lastTarget);
-            }
+            //REPURPOSED LAST TARGET to be RANDOM TARGET
+            this.lastTarget = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
 
             if (AbstractMariCard.class.isAssignableFrom(tmp.getClass())) {
                 ((AbstractMariCard) tmp).goldCost = 0;
+                if(((AbstractMariCard) tmp).isAnyTarget && AbstractDungeon.cardRandomRng.random(0,AbstractDungeon.getMonsters().monsters.size()) == 0){
+                    this.lastTarget = null;
+                }
+            }
+
+            if (this.lastTarget != null) {
+                tmp.calculateCardDamage(this.lastTarget);
             }
 
             tmp.purgeOnUse = true;

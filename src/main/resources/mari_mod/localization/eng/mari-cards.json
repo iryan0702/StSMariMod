@@ -60,7 +60,7 @@
   },
   "MariMod:Mari_Devilish_Assistant": {
     "NAME": "Devilish Assistant",
-    "DESCRIPTION": "At the start of each turn, play the last card you played on the same target for free. NL (Does not self-trigger)"
+    "DESCRIPTION": "The last card you play each turn is replayed at the start of the next turn for free. NL (Does not self-trigger)"
   },
   "MariMod:Mari_Character_Development": {
     "NAME": "Character Development",
