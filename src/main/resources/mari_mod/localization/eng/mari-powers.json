@@ -29,19 +29,22 @@
   },
   "MariMod:Cash_Back_Power": {
     "NAME": "Cash Back",
-    "DESCRIPTIONS": ["Whenever you [#fbccff]spend[] gold, regain #b",
-      "% of it."]
+    "DESCRIPTIONS": ["#b1 time each turn, whenever you spend gold, regain #b",
+      "#b",
+      " times each turn, whenever you spend gold, regain #b",
+      "% of it and draw a card."]
   },
   "MariMod:Delicacy_Power": {
     "NAME": "Delicacy",
-    "DESCRIPTIONS": ["Whenever your health is restored, draw a card.",
-      "Whenever your health is restored, draw #b",
-      " cards."]
+    "DESCRIPTIONS": ["#b1 time each turn, whenever you spend gold, gain #yBlock equal to gold spent.",
+      "#b",
+      " times each turn, whenever you spend gold, gain #yBlock equal to gold spent."]
   },
   "MariMod:Flaunt_Power": {
     "NAME": "Flaunt",
-    "DESCRIPTIONS": ["Whenever you [#fbccff]spend[] gold, deal #b",
-      " damage to a random enemy."]
+    "DESCRIPTIONS": ["#b1 time each turn, whenever you spend gold, deal damage equal to gold spent to all enemies.",
+      "#b",
+      " times each turn, whenever you spend gold, deal damage equal to gold spent to all enemies."]
   },
   "MariMod:Excitement_Power": {
     "NAME": "Excitement",

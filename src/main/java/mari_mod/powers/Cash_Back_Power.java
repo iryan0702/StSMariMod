@@ -39,11 +39,13 @@ public class Cash_Back_Power extends TwoAmountPowerByKiooehtButIJustChangedItABi
         MariMod.setPowerImages(this);
     }
 
+
     public void stackPower(int stackAmount)
     {
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
+        if(amount2 < 0) amount2 = 0;
         this.amount2 += stackAmount;
     }
 
@@ -53,18 +55,21 @@ public class Cash_Back_Power extends TwoAmountPowerByKiooehtButIJustChangedItABi
         super.atStartOfTurn();
     }
 
-    public void onGoldTrigger(int goldSpent){
+    @Override
+    public void onSpecificTrigger() {
+        int goldSpent = MariMod.lastGoldAmountSpent;
         if(this.amount2 > 0){
             AbstractDungeon.player.gainGold ((int)((float) goldSpent * CASH_BACK_AMOUNT * 0.01f));
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
-            this.flashWithoutSound();
+            this.flash();
         }
         this.amount2--;
+        if(amount2 == 0) amount2--;
     }
 
     @Override
     public void updateDescription() {
-        if(this.amount > 1){
+        if(this.amount == 1){
             this.description = DESCRIPTION[0];
         }else{
             this.description = DESCRIPTION[1] + this.amount + DESCRIPTION[2];

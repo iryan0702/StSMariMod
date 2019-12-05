@@ -17,17 +17,17 @@ public class Mari_Flaunt extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-    private static final int PROC_DAMAGE = 5;
-    private static final int UPGRADE_PROC_DAMAGE = 3;
+    private static final int PROC_AMOUNT = 1;
+    private static final int UPGRADE_PROC_AMOUNT = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Flaunt(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.tags.add(MariCustomTags.SPEND);
-        this.baseMagicNumber = PROC_DAMAGE;
+        this.baseMagicNumber = PROC_AMOUNT;
         this.magicNumber = this.baseMagicNumber;
     }
 
@@ -39,7 +39,9 @@ public class Mari_Flaunt extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PROC_DAMAGE);
+            upgradeMagicNumber(UPGRADE_PROC_AMOUNT);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 }
