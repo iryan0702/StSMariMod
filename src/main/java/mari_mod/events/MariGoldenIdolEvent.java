@@ -131,7 +131,7 @@ public class MariGoldenIdolEvent extends AbstractImageEvent {
                 this.imageEventText.updateBodyText(ADDITIONAL_DESCRIPTIONS[1]);
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), new MariShiningIdol());
                 this.imageEventText.clearAllDialogs();
-                this.imageEventText.setDialogOption(ADDITIONAL_OPTIONS[1], CardLibrary.getCopy(Writhe.ID));
+                this.imageEventText.setDialogOption(ADDITIONAL_OPTIONS[1], CardLibrary.getCopy(Pain.ID));
                 this.imageEventText.setDialogOption(OPTIONS[3] + this.worseDamage + OPTIONS[4]);
                 this.imageEventText.setDialogOption(OPTIONS[5] + this.worseMaxHpLoss + OPTIONS[6]);
                 this.screenNum = 2;
