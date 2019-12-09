@@ -28,7 +28,7 @@ public class Mari_Dolphin_Strike extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 1;
-    private static final int ATTACK_DMG = 4;
+    private static final int ATTACK_DMG = 5;
     private static final int DAMAGE_TIMES = 2;
     private static final int DAMAGE_TIMES_UPGRADE = 1;
     private static final CardType TYPE = CardType.ATTACK;
