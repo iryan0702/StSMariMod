@@ -69,7 +69,7 @@ public class Mari_Its_Joke extends AbstractMariCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_ATTACK_DMG);
-            upgradeMagicNumber(UPGRADE_ATTACK_DMG);
+            //upgradeMagicNumber(UPGRADE_ATTACK_DMG);
         }
     }
 }
