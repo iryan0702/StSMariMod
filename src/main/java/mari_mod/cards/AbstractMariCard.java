@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ShaderHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -209,6 +210,10 @@ public abstract class AbstractMariCard extends CustomCard {
                 Vector2 point = generateRandomPointAlongEdgeOfHitbox();
                 particles.add(new KindleParticle(point.x, point.y, this.drawScale, this.upgraded, true));
             }
+        }
+        AbstractPower p = kindledTarget.getPower(Radiance_Power.POWER_ID);
+        if(p != null){
+            ((Radiance_Power)p).kindleSeek();
         }
     }
 

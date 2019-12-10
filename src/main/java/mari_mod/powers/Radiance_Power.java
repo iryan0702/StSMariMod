@@ -152,8 +152,8 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         super.update(slot);
         this.particleDelay -= Gdx.graphics.getDeltaTime();
         if(this.particleDelay <= 0 && !Settings.DISABLE_EFFECTS) {
-            radianceParticles.add(new RadianceParticle(this.owner, MathUtils.randomBoolean(0.75F)));
-            this.particleDelay = MathUtils.random(0.0F, 2.0F/this.amount);
+            radianceParticles.add(new RadianceParticle(this.owner, MathUtils.randomBoolean(0.85F)));
+            this.particleDelay = MathUtils.random(0.0F, 1.5F/this.amount);
         }
         for(RadianceParticle p: radianceParticles){
             p.update();
@@ -163,6 +163,12 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
     public void burstOfParticles(int amount){
         for (int i = 0; i < amount && i < 200 ; i++) {
             radianceParticles.add(new RadianceParticle(this.owner, false, true));
+        }
+    }
+
+    public void kindleSeek(){
+        for(RadianceParticle p: radianceParticles){
+            p.kindleSeek();
         }
     }
 
@@ -190,6 +196,9 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         private float targetScale;
         private float masterScale;
         private boolean isKindleSpark;
+        private boolean justKindled;
+        private float kindleTargetX;
+        private float kindleTargetY;
         private AbstractCreature owner;
         private TextureAtlas.AtlasRegion img;
 
@@ -216,6 +225,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
                 this.masterAlpha = 1.0F;
             }
             this.isKindleSpark = isKindleSpark;
+            this.justKindled = false;
             this.owner = owner;
             this.color = new Color(1.0F, 1.0F, MathUtils.random(0.6F, 0.9F), this.alpha);
             this.scale = 0.01F;
@@ -260,6 +270,13 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
                 }
             }
 
+            if(justKindled){
+                this.x = Interpolation.pow3Out.apply(x,this.kindleTargetX,Gdx.graphics.getDeltaTime()*2);
+                this.y = Interpolation.pow3Out.apply(y,this.kindleTargetY,Gdx.graphics.getDeltaTime()*2);
+                this.masterAlpha = this.duration/this.effectDuration;
+                this.duration -= Gdx.graphics.getDeltaTime();
+            }
+
             float t = (this.effectDuration - this.duration) * 2.0F;
             if (t > 1.0F) {
                 t = 1.0F;
@@ -270,6 +287,14 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             this.duration -= Gdx.graphics.getDeltaTime();
             if (this.duration >= 0.0F && this.duration < this.effectDuration / 2.0F) {
                 this.color.a = Interpolation.exp5In.apply(0.0F, this.alpha, this.duration / (this.effectDuration / 2.0F)) * this.masterAlpha;
+            }
+        }
+
+        public void kindleSeek(){
+            if(this.isKindleSpark){
+                this.justKindled = true;
+                this.kindleTargetX = Settings.WIDTH/2.0f + MathUtils.random(-90.0F, 90.0F) * Settings.scale;;
+                this.kindleTargetY = Settings.HEIGHT/2.0f + MathUtils.random(-180.0F, 180.0F) * Settings.scale;;
             }
         }
 
