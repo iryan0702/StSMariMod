@@ -51,7 +51,7 @@ public class Mari_Collect_Thoughts extends AbstractMariCard { //TODO: MAKE CARD 
             target = p;
         }
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle();
+            this.successfulKindle(target);
         }
         AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new MariCollectThoughtsAction(false)));
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariCollectThoughtsAction(true)));

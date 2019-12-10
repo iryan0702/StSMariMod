@@ -48,7 +48,7 @@ public class Mari_Tough_Front extends AbstractMariCard {
 
 
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle();
+            this.successfulKindle(target);
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, 1, false), 1));
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariReducePowerIfHavePowerAction(p,p,FrailPower.POWER_ID,2)));

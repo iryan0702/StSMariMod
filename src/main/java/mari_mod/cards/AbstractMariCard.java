@@ -203,7 +203,7 @@ public abstract class AbstractMariCard extends CustomCard {
 
     }
 
-    protected void successfulKindle(){
+    protected void successfulKindle(AbstractCreature kindledTarget){
         if (!Settings.DISABLE_EFFECTS) {
             for (int i = 0; i < 50; i++) {
                 Vector2 point = generateRandomPointAlongEdgeOfHitbox();

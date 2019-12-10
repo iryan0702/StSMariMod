@@ -51,7 +51,7 @@ public class Mari_Defend extends AbstractMariCard {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
 
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle();
+            this.successfulKindle(target);
         }
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new GainBlockAction(p,p,this.block, true)));
 

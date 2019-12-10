@@ -49,7 +49,7 @@ public class Mari_Well_Kept_Secret extends AbstractMariCard {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new BlurPower(p,1),1));
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle();
+            this.successfulKindle(target);
         }
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new ApplyPowerAction(p, p, new EquilibriumPower(p, 1), 1)));
 

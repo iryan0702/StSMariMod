@@ -53,7 +53,7 @@ public class Mari_No_Problem extends AbstractMariCard {
         }
 
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle();
+            this.successfulKindle(target);
         }
         AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new ApplyPowerAction(p,p,new No_Problem_Power(p, 1), 1)));
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new ApplyPowerAction(p,p,new No_Problem_Power(p, 2), 2)));

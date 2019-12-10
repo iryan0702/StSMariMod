@@ -49,7 +49,7 @@ public class Mari_Expensive_Tastes extends AbstractMariCard {
 
 
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle();
+            this.successfulKindle(target);
         }
 
         AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new MariExpensiveTastesAction(false)));
