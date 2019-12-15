@@ -42,6 +42,8 @@ public class Mari_Flawless_Form extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeMagicNumber(UPGRADE_CHARGES);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
             upgradeName();
         }
     }
