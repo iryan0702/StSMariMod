@@ -38,6 +38,9 @@ public class Mari_Closure extends AbstractMariCard {
         this.misc = misc;
         this.baseBlock = this.misc;
         this.block = this.baseBlock;
+
+        this.baseMagicNumber = UPGRADE_BLOCK_INCREASE;
+        this.magicNumber = this.baseMagicNumber;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

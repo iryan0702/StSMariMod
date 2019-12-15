@@ -337,10 +337,10 @@
   },
   "MariMod:Mari_Closure": {
     "NAME": "Closure",
-    "DESCRIPTION": "Gain !B! Block and permanently decrease the Block by 2. NL Can be upgraded any number of times to increase Block by 6.",
+    "DESCRIPTION": "Gain !B! Block and permanently decrease the Block by 2. NL Can be upgraded any number of times to increase Block by !M!.",
     "EXTENDED_DESCRIPTION": [
       "Conclusion",
-      "Gain !B! Block. NL Can be upgraded any number of times to increase Block by 6. NL (...Did we save it?)"
+      "Gain !B! Block. NL Can be upgraded any number of times to increase Block by !M!. NL (...Did we save it?)"
     ]
   },
   "MariMod:Mari_Withdrawal": {
