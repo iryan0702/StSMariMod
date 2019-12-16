@@ -1,5 +1,6 @@
 package mari_mod.actions;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,13 +22,22 @@ public class MariOverexertionAction extends AbstractGameAction {
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
         for(AbstractCard c: p.hand.group){
+
+            boolean flash = false;
+
             if(c.costForTurn >= 2){
                 c.costForTurn--;
+                flash = true;
             }
 
             if(c.cost >= 2){
                 c.cost--;
                 c.isCostModified = true;
+                flash = true;
+            }
+
+            if(flash){
+                c.flash(Color.GOLD.cpy());
             }
         }
         this.isDone = true;
