@@ -513,11 +513,17 @@ public class MariMod implements
     public void receiveEditRelics() {
         logger.info("begin editing relics");
         BaseMod.addRelicToCustomPool(new MariTheSpark(), CardColorEnum.MARI);
+        BaseMod.addRelicToCustomPool(new MariStageDirections(), CardColorEnum.MARI);
+        BaseMod.addRelicToCustomPool(new MariTheaterScript(), CardColorEnum.MARI);
+        BaseMod.addRelicToCustomPool(new MariPinkHandbag(), CardColorEnum.MARI);
+        BaseMod.addRelicToCustomPool(new MariCorruptedSpark(), CardColorEnum.MARI);
+
         BaseMod.addRelicToCustomPool(new MariDiploma(), CardColorEnum.MARI);
         BaseMod.addRelicToCustomPool(new MariStewshine(), CardColorEnum.MARI);
 
         BaseMod.addRelicToCustomPool(new MariJarOfLight(), CardColorEnum.MARI);
-        //BaseMod.addRelicToCustomPool(new MariCursedDoll(), CardColorEnum.MARI);
+        BaseMod.addRelicToCustomPool(new MariShiningIdol(), CardColorEnum.MARI);
+        BaseMod.addRelicToCustomPool(new MariCursedDoll(), CardColorEnum.MARI);
         BaseMod.addRelic(new MariOldLollipop(), RelicType.SHARED);
         BaseMod.addRelic(new MariFlowerRing(), RelicType.SHARED);
         BaseMod.addRelic(new MariDevilsCharm(), RelicType.SHARED);

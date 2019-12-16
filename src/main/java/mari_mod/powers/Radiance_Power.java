@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.ChestShineEffect;
 import mari_mod.cards.AbstractMariCard;
+import mari_mod.relics.MariCorruptedSpark;
 import mari_mod.relics.MariCursedDoll;
 import mari_mod.relics.MariDiploma;
 import mari_mod.relics.MariDiploma;
@@ -75,12 +76,16 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         logger.info("initialize: amount " + bufferAmt);
     }
 
-    public void stackPower(int stackAmount)
+    public void stackPower(int initialStackAmount)
     {
+        int stackAmount = initialStackAmount;
+        if(AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)){
+            stackAmount += 1;
+        }
         logger.info("this stacks: by" + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if(stackAmount > 0 && (!this.owner.isPlayer || AbstractDungeon.player.hasRelic(MariCursedDoll.ID))) {
+        if(stackAmount > 0 && ((!this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)))) {
             this.flash();
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
@@ -94,6 +99,10 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         }
         updateDescription();
         this.amount2 = this.amount - radianceDecayThisTurn;
+
+        //if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
+        //    this.amount2 = -1;
+        //}
     }
 
     @Override
@@ -106,19 +115,29 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(radianceDecayThisTurn > 0){
             this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
         }
+        if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
+            this.flash();
+            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
+            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
+            //this.amount2 = -1;
+        }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         //this.reducePower((AbstractDungeon.player.hasRelic(MariDiploma.ID) ? 2 : 1));
-        this.reducePower(radianceDecayThisTurn);
-        radianceDecayThisTurn = 0;
-        this.amount2 = -1;
-        updateDescription();
+        //if(!AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID) || owner.isPlayer) {
+            this.reducePower(radianceDecayThisTurn);
+            radianceDecayThisTurn = 0;
+            this.amount2 = -1;
+            updateDescription();
+        //}
     }
 
     public void onInitialApplication() {
-        if(!this.owner.isPlayer || AbstractDungeon.player.hasRelic(MariCursedDoll.ID)) {
+        if(AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
+            this.amount += 1;
+        }else if((!this.owner.isPlayer)) {
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
@@ -130,8 +149,8 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        float damageBoost = (AbstractDungeon.player.hasRelic(MariCursedDoll.ID) ? 0.20F : 0.10F);
         if(this.owner.isPlayer) {
+            float damageBoost = (0.10F);
             return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F +(this.amount * damageBoost)): damage;
         }
         else
