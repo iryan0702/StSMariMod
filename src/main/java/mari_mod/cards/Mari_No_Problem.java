@@ -10,7 +10,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import mari_mod.actions.MariNoProblemAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
 import mari_mod.actions.MariUnsuccessfulKindleAction;
 import mari_mod.powers.No_Problem_Power;
@@ -36,28 +39,14 @@ public class Mari_No_Problem extends AbstractMariCard {
         this.baseMagicNumber = BASE_TURN;
         this.magicNumber =  this.baseMagicNumber;
         this.tags.add(MariCustomTags.QUOTATIONS);
-        this.tags.add(MariCustomTags.KINDLE);
-        this.isAnyTarget = true;
+        //this.tags.add(MariCustomTags.KINDLE);
+        //this.isAnyTarget = true;
         this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-
-        AbstractCreature target;
-        if(m != null) {
-            target = m;
-        }else{
-            target = p;
-        }
-
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
-        AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new ApplyPowerAction(p,p,new No_Problem_Power(p, 1), 1)));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new ApplyPowerAction(p,p,new No_Problem_Power(p, 2), 2)));
-
+        AbstractDungeon.actionManager.addToBottom(new MariNoProblemAction());
     }
 
     @Override

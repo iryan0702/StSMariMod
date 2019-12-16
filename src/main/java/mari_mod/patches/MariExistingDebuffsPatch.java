@@ -56,7 +56,7 @@ public class MariExistingDebuffsPatch {
         @SpirePrefixPatch
         public static SpireReturn Prefix(VulnerablePower power) {
 
-            if (power.owner.isPlayer && (AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasRelic(MariStageDirections.ID))) {
+            if (power.owner.isPlayer && (AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasRelic(MariStageDirections.ID) || AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID))) {
                 return SpireReturn.Return(null);
             }
 
@@ -81,7 +81,7 @@ public class MariExistingDebuffsPatch {
 
     //WEAK
 
-    @SpirePatch(clz = WeakPower.class, method = "atDamageGive",
+    /*@SpirePatch(clz = WeakPower.class, method = "atDamageGive",
             paramtypez = {
                     float.class, DamageInfo.DamageType.class})
     public static class MariWeakModifierPatch {
@@ -96,7 +96,7 @@ public class MariExistingDebuffsPatch {
 
             return SpireReturn.Continue();
         }
-    }
+    }*/
 
     //FRAIL
 
@@ -109,7 +109,7 @@ public class MariExistingDebuffsPatch {
         public static SpireReturn<Float> Prefix(FrailPower power, float block) {
 
             if (power.owner.isPlayer) {
-                if (AbstractDungeon.player.hasRelic(MariTheaterScript.ID) || AbstractDungeon.player.hasPower(No_Problem_Power.POWER_ID)) {
+                if (AbstractDungeon.player.hasRelic(MariTheaterScript.ID)) {
                     return SpireReturn.Return(block);
                 }
                 if (AbstractDungeon.player.hasRelic(MariStageDirections.ID)) {

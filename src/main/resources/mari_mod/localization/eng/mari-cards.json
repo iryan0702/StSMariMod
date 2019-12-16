@@ -202,7 +202,7 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "Ignore Frail, Weak, and Vulnerable this turn. NL Kindle: Ignore for 2 turns instead. NL Exhaust."
+    "DESCRIPTION": "Until you have more than your current Vulnerable, it has no effect and does not decrease at end of turn. NL Exhaust."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",

@@ -59,9 +59,8 @@
   },
   "MariMod:No_Problem_Power": {
     "NAME": "No Problem!",
-    "DESCRIPTIONS": ["Ignore #yFrail, #yWeak, and #yVulnerable this turn.",
-      "Ignore #yFrail, #yWeak, and #yVulnerable for #b",
-      " turns."]
+    "DESCRIPTIONS": ["#yVulnerable has no effect and does not decrease at end of turn. Lose this power if you have more than #b",
+      " #yVulnerable."]
   },
   "MariMod:Supervision_Power": {
     "NAME": "Supervision",
