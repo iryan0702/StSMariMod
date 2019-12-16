@@ -368,7 +368,7 @@
   },
   "MariMod:Mari_Lie_In_Wait": {
     "NAME": "Lie In Wait",
-    "DESCRIPTION": "Gain !B! Block. NL At the start of your next turn, deal !M! damage to ALL enemies."
+    "DESCRIPTION": "At the start of your next turn, deal !M! damage to ALL enemies. NL Kindle: Gain !B! Block."
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
