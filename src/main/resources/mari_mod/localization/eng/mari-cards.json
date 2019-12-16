@@ -80,12 +80,12 @@
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
-    "DESCRIPTION": "The first time you [#fbccff]spend[] Gold each turn, regain !M! percent of Gold [#fbccff]spent[] and draw a card.",
-    "UPGRADE_DESCRIPTION": "Innate. NL The first time you [#fbccff]spend[] Gold each turn, regain !M! percent of Gold [#fbccff]spent[] and draw a card."
+    "DESCRIPTION": "One time each turn, when you [#fbccff]spend[] Gold, regain !M! percent of Gold [#fbccff]spent[] and draw a card.",
+    "UPGRADE_DESCRIPTION": "Innate. NL One time each turn, when you [#fbccff]spend[] Gold, regain !M! percent of Gold [#fbccff]spent[] and draw a card."
   },
   "MariMod:Mari_Delicacy": {
     "NAME": "Delicacy",
-    "DESCRIPTION": "Whenever you [#fbccff]spend[] Gold, draw a card."
+    "DESCRIPTION": "One time each turn, when you [#fbccff]spend[] Gold, gain Block equal to gold [#fbccff]spent[]."
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
@@ -102,7 +102,8 @@
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
-    "DESCRIPTION": "Whenever you [#fbccff]spend[] Gold, deal !M! damage to a random enemy."
+    "DESCRIPTION": "One time each turn, when you [#fbccff]spend[] Gold, deal damage equal to gold [#fbccff]spent[] to all enemies.",
+    "UPGRADE_DESCRIPTION": "Two times each turn, when you [#fbccff]spend[] Gold, deal damage equal to gold [#fbccff]spent[] to all enemies."
   },
   "MariMod:Mari_Expenses": {
     "NAME": "Expenses",
