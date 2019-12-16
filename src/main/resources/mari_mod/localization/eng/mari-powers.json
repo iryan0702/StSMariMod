@@ -129,8 +129,8 @@
   },
   "MariMod:Research_Power": {
     "NAME": "Research",
-    "DESCRIPTIONS": ["Whenever you kindle an enemy, reduce the cost of a random card in your hand by #b",
-      " [REMOVE_SPACE]."]
+    "DESCRIPTIONS": ["Whenever you #yKindle an enemy, it loses #b",
+      " #yStrength this turn."]
   },
   "MariMod:Administrator_Privilege_Power": {
     "NAME": "Administrator Privilege",

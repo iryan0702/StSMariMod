@@ -20,7 +20,7 @@ public class Mari_Research extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
     private static final int REDUCTION = 1;
-    private static final int UPGRADE_REDUCTION = 1;
+    private static final int UPGRADE_COST = 0;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -39,7 +39,7 @@ public class Mari_Research extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_REDUCTION);
+            upgradeBaseCost(UPGRADE_COST);
         }
     }
 }

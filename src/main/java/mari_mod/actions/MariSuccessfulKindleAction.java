@@ -1,12 +1,19 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import mari_mod.MariMod;
 import mari_mod.powers.Radiance_Power;
 import mari_mod.powers.Research_Power;
@@ -32,19 +39,13 @@ public class MariSuccessfulKindleAction extends AbstractGameAction {
 
             ///
 
-            if(AbstractDungeon.player.hasPower(Research_Power.POWER_ID)) {
-                CardGroup hand = AbstractDungeon.player.hand;
-                ArrayList<AbstractCard> canHit = new ArrayList<>();
-                for(AbstractCard c : hand.group){
-                    if(c.cost > 0){
-                        canHit.add(c);
-                    }
-                }
-                if(canHit.size() > 0 && !this.target.isPlayer) {
-                    AbstractCard randomCard = canHit.get(AbstractDungeon.cardRandomRng.random(0,canHit.size()-1));
-                    AbstractDungeon.player.getPower(Research_Power.POWER_ID).flash();
-                    AbstractDungeon.actionManager.addToTop(new ReduceCostAction(randomCard.uuid,AbstractDungeon.player.getPower(Research_Power.POWER_ID).amount));
-                    randomCard.flash();
+            AbstractPower power = AbstractDungeon.player.getPower(Research_Power.POWER_ID);
+            if(power != null && !target.isPlayer) {
+                AbstractPlayer p = AbstractDungeon.player;
+                AbstractMonster m = (AbstractMonster)target;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new StrengthPower(m, -power.amount), -power.amount));
+                if (!m.hasPower(ArtifactPower.POWER_ID)) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new GainStrengthPower(m, power.amount), power.amount));
                 }
             }
 

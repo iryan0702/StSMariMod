@@ -360,7 +360,7 @@
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
-    "DESCRIPTION": "Whenever you successfully Kindle an enemy, reduce the cost of a random card in your hand by !M! this combat."
+    "DESCRIPTION": "Whenever you successfully Kindle an enemy, it loses !M! Strength this turn."
   },
   "MariMod:Mari_Excitement": {
     "NAME": "Excitement",
