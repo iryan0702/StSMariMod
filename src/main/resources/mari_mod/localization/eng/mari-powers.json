@@ -100,7 +100,8 @@
   "MariMod:Flawless_Form_Power": {
     "NAME": "Flawless Form",
     "DESCRIPTIONS": [
-      "Whenever you spend more energy on a card than the previous on the same turn, refund the energy spent.",
+      "#b",
+      " times a turn, whenever you spend more energy on a card than the previous on the same turn, refund the energy spent.",
       " (You haven't played a card this turn)",
       " (The last card you played costs #b",
       " [REMOVE_SPACE].)"
@@ -179,7 +180,7 @@
   },
   "MariMod:The_Mansion_Power": {
     "NAME": "Well-protected",
-    "DESCRIPTIONS": ["At the start of your turns, gain #b",
+    "DESCRIPTIONS": ["At the end of your turns, gain #b",
       " Block, then halve this Block gain for future turns."]
   },
   "MariMod:Supervision_Power_Old": {

@@ -93,7 +93,7 @@
     "NAME": "Jar of Light",
     "FLAVOR": "The jar is warm to the touch.",
     "DESCRIPTIONS": [
-      "At the start of each combat, select up to #b3 cards in your draw pile that apply Radiance. Increase their Radiance by #b1."
+      "At the start of each combat, select up to #b3 cards in your draw pile that apply #yRadiance. Increase their #yRadiance by #b1."
     ]
   },
   "MariMod:MariStageDirections": {

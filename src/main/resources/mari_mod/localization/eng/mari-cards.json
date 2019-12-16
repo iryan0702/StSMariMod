@@ -31,7 +31,7 @@
   },
   "MariMod:Mari_Its_Joke": {
     "NAME": "\"It's Joke!\"",
-    "DESCRIPTION": "Deal !D! damage, then heal the enemy for each unblock damage dealt (up to !M!)."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy survives, heal it for at most !M! HP for unblocked damage dealt."
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
@@ -44,7 +44,7 @@
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
     "DESCRIPTION": "Whenever you spend less energy on a card than the previous on the same turn, NL draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Whenever you spend less energy on a card than the previous on the same turn, NL draw !M! cards."
+    "UPGRADE_DESCRIPTION": "Whenever you spend less energy on a card than the previous on the same turn, NL draw !M! card."
   },
   "MariMod:Mari_Mic_Check": {
     "NAME": "Mic Check",
@@ -107,7 +107,7 @@
   },
   "MariMod:Mari_Expenses": {
     "NAME": "Expenses",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for every 5 Gold spent this combat."
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for every 5 Gold [#fbccff]spent[] this combat."
   },
   "MariMod:Mari_The_Planisphere": {
     "NAME": "The Planisphere",
