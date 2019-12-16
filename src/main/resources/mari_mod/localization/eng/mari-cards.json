@@ -350,7 +350,7 @@
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its Radiance to a random other character.",
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its Radiance to ALL other characters. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its Radiance to ALL other characters."
   },
   "MariMod:Mari_Fragile_Hope": {

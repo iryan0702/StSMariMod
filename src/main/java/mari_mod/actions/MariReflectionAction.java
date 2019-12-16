@@ -31,14 +31,14 @@ public class MariReflectionAction extends AbstractGameAction {
 
             ArrayList<AbstractCreature> allOthers = new ArrayList<>();
 
+            if(!this.target.equals(p)){
+                allOthers.add(p);
+            }
+
             for(AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if(!monster.isDead && !monster.halfDead && !this.target.equals(monster)) {
                     allOthers.add(monster);
                 }
-            }
-
-            if(!this.target.equals(p)){
-                allOthers.add(p);
             }
 
             int currRadiance = this.target.getPower(Radiance_Power.POWER_ID).amount;

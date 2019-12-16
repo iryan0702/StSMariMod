@@ -39,6 +39,7 @@ public class Mari_Reflection extends AbstractMariCard {
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
         this.isAnyTarget = true;
+        this.exhaust = true;
     }
 
     @Override
@@ -62,6 +63,7 @@ public class Mari_Reflection extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.target = CardTarget.ALL_ENEMY;
+            this.exhaust = false;
             upgradeName();
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
