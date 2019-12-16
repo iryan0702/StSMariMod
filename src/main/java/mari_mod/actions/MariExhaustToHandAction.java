@@ -5,6 +5,7 @@
 
 package mari_mod.actions;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -21,7 +22,7 @@ public class MariExhaustToHandAction extends AbstractGameAction {
 
     public void update() {
 
-        if(AbstractDungeon.player.exhaustPile.contains(c)) {
+        if(AbstractDungeon.player.exhaustPile.contains(c) && AbstractDungeon.player.hand.group.size() < BaseMod.MAX_HAND_SIZE) {
             c.unfadeOut();
             AbstractDungeon.player.hand.addToHand(c);
             AbstractDungeon.player.exhaustPile.removeCard(c);
