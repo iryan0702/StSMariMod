@@ -1,6 +1,7 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,8 +9,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 import mari_mod.actions.MariDefianceAction;
 import mari_mod.actions.MariSlapAction;
 import org.apache.logging.log4j.LogManager;
@@ -42,8 +45,10 @@ public class Mari_Slap extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractGameAction.AttackEffect effect = AbstractGameAction.AttackEffect.BLUNT_LIGHT;
+        if(this.damage > this.baseDamage * 2) effect = AbstractGameAction.AttackEffect.BLUNT_HEAVY;
+        if(this.damage > this.baseDamage * 5) AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F)));;
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), effect));
 
     }
 
@@ -51,13 +56,14 @@ public class Mari_Slap extends AbstractMariCard {
     public void calculateCardDamage(AbstractMonster mo) {
         int originalBase = this.baseDamage;
 
-        int vulnDamage = 0;
-        if(AbstractDungeon.player.hasPower(VulnerablePower.POWER_ID)) vulnDamage += this.magicNumber;
-        int frailDamage = 0;
-        if(AbstractDungeon.player.hasPower(FrailPower.POWER_ID)) frailDamage += this.magicNumber;
+        int extraDamage = 0;
+        for(AbstractPower p: AbstractDungeon.player.powers){
+            if(p.type == AbstractPower.PowerType.DEBUFF){
+                extraDamage += this.magicNumber;
+            }
+        }
 
-
-        this.baseDamage = originalBase + vulnDamage + frailDamage;
+        this.baseDamage = originalBase + extraDamage;
         this.damage =  this.baseDamage;
 
         super.calculateCardDamage(mo);
@@ -71,13 +77,14 @@ public class Mari_Slap extends AbstractMariCard {
 
         int originalBase = this.baseDamage;
 
-        int vulnDamage = 0;
-        if(AbstractDungeon.player.hasPower(VulnerablePower.POWER_ID)) vulnDamage += this.magicNumber;
-        int frailDamage = 0;
-        if(AbstractDungeon.player.hasPower(FrailPower.POWER_ID)) frailDamage += this.magicNumber;
+        int extraDamage = 0;
+        for(AbstractPower p: AbstractDungeon.player.powers){
+            if(p.type == AbstractPower.PowerType.DEBUFF){
+                extraDamage += this.magicNumber;
+            }
+        }
 
-
-        this.baseDamage = originalBase + vulnDamage + frailDamage;
+        this.baseDamage = originalBase + extraDamage;
         this.damage =  this.baseDamage;
 
         super.applyPowers();

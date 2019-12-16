@@ -253,7 +253,7 @@
   },
   "MariMod:Mari_Slap": {
     "NAME": "Slap!",
-    "DESCRIPTION": "Deal !D! damage. NL If you have Vulnerable, deals !M! more damage. NL If you have Frail, deals !M! more damage."
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage for each unique debuff you have."
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
