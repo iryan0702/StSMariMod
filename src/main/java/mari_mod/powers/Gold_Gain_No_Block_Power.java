@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import mari_mod.MariMod;
+import mari_mod.actions.GoldGainNoBlockAction;
 import mari_mod.actions.MariGainGoldAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,7 +50,7 @@ public class Gold_Gain_No_Block_Power extends AbstractPower
 
     @Override
     public void atEndOfRound() {
-        if(AbstractDungeon.player.currentBlock == 0) AbstractDungeon.actionManager.addToTop(new MariGainGoldAction(this.amount));
+        AbstractDungeon.actionManager.addToTop(new GoldGainNoBlockAction(this.amount, AbstractDungeon.player.currentBlock == 0));
         AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
     }
 

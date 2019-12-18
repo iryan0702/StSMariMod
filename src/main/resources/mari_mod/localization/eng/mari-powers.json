@@ -172,7 +172,7 @@
   },
   "MariMod:Gold_Gain_No_Block_Power": {
     "NAME": "Gold Gain: No Block",
-    "DESCRIPTIONS": ["At the end of your turn, gain #b",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " gold if you have no Block."]
   },
   "MariMod:Gold_Gain_Debuff_Power": {

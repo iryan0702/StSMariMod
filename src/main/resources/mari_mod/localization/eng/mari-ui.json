@@ -4,6 +4,13 @@
       "I don't have enough #rGold!"
     ]
   },
+  "GoldGainConditionFails": {
+    "TEXT": [
+      "Failed: Damage Taken",
+      "Failed: No Debuff",
+      "Failed: Has Block"
+    ]
+  },
   "MariTurnipTip": {
     "TEXT": [
       "You may not want this!",
