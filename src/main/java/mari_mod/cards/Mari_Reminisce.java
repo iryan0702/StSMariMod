@@ -43,6 +43,7 @@ public class Mari_Reminisce extends AbstractMariCard {
         this.baseMagicNumber = CHOICES;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = false;
+        this.isEthereal = true;
     }
 
     @Override
