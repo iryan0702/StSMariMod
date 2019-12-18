@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Practice_Outfit_Buff_Power;
 import mari_mod.powers.Practice_Outfit_Debuff_Power;
 import mari_mod.powers.Supervision_Power;
@@ -27,8 +28,7 @@ public class Mari_Practice_Outfit extends AbstractMariCard {
 
     public Mari_Practice_Outfit(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.exhaust = true;
-        this.isEthereal = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
@@ -55,7 +55,8 @@ public class Mari_Practice_Outfit extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.isEthereal = false;
+            EphemeralCardPatch.EphemeralField.ephemeral.set(this, false);
+            this.exhaust = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

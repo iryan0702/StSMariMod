@@ -5,20 +5,20 @@
   },
   "MariMod:Mari_Glow": {
     "NAME": "Glow",
-    "DESCRIPTION": "Deal !D! damage and apply !MARI_RADIANCE! Radiance to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Deal !D! damage and apply !MARI_RADIANCE! Radiance to ALL enemies."
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance.",
+    "UPGRADE_DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
-    "DESCRIPTION": "Apply !MARI_RADIANCE! Radiance to ANY character. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance to ANY character."
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "Deal !D! damage. Apply !MARI_RADIANCE! Radiance. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Deal !D! damage. Apply !MARI_RADIANCE! Radiance."
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
@@ -68,7 +68,7 @@
   },
   "MariMod:Mari_Shining_Tornado": {
     "NAME": "\"Mari's Shining Tornado!\"",
-    "DESCRIPTION": "Deal !D! damage and apply !MARI_RADIANCE! Radiance to a random enemy !M! times. Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Deal !D! damage and apply !MARI_RADIANCE! Radiance to a random enemy !M! times."
   },
   "MariMod:Mari_Tough_Front": {
     "NAME": "Tough Front",
@@ -89,7 +89,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to apply !MARI_RADIANCE! Radiance and gain !MARI_RADIANCE! Radiance. NL Exhaust."
+    "DESCRIPTION": "Innate. NL Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to apply !MARI_RADIANCE! Radiance and gain !MARI_RADIANCE! Radiance."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
@@ -111,7 +111,7 @@
   },
   "MariMod:Mari_The_Planisphere": {
     "NAME": "The Planisphere",
-    "DESCRIPTION": "Choose 1 of 3 random cards to add to your hand. Deal damage and apply Radiance equal to its cost. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Choose 1 of 3 random cards to add to your hand. Deal damage and apply Radiance equal to its cost."
   },
   "MariMod:Mari_Overexertion": {
     "NAME": "Overexertion",
@@ -170,7 +170,7 @@
   },
   "MariMod:Mari_Undying_Spark": {
     "NAME": "Undying Spark",
-    "DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. After you gain Frail NL or Vulnerable, returns from the Exhaust Pile to your Hand. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance. After you gain Frail NL or Vulnerable, returns from the Exhaust Pile to your Hand."
   },
   "MariMod:Mari_zzz": {
     "NAME": "zzz...?",
@@ -215,7 +215,7 @@
   },
   "MariMod:Mari_Practice_Outfit": {
     "NAME": "Practice Outfit",
-    "DESCRIPTION": "Ethereal. NL Until the end of your next turn, you take no damage and you deal no attack damage. Exhaust.",
+    "DESCRIPTION": "Ephemeral. NL Until the end of your next turn, you take no damage and you deal no attack damage.",
     "UPGRADE_DESCRIPTION": "Until the end of your next turn, you take no damage and you deal no attack damage. Exhaust."
   },
   "MariMod:Mari_Limelight": {
@@ -229,8 +229,8 @@
   },
   "MariMod:Mari_Fire_Strike": {
     "NAME": "Fire Strike",
-    "DESCRIPTION": "Apply !MARI_RADIANCE! Radiance to an enemy X times. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! Radiance to an enemy X+1 times. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance to an enemy X times.",
+    "UPGRADE_DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance to an enemy X+1 times."
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",
@@ -277,7 +277,7 @@
   },
   "MariMod:Mari_Kyu": {
     "NAME": "\"Kyu!\"",
-    "DESCRIPTION": "Ethereal. NL Apply !MARI_RADIANCE! Radiance. NL Exhaust.",
+    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance.",
     "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. NL Exhaust."
   },
   "MariMod:Mari_Higher_Ups": {
@@ -355,7 +355,7 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "Gain 1 Frail. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card. Exhaust.",
+    "DESCRIPTION": "Ephemeral. NL Gain 1 Frail. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card.",
     "UPGRADE_DESCRIPTION": "DEPRECATED. Gain 1 Frail and !M! Radiance. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card."
   },
   "MariMod:Mari_Research": {
@@ -372,15 +372,15 @@
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
-    "DESCRIPTION": "Ethereal. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with a debuff. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with a debuff."
   },
   "MariMod:Mari_Unveiled_Secret": {
     "NAME": "Unveiled Secret",
-    "DESCRIPTION": "Ethereal. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with no Block. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with no Block."
   },
   "MariMod:Mari_Reckless_Spending": {
     "NAME": "Reckless Spending",
-    "DESCRIPTION": "Ethereal. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn."
   },
   "MariMod:Mari_Drama1": {
     "NAME": "Drama 1",

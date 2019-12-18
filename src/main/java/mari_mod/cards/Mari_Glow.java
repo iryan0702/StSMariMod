@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import mari_mod.patches.EphemeralCardPatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import mari_mod.powers.Radiance_Power;
@@ -36,7 +37,7 @@ public class Mari_Glow extends AbstractMariCard {
         this.radiance = this.baseRadiance;
         this.baseDamage = ATTACK_DMG;
         this.damage = this.baseDamage;
-        this.exhaust = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.isMultiDamage = true;
     }
 

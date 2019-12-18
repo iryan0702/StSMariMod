@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,8 +36,7 @@ public class Mari_Kyu extends AbstractMariCard {
         this.radiance = this.baseRadiance;
         this.tags.add(MariCustomTags.QUOTATIONS);
         this.tags.add(MariCustomTags.RADIANCE);
-        this.exhaust = true;
-        this.isEthereal = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
@@ -53,7 +53,8 @@ public class Mari_Kyu extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.isEthereal = false;
+            EphemeralCardPatch.EphemeralField.ephemeral.set(this, false);
+            this.exhaust = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

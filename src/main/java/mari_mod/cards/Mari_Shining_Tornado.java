@@ -18,6 +18,7 @@ import mari_mod.actions.MariShiningTornadoAction;
 import mari_mod.actions.MariStartShiningTornadoAction;
 import mari_mod.effects.MariShiningTornadoEffect;
 import mari_mod.effects.MariShiningTornadoFirstTossEffect;
+import mari_mod.patches.EphemeralCardPatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,7 +51,7 @@ public class Mari_Shining_Tornado extends AbstractMariCard {
         this.baseMagicNumber = BOUNCE_AMOUNT;
         this.magicNumber = this.baseMagicNumber;
 
-        this.exhaust = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
@@ -69,5 +70,11 @@ public class Mari_Shining_Tornado extends AbstractMariCard {
             upgradeName();
             upgradeDamage(DAMAGE_UPGRADE);
         }
+    }
+
+    @Override
+    public float getTitleFontSize()
+    {
+        return 16;
     }
 }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Gold_Gain_Debuff_Power;
 import mari_mod.powers.Gold_Gain_Not_Damaged_Power;
 import org.apache.logging.log4j.LogManager;
@@ -35,8 +36,7 @@ public class Mari_Reckless_Spending extends AbstractMariCard {
         this.magicNumber = this.baseMagicNumber;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
-        this.isEthereal = true;
-        this.exhaust = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
 
         this.tags.add(CardTags.HEALING);
     }

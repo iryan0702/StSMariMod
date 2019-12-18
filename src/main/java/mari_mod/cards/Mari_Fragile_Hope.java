@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import mari_mod.actions.MariFragileHopeAction;
 import mari_mod.actions.MariHugAction;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +37,7 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
         this.radiance = this.baseRadiance;
         this.baseMagicNumber = 0;
         this.magicNumber = this.baseMagicNumber;
-        this.exhaust = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override

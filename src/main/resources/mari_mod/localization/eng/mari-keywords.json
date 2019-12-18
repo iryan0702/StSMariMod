@@ -20,5 +20,16 @@
       "UNUSED_RESERVE"
     ],
     "DESCRIPTION": "You can target #yANY character with this card. Consume #b1 Radiance from the character to trigger an effect."
+  },
+  {
+    "PROPER_NAME": "Ephemeral",
+    "NAMES":[
+      "Ephemeral",
+      "ephemeral",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "If this card enters your discard pile, it is exhausted."
   }
 ]
