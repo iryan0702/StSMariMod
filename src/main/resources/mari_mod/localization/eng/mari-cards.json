@@ -309,8 +309,7 @@
   },
   "MariMod:Mari_Grand_Scheme": {
     "NAME": "Grand Scheme",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold X times. At the start of your next turn, gain !M! Gold and [E] X times. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold X times. At the start of your next turn, gain !M! Gold and [E] X+1 times. NL Exhaust."
+    "DESCRIPTION": "Ephemeral. NL Gain !M! Gold X times. At the start of your next X turns, [#fbccff]spend[] !MARI_GOLD_COST! Gold."
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",

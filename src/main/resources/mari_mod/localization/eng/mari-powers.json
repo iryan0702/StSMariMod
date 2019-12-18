@@ -112,6 +112,13 @@
     "DESCRIPTIONS": ["At the start of your next turn, gain #b",
       " Gold."]
   },
+  "MariMod:Gold_Spend_Start_Of_Turn_Power": {
+    "NAME": "Gold Spend: Turn Start",
+    "DESCRIPTIONS": ["At the start of your next turn, [#fbccff]spend[] #b",
+      "At the start of your #b",
+      " turns, [#fbccff]spend[] #b",
+      " Gold."]
+  },
   "MariMod:Lock_On_Power": {
     "NAME": "\"LOOOOOOCKED ON!\"",
     "DESCRIPTIONS": ["You are locked on to a #b",

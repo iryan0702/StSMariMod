@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import mari_mod.MariMod;
 import mari_mod.powers.Gold_Gain_Start_Of_Turn_Power;
+import mari_mod.powers.Gold_Spend_Start_Of_Turn_Power;
 import mari_mod.powers.Radiance_Power;
 
 public class MariGrandSchemeAction extends AbstractGameAction {
@@ -23,17 +24,16 @@ public class MariGrandSchemeAction extends AbstractGameAction {
     private AbstractPlayer p;
     private int energyOnUse;
     private int goldCost;
-    private int goldReturn;
+    private int goldGain;
     private boolean upgraded;
 
-    public MariGrandSchemeAction(AbstractPlayer source, int goldCost, int goldReturn, int energyOnUse, boolean upgraded, boolean freeToPlayOnce) {
+    public MariGrandSchemeAction(AbstractPlayer source, int goldGain, int goldCost, int energyOnUse, boolean freeToPlayOnce) {
         this.p = source;
         this.duration = Settings.ACTION_DUR_XFAST;
         this.actionType = ActionType.DEBUFF;
         this.energyOnUse = energyOnUse;
         this.goldCost = goldCost;
-        this.goldReturn = goldReturn;
-        this.upgraded = upgraded;
+        this.goldGain = goldGain;
         this.freeToPlayOnce = freeToPlayOnce;
     }
 
@@ -48,17 +48,12 @@ public class MariGrandSchemeAction extends AbstractGameAction {
             this.p.getRelic("Chemical X").flash();
         }
 
-        if (this.upgraded) {
-            ++effect;
-        }
-
         if (effect > 0) {
-            for(int i = 0; i < effect; ++i) {
-                if(!this.upgraded || i != 0) AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
-            }
 
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Gold_Gain_Start_Of_Turn_Power(p, this.goldReturn*effect),this.goldReturn*effect));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(p, effect),effect));
+            for (int i = 0; i < effect; i++) {
+                AbstractDungeon.actionManager.addToBottom(new MariGainGoldAction(goldGain));
+            }
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Gold_Spend_Start_Of_Turn_Power(p, effect, this.goldCost)));
 
             if (!this.freeToPlayOnce) {
                 this.p.energy.use(EnergyPanel.totalCount);
