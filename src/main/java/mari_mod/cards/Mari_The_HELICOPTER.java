@@ -26,7 +26,7 @@ public class Mari_The_HELICOPTER extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
-    private static final int BASE_GOLD_COST = 10;
+    private static final int BASE_GOLD_COST = 15;
     private static final int ATTACK_DMG = 6;
     private static final int ATTACK_TIMES = 6;
     private static final int ATTACK_TIME_UPGRADE = 2;
