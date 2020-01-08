@@ -23,10 +23,10 @@ public class Mari_Unveiled_Secret extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 0;
     private static final int BASE_GOLD_COST = 10;
-    private static final int GOLD_COST_UPGRADE = -5;
-    private static final int BASE_GOLD_GAIN = 25;
+    private static final int GOLD_GAIN_UPGRADE = 5;
+    private static final int BASE_GOLD_GAIN = 20;
     private static final CardType TYPE = CardType.SKILL;
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Unveiled_Secret(){
@@ -52,7 +52,7 @@ public class Mari_Unveiled_Secret extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeGoldCost(GOLD_COST_UPGRADE);
+            upgradeMagicNumber(GOLD_GAIN_UPGRADE);
         }
     }
 }
