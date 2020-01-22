@@ -27,6 +27,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
+import mari_mod.actions.MariRecallAction;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.patches.MariKindleArrowPatch;
 import mari_mod.powers.Radiance_Power;
@@ -57,6 +58,9 @@ public abstract class AbstractMariCard extends CustomCard {
     private boolean targetingEnemy = false;
     private boolean isKindled = false;
     private boolean stillKindled = false;
+
+    public boolean recallPreview = false;
+    public MariRecallAction.RecallType recallType;
 
 
     private static final float FPS_SCALE = (240f / Settings.MAX_FPS);
@@ -124,6 +128,23 @@ public abstract class AbstractMariCard extends CustomCard {
             }
         }
         return canUse;
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        float tmpRadiance = baseRadiance;
+        radiance = MathUtils.floor(tmpRadiance);
+
+        if(recallPreview && recallType != null){
+            AbstractCard target = MariRecallAction.findRecallTarget(recallType);
+            if(target == null){
+                this.cardsToPreview = null;
+            }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid) {
+                this.cardsToPreview = target.makeSameInstanceOf();
+                System.out.println("creating new preview for: " + this.cardsToPreview.name);
+            }
+        }
     }
 
     @Override
