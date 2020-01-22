@@ -288,7 +288,7 @@
   },
   "MariMod:Mari_Wishing_Fountain": {
     "NAME": "Wishing Fountain",
-    "DESCRIPTION": "Gain !M! Gold and [E]. NL Lose any unspent Gold from this card at the start of your next turn. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Gold and [E]. NL Lose any unspent Gold from this card next turn. NL Exhaust."
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
@@ -369,7 +369,7 @@
   },
   "MariMod:Mari_Lie_In_Wait": {
     "NAME": "Lie In Wait",
-    "DESCRIPTION": "At the start of your next turn, deal !M! damage to ALL enemies. NL Kindle: Gain !B! Block."
+    "DESCRIPTION": "Next turn, deal !M! damage to ALL enemies. NL marimod:Kindle: Gain !B! Block."
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
