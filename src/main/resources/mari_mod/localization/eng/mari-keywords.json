@@ -30,6 +30,17 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "If this card enters your discard pile, it is exhausted."
+    "DESCRIPTION": "If this card is in your discard pile, it #yexhausts. Fading cards have a #b5% chance of disappearing from card rewards for each Fading card in your deck."
+  },
+  {
+    "PROPER_NAME": "Recall",
+    "NAMES":[
+      "Recall",
+      "recall",
+      "Recalled",
+      "recalled",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Return the bottom-most card from the exhaust Pile to your hand."
   }
 ]

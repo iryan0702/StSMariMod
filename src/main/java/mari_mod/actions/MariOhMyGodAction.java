@@ -1,11 +1,13 @@
 package mari_mod.actions;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.AutoplayCardAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -28,67 +30,57 @@ public class MariOhMyGodAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariOhMyGodAction.class.getName());
     public String failMessage;
     public AbstractMonster monster;
+    public boolean upgraded;
 
-    public MariOhMyGodAction(int playAmount, AbstractMonster m, String failMessage) {
+    public MariOhMyGodAction(int playAmount, AbstractMonster m, boolean upgraded, String failMessage) {
         this.amount = playAmount;
         this.actionType = ActionType.USE;
         this.failMessage = failMessage;
+        this.upgraded = upgraded;
         this.monster = m;
     }
 
     public void update() {
-        boolean isEnemyAttacking = false;
-        if (this.monster == null || this.monster.getIntentBaseDmg() < 0) {
+        ArrayList<AbstractMonster> monstersToAttack = new ArrayList<>();
 
-        }else{
-            isEnemyAttacking = true;
+        for(AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (m != null && (m.getIntentBaseDmg() > 0 || this.upgraded) && !m.isDead && !m.halfDead) {
+                monstersToAttack.add(m);
+            }
         }
-
-        if(!isEnemyAttacking) {
-            AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0F, this.failMessage, true));
-        }else {
-            MariMod.timesOMGUsedThisTurn++; //Edge case infinite protection
-            if (MariMod.timesOMGUsedThisTurn < 30) {
-                ArrayList<AbstractCard> handCards = (ArrayList<AbstractCard>) AbstractDungeon.player.hand.group.clone();
-                ArrayList<AbstractCard> handCardsWithoutOMG = new ArrayList<>();
-                for (AbstractCard isItOMG : handCards) {
-                    if (!isItOMG.cardID.equals(Mari_Oh_My_God.ID)) handCardsWithoutOMG.add(isItOMG);
-                }
-                ArrayList<AbstractCard> cardsToPlay = new ArrayList<>();
-                while (handCardsWithoutOMG.size() > 0 && this.amount > 0) {
-                    AbstractCard cardToAdd = handCardsWithoutOMG.get(AbstractDungeon.cardRandomRng.random(0, handCardsWithoutOMG.size() - 1));
-                    cardsToPlay.add(cardToAdd);
-                    handCardsWithoutOMG.remove(cardToAdd);
-                    this.amount--;
-                }
-
-                for (AbstractCard cardToPlay : cardsToPlay) {
-                    AbstractCard tmp = cardToPlay.makeStatEquivalentCopy();
-                    AbstractDungeon.player.limbo.addToBottom(tmp);
-                    tmp.current_x = (float) cardToPlay.current_x;
-                    tmp.current_y = (float) cardToPlay.current_y;
-                    tmp.target_x = (float) cardToPlay.current_x;
-                    tmp.target_y = (float) Settings.HEIGHT / 4.0F;
-                    tmp.freeToPlayOnce = true;
-                    tmp.costForTurn = 0;
-
-                    AbstractMonster target = this.monster;
-
-                    if (target != null) {
-                        tmp.calculateCardDamage(target);
-                    }
-
-                    if (AbstractMariCard.class.isAssignableFrom(tmp.getClass())) {
-                        ((AbstractMariCard) tmp).goldCost = 0;
-                    }
-
-                    tmp.purgeOnUse = true;
-                    logger.info("OH MY GOD! ADDING " + tmp.cardID + " TO CARD QUEUE!!!");
-                    AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, target));
-                }
+        ArrayList<AbstractCard> cardsToPlay = new ArrayList<>();
+        CardGroup group = AbstractDungeon.player.masterDeck;
+        for(int i = 0; i < group.size() && cardsToPlay.size() < this.amount; i++){
+            AbstractCard c = group.getNCardFromTop(i);
+            if(c.type == AbstractCard.CardType.ATTACK){
+                cardsToPlay.add(c);
             }
         }
 
+        if(monstersToAttack.size() == 0){
+            AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0F, this.failMessage, true));
+        }else{
+            for (AbstractCard cardToPlay : cardsToPlay) {
+                for(AbstractMonster m: monstersToAttack) {
+                    AbstractCard tmp = cardToPlay.makeStatEquivalentCopy();
+                    AbstractDungeon.player.limbo.addToBottom(tmp);
+                    tmp.current_x = (float) Settings.WIDTH / 2.0F - 300.f * Settings.scale;
+                    tmp.current_y = (float) Settings.HEIGHT / 2.0F;
+                    tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.f * Settings.scale;
+                    tmp.target_y = (float) Settings.HEIGHT / 2.0F;
+                    tmp.freeToPlayOnce = true;
+                    tmp.costForTurn = 0;
+
+                    if (m != null) {
+                        tmp.calculateCardDamage(m);
+                    }
+
+                    tmp.exhaustOnUseOnce = true;
+                    logger.info("OH MY GOD! ADDING " + tmp.cardID + " TO CARD QUEUE!!!");
+                    AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, m));
+                }
+            }
+        }
 
         this.isDone = true;
     }

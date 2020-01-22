@@ -18,20 +18,18 @@ public class MariFragileHopeAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariDolphinStrikeAction.class.getName());
     private AttackEffect attackEffect;
 
-    public MariFragileHopeAction(int radianceGain) {
-        this.actionType = ActionType.POWER;
-        this.amount = radianceGain;
+    public MariFragileHopeAction() {
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     public void update() {
-        int radianceToGain = 0;
+        int recalls = 0;
         for(AbstractPower power :AbstractDungeon.player.powers){
-            if(power.type.equals(AbstractPower.PowerType.DEBUFF)) radianceToGain++;
+            if(power.type.equals(AbstractPower.PowerType.DEBUFF)) recalls++;
         }
         AbstractPlayer p = AbstractDungeon.player;
-        if(radianceToGain > 0) {
-            AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, radianceToGain));
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new Radiance_Power(p, radianceToGain*this.amount), radianceToGain*this.amount));
+        if(recalls > 0) {
+            AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
         }
         this.isDone = true;
     }

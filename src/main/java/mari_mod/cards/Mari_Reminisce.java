@@ -27,7 +27,7 @@ public class Mari_Reminisce extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final int CHOICES = 3;
     private static final int CHOICES_UPGRADE = 1;
     private static final CardType TYPE = CardType.SKILL;
@@ -59,6 +59,8 @@ public class Mari_Reminisce extends AbstractMariCard {
         if(canPullSpend) optionsLeft++;
         if(canPullQuotations) optionsLeft++;
 
+        this.baseMagicNumber--;
+        this.magicNumber = this.baseMagicNumber;
         if(optionsLeft <= 1){
             this.exhaust = true;
         }

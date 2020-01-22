@@ -5,12 +5,15 @@
 
 package mari_mod.actions;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
@@ -25,6 +28,7 @@ import static basemod.BaseMod.MAX_HAND_SIZE;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
 
 public class MariReminisceAction extends AbstractGameAction {
+    UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("MariReminisce");
     private boolean retrieveCard = false;
     private CardType cardType = null;
     private ArrayList<AbstractCard> list = new ArrayList<AbstractCard>();
@@ -58,21 +62,31 @@ public class MariReminisceAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST && this.list.size() >= 1) {
-            MariMod.mariReminisceScreen.open(this.list, null, "Hmm...");
+            MariMod.mariReminisceScreen.open(this.list, null, uiStrings.TEXT[MathUtils.random(0, uiStrings.TEXT.length-1)]);
             tickDuration();
             return;
         }
 
-
-        if (MariMod.mariReminisceScreen.choice.cardID.equals("MariMod:Mari_$Memories_Of_Loss")){
-            sourceCard.canPullExhaust = false;
-        }else if(MariMod.mariReminisceScreen.choice.cardID.equals("MariMod:Mari_$Memories_Of_Uchiura")){
-            sourceCard.canPullRadiance = false;
-        }else if(MariMod.mariReminisceScreen.choice.cardID.equals("MariMod:Mari_$Memories_Of_Luxury")){
-            sourceCard.canPullSpend = false;
-        }else if(MariMod.mariReminisceScreen.choice.cardID.equals("MariMod:Mari_$Memories_Of_Performance")){
-            sourceCard.canPullQuotations = false;
+        if(!retrieveCard) {
+            if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Loss.ID)) {
+                sourceCard.canPullExhaust = false;
+                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.EXHAUST));
+                retrieveCard = true;
+            } else if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Uchiura.ID)) {
+                sourceCard.canPullRadiance = false;
+                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+                retrieveCard = true;
+            } else if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Luxury.ID)) {
+                sourceCard.canPullSpend = false;
+                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.SPEND));
+                retrieveCard = true;
+            } else if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Performance.ID)) {
+                sourceCard.canPullQuotations = false;
+                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.QUOTATIONS));
+                retrieveCard = true;
+            }
         }
+        /*
         if(!p.exhaustPile.isEmpty() && !retrieveCard) {
             ArrayList<AbstractCard> cardList = new ArrayList<>();
             ArrayList<AbstractCard> exhaustList = (ArrayList<AbstractCard>) AbstractDungeon.player.exhaustPile.group.clone();
@@ -114,7 +128,7 @@ public class MariReminisceAction extends AbstractGameAction {
                 p.hand.refreshHandLayout();
                 p.hand.applyPowers();
             }
-        }
+        }*/
         tickDuration();
     }
 }

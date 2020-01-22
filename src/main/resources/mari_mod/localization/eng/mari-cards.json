@@ -52,7 +52,7 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Ethereal. NL Choose from !M! types of cards in your exhaust pile to randomly move one to your hand. You cannot choose that type again."
+    "DESCRIPTION": "Ethereal. NL marimod:Recall 1 of !M! special types of cards. NL Remove the option chosen this combat."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -325,9 +325,10 @@
   },
   "MariMod:Mari_Oh_My_God": {
     "NAME": "\"Oh My God!\"",
-    "DESCRIPTION": "If the enemy intends to attack, play copies of up to !M! random cards in your hand on the enemy for free. NL (Except \"Oh My God!\") NL Exhaust.",
+    "DESCRIPTION": "Play and Exhaust a copy of the last Attack added to your deck on ALL attacking enemies. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Play and Exhaust a copy of the last Attack added to your deck on ALL enemies. NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
-      "Calm down! It's not attacking!"
+      "Calm down! No one's not attacking!"
     ]
   },
   "MariMod:Mari_Old_Costume": {
@@ -355,8 +356,8 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "Ephemeral. NL Gain 1 Frail. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card.",
-    "UPGRADE_DESCRIPTION": "DEPRECATED. Gain 1 Frail and !M! Radiance. NL For each debuff you have, gain !MARI_RADIANCE! Radiance and draw a card."
+    "DESCRIPTION": "marimod:Fading. NL Gain 1 Frail. NL For each debuff you have, marimod:Recall a marimod:Radiance card.",
+    "UPGRADE_DESCRIPTION": "Gain 1 Frail. NL For each debuff you have, marimod:Recall a marimod:Radiance card. NL Exhaust."
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
