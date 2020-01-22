@@ -173,7 +173,7 @@ public class MariUncommonReward extends RewardItem {
             color = Settings.RED_TEXT_COLOR;
         }
 
-        FontHelper.renderSmartText(sb, FontHelper.rewardTipFont, this.text, REWARD_TEXT_X, this.y + 5.0F * Settings.scale, 1000.0F * Settings.scale, 0.0F, color);
+        FontHelper.renderSmartText(sb, FontHelper.cardDescFont_N, this.text, REWARD_TEXT_X, this.y + 5.0F * Settings.scale, 1000.0F * Settings.scale, 0.0F, color);
         if (!this.hb.hovered) {
 
             Iterator var3 = effects.iterator();
