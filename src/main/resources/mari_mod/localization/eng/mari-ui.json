@@ -21,5 +21,43 @@
     "TEXT": [
       "Grant up to 3 cards 1 additional Radiance."
     ]
+  },
+  "MariReminisce": {
+    "TEXT": [
+      "I remember something...",
+      "Vague memories...",
+      "What just happened?",
+      "What did I do?",
+      "Hmm...",
+      "hmm...",
+      "Hmm?"
+    ]
+  },
+  "MariExhaustPileViewOrderButton": {
+    "TEXT": [
+      "View Exhaust Order",
+      "#pMari #pMod NL List the cards in Exhausted order: with the bottom of the Exhaust pile on top."
+    ]
+  },
+  "MariCharSelectDefault": {
+    "TEXT": [
+      "The Shiniest Idol",
+      "The #yShiniest Idol set out to find her elusive #yradiance. NL Harnesses the power of being a rich main character."
+    ]
+  },
+  "MariCharSelectDrama": {
+    "TEXT": [
+      "Grant up to 3 cards 1 additional Radiance."
+    ]
+  },
+  "MariCharSelectEnergy": {
+    "TEXT": [
+      "Grant up to 3 cards 1 additional Radiance."
+    ]
+  },
+  "MariCharSelectCorrupt": {
+    "TEXT": [
+      "Grant up to 3 cards 1 additional Radiance."
+    ]
   }
 }
