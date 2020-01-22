@@ -174,7 +174,7 @@
   },
   "MariMod:Mari_zzz": {
     "NAME": "zzz...?",
-    "DESCRIPTION": "Retain. NL Gain !B! Block. NL If you start your turn with this in hand, gain 1 Vulnerable."
+    "DESCRIPTION": "Whenever you draw this card, gain !B! Block and 1 Vulnerable. NL marimod:Kindle: Gain [E] and lose 2 Vulnerable."
   },
   "MariMod:Mari_Second_Season": {
     "NAME": "Second Season",
@@ -199,7 +199,7 @@
   },
   "MariMod:Mari_Pent_Up_Emotions": {
     "NAME": "Pent-up Emotions",
-    "DESCRIPTION": "Deal !D! damage and lose 1 Frail. NL When you draw this, gain 1 Frail."
+    "DESCRIPTION": "Whenever you draw this card, gain 1 Frail. NL Gain [E] , deal !D! damage, and lose 2 Frail."
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
@@ -346,8 +346,7 @@
   },
   "MariMod:Mari_Withdrawal": {
     "NAME": "Withdrawal",
-    "DESCRIPTION": "You have additional Dexterity and Strength equal to your Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Innate. NL You have additional Dexterity and Strength equal to your Vulnerable."
+    "DESCRIPTION": "Whenever you gain a debuff, gain !M! Block."
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",

@@ -17,26 +17,27 @@ public class Mari_Withdrawal extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
+    private static final int AMOUNT = 5;
+    private static final int UPGRADE_AMOUNT = 2;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Withdrawal(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
+        this.baseMagicNumber = AMOUNT;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Withdrawal_Power(p)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Withdrawal_Power(p, this.magicNumber), this.magicNumber));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
-            this.isInnate = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeMagicNumber(UPGRADE_AMOUNT);
             upgradeName();
         }
     }

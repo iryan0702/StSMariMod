@@ -132,8 +132,8 @@
   },
   "MariMod:Withdrawal_Power": {
     "NAME": "Withdrawal",
-    "DESCRIPTIONS": ["Increases attack damage and #yBlock gained from cards by #b",
-      " (Your Vulnerable)."]
+    "DESCRIPTIONS": ["Whenever you receive a debuff, gain #b",
+      " #yBlock [REMOVE_SPACE]."]
   },
   "MariMod:Research_Power": {
     "NAME": "Research",

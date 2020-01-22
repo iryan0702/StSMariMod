@@ -1,7 +1,9 @@
 package mari_mod.powers;
 
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Withdrawal_Power extends AbstractPower
+public class Withdrawal_Power extends AbstractPower implements OnReceivePowerPower
 {
     public static final String POWER_ID = "MariMod:Withdrawal_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -26,13 +28,14 @@ public class Withdrawal_Power extends AbstractPower
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public Withdrawal_Power(AbstractCreature owner)
+    public Withdrawal_Power(AbstractCreature owner, int amount)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
         this.ID = POWER_ID;
         this.owner = owner;
         this.isTurnBased = false;
+        this.amount = amount;
         this.updateDescription();
         MariMod.setPowerImages(this);
     }
@@ -42,30 +45,19 @@ public class Withdrawal_Power extends AbstractPower
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
+        this.updateDescription();
     }
 
-    public float modifyBlock(float blockAmount) {
+    @Override
+    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         AbstractPlayer p = AbstractDungeon.player;
-        if(p.hasPower(VulnerablePower.POWER_ID)) {
-            return blockAmount + p.getPower(VulnerablePower.POWER_ID).amount;
+        if(power.type == PowerType.DEBUFF && target.isPlayer){
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.amount, true));
         }
-        return blockAmount;
-    }
-
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if(p.hasPower(VulnerablePower.POWER_ID) && type == DamageInfo.DamageType.NORMAL) {
-            return damage + p.getPower(VulnerablePower.POWER_ID).amount;
-        }
-        return damage;
+        return true;
     }
 
     public void updateDescription() {
-        AbstractPlayer p = AbstractDungeon.player;
-        int V = 0;
-        if(p.hasPower(VulnerablePower.POWER_ID)) {
-            V = AbstractDungeon.player.getPower(VulnerablePower.POWER_ID).amount;
-        }
-        this.description = DESCRIPTION[0] + V + DESCRIPTION[1];
+        this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
     }
 }
