@@ -159,7 +159,7 @@
   },
   "MariMod:Mari_Lets_Go": {
     "NAME": "\"Let's Go!\"",
-    "DESCRIPTION": "Draw !M! cards. NL Costs 2 more for each skill played this turn. NL Costs 1 less for each attack played this turn."
+    "DESCRIPTION": "Draw !M! cards. NL Gain [E] for each 3 cost card drawn."
   },
   "MariMod:Mari_Defiance": {
     "NAME": "Defiance",

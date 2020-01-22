@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mari_mod.MariMod;
+import mari_mod.actions.MariDrawnCardsTrackerAction;
+import mari_mod.actions.MariLetsGoAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +27,7 @@ public class Mari_Lets_Go extends AbstractMariCard {
     private static final int COST = 1;
     private static final int DRAW = 3;
     private static final int UPGRADE_DRAW = 1;
+    private static final int ENERGY_GAIN = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -38,28 +41,15 @@ public class Mari_Lets_Go extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new MariDrawnCardsTrackerAction(true,false));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new MariLetsGoAction(ENERGY_GAIN));
+        AbstractDungeon.actionManager.addToBottom(new MariDrawnCardsTrackerAction(false,true));
     }
 
     @Override
     public void atTurnStart() {
         super.atTurnStart();
-    }
-
-    @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
-        if(c != this) {
-            if (c.type == CardType.SKILL) {
-                //skillsThisTurn++;
-                this.costForTurn += 2;
-            }
-            if (c.type == CardType.ATTACK) {
-                //attacksThisTurn++;
-                this.costForTurn = Math.max(0, this.costForTurn - 1);
-
-            }
-        }
     }
 
     @Override

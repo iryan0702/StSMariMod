@@ -8,7 +8,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Whenever an #renemy gains Radiance, it takes damage equal to its total Radiance. If #pyou have Radiance, you deal #b10% more attack damage per stack. At the end of a character's turn, it loses #b1 Radiance."
+    "DESCRIPTION": "Whenever an enemy gains Radiance, it takes damage equal to its total Radiance. If you have Radiance, you deal #b10% more attack damage per stack. Whenever a character gains Radiance, it loses #b1 Radiance at the end of its turn."
   },
   {
     "PROPER_NAME": "Kindle",
