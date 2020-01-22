@@ -18,16 +18,16 @@
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "Ephemeral. NL Deal !D! damage. Apply !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "marimod:Fading. NL Deal !D! damage. Apply !MARI_RADIANCE! marimod:Radiance."
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
-    "DESCRIPTION": "Double ANY NL character's Radiance. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Double ALL NL characters' Radiance. NL Exhaust."
+    "DESCRIPTION": "Double ANY NL character's marimod:Radiance. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Double ALL NL characters' marimod:Radiance. NL Exhaust."
   },
   "MariMod:Mari_Defend": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block. NL Kindle: Gain !B! more."
+    "DESCRIPTION": "Gain !B! Block. NL marimod:Kindle: Gain !B! more."
   },
   "MariMod:Mari_Its_Joke": {
     "NAME": "\"It's Joke!\"",
@@ -35,7 +35,7 @@
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL deal !D! damage and apply !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance."
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
@@ -56,7 +56,7 @@
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
-    "DESCRIPTION": "Rearrange your draw pile by cost. NL (Expensive on top) NL Kindle: The top card costs 0 until played."
+    "DESCRIPTION": "Rearrange your draw pile by energy cost. NL (Expensive on top) NL marimod:Kindle: The top card costs 0 until played."
   },
   "MariMod:Mari_Devilish_Assistant": {
     "NAME": "Devilish Assistant",
@@ -68,15 +68,15 @@
   },
   "MariMod:Mari_Shining_Tornado": {
     "NAME": "\"Mari's Shining Tornado!\"",
-    "DESCRIPTION": "Ephemeral. NL Deal !D! damage and apply !MARI_RADIANCE! Radiance to a random enemy !M! times."
+    "DESCRIPTION": "marimod:Fading. NL Deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance to a random enemy !M! times."
   },
   "MariMod:Mari_Tough_Front": {
     "NAME": "Tough Front",
-    "DESCRIPTION": "Gain !B! Block. NL Gain [E] [E]. NL Gain 1 Frail. NL Kindle: Lose 2 Frail."
+    "DESCRIPTION": "Gain !B! Block. NL Gain [E] [E]. NL Gain 1 Frail. NL marimod:Kindle: Lose 2 Frail."
   },
   "MariMod:Mari_Reckless_Driving": {
     "NAME": "Reckless Driving",
-    "DESCRIPTION": "Deal !D! damage. NL Gain 1 Vulnerable."
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Repressed to the bottom of your exhaust pile."
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
@@ -94,12 +94,12 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !MARI_RADIANCE! Radiance and !B! Block."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !MARI_RADIANCE! marimod:Radiance and !B! Block. NL Exhaust."
   },
   "MariMod:Mari_The_Beach_Episode": {
     "NAME": "The Beach Episode",
-    "DESCRIPTION": "Remove all Block and Frail from ANY character. NL Gain !MARI_RADIANCE! Radiance for every 5 Block or 1 Frail removed.",
-    "UPGRADE_DESCRIPTION": "Remove all Block and Frail from ALL characters. NL Gain !MARI_RADIANCE! Radiance for every 5 Block or 1 Frail removed."
+    "DESCRIPTION": "Remove all Block and Frail from ANY character. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed.",
+    "UPGRADE_DESCRIPTION": "Remove all Block and Frail from ALL characters. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed."
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
@@ -128,31 +128,32 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to reduce ALL debuff stacks by !M!."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain [E] for each unique debuff you have. NL marimod:Kindle: gain [E]. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain [E] for each unique debuff you have. NL marimod:Kindle: gain [E] [E]. NL Exhaust."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",
-    "DESCRIPTION": "Gain !B! Block and keep your Block at the start of your next turn. NL Kindle: Retain your hand this turn."
+    "DESCRIPTION": "Gain !B! Block and keep your Block at the start of your next turn. NL marimod:Kindle: Retain your hand this turn."
   },
   "MariMod:Mari_$Memories_Of_Loss": {
     "NAME": "Memories of Loss",
-    "DESCRIPTION": "Return a card with Exhaust from your Exhaust pile to your hand."
+    "DESCRIPTION": "marimod:Recall a card that Exhausts."
   },
   "MariMod:Mari_$Memories_Of_Luxury": {
     "NAME": "Memories of Luxury",
-    "DESCRIPTION": "Return a card that [#fbccff]Spends[] Gold from your Exhaust pile to your hand."
+    "DESCRIPTION": "marimod:Recall a card that [#fbccff]Spends[] Gold."
   },
   "MariMod:Mari_$Memories_Of_Uchiura": {
     "NAME": "Memories Of Uchiura",
-    "DESCRIPTION": "Return a card that applies Radiance from your Exhaust pile to your hand."
+    "DESCRIPTION": "marimod:Recall a card that applies marimod:Radiance."
   },
   "MariMod:Mari_$Memories_Of_Performance": {
     "NAME": "Memories Of Performance",
-    "DESCRIPTION": "Return a card with quotation marks in its name from your Exhaust pile to your hand."
+    "DESCRIPTION": "marimod:Recall a card that has quotation marks in its name."
   },
   "MariMod:Mari_Shut_Up": {
     "NAME": "\"Shut uuuuuup!\"",
-    "DESCRIPTION": "Gain !M! Strength NL this turn. NL Enemy loses !M! strength this turn. NL Exhaust.",
+    "DESCRIPTION": "Gain !M! Strength NL this turn. NL Enemy loses !M! Strength this turn. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "GAIN !M! STRENGTH THIS TURN!!! NL ENEMY LOSES !M! STRENGTH THIS TURN!!! NL Exhaust (!!!!!)",
     "EXTENDED_DESCRIPTION": [
       "\"SHUT UUUUUUP!\""
@@ -171,7 +172,7 @@
   },
   "MariMod:Mari_Undying_Spark": {
     "NAME": "Undying Spark",
-    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance. After you gain Frail NL or Vulnerable, returns from the Exhaust Pile to your Hand."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. After you gain Frail NL or Vulnerable, returns from the Exhaust Pile to your Hand."
   },
   "MariMod:Mari_zzz": {
     "NAME": "zzz...?",
@@ -187,8 +188,8 @@
   },
   "MariMod:Mari_The_Light_We_Chase": {
     "NAME": "The Light We Chase",
-    "DESCRIPTION": "Whenever an enemy gains Radiance, you gain !MARI_RADIANCE! Radiance.",
-    "UPGRADE_DESCRIPTION": "Gain [E]. NL Whenever an enemy gains Radiance, you gain !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "Whenever an enemy gains marimod:Radiance, you gain !MARI_RADIANCE! marimod:Radiance.",
+    "UPGRADE_DESCRIPTION": "Gain [E]. NL Whenever an enemy gains marimod:Radiance, you gain !MARI_RADIANCE! marimod:Radiance."
   },
   "MariMod:Mari_The_GOLDEN_STATUE": {
     "NAME": "The GOLDEN STATUE",
@@ -216,22 +217,21 @@
   },
   "MariMod:Mari_Practice_Outfit": {
     "NAME": "Practice Outfit",
-    "DESCRIPTION": "Ephemeral. NL Until the end of your next turn, you take no damage and you deal no attack damage.",
-    "UPGRADE_DESCRIPTION": "Until the end of your next turn, you take no damage and you deal no attack damage. Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL ALL characters become immune to HP loss. This effect stops after preventing !M! HP loss."
   },
   "MariMod:Mari_Limelight": {
     "NAME": "Limelight",
-    "DESCRIPTION": "At the end of your turn, apply !MARI_RADIANCE! Radiance to ALL characters."
+    "DESCRIPTION": "At the end of your turn, apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
   },
   "MariMod:Mari_From_Zero": {
     "NAME": "From Zero...",
-    "DESCRIPTION": "Whenever you spend 0 [E] on a card, exhaust the card, draw a card, and apply !MARI_RADIANCE! Radiance to a random enemy.",
-    "UPGRADE_DESCRIPTION": "Whenever you spend 0 [E] on a card, exhaust the card, draw a card, and apply !MARI_RADIANCE! Radiance to a random enemy."
+    "DESCRIPTION": "Whenever you spend 0 [E] on a card, exhaust the card, draw a card, and apply !MARI_RADIANCE! marimod:Radiance to a random enemy.",
+    "UPGRADE_DESCRIPTION": "Whenever you spend 0 [E] on a card, exhaust the card, draw a card, and apply !MARI_RADIANCE! marimod:Radiance to a random enemy."
   },
   "MariMod:Mari_Fire_Strike": {
     "NAME": "Fire Strike",
-    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance to an enemy X times.",
-    "UPGRADE_DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance to an enemy X+1 times."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to an enemy X times.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to an enemy X+1 times."
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",
@@ -240,8 +240,7 @@
   },
   "MariMod:Mari_All_Or_Nothing": {
     "NAME": "\"All or Nothing!\"",
-    "DESCRIPTION": "Set the cost of ALL your cards to 0 or 3, randomly. NL Kindle: Only change non-0-cost cards. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Set the cost of ALL your cards to 0 or 3, randomly. NL Kindle: Only change non-0-cost cards. NL Downgrade this card this combat."
+    "DESCRIPTION": "Set the cost of ALL your cards to 0 or 3, randomly. NL marimod:Kindle: Does not affect 0-cost cards. NL Exhaust."
   },
   "MariMod:Mari_Perfect_Performance": {
     "NAME": "Perfect Performance",
@@ -266,7 +265,7 @@
   },
   "MariMod:Mari_Dolphin_Strike": {
     "NAME": "Dolphin Strike",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Kindle: Deal damage an extra time."
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL marimod:Kindle: Deal damage an extra time."
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
@@ -274,12 +273,12 @@
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",
-    "DESCRIPTION": "Repeat !M! times: NL Kindle: Gain 1 Strength and [E]."
+    "DESCRIPTION": "Repeat !M! times: NL marimod:Kindle: Gain 1 Strength and [E]."
   },
   "MariMod:Mari_Kyu": {
     "NAME": "\"Kyu!\"",
-    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance.",
-    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! Radiance. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance.",
+    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. NL Exhaust."
   },
   "MariMod:Mari_Higher_Ups": {
     "NAME": "Higher-Ups",
@@ -310,7 +309,7 @@
   },
   "MariMod:Mari_Grand_Scheme": {
     "NAME": "Grand Scheme",
-    "DESCRIPTION": "Ephemeral. NL Gain !M! Gold X times. At the start of your next X turns, [#fbccff]spend[] !MARI_GOLD_COST! Gold."
+    "DESCRIPTION": "marimod:Fading. Ethereal. NL Gain !M! Gold X times. At the start of your next X turns, [#fbccff]spend[] !MARI_GOLD_COST! Gold."
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
@@ -351,8 +350,8 @@
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its Radiance to ALL other characters. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its Radiance to ALL other characters."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its marimod:Radiance to ALL other characters. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its marimod:Radiance to ALL other characters."
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
@@ -361,7 +360,7 @@
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
-    "DESCRIPTION": "Whenever you successfully Kindle an enemy, it loses !M! Strength this turn."
+    "DESCRIPTION": "Whenever you successfully marimod:Kindle an enemy, it loses !M! Strength this turn."
   },
   "MariMod:Mari_Excitement": {
     "NAME": "Excitement",
@@ -373,15 +372,15 @@
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
-    "DESCRIPTION": "Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with a debuff."
+    "DESCRIPTION": "marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with a debuff."
   },
   "MariMod:Mari_Unveiled_Secret": {
     "NAME": "Unveiled Secret",
-    "DESCRIPTION": "Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with no Block."
+    "DESCRIPTION": "marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with no Block."
   },
   "MariMod:Mari_Reckless_Spending": {
     "NAME": "Reckless Spending",
-    "DESCRIPTION": "Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn."
+    "DESCRIPTION": "marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn."
   },
   "MariMod:Mari_Drama1": {
     "NAME": "Drama 1",
@@ -396,21 +395,33 @@
     "NAME": "Repressed Strike",
     "DESCRIPTION": "Gain [E] and deal !D! damage, then deal !D! damage for each card in your hand that cannot be played."
   },
+  "MariMod:Mari_Repressed": {
+    "NAME": "Repressed",
+    "DESCRIPTION": "marimod:Fading. NL Recalled by any card. NL If Recalled, choose to gain 1 Frail or Vulnerable. NL Purge."
+  },
+  "MariMod:Mari_$Choose_Pain": {
+    "NAME": "Pain",
+    "DESCRIPTION": "Gain 1 Vulnerable."
+  },
+  "MariMod:Mari_$Choose_Grief": {
+    "NAME": "Grief",
+    "DESCRIPTION": "Gain 1 Frail."
+  },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
-    "DESCRIPTION": "Swap any character's Radiance with this card's. Has !M! Radiance."
+    "DESCRIPTION": "Swap any character's marimod:Radiance with this card's. Has !M! marimod:Radiance."
   },
   "MariMod:Mari_Glimmer???": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "Apply and remove !M! Radiance from an enemy twice. NL Exhaust."
+    "DESCRIPTION": "Apply and remove !M! marimod:Radiance from an enemy twice. NL Exhaust."
   },
   "MariMod:Mari_Shine???": {
     "NAME": "Shine",
-    "DESCRIPTION": "Apply !M! Radiance. NL Exhaust."
+    "DESCRIPTION": "Apply !M! marimod:Radiance. NL Exhaust."
   },
   "MariMod:Mari_Sparkle???": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "Draw 2(3) cards. NL Apply Radiance to ALL characters equal to the highest cost of the cards drawn. NL Exhaust."
+    "DESCRIPTION": "Draw 2(3) cards. NL Apply marimod:Radiance to ALL characters equal to the highest cost of the cards drawn. NL Exhaust."
   },
   "MariMod:Mari_Indulgence": {
     "NAME": "Indulgence",
@@ -447,11 +458,11 @@
   },
   "MariMod:Mari_Gleam_And_Glean": {
     "NAME": "Gleam and Glean",
-    "DESCRIPTION": "Whenever you apply Radiance to an enemy, gain !M! Gold."
+    "DESCRIPTION": "Whenever you apply marimod:Radiance to an enemy, gain !M! Gold."
   },
   "MariMod:Mari_$Second_Light": {
     "NAME": "Second Light",
-    "DESCRIPTION": "Apply !M! Radiance. NL Exhaust."
+    "DESCRIPTION": "Apply !M! marimod:Radiance. NL Exhaust."
   },
   "MariMod:Mari_Test_Card": {
     "NAME": "Test Card",
