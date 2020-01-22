@@ -22,19 +22,23 @@ public class Mari_Strike extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final int COST = 1;
-    private static final int ATTACK_DMG = 4;
+    private static final int ATTACK_DMG = 5;
     private static final int UPGRADE_ATTACK_DMG = 3;
     public static final int RADIANCE_AMOUNT = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
+    private boolean firstPlay;
 
     public Mari_Strike(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
 
         this.baseDamage = ATTACK_DMG;
         this.damage = this.baseDamage;
+
+        firstPlay = true;
 
         this.baseRadiance = RADIANCE_AMOUNT;
         this.radiance = this.baseRadiance;
@@ -47,7 +51,13 @@ public class Mari_Strike extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
+        if(firstPlay) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
+            firstPlay = false;
+            this.tags.remove(MariCustomTags.RADIANCE);
+            this.rawDescription = EXTENDED_DESCRIPTION[0];
+            this.initializeDescription();
+        }
     }
 
     @Override

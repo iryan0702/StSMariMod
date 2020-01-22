@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mari_mod.actions.ModifyRadianceAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
@@ -23,12 +24,12 @@ public class Mari_Shine extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int RADIANCE = 4;
+    private static final int COST = 0;
+    private static final int RADIANCE = 3;
     private static final int UPGRADE_RADIANCE = 1;
+    private static final int RADIANCE_DECAY = 1;
     private static final CardType TYPE = CardType.SKILL;
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
 
     public Mari_Shine(){
@@ -36,6 +37,8 @@ public class Mari_Shine extends AbstractMariCard {
         this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = RADIANCE;
         this.radiance = this.baseRadiance;
+        this.baseMagicNumber = RADIANCE_DECAY;
+        this.magicNumber = baseMagicNumber;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.isAnyTarget = true;
     }
@@ -49,6 +52,7 @@ public class Mari_Shine extends AbstractMariCard {
             target = p;
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new Radiance_Power(target, this.radiance), this.radiance));
+        AbstractDungeon.actionManager.addToBottom(new ModifyRadianceAction(this.uuid, -RADIANCE_DECAY));
     }
 
     @Override

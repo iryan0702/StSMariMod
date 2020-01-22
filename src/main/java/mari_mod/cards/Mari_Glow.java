@@ -3,6 +3,7 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,10 +22,10 @@ public class Mari_Glow extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int ATTACK_DMG = 3;
-    private static final int RADIANCE = 3;
+    private static final int COST = 3;
+    private static final int ENERGY_GAIN = 2;
+    private static final int ATTACK_DMG = 5;
+    private static final int RADIANCE = 4;
     private static final int UPGRADE_RADIANCE = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -50,7 +51,9 @@ public class Mari_Glow extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GAIN));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,this.multiDamage,this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+        //AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GAIN));
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new Radiance_Power(mo, this.radiance), this.radiance));
         }

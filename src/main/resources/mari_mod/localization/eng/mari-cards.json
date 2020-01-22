@@ -1,20 +1,20 @@
 {
   "MariMod:Mari_Strike": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "Deal !D! damage. NL The first time this is played each combat, apply !MARI_RADIANCE! marimod:Radiance.",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage."]
   },
   "MariMod:Mari_Glow": {
     "NAME": "Glow",
-    "DESCRIPTION": "Ephemeral. NL Deal !D! damage and apply !MARI_RADIANCE! Radiance to ALL enemies."
+    "DESCRIPTION": "marimod:Fading. NL Gain [E] [E]. NL Deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance to ALL enemies."
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance.",
-    "UPGRADE_DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance. NL Apply !MARI_RADIANCE! Radiance. NL Gain !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance !M! times. NL Retains if you have a debuff."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
-    "DESCRIPTION": "Ephemeral. NL Apply !MARI_RADIANCE! Radiance to ANY character."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. Decrease this card's marimod:Radiance by !M! this combat."
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",

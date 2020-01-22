@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.actions.MariReducePowerIfHavePowerAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
@@ -21,11 +22,12 @@ public class Mari_Glimmer extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int RADIANCE = 2;
+    private static final int COST = 2;
+    private static final int RADIANCE = 1;
+    private static final int AMOUNT = 3;
+    private static final int UPGRADE_AMOUNT = 1;
     private static final CardType TYPE = CardType.SKILL;
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
     public Mari_Glimmer(){
@@ -33,17 +35,28 @@ public class Mari_Glimmer extends AbstractMariCard {
         this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = RADIANCE;
         this.radiance = this.baseRadiance;
+        this.baseMagicNumber = AMOUNT;
+        this.magicNumber = this.baseMagicNumber;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
-        if(this.upgraded){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
+        for(int i = 0; i < this.magicNumber; i++){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
         }
+    }
+
+    @Override
+    public void triggerOnEndOfTurnForPlayingCard() {
+        boolean hasDebuff = false;
+        for(AbstractPower p: AbstractDungeon.player.powers){
+            if(p.type == AbstractPower.PowerType.DEBUFF){
+                hasDebuff = true;
+                break;
+            }
+        }
+        this.retain = hasDebuff;
     }
 
     @Override
@@ -55,8 +68,7 @@ public class Mari_Glimmer extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeMagicNumber(UPGRADE_AMOUNT);
         }
     }
 }
