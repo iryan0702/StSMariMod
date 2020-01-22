@@ -164,7 +164,7 @@
   },
   "MariMod:Mari_Defiance": {
     "NAME": "Defiance",
-    "DESCRIPTION": "Gain !B! Block. NL If you have Frail, lose 1 Frail and gain !B! Block.",
+    "DESCRIPTION": "Gain !B! Block. NL Lose 1 Frail to gain !B! Block.",
     "EXTENDED_DESCRIPTION": [
       "(!M! Block total)"
     ]
@@ -322,7 +322,7 @@
   },
   "MariMod:Mari_Hug": {
     "NAME": "Hug",
-    "DESCRIPTION": "If you have Frail, lose 1 Frail, draw a card, and Apply !M! Weak and Vulnerable."
+    "DESCRIPTION": "Lose 1 Frail to draw a card and Apply !M! Weak and Vulnerable."
   },
   "MariMod:Mari_Oh_My_God": {
     "NAME": "\"Oh My God!\"",

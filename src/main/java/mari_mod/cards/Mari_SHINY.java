@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,11 +10,16 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.scenes.TheBottomScene;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
+import com.megacrit.cardcrawl.vfx.scene.InteractableTorchEffect;
 import mari_mod.actions.MariShinyAction;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.UncheckedIOException;
+import java.util.ArrayList;
 
 public class Mari_SHINY extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_SHINY.class.getName());
@@ -48,6 +54,12 @@ public class Mari_SHINY extends AbstractMariCard {
         AbstractDungeon.effectList.add(new BorderFlashEffect(new Color(1.0f, 1.0f, 0.6f, 1.0f), true));
         AbstractDungeon.effectList.add(new BorderFlashEffect(new Color(1.0f, 1.0f, 0.6f, 1.0f), true));
         AbstractDungeon.effectList.add(new BorderFlashEffect(new Color(1.0f, 1.0f, 0.6f, 1.0f), true));
+        if(AbstractDungeon.scene instanceof TheBottomScene){
+            ArrayList<InteractableTorchEffect> torches = (ArrayList<InteractableTorchEffect>)ReflectionHacks.getPrivate(AbstractDungeon.scene,TheBottomScene.class, "torches");
+            for(InteractableTorchEffect torch: torches){
+                ReflectionHacks.setPrivate(torch, InteractableTorchEffect.class, "activated", true);
+            }
+        }
     }
 
     @Override
