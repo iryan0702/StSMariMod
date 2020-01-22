@@ -36,6 +36,7 @@ public class Mari_Grand_Scheme extends AbstractMariCard {
         this.baseMagicNumber = GOLD_GAIN;
         this.magicNumber = this.baseMagicNumber;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.isEthereal = true;
     }
 
     @Override

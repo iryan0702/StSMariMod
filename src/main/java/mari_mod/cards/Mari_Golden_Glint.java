@@ -24,7 +24,7 @@ public class Mari_Golden_Glint extends AbstractMariCard {
     private static final int BASE_GOLD_COST = 5;
     private static final int BASE_RADIANCE_GAIN = 2;
     private static final int UPGRADE_RADIANCE_GAIN = 1;
-    private static final int BASE_BLOCK = 4;
+    private static final int BASE_BLOCK = 6;
     private static final int UPGRADE_BLOCK_GAIN = 2;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -33,12 +33,14 @@ public class Mari_Golden_Glint extends AbstractMariCard {
     public Mari_Golden_Glint(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.SPEND);
+        this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = BASE_RADIANCE_GAIN;
         this.radiance = this.baseRadiance;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
         this.baseBlock = BASE_BLOCK;
         this.block = this.baseBlock;
+        this.exhaust = true;
     }
 
     @Override

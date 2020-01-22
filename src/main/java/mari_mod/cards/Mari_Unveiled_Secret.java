@@ -26,7 +26,7 @@ public class Mari_Unveiled_Secret extends AbstractMariCard {
     private static final int GOLD_GAIN_UPGRADE = 5;
     private static final int BASE_GOLD_GAIN = 20;
     private static final CardType TYPE = CardType.SKILL;
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Unveiled_Secret(){

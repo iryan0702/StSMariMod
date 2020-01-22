@@ -58,7 +58,7 @@ public class Mari_Heavy_Price extends AbstractMariCard {
             if(costCheckCost>0 && costCheckCard!=this) {
                 damage += costCheckCost;
             }else if(costCheckCard.cost == -1){
-                damage += EnergyPanel.getCurrentEnergy();
+                damage += Math.max(0,EnergyPanel.getCurrentEnergy()-this.costForTurn);
             }
 
             if(costCheckCard instanceof Mari_Stewshine){

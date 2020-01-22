@@ -28,7 +28,7 @@ public class Mari_Repressed_Strike extends AbstractMariCard {
     private static final int ATTACK_DMG = 8;
     private static final int UPGRADE_ATTACK_DMG = 2;
     private static final CardType TYPE = CardType.ATTACK;
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
     public Mari_Repressed_Strike(){
