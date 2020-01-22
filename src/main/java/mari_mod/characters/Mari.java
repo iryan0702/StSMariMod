@@ -156,8 +156,6 @@ public class Mari extends CustomPlayer {
         retVal.add(Mari_Strike.ID);
         retVal.add(Mari_Strike.ID);
         retVal.add(Mari_Strike.ID);
-        retVal.add(Mari_Strike.ID);
-        retVal.add(Mari_Defend.ID);
         retVal.add(Mari_Defend.ID);
         retVal.add(Mari_Defend.ID);
         retVal.add(Mari_Defend.ID);

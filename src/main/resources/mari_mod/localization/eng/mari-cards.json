@@ -314,7 +314,7 @@
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
-    "DESCRIPTION": "Shuffle your hand into the draw pile. Add a copy of each shuffled card to your hand. NL Kindle: Upgrade your hand first. NL Exhaust."
+    "DESCRIPTION": "Shuffle a copy of your hand into your draw pile. NL marimod:Kindle: Upgrade your hand first. NL Exhaust."
   },
   "MariMod:Mari_Lock_On": {
     "NAME": "\"Lock on!\"",
