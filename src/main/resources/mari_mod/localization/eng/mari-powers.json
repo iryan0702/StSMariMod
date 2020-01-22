@@ -69,9 +69,8 @@
   },
   "MariMod:Practice_Outfit_Buff_Power": {
     "NAME": "\"Ehehe...\"",
-    "DESCRIPTIONS": ["You take no damage until the end of this turn.",
-      "You take no damage for #b",
-      " turns."]
+    "DESCRIPTIONS": ["Reduce ALL HP loss to 0. Lose this power after it prevents #b",
+      " HP loss. This power is shared among ALL characters."]
   },
   "MariMod:Practice_Outfit_Debuff_Power": {
     "NAME": "\"...We're just practicing!\"",
