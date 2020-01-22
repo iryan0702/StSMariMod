@@ -17,6 +17,9 @@ import org.apache.logging.log4j.Logger;
 
 public class Practice_Outfit_Debuff_Power extends AbstractPower
 {
+    /*
+    DEPRECATED
+     */
     public static final String POWER_ID = "MariMod:Practice_Outfit_Debuff_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static PowerType POWER_TYPE = PowerType.DEBUFF;

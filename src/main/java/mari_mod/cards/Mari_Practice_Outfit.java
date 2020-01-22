@@ -22,6 +22,8 @@ public class Mari_Practice_Outfit extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 3;
+    private static final int PREVENTION = 50;
+    private static final int UPGRADE_PREVENTION = 10;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -29,36 +31,23 @@ public class Mari_Practice_Outfit extends AbstractMariCard {
     public Mari_Practice_Outfit(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.baseMagicNumber = PREVENTION;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if(!p.hasPower(Practice_Outfit_Debuff_Power.POWER_ID)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Practice_Outfit_Debuff_Power(p, 2), 2));
-        }else{
-            int currentAmount = p.getPower(Practice_Outfit_Debuff_Power.POWER_ID).amount;
-            if(currentAmount < 2) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Practice_Outfit_Debuff_Power(p, 2-currentAmount), 2-currentAmount));
-            }
-        }
 
-        if(!p.hasPower(Practice_Outfit_Buff_Power.POWER_ID)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Practice_Outfit_Buff_Power(p, 2), 2));
-        }else{
-            int currentAmount = p.getPower(Practice_Outfit_Buff_Power.POWER_ID).amount;
-            if(currentAmount < 2) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Practice_Outfit_Buff_Power(p, 2-currentAmount), 2-currentAmount));
-            }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Practice_Outfit_Buff_Power(p, this.magicNumber), this.magicNumber));
+        for(AbstractMonster monsty :AbstractDungeon.getCurrRoom().monsters.monsters){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monsty, p, new Practice_Outfit_Buff_Power(monsty, this.magicNumber), this.magicNumber));
         }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            EphemeralCardPatch.EphemeralField.ephemeral.set(this, false);
-            this.exhaust = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeMagicNumber(UPGRADE_PREVENTION);
         }
     }
 }

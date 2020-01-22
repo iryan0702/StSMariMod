@@ -3,6 +3,7 @@ package mari_mod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -26,11 +27,7 @@ public class MariTeaTimeAction extends AbstractGameAction {
         AbstractPlayer p = AbstractDungeon.player;
         for(AbstractPower powerToCheck : p.powers){
             if(powerToCheck.type == AbstractPower.PowerType.DEBUFF && (powerToCheck.canGoNegative || powerToCheck.amount >= 0)){
-                if(powerToCheck.amount > 0){
-                    AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,powerToCheck,this.amount));
-                }else if(powerToCheck.amount < 0){
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,powerToCheck,this.amount));
-                }
+                AbstractDungeon.actionManager.addToTop(new GainEnergyAction(this.amount));
             }
         }
         this.isDone = true;
