@@ -55,7 +55,7 @@ public class MariJarOfLightAction extends AbstractGameAction {
 
             while(var3.hasNext()) {
                 AbstractMariCard c = (AbstractMariCard)var3.next();
-                c.radiance++;
+                c.baseRadiance++;
                 c.stopGlowing();
                 AbstractDungeon.effectList.add(new MariShowCardBrieflyEffect(c));
             }

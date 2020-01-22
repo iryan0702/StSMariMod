@@ -25,7 +25,7 @@ public class KindleGlowEffectPatch {
     public static void Postfix(CardGlowBorder obj, AbstractCard card) {
 
             if (AbstractMariCard.currentlyKindledCard != null && AbstractMariCard.currentlyKindledCard.equals(card) && card.hasTag(MariCustomTags.KINDLE))
-                ReflectionHacks.setPrivate(obj, AbstractGameEffect.class, "color", new Color(Color.GOLD));
+                ReflectionHacks.setPrivate(obj, AbstractGameEffect.class, "color", Color.GOLD.cpy());
 
             }
         }

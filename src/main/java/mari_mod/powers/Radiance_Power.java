@@ -100,9 +100,9 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         updateDescription();
         this.amount2 = this.amount - radianceDecayThisTurn;
 
-        //if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
-        //    this.amount2 = -1;
-        //}
+        if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
+            this.amount2 = -1;
+        }
     }
 
     @Override
@@ -119,19 +119,19 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             this.flash();
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
-            //this.amount2 = -1;
+            this.amount2 = -1;
         }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         //this.reducePower((AbstractDungeon.player.hasRelic(MariDiploma.ID) ? 2 : 1));
-        //if(!AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID) || owner.isPlayer) {
+        if(!AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID) || owner.isPlayer) {
             this.reducePower(radianceDecayThisTurn);
             radianceDecayThisTurn = 0;
             this.amount2 = -1;
             updateDescription();
-        //}
+        }
     }
 
     public void onInitialApplication() {
