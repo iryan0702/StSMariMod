@@ -1,6 +1,7 @@
 package mari_mod.cards;
 
 import basemod.helpers.BaseModCardTags;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,10 +20,8 @@ public class Mari_Flawless_Form extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int ENERGY_GAIN = 2;
+    private static final int ENERGY_GAIN = 1;
     private static final int COST = 3;
-    private static final int CHARGES = 2;
-    private static final int UPGRADE_CHARGES = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -30,7 +29,7 @@ public class Mari_Flawless_Form extends AbstractMariCard {
     public Mari_Flawless_Form(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(BaseModCardTags.FORM);
-        this.baseMagicNumber = CHARGES;
+        this.baseMagicNumber = ENERGY_GAIN;
         this.magicNumber = this.baseMagicNumber;
     }
 
@@ -41,9 +40,9 @@ public class Mari_Flawless_Form extends AbstractMariCard {
 
     public void upgrade() {
         if (!this.upgraded) {
-            this.upgradeMagicNumber(UPGRADE_CHARGES);
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
+            AlwaysRetainField.alwaysRetain.set(this, true);
             upgradeName();
         }
     }

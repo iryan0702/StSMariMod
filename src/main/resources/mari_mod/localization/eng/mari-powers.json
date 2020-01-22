@@ -100,8 +100,8 @@
   "MariMod:Flawless_Form_Power": {
     "NAME": "Flawless Form",
     "DESCRIPTIONS": [
-      "#b",
-      " times a turn, whenever you spend more energy on a card than the previous on the same turn, refund the energy spent.",
+      "Whenever you spend more energy on a card than the previous on the same turn, gain #b",
+      " energy.",
       " (You haven't played a card this turn)",
       " (The last card you played costs #b",
       " [REMOVE_SPACE].)"

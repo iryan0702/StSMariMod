@@ -31,7 +31,7 @@
   },
   "MariMod:Mari_Its_Joke": {
     "NAME": "\"It's Joke!\"",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy survives, heal it for at most !M! HP for unblocked damage dealt."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy loses NL !M! or more HP, NL heal it for !M! HP."
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
@@ -111,7 +111,7 @@
   },
   "MariMod:Mari_The_Planisphere": {
     "NAME": "The Planisphere",
-    "DESCRIPTION": "Ephemeral. NL Choose 1 of 3 random cards to add to your hand. Deal damage and apply Radiance equal to its cost."
+    "DESCRIPTION": "marimod:Fading. NL Choose 1 of 3 cards to add to your hand. marimod:Kindle: Gain [E] equal to its cost."
   },
   "MariMod:Mari_Overexertion": {
     "NAME": "Overexertion",
@@ -178,7 +178,7 @@
   },
   "MariMod:Mari_Second_Season": {
     "NAME": "Second Season",
-    "DESCRIPTION": "Return all cards that apply Radiance from your exhaust pile to your draw pile, they cost 0 until played. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL Return all cards that apply marimod:Radiance from your exhaust pile to your draw pile, they cost 0 until played."
   },
   "MariMod:Mari_Pretty_Bomber_Head": {
     "NAME": "\"Pretty Bomber Head!\"",
@@ -269,7 +269,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block and NL draw a card."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block and !MARI_RADIANCE! marimod:Radiance. NL marimod:Kindle: marimod:Recall a marimod:Radiance card."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",
@@ -291,8 +291,8 @@
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
-    "DESCRIPTION": "Two times each turn, when you spend more energy on a card than the previous on the same turn, [#fff6e2]refund[] the energy spent.",
-    "UPGRADE_DESCRIPTION": "Three times each turn, when you spend more energy on a card than the previous on the same turn, [#fff6e2]refund[] the energy spent."
+    "DESCRIPTION": "Whenever you spend more energy on a card than the previous on the same turn, gain [E].",
+    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend more energy on a card than the previous on the same turn, gain [E]."
   },
   "MariMod:Mari_Heavy_Metal": {
     "NAME": "Heavy Metal",

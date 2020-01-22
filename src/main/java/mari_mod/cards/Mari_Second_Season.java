@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.IncreaseCostAction;
 import mari_mod.actions.MariReminisceAction;
 import mari_mod.actions.MariSecondSeasonAction;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,12 +26,12 @@ public class Mari_Second_Season extends AbstractMariCard {
     private static final int COST = 1;
     private static final int COST_UPGRADE = 0;
     private static final CardType TYPE = CardType.SKILL;
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Second_Season(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.exhaust = true;
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override

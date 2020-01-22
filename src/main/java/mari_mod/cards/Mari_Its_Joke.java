@@ -29,7 +29,7 @@ public class Mari_Its_Joke extends AbstractMariCard {
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final int COST = 0;
     private static final int ATTACK_DMG = 10;
-    private static final int UPGRADE_ATTACK_DMG = 3;
+    private static final int UPGRADE_ATTACK_DMG = 2;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -47,7 +47,7 @@ public class Mari_Its_Joke extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-        AbstractDungeon.actionManager.addToBottom(new MariItsJokeAction(m, m.currentHealth, this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new MariItsJokeAction(m, m.currentHealth, this.magicNumber, this.magicNumber));
     }
 
     @Override
