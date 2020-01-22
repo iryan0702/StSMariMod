@@ -25,17 +25,26 @@ import java.util.ArrayList;
 public class MariSuccessfulKindleAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariSuccessfulKindleAction.class.getName());
     public AbstractCreature target;
-    public AbstractGameAction action;
+    public ArrayList<AbstractGameAction> actions;
+
+    public MariSuccessfulKindleAction(AbstractCreature target, ArrayList<AbstractGameAction> actions) {
+        this.actionType = ActionType.SPECIAL;
+        this.target = target;
+        this.actions = actions;
+    }
 
     public MariSuccessfulKindleAction(AbstractCreature target, AbstractGameAction action) {
         this.actionType = ActionType.SPECIAL;
         this.target = target;
-        this.action = action;
+        this.actions = new ArrayList<>();
+        actions.add(action);
     }
 
     public void update() {
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            AbstractDungeon.actionManager.addToTop(this.action);
+            for(AbstractGameAction a: actions) {
+                AbstractDungeon.actionManager.addToTop(a);
+            }
 
             ///
 
