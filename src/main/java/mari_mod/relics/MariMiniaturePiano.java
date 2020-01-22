@@ -15,7 +15,6 @@ public class MariMiniaturePiano extends AbstractMariRelic
 {
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     public static final String ID = "MariMod:MariMiniaturePiano";
-    public boolean active = false;
     public MariMiniaturePiano()
     {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
@@ -26,34 +25,17 @@ public class MariMiniaturePiano extends AbstractMariRelic
         return this.DESCRIPTIONS[0];
     }
 
-    @Override
-    public void atBattleStart() {
-        this.counter = 0;
-    }
-
-    @Override
-    public void atTurnStart() {
-        super.atTurnStart();
-        this.beginLongPulse();
-        active = true;
-    }
-
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        ++this.counter;
-        if (this.counter % 3 == 0) {
-            this.counter = 0;
-            if(active) {
-                this.flash();
-                AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
-                active = false;
-            }
-            stopPulse();
-        }
-    }
 
-    public void onVictory() {
-        this.counter = -1;
+        int cost = card.costForTurn;
+        if(card.cost == -1) cost = card.energyOnUse;
+        if(card.freeToPlayOnce) cost = 0;
+
+        if(cost >= 3) {
+            this.flash();
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
+        }
+        stopPulse();
     }
 
     public AbstractRelic makeCopy()

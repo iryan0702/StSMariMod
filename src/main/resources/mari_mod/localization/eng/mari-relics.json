@@ -51,7 +51,7 @@
     "NAME": "Miniature Piano",
     "FLAVOR": "Thank you, Riko-chan.",
     "DESCRIPTIONS": [
-      "Everytime you play #b3 cards, draw a card. (Triggers once per turn)"
+      "Whenever you play a card that costs #b3 or more, draw a card."
     ]
   },
   "MariMod:MariFlowerRing": {

@@ -285,8 +285,13 @@ public class MariMod implements
     public static int lastGoldAmountSpent = 0;
 
     public static void spendGold(int goldCost){ //TODO: Work on checking if goldCost > 0 if necessary
-        lastGoldAmountSpent = goldCost;
         AbstractPlayer p = AbstractDungeon.player;
+        lastGoldAmountSpent = Math.min(p.gold, goldCost);
+
+        if(goldCost > 0){
+            timesMariSpentGoldThisCombat++;
+        }
+        goldSpentByMariThisCombat += lastGoldAmountSpent;
 
         p.loseGold(goldCost);
         if(p.hasPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID)){
