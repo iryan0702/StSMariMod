@@ -48,9 +48,9 @@
   },
   "MariMod:Excitement_Power": {
     "NAME": "Excitement",
-    "DESCRIPTIONS": ["Whenever you apply #yRadiance, draw a card that applies #yRadiance.",
-      "Whenever you apply #yRadiance, draw #b",
-      " cards that applies #yRadiance."]
+    "DESCRIPTIONS": ["After drawing #b5 cards in a turn, whenever you draw a card, gain #b1 #yRadiance.",
+      "After drawing #b5 cards in a turn, whenever you draw a card, gain #b1 #yRadiance #b",
+      " times."]
   },
   "MariMod:The_Light_We_Chase_Power": {
     "NAME": "The Light We Chase",

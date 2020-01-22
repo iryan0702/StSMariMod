@@ -2,7 +2,10 @@ package mari_mod.powers;
 
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,17 +27,18 @@ public class Excitement_Power extends AbstractPower
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public float damageBoost;
+    public static final int REQUIRED_DRAW = 3;
+    public int radianceGain;
     public Excitement_Power(AbstractCreature owner, int bufferAmt)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = bufferAmt;
+        this.amount = 0;
+        this.radianceGain = bufferAmt;
         this.isTurnBased = false;
         this.updateDescription();
-        this.damageBoost = 0.00F;
         this.priority = 6;
         MariMod.setPowerImages(this);
     }
@@ -43,12 +47,23 @@ public class Excitement_Power extends AbstractPower
     {
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
-        this.amount += stackAmount;
+        this.radianceGain += stackAmount;
     }
 
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if(power.ID.equals(Radiance_Power.POWER_ID)){
-            AbstractDungeon.actionManager.addToBottom(new DrawPileToHandByTagAction(this.amount, MariCustomTags.RADIANCE));
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        this.amount = 0;
+    }
+
+    @Override
+    public void onCardDraw(AbstractCard card) {
+        AbstractPlayer p = AbstractDungeon.player;
+        super.onCardDraw(card);
+        this.amount++;
+        if(this.amount > REQUIRED_DRAW){
+            for (int i = 0; i < this.radianceGain; i++) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, 1), 1));
+            }
         }
     }
 
@@ -62,10 +77,10 @@ public class Excitement_Power extends AbstractPower
     public void updateDescription() {
         //this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1] + (int) (damageBoost*100F+0.1F) + DESCRIPTION[2];
 
-        if(this.amount == 1) {
+        if(this.radianceGain == 1) {
             this.description = DESCRIPTION[0];
         }else{
-            this.description = DESCRIPTION[1] + this.amount + DESCRIPTION[2];
+            this.description = DESCRIPTION[1] + this.radianceGain + DESCRIPTION[2];
         }
     }
 }

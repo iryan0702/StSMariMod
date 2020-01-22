@@ -89,7 +89,8 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. NL Ephemeral. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to apply !MARI_RADIANCE! Radiance and gain !MARI_RADIANCE! Radiance."
+    "DESCRIPTION": "Innate. marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain !MARI_RADIANCE! marimod:Radiance and apply !MARI_RADIANCE! marimod:Radiance to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "Innate. marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain !MARI_RADIANCE! marimod:Radiance, then apply marimod:Radiance equal to your total marimod:Radiance to ALL enemies."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
@@ -364,7 +365,7 @@
   },
   "MariMod:Mari_Excitement": {
     "NAME": "Excitement",
-    "DESCRIPTION": "Whenever you apply Radiance, draw a card that applies Radiance."
+    "DESCRIPTION": "After drawing 3 cards in a turn, whenever you draw a card, gain !M! marimod:Radiance."
   },
   "MariMod:Mari_Lie_In_Wait": {
     "NAME": "Lie In Wait",
