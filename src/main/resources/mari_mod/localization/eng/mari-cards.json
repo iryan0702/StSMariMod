@@ -89,8 +89,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain !MARI_RADIANCE! marimod:Radiance and apply !MARI_RADIANCE! marimod:Radiance to ALL enemies.",
-    "UPGRADE_DESCRIPTION": "Innate. marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain !MARI_RADIANCE! marimod:Radiance, then apply marimod:Radiance equal to your total marimod:Radiance to ALL enemies."
+    "DESCRIPTION": "Innate. marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to apply !MARI_RADIANCE! marimod:Radiance to ALL characters. NL Decrease this card's Radiance by 1 this combat."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",

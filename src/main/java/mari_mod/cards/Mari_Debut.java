@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
 import mari_mod.actions.MariDebutAction;
 import mari_mod.actions.MariSpendGoldAction;
+import mari_mod.actions.ModifyRadianceAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
@@ -27,10 +28,11 @@ public class Mari_Debut extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 0;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     private static final int BASE_GOLD_COST = 5;
-    private static final int BASE_RADIANCE = 2;
-    private static final int UPGRADE_RADIANCE = 1;
+    private static final int BASE_RADIANCE = 3;
+    private static final int RADIANCE_DECAY = -1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ALL;
@@ -51,7 +53,8 @@ public class Mari_Debut extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
-        AbstractDungeon.actionManager.addToBottom(new MariDebutAction(this.radiance, this.upgraded));
+        AbstractDungeon.actionManager.addToBottom(new MariDebutAction(this.radiance, false));
+        addToBot(new ModifyRadianceAction(this.uuid, RADIANCE_DECAY));
     }
 
     @Override
@@ -62,7 +65,8 @@ public class Mari_Debut extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            //this.rawDescription = UPGRADE_DESCRIPTION;
+            this.upgradeBaseCost(UPGRADE_COST);
             this.initializeDescription();
             upgradeName();
         }
