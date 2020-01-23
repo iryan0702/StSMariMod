@@ -216,7 +216,7 @@
   },
   "MariMod:Mari_Practice_Outfit": {
     "NAME": "Practice Outfit",
-    "DESCRIPTION": "marimod:Fading. NL ALL characters become immune to HP loss. This effect stops after preventing !M! HP loss."
+    "DESCRIPTION": "marimod:Fading. NL Give ANY character !B! Block. NL Whenever its Block is broken, it gains 1 marimod:Radiance and 5 Block."
   },
   "MariMod:Mari_Limelight": {
     "NAME": "Limelight",

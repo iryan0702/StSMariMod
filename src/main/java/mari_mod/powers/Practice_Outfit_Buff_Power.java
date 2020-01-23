@@ -1,6 +1,9 @@
 package mari_mod.powers;
 
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnMyBlockBrokenPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,13 +15,14 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
+import mari_mod.actions.MariDelayedActionAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnLoseBlockPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnLoseTempHpPower;
 
-public class Practice_Outfit_Buff_Power extends AbstractPower
+public class Practice_Outfit_Buff_Power extends AbstractPower implements OnMyBlockBrokenPower
 
 {
     public static final String POWER_ID = "MariMod:Practice_Outfit_Buff_Power";
@@ -27,6 +31,8 @@ public class Practice_Outfit_Buff_Power extends AbstractPower
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
+    public static final int BLOCK_GAIN = 5;
+    public static final int RADIANCE_GAIN = 1;
     public Practice_Outfit_Buff_Power(AbstractCreature owner, int bufferAmt)
     {
         this.name = NAME;
@@ -40,6 +46,19 @@ public class Practice_Outfit_Buff_Power extends AbstractPower
         MariMod.setPowerImages(this);
     }
 
+    @Override
+    public void onMyBlockBroken() {
+        this.flash();
+        for(int i = 0; i < this.amount; i++){
+            if(this.owner.isPlayer){
+                addToTop(new GainBlockAction(this.owner, BLOCK_GAIN));
+            }else {
+                addToTop(new MariDelayedActionAction(new GainBlockAction(this.owner, BLOCK_GAIN)));
+            }
+        }
+        for(int i = 0; i < this.amount; i++) addToTop(new ApplyPowerAction(this.owner, this.owner, new Radiance_Power(this.owner, RADIANCE_GAIN), RADIANCE_GAIN));
+    }
+
     public void stackPower(int stackAmount)
     {
         logger.info("this stacks: " + stackAmount);
@@ -47,47 +66,7 @@ public class Practice_Outfit_Buff_Power extends AbstractPower
         this.amount += stackAmount;
     }
 
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if(this.amount < 1) {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-        }
-    }
-
-    @Override
-    public int onLoseHp(int damageAmount) {
-
-        reducePower(damageAmount);
-        for(AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters){
-            Practice_Outfit_Buff_Power p = (Practice_Outfit_Buff_Power)m.getPower(this.ID);
-            if(p != null){
-                p.reducePower(damageAmount);
-            }
-        }
-        return 0;
-    }
-
-    @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if(!this.owner.isPlayer) {
-            Practice_Outfit_Buff_Power power;
-            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                power = (Practice_Outfit_Buff_Power) m.getPower(this.ID);
-                if (power != null) {
-                    power.reducePower(damageAmount);
-                }
-            }
-            power = (Practice_Outfit_Buff_Power) AbstractDungeon.player.getPower(this.ID);
-            if (power != null) {
-                power.reducePower(damageAmount);
-            }
-            return 0;
-        }
-        return damageAmount;
-    }
-
     public void updateDescription() {
-        this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
+        this.description = DESCRIPTION[0] + RADIANCE_GAIN + DESCRIPTION[1] + BLOCK_GAIN + DESCRIPTION[2] + this.amount + DESCRIPTION[3];
     }
 }
