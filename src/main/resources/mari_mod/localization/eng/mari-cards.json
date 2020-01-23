@@ -397,7 +397,7 @@
   },
   "MariMod:Mari_Repressed": {
     "NAME": "Repressed",
-    "DESCRIPTION": "marimod:Fading. NL Recalled by any card. NL If Recalled, choose to gain 1 Frail or Vulnerable. NL Purge."
+    "DESCRIPTION": "marimod:Fading. marimod:Glaring. NL If marimod:Recalled, choose to gain 1 Frail or Vulnerable."
   },
   "MariMod:Mari_$Choose_Pain": {
     "NAME": "Pain",

@@ -18,12 +18,12 @@ public class Mari_$Choose_Pain extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = -2;
-    private static final CardType TYPE = CardType.SKILL;
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardType TYPE = CardType.STATUS;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_$Choose_Pain(){
-        super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
+        super(ID, NAME, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
     }
 
     @Override

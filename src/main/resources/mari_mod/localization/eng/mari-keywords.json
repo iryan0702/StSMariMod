@@ -42,5 +42,16 @@
       "UNUSED_RESERVE"
     ],
     "DESCRIPTION": "Return the bottom-most card from the exhaust Pile to your hand."
+  },
+  {
+    "PROPER_NAME": "Glaring",
+    "NAMES":[
+      "Glaring",
+      "glaring",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "This card matches the condition of ALL #yRecall effects."
   }
 ]
