@@ -25,6 +25,7 @@ import javassist.CtBehavior;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import mari_mod.MariMod;
+import mari_mod.actions.EphemeralDelayedExhaustSpecificCardAction;
 import mari_mod.actions.MariEphemeralWaitAction;
 import mari_mod.actions.MariWaitAction;
 import mari_mod.cards.AbstractMariCard;
@@ -60,9 +61,11 @@ public class EphemeralCardPatch {
     @SpirePatch(clz = GameActionManager.class, method = "getNextAction")
     public static class EphemeralAfterActionCheckPatch {
 
+        public static boolean ephemeralJustTriggered = false;
+
         @SpirePostfixPatch
         public static void Postfix(GameActionManager manager) {
-            if(manager.currentAction != null && !(manager.currentAction instanceof MariEphemeralWaitAction)) {
+            //if(manager.currentAction != null && !(manager.currentAction instanceof MariEphemeralWaitAction)) {
                 AbstractCard nextEphemeralCardToExhaust = null;
                 for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
                     if (EphemeralField.ephemeral.get(c)) {
@@ -72,13 +75,16 @@ public class EphemeralCardPatch {
                 }
                 if (nextEphemeralCardToExhaust != null) {
                     EphemeralField.ephemeralAnimation.set(nextEphemeralCardToExhaust, true);
-                    AbstractGameAction exhaustAction = new ExhaustSpecificCardAction(nextEphemeralCardToExhaust, AbstractDungeon.player.discardPile, true);
-                    ReflectionHacks.setPrivate(exhaustAction, ExhaustSpecificCardAction.class, "startingDuration", 0.01f);
-                    ReflectionHacks.setPrivate(exhaustAction, AbstractGameAction.class, "duration", 0.01f);
+                    AbstractGameAction exhaustAction = new EphemeralDelayedExhaustSpecificCardAction(nextEphemeralCardToExhaust, AbstractDungeon.player.discardPile, ephemeralJustTriggered);
+                    //ReflectionHacks.setPrivate(exhaustAction, ExhaustSpecificCardAction.class, "startingDuration", 0.01f);
+                    //ReflectionHacks.setPrivate(exhaustAction, AbstractGameAction.class, "duration", 0.01f);
                     AbstractDungeon.actionManager.addToTop(exhaustAction);
-                    AbstractDungeon.actionManager.addToTop(new MariEphemeralWaitAction(0.25f));
+                    //AbstractDungeon.actionManager.addToTop(new MariEphemeralWaitAction(0.25f));
+                    ephemeralJustTriggered = true;
+                }else{
+                    ephemeralJustTriggered = false;
                 }
-            }
+            //}
         }
     }
 
