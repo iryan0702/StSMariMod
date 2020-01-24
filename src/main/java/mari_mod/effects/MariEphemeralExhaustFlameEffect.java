@@ -39,7 +39,7 @@ public class MariEphemeralExhaustFlameEffect extends AbstractGameEffect {
         this.x = p.current_x + (132.0F * Settings.scale) + (ImageMaster.DISCARD_BTN_BASE.getWidth() * Settings.scale * 0.5f) - (10.0f * Settings.scale); //taken from DECK_X and Y from DiscardPilePanel
         this.y = p.current_y + (22.0F * Settings.scale) + (ImageMaster.DISCARD_BTN_BASE.getHeight() * Settings.scale * 0.5f) - (20.0f * Settings.scale);
         this.vX = MathUtils.random(-250.0f,250.0f) * Settings.scale;
-        this.vY = MathUtils.random(0.0f,100.0f) * Settings.scale;
+        this.vY = MathUtils.random(0.0f,110.0f - Math.abs(vX/15f)) * Settings.scale;
         this.timeUntilImgChange = MathUtils.random(0.1f,0.25f);
     }
 
