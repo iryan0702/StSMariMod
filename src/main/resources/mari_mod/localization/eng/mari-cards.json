@@ -396,7 +396,7 @@
   },
   "MariMod:Mari_Repressed": {
     "NAME": "Repressed",
-    "DESCRIPTION": "marimod:Fading. marimod:Glaring. NL If marimod:Recalled, choose to gain 1 Frail or Vulnerable."
+    "DESCRIPTION": "marimod:Glaring. NL If marimod:Recalled, gain 1 Frail or Vulnerable. NL Purge if discarded."
   },
   "MariMod:Mari_$Choose_Pain": {
     "NAME": "Pain",

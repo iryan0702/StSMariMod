@@ -16,8 +16,14 @@ import com.megacrit.cardcrawl.vfx.ExhaustEmberEffect;
 
 public class MariEphemeralExhaustEffect extends AbstractGameEffect {
     private static final float DUR = 0.25F;
+    private boolean darkFlame = false;
 
     public MariEphemeralExhaustEffect() {
+        this(false);
+    }
+
+    public MariEphemeralExhaustEffect(boolean darkFlame) {
+        this.darkFlame = darkFlame;
         this.duration = DUR;
     }
 
@@ -29,7 +35,7 @@ public class MariEphemeralExhaustEffect extends AbstractGameEffect {
 
             int i;
             for(i = 0; i < 90; ++i) {
-                AbstractDungeon.effectsQueue.add(new MariEphemeralExhaustFlameEffect());
+                AbstractDungeon.effectsQueue.add(new MariEphemeralExhaustFlameEffect(this.darkFlame));
             }
             this.isDone = true;
         }

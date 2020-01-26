@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import mari_mod.actions.MariDebutAction;
+import mari_mod.actions.MariPurgeSpecificCardAction;
 import mari_mod.actions.MariSpendGoldAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
@@ -34,11 +35,15 @@ public class Mari_Repressed extends AbstractMariCard implements OnRecallCard{
 
     public Mari_Repressed(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+    }
+
+    @Override
+    public void onMoveToDiscard() {
+        addToTop(new MariPurgeSpecificCardAction(this,AbstractDungeon.player.discardPile,true));
     }
 
     @Override

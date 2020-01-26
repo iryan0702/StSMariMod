@@ -32,8 +32,17 @@ public class MariEphemeralExhaustFlameEffect extends AbstractGameEffect {
 
 
     public MariEphemeralExhaustFlameEffect() {
+        this(false);
+    }
+
+    public MariEphemeralExhaustFlameEffect(boolean darkFlame){
         this.duration = EFFECT_DUR/MathUtils.random(1.0f,2.0f);
-        this.color = new Color(MathUtils.random(0.8f,1.0f),MathUtils.random(0.4f,0.8f),MathUtils.random(0.0f,0.2f),MathUtils.random(0.8f,1.0f));
+        if(darkFlame){
+            float brightness = MathUtils.random(0.30f, 0.40f);
+            this.color = new Color(brightness + MathUtils.random(-0.20f, 0.10f), MathUtils.random(0.0f, 0.1f), brightness + MathUtils.random(-0.20f, 0.10f), MathUtils.random(0.8f, 1.0f));
+        }else {
+            this.color = new Color(MathUtils.random(0.8f, 1.0f), MathUtils.random(0.4f, 0.8f), MathUtils.random(0.0f, 0.2f), MathUtils.random(0.8f, 1.0f));
+        }
         this.scale = MathUtils.random(1.0f,2.0f) * Settings.scale;
         DiscardPilePanel p = AbstractDungeon.overlayMenu.discardPilePanel;
         this.x = p.current_x + (132.0F * Settings.scale) + (ImageMaster.DISCARD_BTN_BASE.getWidth() * Settings.scale * 0.5f) - (10.0f * Settings.scale); //taken from DECK_X and Y from DiscardPilePanel
@@ -41,6 +50,7 @@ public class MariEphemeralExhaustFlameEffect extends AbstractGameEffect {
         this.vX = MathUtils.random(-250.0f,250.0f) * Settings.scale;
         this.vY = MathUtils.random(0.0f,110.0f - Math.abs(vX/15f)) * Settings.scale;
         this.timeUntilImgChange = MathUtils.random(0.1f,0.25f);
+
     }
 
     private TextureAtlas.AtlasRegion getImg() {
