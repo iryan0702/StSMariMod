@@ -31,7 +31,6 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
 
     public Mari_Fragile_Hope(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.exhaust = true;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.recallPreview = true;
         this.recallType = MariRecallAction.RecallType.RADIANCE;
@@ -40,7 +39,8 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, 1, false), 1));
-        AbstractDungeon.actionManager.addToBottom(new MariFragileHopeAction());
+        addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+        //AbstractDungeon.actionManager.addToBottom(new MariFragileHopeAction());
         //if(this.upgraded) {
         //    AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         //}
@@ -54,7 +54,7 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            EphemeralCardPatch.EphemeralField.ephemeral.set(this, false);
+            this.selfRetain = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
             upgradeName();

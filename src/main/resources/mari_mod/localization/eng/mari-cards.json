@@ -354,8 +354,8 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "marimod:Fading. NL Gain 1 Frail. NL For each debuff you have, marimod:Recall a marimod:Radiance card.",
-    "UPGRADE_DESCRIPTION": "Gain 1 Frail. NL For each debuff you have, marimod:Recall a marimod:Radiance card. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL Gain 1 Frail. NL marimod:Recall a marimod:Radiance card.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Gain 1 Frail. NL marimod:Recall a marimod:Radiance card."
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
