@@ -268,7 +268,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block and !MARI_RADIANCE! marimod:Radiance. NL marimod:Kindle: marimod:Recall a marimod:Radiance card."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block. NL marimod:Kindle: Purge a card in your exhaust pile and marimod:Recall a marimod:Radiance card."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",

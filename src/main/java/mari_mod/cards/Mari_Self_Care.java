@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -11,13 +12,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
-import mari_mod.actions.MariRecallAction;
-import mari_mod.actions.MariSpendGoldAction;
-import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.actions.MariTheMANSIONAction;
+import mari_mod.actions.*;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 public class Mari_Self_Care extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Self_Care.class.getName());
@@ -58,12 +59,14 @@ public class Mari_Self_Care extends AbstractMariCard {
         }
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
-
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction(MariRecallAction.RecallType.RADIANCE)));
+
+        ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
+        kindleActions.add(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+        kindleActions.add(new MariPurgeCardsFromExhaustAction(1));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, kindleActions));
 
     }
 
