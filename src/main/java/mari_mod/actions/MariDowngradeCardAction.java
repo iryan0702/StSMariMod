@@ -15,6 +15,7 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@Deprecated
 public class MariDowngradeCardAction extends AbstractGameAction { //ONLY EQUIPPED FOR ALL OR NOTHING
     private DamageInfo info;
     public static final Logger logger = LogManager.getLogger(MariDowngradeCardAction.class.getName());
