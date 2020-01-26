@@ -10,7 +10,7 @@
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance !M! times. NL Retains if you have a debuff."
+    "DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance !M! times. NL If marimod:Recalled, costs 0 for a turn."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",

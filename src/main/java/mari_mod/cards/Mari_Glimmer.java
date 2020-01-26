@@ -15,7 +15,7 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Glimmer extends AbstractMariCard {
+public class Mari_Glimmer extends AbstractMariCard implements OnRecallCard{
     public static final Logger logger = LogManager.getLogger(Mari_Glimmer.class.getName());
     public static final String ID = "MariMod:Mari_Glimmer";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -24,7 +24,7 @@ public class Mari_Glimmer extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
     private static final int RADIANCE = 1;
-    private static final int AMOUNT = 3;
+    private static final int AMOUNT = 2;
     private static final int UPGRADE_AMOUNT = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -37,6 +37,8 @@ public class Mari_Glimmer extends AbstractMariCard {
         this.radiance = this.baseRadiance;
         this.baseMagicNumber = AMOUNT;
         this.magicNumber = this.baseMagicNumber;
+
+        this.selfRetain = true;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
@@ -48,15 +50,8 @@ public class Mari_Glimmer extends AbstractMariCard {
     }
 
     @Override
-    public void triggerOnEndOfTurnForPlayingCard() {
-        boolean hasDebuff = false;
-        for(AbstractPower p: AbstractDungeon.player.powers){
-            if(p.type == AbstractPower.PowerType.DEBUFF){
-                hasDebuff = true;
-                break;
-            }
-        }
-        this.retain = hasDebuff;
+    public void onRecall() {
+        this.costForTurn = 0;
     }
 
     @Override
