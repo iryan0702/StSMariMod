@@ -72,7 +72,7 @@
   },
   "MariMod:Mari_Tough_Front": {
     "NAME": "Tough Front",
-    "DESCRIPTION": "Gain !B! Block. NL Gain [E] [E]. NL Gain 1 Frail. NL marimod:Kindle: Lose 2 Frail."
+    "DESCRIPTION": "Gain [E] [E]. NL Gain !B! Block. NL Add a *Repressed on top of your exhaust pile."
   },
   "MariMod:Mari_Reckless_Driving": {
     "NAME": "Reckless Driving",

@@ -21,7 +21,7 @@ public class Mari_Tough_Front extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
-    private static final int BLOCK = 12;
+    private static final int BLOCK = 11;
     private static final int UPGRADE_BLOCK = 3;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -31,31 +31,18 @@ public class Mari_Tough_Front extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseBlock = BLOCK;
         this.block =  this.baseBlock;
-        this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+        //this.isAnyTarget = true;
+        //this.tags.add(MariCustomTags.KINDLE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
-        if(m != null) {
-            target = m;
-        }else{
-            target = p;
-        }
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
-
-
-
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, 1, false), 1));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariReducePowerIfHavePowerAction(p,p,FrailPower.POWER_ID,2)));
-
-
-
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
+        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), 1, true, false));
+
+
+
     }
 
     @Override
