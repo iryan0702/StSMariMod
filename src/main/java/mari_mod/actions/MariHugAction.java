@@ -32,7 +32,7 @@ public class MariHugAction extends AbstractGameAction {
         }
 
         if(yourFrail >= 0){
-            AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, 1));
+            //AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, 1));
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.target, p, new VulnerablePower(this.target, this.amount, false), this.amount));
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.target, p, new WeakPower(this.target, this.amount, false), this.amount));
             AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p, p, FrailPower.POWER_ID, yourFrail));

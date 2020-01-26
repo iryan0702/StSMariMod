@@ -320,7 +320,7 @@
   },
   "MariMod:Mari_Hug": {
     "NAME": "Hug",
-    "DESCRIPTION": "Lose 1 Frail to draw a card and Apply !M! Weak and Vulnerable."
+    "DESCRIPTION": "Draw a card. NL Lose 1 Frail to Apply !M! Weak and Vulnerable."
   },
   "MariMod:Mari_Oh_My_God": {
     "NAME": "\"Oh My God!\"",
