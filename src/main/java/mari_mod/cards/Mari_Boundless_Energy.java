@@ -3,6 +3,7 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -25,8 +26,8 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 2;
-    private static final int INITIAL_ENERGY_GAIN = 4;
-    private static final int BASE_GOLD_COST = 5;
+    private static final int INITIAL_ENERGY_GAIN = 2;
+    private static final int BASE_GOLD_COST = 10;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -48,6 +49,7 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
 
     }

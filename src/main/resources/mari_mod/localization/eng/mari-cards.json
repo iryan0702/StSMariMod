@@ -208,7 +208,7 @@
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !M! [E]. NL Can be upgraded any number of times. NL Exhaust."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !M! [E] and draw !M! cards. NL Can be upgraded any number of times. NL Exhaust."
   },
   "MariMod:Mari_Supervision": {
     "NAME": "Supervision",
