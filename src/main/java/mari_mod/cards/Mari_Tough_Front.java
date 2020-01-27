@@ -39,7 +39,7 @@ public class Mari_Tough_Front extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
-        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), 1, true, false));
+        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), 1, false, true));
 
 
 
