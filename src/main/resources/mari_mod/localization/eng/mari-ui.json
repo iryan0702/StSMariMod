@@ -39,6 +39,12 @@
       "#pMari #pMod NL List the cards in Exhausted order: with the bottom of the Exhaust pile on top."
     ]
   },
+  "MariPurgeCardsFromExhaustAction": {
+    "TEXT": [
+      "Choose a card in your exhaust pile to purge.",
+      "Choose cards in your exhaust pile to purge."
+    ]
+  },
   "MariCharSelectDefault": {
     "TEXT": [
       "The Shiniest Idol",

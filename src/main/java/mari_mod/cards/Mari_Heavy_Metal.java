@@ -18,6 +18,7 @@ import mari_mod.actions.MariHeavyMetalAction;
 import mari_mod.actions.MariHeavyPriceAction;
 import mari_mod.actions.MariSFXActionVolume;
 import mari_mod.actions.MariWaitAction;
+import mari_mod.characters.IconBubble;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,6 +51,7 @@ public class Mari_Heavy_Metal extends AbstractMariCard {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new ShockWaveEffect(p.hb.cX, p.hb.cY, Color.PURPLE, ShockWaveEffect.ShockWaveType.CHAOTIC), 1.5F));
         }
         AbstractDungeon.actionManager.addToBottom(new MariHeavyMetalAction(m, this.baseDamage)); //POWERS APPLY IN ACTION
+        IconBubble.playAnimationWithCheck(IconBubble.animation.MUSIC);
     }
 
     @Override

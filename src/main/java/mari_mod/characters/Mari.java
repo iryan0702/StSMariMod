@@ -111,6 +111,10 @@ public class Mari extends CustomPlayer {
         return FontHelper.energyNumFontRed;
     }
 
+    public String getPortraitImageName() {
+        return "";
+    }
+
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playV("MariMod:MariCharacterSelect", 1.5F);
