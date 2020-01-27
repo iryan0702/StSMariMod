@@ -2,13 +2,11 @@ package mari_mod.actions;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mari_mod.cards.MariCustomTags;
-import mari_mod.cards.Mari_Repressed;
 import mari_mod.cards.OnRecallCard;
 import mari_mod.patches.EphemeralCardPatch;
 import org.apache.logging.log4j.LogManager;
@@ -58,7 +56,7 @@ public class MariRecallAction extends AbstractGameAction {
         AbstractCard retVal = null;
         for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
             AbstractCard c = p.exhaustPile.group.get(i);
-            if(c instanceof Mari_Repressed){
+            if(c.hasTag(MariCustomTags.GLARING)){
                 cardFound = true;
             }
             if (recallType == RecallType.RADIANCE && c.tags.contains(MariCustomTags.RADIANCE)) {
