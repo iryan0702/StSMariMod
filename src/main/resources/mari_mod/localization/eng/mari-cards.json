@@ -18,7 +18,7 @@
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "marimod:Fading. NL Deal !D! damage. Apply !MARI_RADIANCE! marimod:Radiance."
+    "DESCRIPTION": "marimod:Fading. NL Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Draw a card."
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
@@ -72,7 +72,7 @@
   },
   "MariMod:Mari_Tough_Front": {
     "NAME": "Tough Front",
-    "DESCRIPTION": "Gain [E] [E]. NL Gain !B! Block. NL Add a *Repressed on top of your exhaust pile."
+    "DESCRIPTION": "Gain [E] [E]. NL Gain !B! Block. NL Add a *Repressed to the bottom of your exhaust pile."
   },
   "MariMod:Mari_Reckless_Driving": {
     "NAME": "Reckless Driving",
@@ -117,8 +117,8 @@
     "NAME": "Overexertion",
     "DESCRIPTION": "Draw !M! cards. Reduce the cost of cards in your hand by 1 this combat NL (down to 1). NL Gain 1 Frail and Vulnerable."
   },
-  "MariMod:Mari_Heavy_Price": {
-    "NAME": "Heavy Price",
+  "MariMod:Mari_Spontaneous_Strike": {
+    "NAME": "Spontaneous Strike",
     "DESCRIPTION": "Deal damage equal to NL twice the total cost of all other cards in your hand.",
     "UPGRADE_DESCRIPTION": "Deal damage equal to NL 3 + twice the total cost of all other cards in your hand.",
     "EXTENDED_DESCRIPTION": [
@@ -164,7 +164,7 @@
   },
   "MariMod:Mari_Defiance": {
     "NAME": "Defiance",
-    "DESCRIPTION": "Gain !B! Block. NL Lose 1 Frail to gain !B! Block.",
+    "DESCRIPTION": "Gain !B! Block. NL Lose 1 Frail to gain !B! more Block.",
     "EXTENDED_DESCRIPTION": [
       "(!M! Block total)"
     ]
@@ -204,7 +204,7 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "Until you have more than your current Vulnerable, it has no effect and does not decrease at end of turn. NL Exhaust."
+    "DESCRIPTION": "Lose all Vulnerable and shuffle 3 Repressed into your exhaust pile. Next turn, recall ALL marimod:Glaring cards. NL Exhaust."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
@@ -396,7 +396,7 @@
   },
   "MariMod:Mari_Repressed": {
     "NAME": "Repressed",
-    "DESCRIPTION": "marimod:Glaring. NL If marimod:Recalled, gain 1 Frail or Vulnerable. NL Purge if discarded."
+    "DESCRIPTION": "marimod:Glaring. NL If marimod:Recalled, gain 1 Frail or Vulnerable. NL Purge when discarded."
   },
   "MariMod:Mari_$Choose_Pain": {
     "NAME": "Pain",
