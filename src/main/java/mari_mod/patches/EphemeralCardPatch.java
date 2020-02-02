@@ -28,9 +28,7 @@ import mari_mod.MariMod;
 import mari_mod.actions.EphemeralDelayedExhaustSpecificCardAction;
 import mari_mod.actions.MariEphemeralWaitAction;
 import mari_mod.actions.MariWaitAction;
-import mari_mod.cards.AbstractMariCard;
-import mari_mod.cards.MariCustomTags;
-import mari_mod.cards.Mari_Strike;
+import mari_mod.cards.*;
 import mari_mod.effects.EphemeralCardRewardEffect;
 import mari_mod.effects.MariEphemeralExhaustEffect;
 import mari_mod.effects.MariEphemeralExhaustFlameEffect;
@@ -143,7 +141,13 @@ public class EphemeralCardPatch {
                 boolean ephemeralTriggered = false;
 
                 for(int i = 0; i < __instance.cards.size(); i++) {
-                    if(EphemeralField.ephemeral.get(__instance.cards.get(i)) && ephemeralOdds <= AbstractDungeon.cardRng.random(99)){
+                    if(__instance.cards.get(i) instanceof Mari_Aspiration){
+                        cardsToRemove.add(__instance.cards.get(i));
+                        indexOfRemoveCards.add(i);
+                        __instance.cards.set(i, new Mari_Supervision());
+                        ephemeralTriggered = true;
+
+                    }else if(EphemeralField.ephemeral.get(__instance.cards.get(i)) && ephemeralOdds <= AbstractDungeon.cardRng.random(99)){
 
                         AbstractCard oldCard = __instance.cards.get(i);
                         cardsToRemove.add(oldCard);

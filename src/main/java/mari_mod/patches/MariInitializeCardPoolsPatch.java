@@ -54,6 +54,7 @@ public class MariInitializeCardPoolsPatch {
         }
 
         public static boolean shouldBeRemoved(AbstractCard c){
+            if(c instanceof Mari_Supervision) return true;
             if(c.hasTag(MariCustomTags.DRAMA) && MariMod.saveableKeeper.currentClass != MariCustomTags.DRAMA){
                 System.out.println("REMOVING DRAMA CARD: " + c.name);
                 return true;

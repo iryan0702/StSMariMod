@@ -408,6 +408,10 @@
     "NAME": "Grief",
     "DESCRIPTION": "Gain 1 Frail."
   },
+  "MariMod:Mari_Aspiration": {
+    "NAME": "Endless Aspiration",
+    "DESCRIPTION": "marimod:Fading. NL At the start of your turn, gain infinite [E]."
+  },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
     "DESCRIPTION": "Swap any character's marimod:Radiance with this card's. Has !M! marimod:Radiance."
