@@ -115,7 +115,7 @@
   },
   "MariMod:Mari_Overexertion": {
     "NAME": "Overexertion",
-    "DESCRIPTION": "Draw !M! cards. Reduce the cost of cards in your hand by 1 this combat NL (down to 1). NL Gain 1 Frail and Vulnerable."
+    "DESCRIPTION": "Draw !M! cards. NL Reduce the cost of cards drawn to 1 this turn. NL Gain 1 Frail and Vulnerable."
   },
   "MariMod:Mari_Spontaneous_Strike": {
     "NAME": "Spontaneous Strike",
