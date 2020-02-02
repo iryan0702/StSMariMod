@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.actions.ModifyRadianceAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
@@ -25,9 +26,8 @@ public class Mari_Shine extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 0;
-    private static final int RADIANCE = 3;
+    private static final int BASE_RADIANCE = 2;
     private static final int UPGRADE_RADIANCE = 1;
-    private static final int RADIANCE_DECAY = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -35,9 +35,9 @@ public class Mari_Shine extends AbstractMariCard {
     public Mari_Shine(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.RADIANCE);
-        this.baseRadiance = RADIANCE;
+        this.baseRadiance = BASE_RADIANCE;
         this.radiance = this.baseRadiance;
-        this.baseMagicNumber = RADIANCE_DECAY;
+        this.baseMagicNumber = BASE_RADIANCE;
         this.magicNumber = baseMagicNumber;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.isAnyTarget = true;
@@ -52,7 +52,46 @@ public class Mari_Shine extends AbstractMariCard {
             target = p;
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new Radiance_Power(target, this.radiance), this.radiance));
-        AbstractDungeon.actionManager.addToBottom(new ModifyRadianceAction(this.uuid, -RADIANCE_DECAY));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        if(this.target == CardTarget.SELF) {
+            this.baseRadiance = this.magicNumber;
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p.type == AbstractPower.PowerType.DEBUFF) {
+                    this.baseRadiance++;
+                }
+            }
+            super.applyPowers();
+            this.baseRadiance = this.magicNumber;
+        }else if(mo != null){
+            this.baseRadiance = this.magicNumber;
+            for (AbstractPower p : mo.powers) {
+                if (p.type == AbstractPower.PowerType.DEBUFF) {
+                    this.baseRadiance++;
+                }
+            }
+            super.applyPowers();
+            this.baseRadiance = this.magicNumber;
+        }
+    }
+
+    @Override
+    public void applyPowers() {
+
+        if(this.target == CardTarget.SELF) {
+            this.baseRadiance = this.magicNumber;
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p.type == AbstractPower.PowerType.DEBUFF) {
+                    this.baseRadiance++;
+                }
+            }
+
+            super.applyPowers();
+            this.baseRadiance = this.magicNumber;
+        }
     }
 
     @Override
@@ -64,6 +103,7 @@ public class Mari_Shine extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            upgradeMagicNumber(UPGRADE_RADIANCE);
             upgradeRadiance(UPGRADE_RADIANCE);
         }
     }

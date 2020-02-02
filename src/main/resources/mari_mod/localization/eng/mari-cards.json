@@ -14,7 +14,7 @@
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. Decrease this card's marimod:Radiance by !M! this combat."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. NL Apply 1 more for each debuff it has."
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
