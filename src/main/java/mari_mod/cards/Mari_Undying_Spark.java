@@ -8,6 +8,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import mari_mod.actions.MariExhaustToHandAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
@@ -20,6 +23,7 @@ public class Mari_Undying_Spark extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
     private static final int RADIANCE = 1;
     private static final int RADIANCE_UPGRADE = 1;
@@ -32,7 +36,7 @@ public class Mari_Undying_Spark extends AbstractMariCard {
         this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = RADIANCE;
         this.radiance = this.baseRadiance;
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.exhaust = true;
     }
 
     @Override
@@ -45,15 +49,20 @@ public class Mari_Undying_Spark extends AbstractMariCard {
         return new Mari_Undying_Spark();
     }
 
-    public void returnToHand(){
-        AbstractDungeon.actionManager.addToBottom(new MariExhaustToHandAction(this));
+    public void returnToHand(AbstractPower triggeringPower){
+        if(triggeringPower.ID.equals(FrailPower.POWER_ID)){
+            AbstractDungeon.actionManager.addToBottom(new MariExhaustToHandAction(this));
+        }else if(triggeringPower.ID.equals(VulnerablePower.POWER_ID) && this.upgraded){
+            AbstractDungeon.actionManager.addToBottom(new MariExhaustToHandAction(this));
+        }
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeRadiance(RADIANCE_UPGRADE);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 }

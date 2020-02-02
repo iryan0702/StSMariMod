@@ -178,10 +178,10 @@ public class MariMod implements
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if(abstractPower.ID.equals(FrailPower.POWER_ID) || abstractPower.ID.equals(VulnerablePower.POWER_ID)){
+        if((abstractPower.ID.equals(FrailPower.POWER_ID) || abstractPower.ID.equals(VulnerablePower.POWER_ID)) && abstractCreature.isPlayer){
             for(AbstractCard c: AbstractDungeon.player.exhaustPile.group){
                 if(c instanceof Mari_Undying_Spark){
-                    ((Mari_Undying_Spark)c).returnToHand();
+                    ((Mari_Undying_Spark)c).returnToHand(abstractPower);
                 }
             }
         }
