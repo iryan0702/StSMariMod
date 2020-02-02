@@ -308,7 +308,7 @@
   },
   "MariMod:Mari_Grand_Scheme": {
     "NAME": "Grand Scheme",
-    "DESCRIPTION": "marimod:Fading. Ethereal. NL Gain !M! Gold X times. At the start of your next X turns, [#fbccff]spend[] !MARI_GOLD_COST! Gold."
+    "DESCRIPTION": "marimod:Fading. NL Gain 15 Gold !M! times. At the start of your next !M! turns, [#fbccff]spend[] 15 Gold."
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
