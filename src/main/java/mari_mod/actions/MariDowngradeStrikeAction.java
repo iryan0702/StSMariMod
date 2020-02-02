@@ -11,37 +11,24 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import mari_mod.cards.Mari_All_Or_Nothing;
+import mari_mod.cards.Mari_Strike;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Deprecated
-public class MariDowngradeCardAction extends AbstractGameAction { //ONLY EQUIPPED FOR ALL OR NOTHING
+public class MariDowngradeStrikeAction extends AbstractGameAction { //ONLY EQUIPPED FOR BASIC STRIKE
     private DamageInfo info;
-    public static final Logger logger = LogManager.getLogger(MariDowngradeCardAction.class.getName());
-    public Mari_All_Or_Nothing card;
-    public String newName;
-    public String newDesc;
+    public static final Logger logger = LogManager.getLogger(MariDowngradeStrikeAction.class.getName());
+    public Mari_Strike card;
     public boolean exhaust;
 
-    public MariDowngradeCardAction(Mari_All_Or_Nothing card, String newName, String newDesc, boolean exhaust) {
+    public MariDowngradeStrikeAction(Mari_Strike card) {
         this.actionType = ActionType.SPECIAL;
         this.card = card;
-        this.newName = newName;
-        this.newDesc = newDesc;
-        this.exhaust = exhaust;
     }
 
     public void update() {
-        card.exhaust = true;
-
-        --card.timesUpgraded;
-        card.upgraded = false;
-        card.name = newName;
-        card.publicInitializeTitle();
-
-        card.rawDescription = newDesc;
-        card.initializeDescription();
+        card.downgrade();
         this.isDone = true;
     }
 }

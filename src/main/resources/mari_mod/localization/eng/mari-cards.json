@@ -1,8 +1,8 @@
 {
   "MariMod:Mari_Strike": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage. NL The first time this is played each combat, apply !MARI_RADIANCE! marimod:Radiance.",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage."]
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Downgrade this card."
   },
   "MariMod:Mari_Glow": {
     "NAME": "Glow",
