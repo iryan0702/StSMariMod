@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import mari_mod.MariMod;
 import mari_mod.actions.MariNoProblemRemoveCheckAction;
+import mari_mod.actions.MariRecallAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,9 +48,11 @@ public class No_Problem_Power extends AbstractPower
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        super.onApplyPower(power, target, source);
-        AbstractDungeon.actionManager.addToBottom(new MariNoProblemRemoveCheckAction());
+    public void atStartOfTurnPostDraw() {
+        for(int i = 0; i < this.amount; i++){
+            addToBot(new MariRecallAction(MariRecallAction.RecallType.GLARING));
+        }
+        addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }
 
     public void updateDescription() {

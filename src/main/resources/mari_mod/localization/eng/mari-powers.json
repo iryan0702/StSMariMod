@@ -59,8 +59,8 @@
   },
   "MariMod:No_Problem_Power": {
     "NAME": "No Problem!",
-    "DESCRIPTIONS": ["#yVulnerable has no effect and does not decrease at end of turn. Lose this power if you have more than #b",
-      " #yVulnerable."]
+    "DESCRIPTIONS": ["At the start of your next turn, #yRecall #b",
+      " #yGlaring cards."]
   },
   "MariMod:Supervision_Power": {
     "NAME": "Supervision",

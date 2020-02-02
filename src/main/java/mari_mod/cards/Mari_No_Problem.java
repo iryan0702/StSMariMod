@@ -3,6 +3,7 @@ package mari_mod.cards;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import mari_mod.actions.MariMakeTempCardInExhaustPileAction;
 import mari_mod.actions.MariNoProblemAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
 import mari_mod.actions.MariUnsuccessfulKindleAction;
@@ -27,26 +29,27 @@ public class Mari_No_Problem extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int BASE_TURN = 1;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    private static final int COST = 0;
+    //private static final int UPGRADE_COST = 0;
+    private static final int SUFFLE_AMOUNT = 3;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
 
     public Mari_No_Problem(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = BASE_TURN;
+        this.baseMagicNumber = SUFFLE_AMOUNT;
         this.magicNumber =  this.baseMagicNumber;
         this.tags.add(MariCustomTags.QUOTATIONS);
-        //this.tags.add(MariCustomTags.KINDLE);
-        //this.isAnyTarget = true;
         this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariNoProblemAction());
+        addToBot(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
+        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), this.magicNumber, false, false));
+        addToBot(new ApplyPowerAction(p, p, new No_Problem_Power(p, this.magicNumber), this.magicNumber));
     }
 
     @Override
@@ -57,8 +60,10 @@ public class Mari_No_Problem extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            this.retain = true;
         }
     }
 }

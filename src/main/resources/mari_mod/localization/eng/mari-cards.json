@@ -203,7 +203,8 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "Lose all Vulnerable and shuffle 3 Repressed into your exhaust pile. Next turn, recall ALL marimod:Glaring cards. NL Exhaust."
+    "DESCRIPTION": "Lose all Vulnerable and shuffle !M! *Repressed into your exhaust pile. Next turn, marimod:Recall !M! marimod:Glaring cards. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Lose all Vulnerable and shuffle 3 *Repressed into your exhaust pile. Next turn, marimod:Recall !M! marimod:Glaring cards. NL Exhaust."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
