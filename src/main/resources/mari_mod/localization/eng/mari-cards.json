@@ -127,8 +127,7 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain [E] for each unique debuff you have. NL marimod:Kindle: gain [E]. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to gain [E] for each unique debuff you have. NL marimod:Kindle: gain [E] [E]. NL Exhaust."
+    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall a marimod:Radiance card. NL Exhaust."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",

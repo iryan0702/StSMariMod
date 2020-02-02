@@ -23,12 +23,22 @@ public class MariPurgeCardsFromExhaustAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
     private AbstractPlayer p;
+    boolean anyAmount;
 
     public MariPurgeCardsFromExhaustAction(int amount) {
         this.p = AbstractDungeon.player;
         this.setValues(this.p, AbstractDungeon.player, amount);
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = Settings.ACTION_DUR_MED;
+        this.anyAmount = false;
+    }
+
+    public MariPurgeCardsFromExhaustAction(boolean anyAmount) {
+        this.p = AbstractDungeon.player;
+        this.setValues(this.p, AbstractDungeon.player, 1);
+        this.actionType = ActionType.CARD_MANIPULATION;
+        this.duration = Settings.ACTION_DUR_MED;
+        this.anyAmount = anyAmount;
     }
 
     public void update() {
@@ -39,7 +49,10 @@ public class MariPurgeCardsFromExhaustAction extends AbstractGameAction {
                 tmp.addToTop(c);
             }
 
-            if (tmp.size() == 0) {
+            if(anyAmount){
+                AbstractDungeon.gridSelectScreen.open(tmp, tmp.size(), true, TEXT[0]);
+                this.tickDuration();
+            }else if (tmp.size() == 0) {
                 this.isDone = true;
             } else if (tmp.size() <= this.amount) {
                 for(int i = 0; i < tmp.size(); ++i) {
