@@ -3,6 +3,7 @@ package mari_mod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -32,6 +33,7 @@ public class MariRepressedStrikeAction extends AbstractGameAction {
         for(AbstractCard c: p.hand.group) {
             if(!c.canUse(p, null)) {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(this.target, new DamageInfo(p, this.amount, DamageInfo.DamageType.NORMAL), AttackEffect.SMASH));
+                addToTop(new DiscardSpecificCardAction(c, p.hand));
             }
         }
         this.isDone = true;

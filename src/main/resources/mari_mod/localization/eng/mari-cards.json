@@ -390,9 +390,9 @@
     "NAME": "Drama 2",
     "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL Swap your Frail and Vulnerable. Gain 1 Frail."
   },
-  "MariMod:Mari_Repressed_Strike": {
-    "NAME": "Repressed Strike",
-    "DESCRIPTION": "Gain [E] and deal !D! damage, then deal !D! damage for each card in your hand that cannot be played."
+  "MariMod:Mari_Let_Loose": {
+    "NAME": "Let Loose",
+    "DESCRIPTION": "Gain [E] and deal !D! damage, then discard cards in your hand that cannot be played and deal !D! damage for each."
   },
   "MariMod:Mari_Repressed": {
     "NAME": "Repressed",

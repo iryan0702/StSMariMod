@@ -18,20 +18,20 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Repressed_Strike extends AbstractMariCard {
-    public static final Logger logger = LogManager.getLogger(Mari_Repressed_Strike.class.getName());
-    public static final String ID = "MariMod:Mari_Repressed_Strike";
+public class Mari_Let_Loose extends AbstractMariCard {
+    public static final Logger logger = LogManager.getLogger(Mari_Let_Loose.class.getName());
+    public static final String ID = "MariMod:Mari_Let_Loose";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 2;
-    private static final int ATTACK_DMG = 8;
+    private static final int ATTACK_DMG = 7;
     private static final int UPGRADE_ATTACK_DMG = 2;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
-    public Mari_Repressed_Strike(){
+    public Mari_Let_Loose(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
 
         this.baseDamage = ATTACK_DMG;
@@ -49,7 +49,7 @@ public class Mari_Repressed_Strike extends AbstractMariCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new Mari_Repressed_Strike();
+        return new Mari_Let_Loose();
     }
 
     @Override
