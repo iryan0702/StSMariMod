@@ -10,7 +10,8 @@
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance !M! times. NL If marimod:Recalled, costs 0 for a turn."
+    "DESCRIPTION": "marimod:Fading. Retain. NL marimod:Recall a marimod:Radiance card. If marimod:Recalled, apply !MARI_RADIANCE! marimod:Radiance to ALL characters !M! times.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL marimod:Recall a marimod:Radiance card. If marimod:Recalled, cost 1 this turn and apply !MARI_RADIANCE! marimod:Radiance to ALL characters !M! times."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
