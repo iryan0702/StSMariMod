@@ -2,9 +2,7 @@ package mari_mod.cards;
 
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.SwordBoomerangAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -20,6 +18,8 @@ import mari_mod.actions.MariUnsuccessfulKindleAction;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 public class Mari_Dolphin_Strike extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Dolphin_Strike.class.getName());
@@ -58,9 +58,15 @@ public class Mari_Dolphin_Strike extends AbstractMariCard {
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
-        AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null,true, AbstractDungeon.cardRandomRng), new DamageInfo(p, this.baseDamage),this.magicNumber)));
-
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null,true, AbstractDungeon.cardRandomRng), new DamageInfo(p, this.baseDamage),this.magicNumber+1)));
+        ArrayList<AbstractGameAction> strikes = new ArrayList<>();
+        ArrayList<AbstractGameAction> strikesPlusOne = new ArrayList<>();
+        strikesPlusOne.add(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        for(int i = 0; i < this.magicNumber; i++){
+            strikes.add(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            strikesPlusOne.add(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        }
+        AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, strikes));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, strikesPlusOne));
 
     }
 
