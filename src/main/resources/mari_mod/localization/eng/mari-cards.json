@@ -144,7 +144,7 @@
   },
   "MariMod:Mari_$Memories_Of_Uchiura": {
     "NAME": "Memories Of Uchiura",
-    "DESCRIPTION": "marimod:Recall a card that applies marimod:Radiance."
+    "DESCRIPTION": "marimod:Recall a marimod:Radiance card. NL marimod:Radiance cards directly apply marimod:Radiance."
   },
   "MariMod:Mari_$Memories_Of_Performance": {
     "NAME": "Memories Of Performance",

@@ -42,7 +42,8 @@
   "MariPurgeCardsFromExhaustAction": {
     "TEXT": [
       "Choose a card in your exhaust pile to purge.",
-      "Choose cards in your exhaust pile to purge."
+      "Choose cards in your exhaust pile to purge.",
+      "Choose any number of cards in your exhaust pile to purge."
     ]
   },
   "MariCharSelectDefault": {

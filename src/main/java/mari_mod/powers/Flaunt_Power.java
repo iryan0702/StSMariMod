@@ -2,15 +2,20 @@ package mari_mod.powers;
 
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
 import mari_mod.MariMod;
 import mari_mod.actions.MariDelayedDamageRandomEnemyActionAction;
+import mari_mod.actions.MariWaitAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,7 +61,14 @@ public class Flaunt_Power extends TwoAmountPowerByKiooehtButIJustChangedItABitSo
     @Override
     public void onSpecificTrigger() {
         int goldSpent = MariMod.lastGoldAmountSpent;
+        AbstractPlayer p = AbstractDungeon.player;
         if(this.amount2 > 0) {
+            for(AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters){
+                if(!m.halfDead && !m.isDead){
+                    AbstractDungeon.effectList.add(new FlickCoinEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY));
+                }
+            }
+            this.addToBot(new MariWaitAction(0.3F));
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(goldSpent, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
             this.flash();
         }
