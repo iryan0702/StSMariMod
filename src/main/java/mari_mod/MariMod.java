@@ -585,7 +585,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Excitement());
 
             BaseMod.addCard(new Mari_Reckless_Driving());
-            BaseMod.addCard(new Mari_Heavy_Price());
+            BaseMod.addCard(new Mari_Spontaneous_Strike());
             BaseMod.addCard(new Mari_zzz());
             BaseMod.addCard(new Mari_Undying_Spark());
             BaseMod.addCard(new Mari_Limelight());

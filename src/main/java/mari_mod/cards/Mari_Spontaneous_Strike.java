@@ -23,9 +23,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class Mari_Heavy_Price extends AbstractMariCard {
-    public static final Logger logger = LogManager.getLogger(Mari_Heavy_Price.class.getName());
-    public static final String ID = "MariMod:Mari_Heavy_Price";
+public class Mari_Spontaneous_Strike extends AbstractMariCard {
+    public static final Logger logger = LogManager.getLogger(Mari_Spontaneous_Strike.class.getName());
+    public static final String ID = "MariMod:Mari_Spontaneous_Strike";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -37,7 +37,7 @@ public class Mari_Heavy_Price extends AbstractMariCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
-    public Mari_Heavy_Price(){
+    public Mari_Spontaneous_Strike(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseMagicNumber = 0;
         this.magicNumber = this.baseMagicNumber;
@@ -94,14 +94,14 @@ public class Mari_Heavy_Price extends AbstractMariCard {
     @Override //TY VEX YOU CUTIE
     public void update() {
         super.update();
-        if (AbstractDungeon.player != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+        if (AbstractDungeon.player != null && CardCrawlGame.dungeon != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
             applyPowers();
         }
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new Mari_Heavy_Price();
+        return new Mari_Spontaneous_Strike();
     }
 
     @Override
