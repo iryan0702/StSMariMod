@@ -82,6 +82,7 @@ public class MariRecallAction extends AbstractGameAction {
         SPEND,
         QUOTATIONS,
         EXHAUST,
-        EPHEMERAL
+        EPHEMERAL,
+        GLARING
     }
 }
