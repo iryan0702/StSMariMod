@@ -185,6 +185,9 @@ public class MariMod implements
                 }
             }
         }
+        if(abstractPower.type == AbstractPower.PowerType.DEBUFF && abstractCreature.isPlayer){
+            MariStatTracker.debuffsReceivedThisAndLastEnemyTurn++;
+        }
     }
 
             @Override
@@ -257,6 +260,7 @@ public class MariMod implements
     }
 
     private void resetBattleStats(){
+        MariStatTracker.debuffsReceivedThisAndLastEnemyTurn = 0;
         goldSpentByMariThisCombat = 0;
         timesMariSpentGoldThisCombat = 0;
         timesOMGUsedThisTurn = 0;
@@ -338,6 +342,10 @@ public class MariMod implements
         }
         p.hand.applyPowers();
         p.hand.glowCheck();
+    }
+
+    public static void afterPlayerBeforeEnemyTurn(){
+        MariStatTracker.debuffsReceivedThisAndLastEnemyTurn = 0;
     }
 
 

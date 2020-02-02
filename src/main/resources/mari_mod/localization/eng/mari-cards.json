@@ -253,7 +253,7 @@
   },
   "MariMod:Mari_Slap": {
     "NAME": "Slap!",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage for each unique debuff you have."
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage for each debuff you received this turn and last enemy turn."
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",

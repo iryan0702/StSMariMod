@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
+import mari_mod.MariStatTracker;
 import mari_mod.actions.MariDefianceAction;
 import mari_mod.actions.MariSlapAction;
 import org.apache.logging.log4j.LogManager;
@@ -25,9 +26,9 @@ public class Mari_Slap extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 1;
-    private static final int DAMAGE = 7;
+    private static final int DAMAGE = 9;
     private static final int UPGRADE_DAMAGE = 2;
-    private static final int SCALING = 5;
+    private static final int SCALING = 3;
     private static final int UPGRADE_SCALING = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -52,18 +53,12 @@ public class Mari_Slap extends AbstractMariCard {
 
     }
 
+
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int originalBase = this.baseDamage;
 
-        int extraDamage = 0;
-        for(AbstractPower p: AbstractDungeon.player.powers){
-            if(p.type == AbstractPower.PowerType.DEBUFF){
-                extraDamage += this.magicNumber;
-            }
-        }
-
-        this.baseDamage = originalBase + extraDamage;
+        this.baseDamage = originalBase + MariStatTracker.debuffsReceivedThisAndLastEnemyTurn * this.magicNumber;
         this.damage =  this.baseDamage;
 
         super.calculateCardDamage(mo);
@@ -77,14 +72,7 @@ public class Mari_Slap extends AbstractMariCard {
 
         int originalBase = this.baseDamage;
 
-        int extraDamage = 0;
-        for(AbstractPower p: AbstractDungeon.player.powers){
-            if(p.type == AbstractPower.PowerType.DEBUFF){
-                extraDamage += this.magicNumber;
-            }
-        }
-
-        this.baseDamage = originalBase + extraDamage;
+        this.baseDamage = originalBase + MariStatTracker.debuffsReceivedThisAndLastEnemyTurn * this.magicNumber;
         this.damage =  this.baseDamage;
 
         super.applyPowers();
