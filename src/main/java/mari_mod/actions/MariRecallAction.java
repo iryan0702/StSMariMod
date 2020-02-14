@@ -14,17 +14,25 @@ import org.apache.logging.log4j.Logger;
 
 public class MariRecallAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariRecallAction.class.getName());
+    public static AbstractCard recalledCard;
+    public AbstractGameAction followUpAction;
     public RecallType recallType;
     private AbstractPlayer p;
 
     public MariRecallAction(RecallType rT) {
+        this(rT, null);
+    }
+
+    public MariRecallAction(RecallType rT, AbstractGameAction followUpAction) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.recallType = rT;
         this.p = AbstractDungeon.player;
+        this.followUpAction = followUpAction;
     }
 
     public void update() {
         AbstractCard c = findRecallTarget(recallType);
+        recalledCard = c;
 
         if(c != null) {
             c.unfadeOut();
@@ -33,7 +41,7 @@ public class MariRecallAction extends AbstractGameAction {
             if (c instanceof OnRecallCard) {
                 ((OnRecallCard) c).onRecall();
             }
-            if (p.hand.size() == BaseMod.MAX_HAND_SIZE) {
+            if (p.hand.size() >= BaseMod.MAX_HAND_SIZE) {
                 p.drawPile.moveToDiscardPile(c);
                 p.createHandIsFullDialog();
             } else {
@@ -45,6 +53,10 @@ public class MariRecallAction extends AbstractGameAction {
 
             p.hand.refreshHandLayout();
             p.hand.applyPowers();
+        }
+
+        if(followUpAction != null){
+            addToTop(followUpAction);
         }
 
         this.isDone = true;
