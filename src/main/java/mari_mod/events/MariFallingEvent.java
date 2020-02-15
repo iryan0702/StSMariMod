@@ -72,11 +72,9 @@ public class MariFallingEvent extends AbstractImageEvent {
         if (this.helicopter){
 
             ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
-            Iterator var2 = AbstractDungeon.player.masterDeck.group.iterator();
 
-            while(var2.hasNext()) {
-                AbstractCard c = (AbstractCard)var2.next();
-                if (c.name == Mari_The_HELICOPTER.NAME) {
+            for(AbstractCard c: AbstractDungeon.player.masterDeck.group) {
+                if (c.cardID.equals(Mari_The_HELICOPTER.ID)){
                     cards.add(c);
                 }
             }
