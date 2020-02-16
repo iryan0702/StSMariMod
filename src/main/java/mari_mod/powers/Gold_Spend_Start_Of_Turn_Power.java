@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
+import mari_mod.actions.MariSpendGoldAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,12 +46,14 @@ public class Gold_Spend_Start_Of_Turn_Power extends TwoAmountPowerByKiooehtButIJ
         this.amount += stackAmount;
         }
 
+
+
     @Override
     public void atStartOfTurnPostDraw() {
         super.atStartOfTurnPostDraw();
         this.flash();
         AbstractPlayer p = AbstractDungeon.player;
-        MariMod.spendGold(this.amount2);
+        addToBot(new MariSpendGoldAction(this.amount2));
         if(this.amount <= 1) {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, this.ID));
         }else {

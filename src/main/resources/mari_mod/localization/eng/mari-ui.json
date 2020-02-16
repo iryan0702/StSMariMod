@@ -46,6 +46,14 @@
       "Choose any number of cards in your exhaust pile to purge."
     ]
   },
+  "MariInvestedGoldTip": {
+    "TEXT": [
+      "Invested Gold",
+      "You have invested #b",
+      " Gold! NL At the start of each combat, convert #b10% of your invested Gold into Gold. NL You have earned #b",
+      " Gold from this effect!"
+    ]
+  },
   "MariCharSelectDefault": {
     "TEXT": [
       "The Shiniest Idol",
