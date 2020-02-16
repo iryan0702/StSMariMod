@@ -5,10 +5,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
+import mari_mod.effects.MariSpotlightEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,17 +45,28 @@ public class Limelight_Power extends AbstractPower
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         AbstractPlayer p = AbstractDungeon.player;
-        if(isPlayer){
-            for(AbstractCreature toApplyRadiance : AbstractDungeon.getMonsters().monsters){
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(toApplyRadiance, p, new Radiance_Power(toApplyRadiance, this.amount), this.amount));
+        if (isPlayer) {
+
+            for(int i = 0; i < this.amount; i++) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, 1), 1));
+            AbstractDungeon.effectList.add(new MariSpotlightEffect(7.0f, p.drawX + p.hb_x /*+ p.hb_w/2f*/, Settings.WIDTH / (4f) * (p.hb_w / 220f), false));
+
+            for (AbstractCreature toApplyRadiance : AbstractDungeon.getMonsters().monsters) {
+                if (!toApplyRadiance.isDead && !toApplyRadiance.halfDead) {
+                    for(int i = 0; i < this.amount; i++) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(toApplyRadiance, p, new Radiance_Power(toApplyRadiance, 1), 1));
+                    AbstractDungeon.effectList.add(new MariSpotlightEffect(7.0f, toApplyRadiance.drawX + toApplyRadiance.hb_x /*+ toApplyRadiance.hb_w / 2f*/, Settings.WIDTH / (3.5f) * (toApplyRadiance.hb_w / 220f), false));
+                }
             }
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.amount), this.amount));
         }
+        CardCrawlGame.sound.playV("MariMod:MariLimelight", 2.0f);
         super.atEndOfTurn(isPlayer);
     }
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
+        if(this.amount == 1) {
+            this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
+        }else{
+            this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[2];
+        }
     }
 }

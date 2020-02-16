@@ -80,8 +80,9 @@
   },
   "MariMod:Limelight_Power": {
     "NAME": "Limelight",
-    "DESCRIPTIONS": ["At the end of your turn, apply #b",
-      " #yRadiance to ALL characters."]
+    "DESCRIPTIONS": ["At the end of your turn, apply #b1 #yRadiance to ALL characters #b",
+    " time.",
+    " times."]
   },
   "MariMod:From_Zero_Power": {
     "NAME": "From Zero...",
