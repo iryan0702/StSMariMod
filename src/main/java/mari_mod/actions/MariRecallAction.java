@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mari_mod.cards.MariCustomTags;
 import mari_mod.cards.OnRecallCard;
+import mari_mod.cards.PurgeOnRecallCard;
 import mari_mod.patches.EphemeralCardPatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,18 +42,29 @@ public class MariRecallAction extends AbstractGameAction {
             if (c instanceof OnRecallCard) {
                 ((OnRecallCard) c).onRecall();
             }
-            if (p.hand.size() >= BaseMod.MAX_HAND_SIZE) {
-                p.drawPile.moveToDiscardPile(c);
-                p.createHandIsFullDialog();
-            } else {
-                p.hand.addToHand(c);
+
+            if( c instanceof PurgeOnRecallCard){
+                c.target_x = Settings.WIDTH / 4f;
+                c.target_y = Settings.HEIGHT / 2f;
+                c.current_x = Settings.WIDTH / 4f;
+                c.current_y = Settings.HEIGHT / 2f;
+                p.exhaustPile.removeCard(c);
+                p.limbo.addToTop(c);
+                addToTop(new MariPurgeSpecificCardAction(c,AbstractDungeon.player.limbo,false));
+            }else {
+                if (p.hand.size() >= BaseMod.MAX_HAND_SIZE) {
+                    p.drawPile.moveToDiscardPile(c);
+                    p.createHandIsFullDialog();
+                } else {
+                    p.hand.addToHand(c);
+                }
+
+                c.fadingOut = false;
+                p.exhaustPile.removeCard(c);
+
+                p.hand.refreshHandLayout();
+                p.hand.applyPowers();
             }
-
-            c.fadingOut = false;
-            p.exhaustPile.removeCard(c);
-
-            p.hand.refreshHandLayout();
-            p.hand.applyPowers();
         }
 
         if(followUpAction != null){

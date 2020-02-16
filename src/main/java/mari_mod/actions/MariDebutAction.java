@@ -25,13 +25,12 @@ public class MariDebutAction extends AbstractGameAction {
 
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
-        AbstractPower radiance = p.getPower(Radiance_Power.POWER_ID);
-        if(radiance != null) {
-            int applyAmount = upgraded ? radiance.amount : this.amount;
-            for(AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters) {
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new Radiance_Power(m, applyAmount), applyAmount));
-            }
+    AbstractPower radiance = p.getPower(Radiance_Power.POWER_ID);
+        int applyAmount = upgraded ? radiance.amount : this.amount;
+        for(AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters) {
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new Radiance_Power(m, applyAmount), applyAmount));
         }
+
         this.isDone = true;
     }
 }
