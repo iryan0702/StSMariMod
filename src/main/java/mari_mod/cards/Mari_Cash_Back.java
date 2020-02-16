@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mari_mod.actions.MariLoseInvestedGoldAction;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Cash_Back_Power;
 import mari_mod.powers.Character_Development_Power;
 import org.apache.logging.log4j.LogManager;
@@ -17,9 +19,9 @@ public class Mari_Cash_Back extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-    private static final int CASH_BACK_AMOUNT = 1;
+    private static final int CASH_BACK_AMOUNT = 15;
+    private static final int CASH_BACK_AMOUNT_UPGRADE = 5;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -27,22 +29,21 @@ public class Mari_Cash_Back extends AbstractMariCard {
     public Mari_Cash_Back(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.SPEND);
-        this.baseMagicNumber = Cash_Back_Power.CASH_BACK_AMOUNT;
+        this.baseMagicNumber = CASH_BACK_AMOUNT;
         this.magicNumber = this.baseMagicNumber;
-
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Cash_Back_Power(p, CASH_BACK_AMOUNT), CASH_BACK_AMOUNT));
+        addToBot(new MariLoseInvestedGoldAction(10));
+        addToBot(new ApplyPowerAction(p, p, new Cash_Back_Power(p, this.magicNumber), this.magicNumber));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
+            upgradeMagicNumber(CASH_BACK_AMOUNT_UPGRADE);
             upgradeName();
-            this.isInnate = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
         }
     }
 }

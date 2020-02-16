@@ -29,10 +29,8 @@
   },
   "MariMod:Cash_Back_Power": {
     "NAME": "Cash Back",
-    "DESCRIPTIONS": ["#b1 time each turn, whenever you spend gold, regain #b",
-      "#b",
-      " times each turn, whenever you spend gold, regain #b",
-      "% of it and draw a card."]
+    "DESCRIPTIONS": ["At the end of combat, #yPayout #b",
+      "% Gold."]
   },
   "MariMod:Delicacy_Power": {
     "NAME": "Delicacy",

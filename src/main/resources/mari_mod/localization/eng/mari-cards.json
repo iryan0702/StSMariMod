@@ -81,8 +81,7 @@
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
-    "DESCRIPTION": "One time each turn, when you [#fbccff]spend[] Gold, regain !M! percent of Gold [#fbccff]spent[] and draw a card.",
-    "UPGRADE_DESCRIPTION": "Innate. NL One time each turn, when you [#fbccff]spend[] Gold, regain !M! percent of Gold [#fbccff]spent[] and draw a card."
+    "DESCRIPTION": "marimod:Fading. NL Lose 10% marimod:Invested Gold. NL At the end of combat, marimod:Payout !M!%."
   },
   "MariMod:Mari_Delicacy": {
     "NAME": "Delicacy",
@@ -180,7 +179,7 @@
   },
   "MariMod:Mari_Second_Season": {
     "NAME": "Second Season",
-    "DESCRIPTION": "marimod:Fading. NL Return all cards that apply marimod:Radiance from your exhaust pile to your draw pile, they cost 0 until played."
+    "DESCRIPTION": "marimod:Fading. NL Return marimod:Radiance cards from your exhaust pile to your draw pile, they cost 0 until played."
   },
   "MariMod:Mari_Pretty_Bomber_Head": {
     "NAME": "\"Pretty Bomber Head!\"",
@@ -205,8 +204,8 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "Lose all Vulnerable and shuffle !M! *Repressed into your exhaust pile. Next turn, marimod:Recall !M! marimod:Glaring cards. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Lose all Vulnerable and shuffle 3 *Repressed into your exhaust pile. Next turn, marimod:Recall !M! marimod:Glaring cards. NL Exhaust."
+    "DESCRIPTION": "Lose all Vulnerable and shuffle !M! *Repressed into your exhaust pile. Next turn, marimod:Recall 3 marimod:Glaring cards. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Lose all Vulnerable and shuffle !M! *Repressed into your exhaust pile. Next turn, marimod:Recall 3 marimod:Glaring cards. NL Exhaust."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",

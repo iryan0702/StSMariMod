@@ -16,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Cash_Back_Power extends TwoAmountPowerByKiooehtButIJustChangedItABitSoItShowsZeroAndIsADifferentColor
+public class Cash_Back_Power extends AbstractPower
 {
     public static final String POWER_ID = "MariMod:Cash_Back_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -24,56 +24,37 @@ public class Cash_Back_Power extends TwoAmountPowerByKiooehtButIJustChangedItABi
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public static final int CASH_BACK_AMOUNT = 60;
-    public Cash_Back_Power(AbstractCreature owner, int perTurn)
+    public Cash_Back_Power(AbstractCreature owner, int amount)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = perTurn;
-        this.amount2 = perTurn;
+        this.amount = amount;
         this.isTurnBased = false;
         this.canGoNegative = true;
         this.updateDescription();
         MariMod.setPowerImages(this);
     }
 
+    public void onVictory() {
+        MariMod.payoutGold(0.01f * this.amount);
+    }
 
     public void stackPower(int stackAmount)
     {
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if(amount2 < 0) amount2 = 0;
-        this.amount2 += stackAmount;
-    }
-
-    @Override
-    public void atStartOfTurn() {
-        this.amount2 = this.amount;
-        super.atStartOfTurn();
-    }
-
-    @Override
-    public void onSpecificTrigger() {
-        int goldSpent = MariMod.lastGoldAmountSpent;
-        if(this.amount2 > 0){
-            AbstractDungeon.player.gainGold ((int)((float) goldSpent * CASH_BACK_AMOUNT * 0.01f));
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
-            this.flash();
+        if(this.amount > 100){
+            this.amount = 100;
         }
-        this.amount2--;
-        if(amount2 == 0) amount2--;
     }
+
+
 
     @Override
     public void updateDescription() {
-        if(this.amount == 1){
-            this.description = DESCRIPTION[0];
-        }else{
-            this.description = DESCRIPTION[1] + this.amount + DESCRIPTION[2];
-        }
-        this.description += CASH_BACK_AMOUNT + DESCRIPTION[3];
+        this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
     }
 }

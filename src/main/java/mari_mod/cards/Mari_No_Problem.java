@@ -32,7 +32,8 @@ public class Mari_No_Problem extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
     //private static final int UPGRADE_COST = 0;
-    private static final int SUFFLE_AMOUNT = 3;
+    private static final int SUFFLE_AMOUNT = 2;
+    private static final int RECALL_AMOUT = 3;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -49,7 +50,7 @@ public class Mari_No_Problem extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
         addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), this.magicNumber, false, false));
-        addToBot(new ApplyPowerAction(p, p, new No_Problem_Power(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new No_Problem_Power(p, RECALL_AMOUT), RECALL_AMOUT));
     }
 
     @Override
