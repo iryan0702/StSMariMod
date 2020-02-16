@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import javassist.CtBehavior;
 import mari_mod.MariMod;
 import mari_mod.cards.MariCustomTags;
+import mari_mod.cards.Mari_Aspiration;
 import mari_mod.cards.Mari_Supervision;
 import mari_mod.powers.No_Problem_Power;
 import mari_mod.relics.MariStageDirections;
@@ -55,7 +56,7 @@ public class MariInitializeCardPoolsPatch {
         }
 
         public static boolean shouldBeRemoved(AbstractCard c){
-            if(c instanceof Mari_Supervision) return true;
+            if(c instanceof Mari_Aspiration) return true;
             if(c.hasTag(MariCustomTags.DRAMA) && MariMod.saveableKeeper.currentClass != MariCustomTags.DRAMA){
                 System.out.println("REMOVING DRAMA CARD: " + c.name);
                 return true;

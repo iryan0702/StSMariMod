@@ -53,7 +53,9 @@ public class The_Light_We_Chase_Power extends AbstractPower
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         AbstractPlayer p = AbstractDungeon.player;
         if(power.ID.equals(Radiance_Power.POWER_ID) && !target.isPlayer){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new Radiance_Power(p,this.amount),this.amount));
+            for(int i = 0; i < this.amount; i++) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, 1), 1));
+            }
         }
     }
 

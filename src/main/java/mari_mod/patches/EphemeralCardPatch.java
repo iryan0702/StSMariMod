@@ -141,10 +141,9 @@ public class EphemeralCardPatch {
                 boolean ephemeralTriggered = false;
 
                 for(int i = 0; i < __instance.cards.size(); i++) {
-                    if(__instance.cards.get(i) instanceof Mari_Aspiration){
-                        cardsToRemove.add(__instance.cards.get(i));
+                    if(__instance.cards.get(i) instanceof Mari_Supervision){
+                        cardsToRemove.add(new Mari_Aspiration());
                         indexOfRemoveCards.add(i);
-                        __instance.cards.set(i, new Mari_Supervision());
                         ephemeralTriggered = true;
 
                     }else if(EphemeralField.ephemeral.get(__instance.cards.get(i)) && ephemeralOdds <= AbstractDungeon.cardRng.random(99)){
@@ -169,7 +168,7 @@ public class EphemeralCardPatch {
                     }
                 }
                 if(ephemeralTriggered){
-                    mostRecentRewardSelectDelay = 1.5f;
+                    mostRecentRewardSelectDelay = 2.5f;
                 }else{
                     mostRecentRewardSelectDelay = 0f;
                 }
@@ -206,8 +205,8 @@ public class EphemeralCardPatch {
                     oldCard.current_y = newCard.current_y;
                     oldCard.target_x = newCard.target_x;
                     oldCard.target_y = newCard.target_y;
-                    oldCard.drawScale = newCard.drawScale * 1.1f;
-                    oldCard.targetDrawScale = newCard.targetDrawScale * 1.1f;
+                    oldCard.drawScale = newCard.drawScale * 1.05f;
+                    oldCard.targetDrawScale = newCard.targetDrawScale * 1.05f;
 
                     AbstractDungeon.topLevelEffects.add(new EphemeralCardRewardEffect(oldCard));
                 }

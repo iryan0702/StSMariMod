@@ -3,6 +3,8 @@ package mari_mod.relics;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -21,7 +23,7 @@ import mari_mod.MariMod;
 
 import static com.megacrit.cardcrawl.rewards.RewardItem.REWARD_ITEM_X;
 
-public class MariTheSpark extends AbstractMariRelic
+public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
 {
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     public static final String ID = "MariMod:MariTheSpark";
@@ -52,10 +54,21 @@ public class MariTheSpark extends AbstractMariRelic
     public void atBattleStartPreDraw() {
         this.flash();
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        MariMod.gainGold(5);
+        MariMod.gainGold(10);
     }
 
     @Override
+    public void onRightClick() {
+        if(MariMod.saveableKeeper.goldInvested > REWARD_COST) {
+            reward = new MariUncommonReward(CardColorEnum.MARI);
+            AbstractDungeon.getCurrRoom().addCardReward(reward);
+            //AbstractDungeon.combatRewardScreen.setupItemReward();
+            AbstractDungeon.combatRewardScreen.positionRewards();
+            MariMod.saveableKeeper.goldInvested -= REWARD_COST;
+        }
+    }
+
+    /*@Override
     public void onTrigger() {
         if(!AbstractDungeon.getCurrRoom().smoked) {
             if (this.counter >= REWARD_COST) {
@@ -70,7 +83,7 @@ public class MariTheSpark extends AbstractMariRelic
                 AbstractDungeon.combatRewardScreen.update();
             }
         }
-    }
+    }*/
 
     public AbstractRelic makeCopy()
     {

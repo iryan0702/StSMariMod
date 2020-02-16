@@ -19,7 +19,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "You can target #yANY character with this card. Consume #b1 Radiance from the character to trigger an effect."
+    "DESCRIPTION": "You can target #yANY character with this card. Consume #b1 #yRadiance from the character to trigger an effect."
   },
   {
     "PROPER_NAME": "Fading",
@@ -53,5 +53,38 @@
       "UNUSED_RESERVE"
     ],
     "DESCRIPTION": "This card matches the condition of ALL #yRecall effects."
+  },
+  {
+    "PROPER_NAME": "Exhaaaust",
+    "NAMES":[
+      "Exhaaaust",
+      "exhaaaust",
+      "EXHAAAUST",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Like regular exhaust, but louder."
+  },
+  {
+    "PROPER_NAME": "Invest",
+    "NAMES":[
+      "Invest",
+      "invest",
+      "Invested",
+      "invested",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Spend an amount of Gold and play a card. If you do not have enough Gold, gain #b1 #yFrail and #yWeak. Invested Gold is kept between combats."
+  },
+  {
+    "PROPER_NAME": "Payout",
+    "NAMES":[
+      "Payout",
+      "payout",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Convert an amount of #yInvested Gold into regular Gold."
   }
 ]

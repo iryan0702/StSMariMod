@@ -288,6 +288,27 @@ public class MariMod implements
 
     public static int lastGoldAmountSpent = 0;
 
+    //Hooked to start of AbstractPlayer.loseGold
+    public static void loseGold(int amount){
+        if (AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
+            saveableKeeper.goldInvested += amount;
+            saveableKeeper.lifetimeGoldInvested += amount;
+        }
+    }
+
+    public static int payoutGold(float percent){
+        int goldReturns = MathUtils.floor(MariMod.saveableKeeper.goldInvested * percent);
+        MariMod.saveableKeeper.goldInvested -= goldReturns;
+        MariMod.saveableKeeper.totalGoldReturns += goldReturns;
+        MariMod.gainGold(goldReturns);
+        return goldReturns;
+    }
+
+    public static void investGoldIndependently(int goldInvested){
+        saveableKeeper.goldInvested += goldInvested;
+        saveableKeeper.lifetimeGoldInvested += goldInvested;
+    }
+
     public static void spendGold(int goldCost){ //TODO: Work on checking if goldCost > 0 if necessary
         AbstractPlayer p = AbstractDungeon.player;
 

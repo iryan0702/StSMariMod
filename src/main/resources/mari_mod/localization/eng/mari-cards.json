@@ -53,7 +53,7 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Ethereal. NL marimod:Recall 1 of !M! special types of cards. NL Remove the option chosen this combat."
+    "DESCRIPTION": "marimod:Recall 1 of !M! special types of cards. NL Remove the option chosen this combat."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -89,7 +89,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold to apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
+    "DESCRIPTION": "Innate. marimod:Fading. marimod:Invest 10. NL Apply !MARI_RADIANCE! marimod:Radiance. NL If marimod:Recalled, apply !MARI_RADIANCE! marimod:Radiance to ALL characters and Purge this card."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
@@ -102,8 +102,8 @@
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
-    "DESCRIPTION": "One time each turn, when you [#fbccff]spend[] Gold, deal damage equal to gold [#fbccff]spent[] to all enemies.",
-    "UPGRADE_DESCRIPTION": "Two times each turn, when you [#fbccff]spend[] Gold, deal damage equal to gold [#fbccff]spent[] to all enemies."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL The next time you marimod:Invest Gold, deal damage to ALL enemies equal to Gold marimod:Invested.",
+    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL The next !M! times you marimod:Invest Gold, deal damage to ALL enemies equal to Gold marimod:Invested."
   },
   "MariMod:Mari_Expenses": {
     "NAME": "Expenses",
@@ -143,7 +143,7 @@
   },
   "MariMod:Mari_$Memories_Of_Uchiura": {
     "NAME": "Memories Of Uchiura",
-    "DESCRIPTION": "marimod:Recall a marimod:Radiance card. NL marimod:Radiance cards directly apply marimod:Radiance."
+    "DESCRIPTION": "marimod:Recall a marimod:Radiance card. NL ( marimod:Radiance cards directly apply marimod:Radiance. )"
   },
   "MariMod:Mari_$Memories_Of_Performance": {
     "NAME": "Memories Of Performance",
@@ -152,7 +152,7 @@
   "MariMod:Mari_Shut_Up": {
     "NAME": "\"Shut uuuuuup!\"",
     "DESCRIPTION": "Gain !M! Strength NL this turn. NL Enemy loses !M! Strength this turn. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "GAIN !M! STRENGTH THIS TURN!!! NL ENEMY LOSES !M! STRENGTH THIS TURN!!! NL Exhaust (!!!!!)",
+    "UPGRADE_DESCRIPTION": "GAIN !M! STRENGTH THIS TURN!!! NL ENEMY LOSES !M! STRENGTH THIS TURN!!! NL marimod:EXHAAAUST (!!!)",
     "EXTENDED_DESCRIPTION": [
       "\"SHUT UUUUUUP!\""
     ]
@@ -244,8 +244,9 @@
   },
   "MariMod:Mari_Perfect_Performance": {
     "NAME": "Perfect Performance",
-    "DESCRIPTION": "Retain. NL Deal !D! damage to ALL enemies. Can only be played if you have NL spent ",
+    "DESCRIPTION": "Retain. NL Deal !D! damage to ALL enemies. Can only be played if you have NL spent 1, 2, and 3 [E] on cards this turn.",
     "EXTENDED_DESCRIPTION": [
+      "Retain. NL Deal !D! damage to ALL enemies. Can only be played if you have NL spent ",
       "1[], ",
       "2[], and ",
       "3[] [E] NL on cards this turn."
@@ -269,7 +270,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block. NL marimod:Kindle: Purge a card in your exhaust pile and marimod:Recall a marimod:Radiance card."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block. NL marimod:Kindle: Purge a card in your exhaust pile and marimod:Recall a marimod:Radiance card."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",
@@ -360,7 +361,7 @@
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
-    "DESCRIPTION": "Whenever you successfully marimod:Kindle an enemy, it loses !M! Strength this turn."
+    "DESCRIPTION": "Whenever you successfully marimod:Kindle an enemy, it loses !M! Strength for a turn."
   },
   "MariMod:Mari_Excitement": {
     "NAME": "Excitement",
@@ -408,7 +409,7 @@
     "DESCRIPTION": "Gain 1 Frail."
   },
   "MariMod:Mari_Aspiration": {
-    "NAME": "Endless Aspiration",
+    "NAME": "Infinite Aspiration",
     "DESCRIPTION": "marimod:Fading. NL At the start of your turn, gain infinite [E]."
   },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {

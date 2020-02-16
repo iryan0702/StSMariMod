@@ -18,10 +18,10 @@ public class MariTheSparkPatch {
             locator = Locator.class
     )
     public static void Insert(AbstractRoom __instance) {
-        AbstractRelic relic = AbstractDungeon.player.getRelic(MariTheSpark.ID);
+        /*AbstractRelic relic = AbstractDungeon.player.getRelic(MariTheSpark.ID);
         if(relic != null){
             relic.onTrigger();
-        }
+        }*/
     }
 
     private static class Locator extends SpireInsertLocator {

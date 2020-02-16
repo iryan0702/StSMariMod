@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
+import mari_mod.actions.MariGainGoldAction;
 import mari_mod.actions.MariSpendGoldAction;
 import mari_mod.actions.MariTheMANSIONAction;
 import mari_mod.actions.MariWaitAction;

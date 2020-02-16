@@ -40,20 +40,20 @@
   },
   "MariMod:Flaunt_Power": {
     "NAME": "Flaunt",
-    "DESCRIPTIONS": ["#b1 time each turn, whenever you spend gold, deal damage equal to gold spent to all enemies.",
-      "#b",
-      " times each turn, whenever you spend gold, deal damage equal to gold spent to all enemies."]
+    "DESCRIPTIONS": ["The next time you #yInvest Gold, deal damage to ALL enemies equal to Gold #yInvested.",
+      "The next #b",
+      " times you #yInvest Gold, deal damage to ALL enemies equal to Gold #yInvested."]
   },
   "MariMod:Excitement_Power": {
     "NAME": "Excitement",
-    "DESCRIPTIONS": ["After drawing #b5 cards in a turn, whenever you draw a card, gain #b1 #yRadiance.",
-      "After drawing #b5 cards in a turn, whenever you draw a card, gain #b1 #yRadiance #b",
+    "DESCRIPTIONS": ["After drawing #b3 cards in a turn, whenever you draw a card, gain #b1 #yRadiance.",
+      "After drawing #b3 cards in a turn, whenever you draw a card, gain #b1 #yRadiance #b",
       " times."]
   },
   "MariMod:The_Light_We_Chase_Power": {
     "NAME": "The Light We Chase",
-    "DESCRIPTIONS": ["Whenever an enemy gains Radiance, you gain ",
-      " Radiance."]
+    "DESCRIPTIONS": ["Whenever an enemy gains Radiance, you gain #b1 #yRadiance #b",
+      " times."]
   },
   "MariMod:No_Problem_Power": {
     "NAME": "No Problem!",

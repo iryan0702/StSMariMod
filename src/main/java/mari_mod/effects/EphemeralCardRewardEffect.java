@@ -19,8 +19,10 @@ import com.megacrit.cardcrawl.vfx.SpotlightEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 
 public class EphemeralCardRewardEffect extends AbstractGameEffect {
-    public static final float MOVE_DUR = 0.5f;
+    public static final float MOVE_DUR = 1.0f;
+    public static final float FLASH_DUR = 0.5f;
     public static final float FADE_DUR = 1.0f;
+    public boolean flashTriggered;
     public boolean exhaustTriggered;
 
     private AbstractCard card;
@@ -28,6 +30,7 @@ public class EphemeralCardRewardEffect extends AbstractGameEffect {
     public EphemeralCardRewardEffect(AbstractCard card) {
         this.duration = MOVE_DUR + FADE_DUR;
         this.card = card;
+        flashTriggered = false;
         exhaustTriggered = false;
     }
 
@@ -35,6 +38,11 @@ public class EphemeralCardRewardEffect extends AbstractGameEffect {
         this.card.update();
 
         this.duration -= Gdx.graphics.getDeltaTime();
+        if(this.duration < FADE_DUR + FLASH_DUR && !flashTriggered){
+            this.card.flash(new Color(0.5f, 0.0f, 0.0f, 0.75f));
+            this.flashTriggered = true;
+        }
+
         if (this.duration < FADE_DUR && !exhaustTriggered) {
             AbstractDungeon.topLevelEffectsQueue.add(new ExhaustCardEffect(this.card));
             CardCrawlGame.sound.play("CARD_EXHAUST", 0.2F);

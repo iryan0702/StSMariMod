@@ -1,6 +1,9 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,29 +22,38 @@ public class Mari_Flaunt extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-    private static final int PROC_AMOUNT = 1;
-    private static final int UPGRADE_PROC_AMOUNT = 1;
-    private static final CardType TYPE = CardType.POWER;
+    private static final int DAMAGE = 10;
+    private static final int AMOUNT = 1;
+    private static final int UPGRADE_AMOUNT = 1;
+    private static final int GOLD_COST = 10;
+    private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.NONE;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
 
     public Mari_Flaunt(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = PROC_AMOUNT;
+        this.baseDamage = DAMAGE;
+        this.damage = this.baseDamage;
+
+        this.baseMagicNumber = AMOUNT;
         this.magicNumber = this.baseMagicNumber;
+
+        this.baseGoldCost = GOLD_COST;
+        this.goldCost = this.baseGoldCost;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Flaunt_Power(p, this.magicNumber), this.magicNumber));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PROC_AMOUNT);
+            upgradeMagicNumber(UPGRADE_AMOUNT);
             this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            initializeDescription();
         }
     }
 }

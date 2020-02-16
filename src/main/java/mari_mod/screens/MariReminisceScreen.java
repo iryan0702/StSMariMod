@@ -39,8 +39,6 @@ public class MariReminisceScreen extends CardRewardScreen
     private boolean codex;
     private boolean draft;
     private String header;
-    private SkipCardButton skipButton;
-    private SingingBowlButton bowlButton;
     private int draftCount;
     public AbstractCard choice;
 
@@ -53,14 +51,10 @@ public class MariReminisceScreen extends CardRewardScreen
         this.codex = false;
         this.draft = false;
         this.header = "";
-        this.skipButton = new SkipCardButton();
-        this.bowlButton = new SingingBowlButton();
         this.draftCount = 0;
     }
 
     public void update() {
-        this.skipButton.update();
-        this.bowlButton.update();
         this.updateControllerInput();
         this.cardSelectUpdate();
     }
@@ -119,8 +113,6 @@ public class MariReminisceScreen extends CardRewardScreen
         }
         if (hoveredCard != null && hoveredCard.hb.clicked) {
             hoveredCard.hb.clicked = false;
-            this.skipButton.hide();
-            this.bowlButton.hide();
             if (this.codex) {
                 this.codexCard = hoveredCard;
             }
@@ -154,8 +146,6 @@ public class MariReminisceScreen extends CardRewardScreen
     }
 
     public void render(final SpriteBatch sb) {
-        this.skipButton.render(sb);
-        this.bowlButton.render(sb);
         this.renderCardReward(sb);
     }
 
@@ -170,22 +160,6 @@ public class MariReminisceScreen extends CardRewardScreen
 
     public void reopen() {
         AbstractDungeon.screen = AbstractDungeon.CurrentScreen.CARD_REWARD;
-        if (this.draft) {
-            this.skipButton.hide();
-            this.bowlButton.hide();
-        }
-        else if (this.codex) {
-            this.skipButton.show();
-            this.bowlButton.hide();
-        }
-        else if (AbstractDungeon.player.hasRelic("Singing Bowl")) {
-            this.skipButton.show(true);
-            this.bowlButton.show(this.rItem);
-        }
-        else {
-            this.skipButton.show();
-            this.bowlButton.hide();
-        }
         AbstractDungeon.topPanel.unhoverHitboxes();
         AbstractDungeon.isScreenUp = true;
         if (!this.codex) {
@@ -202,8 +176,6 @@ public class MariReminisceScreen extends CardRewardScreen
         this.codex = false;
         this.draft = false;
         this.rItem = rItem;
-        this.skipButton.hide();
-        this.bowlButton.hide();
         this.onCardSelect = true;
         AbstractDungeon.topPanel.unhoverHitboxes();
         this.rewardGroup = cards;

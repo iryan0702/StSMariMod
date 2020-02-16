@@ -42,33 +42,6 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
         this.baseDamage = DAMAGE_AMT;
         this.damage = this.baseDamage;
         this.isMultiDamage = true;
-
-        String desc;
-        if(Settings.language.equals(Settings.GameLanguage.ZHS)){
-            desc = EXTENDED_DESCRIPTION[3];
-        }else {
-            desc = DESCRIPTION;
-            if (MariMod.played1Cost) {
-                desc += "[#7fff00]";
-            } else {
-                desc += "[#ff6563]";
-            }
-            desc += EXTENDED_DESCRIPTION[0];
-            if (MariMod.played2Cost) {
-                desc += "[#7fff00]";
-            } else {
-                desc += "[#ff6563]";
-            }
-            desc += EXTENDED_DESCRIPTION[1];
-            if (MariMod.played3Cost) {
-                desc += "[#7fff00]";
-            } else {
-                desc += "[#ff6563]";
-            }
-            desc += EXTENDED_DESCRIPTION[2];
-        }
-        this.rawDescription = desc;
-        this.initializeDescription();
     }
 
     @Override
@@ -84,27 +57,27 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
         this.retain = true;
         String desc;
         if(Settings.language.equals(Settings.GameLanguage.ZHS)){
-            desc = EXTENDED_DESCRIPTION[3];
-        }else {
             desc = DESCRIPTION;
+        }else {
+            desc = EXTENDED_DESCRIPTION[0];
             if (MariMod.played1Cost) {
                 desc += "[#7fff00]";
             } else {
                 desc += "[#ff6563]";
             }
-            desc += EXTENDED_DESCRIPTION[0];
+            desc += EXTENDED_DESCRIPTION[1];
             if (MariMod.played2Cost) {
                 desc += "[#7fff00]";
             } else {
                 desc += "[#ff6563]";
             }
-            desc += EXTENDED_DESCRIPTION[1];
+            desc += EXTENDED_DESCRIPTION[2];
             if (MariMod.played3Cost) {
                 desc += "[#7fff00]";
             } else {
                 desc += "[#ff6563]";
             }
-            desc += EXTENDED_DESCRIPTION[2];
+            desc += EXTENDED_DESCRIPTION[3];
         }
         this.rawDescription = desc;
         this.initializeDescription();
