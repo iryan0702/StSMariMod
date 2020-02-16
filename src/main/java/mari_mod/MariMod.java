@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -35,23 +36,30 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.EffectHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.ShaderHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Turnip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.CardFlashVfx;
+import mari_mod.actions.CardFlashAction;
 import mari_mod.actions.MariUpdateRecentPowersAction;
 import mari_mod.charSelectScreen.MariCharacterSelectScreen;
 import mari_mod.events.*;
 import mari_mod.powers.*;
 import mari_mod.relics.*;
+import mari_mod.screens.KindleFtue;
 import mari_mod.screens.MariReminisceScreen;
+import mari_mod.topPanelItems.MariInvestedGold;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import mari_mod.characters.Mari;
@@ -115,8 +123,11 @@ public class MariMod implements
 
     public static MariSavables saveableKeeper = new MariSavables();
     public static ArrayList<AbstractPower> recentPowers = new ArrayList<>();
+    public static MariInvestedGold investedGoldTopPanelItem;
     public static int goldSpentByMariThisCombat = 0;
     public static int timesMariSpentGoldThisCombat = 0;
+    public static int timesMariPlayedAttacksThisCombat = 0;
+    public static int timesMariPlayedSkillsThisCombat = 0;
     public static int timesOMGUsedThisTurn = 0;  //STAT RESET BY MARIOMG CARD
     public static boolean played0Cost = false;
     public static boolean played1Cost = false;
@@ -138,11 +149,6 @@ public class MariMod implements
 
         if(p.hasPower(Character_Development_Power.POWER_ID)) {
             p.getPower(Character_Development_Power.POWER_ID).onSpecificTrigger();
-        }
-
-        if(p.hasPower(Withdrawal_Power.POWER_ID)){
-            AbstractPower power = p.getPower(Withdrawal_Power.POWER_ID);
-            power.updateDescription();
         }
 
         if(p.hasPower(VulnerablePower.POWER_ID)){
@@ -194,6 +200,7 @@ public class MariMod implements
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
         resetBattleStats();
         performBattleStartEvents();
+        //AbstractDungeon.ftue = new KindleFtue();
     }
 
     @Override
@@ -225,13 +232,6 @@ public class MariMod implements
         if(AbstractDungeon.player != null){
             if(!AbstractDungeon.player.chosenClass.equals(PlayerClassEnum.MARI) && isRelicsForOtherCharactersDisabled){
                 //myOwnRemoveRelicFromPool(AbstractDungeon.commonRelicPool, MariFlowerRing.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.commonRelicPool, MariOldLollipop.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.commonRelicPool, MariDevilsCharm.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.uncommonRelicPool, MariJuicyTangerine.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.uncommonRelicPool, MariToySailboat.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.uncommonRelicPool, MariMiniaturePiano.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.rareRelicPool, MariUmeBlossom.ID);
-                //myOwnRemoveRelicFromPool(AbstractDungeon.rareRelicPool, MariDolphinTrinket.ID);
                 myOwnRemoveRelicFromPool(AbstractDungeon.bossRelicPool, MariFestivalBadge.ID);
             }
         }
@@ -262,6 +262,8 @@ public class MariMod implements
     private void resetBattleStats(){
         MariStatTracker.debuffsReceivedThisAndLastEnemyTurn = 0;
         goldSpentByMariThisCombat = 0;
+        timesMariPlayedAttacksThisCombat = 0;
+        timesMariPlayedSkillsThisCombat = 0;
         timesMariSpentGoldThisCombat = 0;
         timesOMGUsedThisTurn = 0;
         MariMod.recentPowers.clear();
@@ -284,6 +286,9 @@ public class MariMod implements
         BaseMod.addAudio("MariMod:MariHeliIn", "mari_mod/audio/MariHeliIn.ogg");
         BaseMod.addAudio("MariMod:MariHeliMid", "mari_mod/audio/MariHeliMid.ogg");
         BaseMod.addAudio("MariMod:MariHeliOut", "mari_mod/audio/MariHeliOut.ogg");
+        BaseMod.addAudio("MariMod:MariMusicalAttack", "mari_mod/audio/MariMusicalAttack.ogg");
+                BaseMod.addAudio("MariMod:MariPerfectPerformance", "mari_mod/audio/MariPerfectPerformance.ogg");
+                BaseMod.addAudio("MariMod:MariLimelight", "mari_mod/audio/MariLimelight.ogg");
     }
 
     public static int lastGoldAmountSpent = 0;
@@ -359,7 +364,7 @@ public class MariMod implements
         AbstractPlayer p = AbstractDungeon.player;
         if(goldGain > 0) {
             CardCrawlGame.sound.play("GOLD_JINGLE");
-            for (int i = 0; i < goldGain; i++) {
+            for (int i = 0; i < Math.min(goldGain,500); i++) {
                 AbstractDungeon.effectList.add(new GainPennyEffect(p, p.hb.cX, p.hb.cY - 100.0F * Settings.scale, p.hb.cX, p.hb.cY, true));
             }
             p.gainGold(goldGain);
@@ -394,6 +399,12 @@ public class MariMod implements
         if(cost == 3) played3Cost = true;
         if(played1Cost && played2Cost && played3Cost){
             perfectPerformance = true;
+        }
+        if(card.type == AbstractCard.CardType.SKILL){
+            timesMariPlayedSkillsThisCombat++;
+        }
+        if(card.type == AbstractCard.CardType.ATTACK){
+            timesMariPlayedAttacksThisCombat++;
         }
     }
 
@@ -458,6 +469,14 @@ public class MariMod implements
     public static Texture flawlessFormIndicatorTexture;
     public static Texture choreographyFormIndicatorTexture;
     public static Texture badTurnipTexture;
+    public static Texture musicNoteAttackTexture;
+    public static TextureAtlas.AtlasRegion musicNoteAttack;
+    public static Texture exhaustViewOrderButtonTexture;
+    public static Texture featherVfx1;
+    public static Texture featherVfx2;
+    public static Texture featherVfx3;
+    public static Texture featherVfx4;
+
     public static ModPanel settingsPanel;
     public static ShaderProgram goldShader;
     @Override
@@ -472,12 +491,19 @@ public class MariMod implements
         flawlessFormIndicatorTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/flawlessFormIndicator.png");
         choreographyFormIndicatorTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/choreographyIndicator.png");
         badTurnipTexture = ImageMaster.loadImage("mari_mod/images/relics/MariWarningTurnip.png");
+        musicNoteAttackTexture = ImageMaster.loadImage("mari_mod/images/effects/mariMusicNoteAttack.png");
+        musicNoteAttack = new TextureAtlas.AtlasRegion(musicNoteAttackTexture, 0, 0, 128, 128);
+        exhaustViewOrderButtonTexture = ImageMaster.loadImage("mari_mod/images/ui/sortButton.png");
+
+        featherVfx1 = ImageMaster.loadImage("mari_mod/images/effects/feather1.png");
+        featherVfx2 = ImageMaster.loadImage("mari_mod/images/effects/feather2.png");
+        featherVfx3 = ImageMaster.loadImage("mari_mod/images/effects/feather3.png");
+        featherVfx4 = ImageMaster.loadImage("mari_mod/images/effects/feather4.png");
 
         logger.info("initialize mod badge");
         // Mod badge
-
         Texture badgeTexture = new Texture("mari_mod/images/MariBadge.png");
-        ModPanel settingsPanel = new ModPanel();
+        settingsPanel = new ModPanel();
         ModLabeledToggleButton enableRelicsForOthersButton = new ModLabeledToggleButton(DISABLE_RELIC_SETTINGS,
             350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
             isRelicsForOtherCharactersDisabled, // Boolean it uses
@@ -507,9 +533,14 @@ public class MariMod implements
         BaseMod.addEvent(MariShiningLightEvent.ID, MariShiningLightEvent.class, Exordium.ID);
         BaseMod.addEvent(MariSssserpent.ID, MariSssserpent.class, Exordium.ID);
         BaseMod.addEvent(MariMaskedBandits.ID, MariMaskedBandits.class, TheCity.ID);
+        BaseMod.addEvent(MariGoldenIdolEvent.ID, MariGoldenIdolEvent.class, Exordium.ID);
         /*for(int i = 0; i < 100; i++) {
             BaseMod.addEvent(AllMariModEvents.ID + i, AllMariModEvents.class);
         }*/
+        investedGoldTopPanelItem = new MariInvestedGold();
+        BaseMod.addTopPanelItem(investedGoldTopPanelItem);
+
+        selectScreen = new MariCharacterSelectScreen();
     }
 
     public void receiveEditColors() {
@@ -653,7 +684,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Delicacy());
             BaseMod.addCard(new Mari_Wishing_Fountain());
             BaseMod.addCard(new Mari_Reminisce());
-            BaseMod.addCard(new Mari_From_Zero());
+            //BaseMod.addCard(new Mari_From_Zero());
 
             BaseMod.addCard(new Mari_Pretty_Bomber_Head());
             BaseMod.addCard(new Mari_Tea_Time());
@@ -688,6 +719,9 @@ public class MariMod implements
 
             BaseMod.addCard(new Mari_Drama1());
             BaseMod.addCard(new Mari_Drama2());
+            BaseMod.addCard(new Mari_Repressed());
+
+            BaseMod.addCard(new Mari_Aspiration());
 
             /*
             //ATTACKS COMMON
@@ -746,11 +780,10 @@ public class MariMod implements
 
         if (keywords != null) {
             for (com.evacipated.cardcrawl.mod.stslib.Keyword keyword : keywords) {
-                BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+                BaseMod.addKeyword("marimod",keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
                 logger.info("adding keyword: " + keyword.PROPER_NAME);
             }
         }
-
         /*
         Map<String,Keyword> keywords = (Map<String,Keyword>)gson.fromJson(strings, typeToken);
         for (Keyword kw : keywords.values()) {
@@ -775,6 +808,7 @@ public class MariMod implements
         BaseMod.loadCustomStrings(CardStrings.class, loadJson("mari_mod/localization/" + language + "/mari-cards.json"));
         BaseMod.loadCustomStrings(RelicStrings.class, loadJson("mari_mod/localization/" + language + "/mari-relics.json"));
         BaseMod.loadCustomStrings(PowerStrings.class, loadJson("mari_mod/localization/" + language + "/mari-powers.json"));
+        BaseMod.loadCustomStrings(UIStrings.class, loadJson("mari_mod/localization/" + language + "/mari-ui.json"));
         //BaseMod.loadCustomStrings(PotionStrings.class, loadJson("mari_mod/localization/" + language + "/mari-potions.json"));
         BaseMod.loadCustomStrings(CharacterStrings.class, loadJson("mari_mod/localization/" + language + "/mari-characters.json"));
         BaseMod.loadCustomStrings(EventStrings.class, loadJson("mari_mod/localization/" + language + "/mari-events.json"));
@@ -784,6 +818,8 @@ public class MariMod implements
 
     @Override
     public MariSavables onSave() {
+        logger.info("SAVING VALUES!!!");
+        logger.info("Current class: " + saveableKeeper.currentClass);
         return saveableKeeper;
     }
 
@@ -792,11 +828,12 @@ public class MariMod implements
         logger.info("LOADING VALUES!!!");
         if(saved != null) {
             saveableKeeper.copyStats(saved);
+
+            logger.info("Current class: " + saveableKeeper.currentClass);
         }else{
             saveableKeeper = new MariSavables();
         }
     }
-
     private static String loadJson(String jsonPath) {
         return Gdx.files.internal(jsonPath).readString(String.valueOf(StandardCharsets.UTF_8));
     }
@@ -811,18 +848,14 @@ public class MariMod implements
         setPowerImages(power, removeModId(power.ID));
     }
 
-    public static MariCharacterSelectScreen selectScreen = new MariCharacterSelectScreen();
+    public static MariCharacterSelectScreen selectScreen;
 
     public static void renderCharacterSelectScreenElements(SpriteBatch sb){
-        for(CharacterOption c: CardCrawlGame.mainMenuScreen.charSelectScreen.options) {
-            if(c.selected && c.c.chosenClass.equals(PlayerClassEnum.MARI)) selectScreen.render(sb);
-        }
+        if(selectScreen != null) selectScreen.render(sb);
     }
 
     public static void updateCharacterSelectScreenElements(){
-        for(CharacterOption c: CardCrawlGame.mainMenuScreen.charSelectScreen.options) {
-            if(c.selected && c.c.chosenClass.equals(PlayerClassEnum.MARI)) selectScreen.update();
-        }
+        if(selectScreen != null) selectScreen.update();
     }
 
     public void performBattleStartEvents(){
@@ -843,5 +876,4 @@ public class MariMod implements
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(AbstractDungeon.player, tmp, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.SLASH_HEAVY));
         }
     }
-
 }

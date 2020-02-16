@@ -1,19 +1,64 @@
 package mari_mod.charSelectScreen;
 
+import basemod.BaseMod;
+import basemod.ModBadge;
+import basemod.ModPanel;
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.*;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import mari_mod.MariMod;
+import mari_mod.cards.MariCustomTags;
+import mari_mod.characters.Mari;
+import mari_mod.patches.PlayerClassEnum;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
 public class MariCharacterSelectScreen {
+    private static final UIStrings uiStrings;
+    public static final String[] TEXT;
+    private static final float DEST_INFO_X;
+    private static final float START_INFO_X;
+    private static final float START_INFO_Y;
+    private static final float NAME_OFFSET_Y;
+
+    //INFOS
+
+    public String name;
+    private String hp;
+    private int gold;
+    private String flavorText;
+
+    public float infoX;
+    public float infoY;
+    public boolean wasJustSelected;
+
+    //HITBOX
+
+    public static Hitbox relicUpHb;
+    public static Hitbox relicDownHb;
+
+    //SELECT INFO
+
+    public static int chosenRelic;
+    public static int chosenClass;
+    public static final int OPTIONS = 3;
+    public static ModPanel settingsPanel;
+    //TEXTURES
 
     public Texture backgroundTexture;
     public TextureAtlas.AtlasRegion background;
@@ -23,6 +68,17 @@ public class MariCharacterSelectScreen {
     public TextureAtlas.AtlasRegion foreground;
     public Texture particleTexture;
     public TextureAtlas.AtlasRegion particleImg;
+    public Texture upArrowTexture;
+    public TextureAtlas.AtlasRegion upArrowImg;
+    public Texture downArrowTexture;
+    public TextureAtlas.AtlasRegion downArrowImg;
+    public Texture settingsTexture;
+    public TextureAtlas.AtlasRegion settingsImg;
+
+    public Texture testGridTexture;
+    public TextureAtlas.AtlasRegion testGridImg;
+
+    //COLORS
 
     public Color backgroundColor;
 
@@ -32,89 +88,274 @@ public class MariCharacterSelectScreen {
     public Color foregroundGlowColor;
     public float foregroundGlowColorTimer;
 
+    //PARTICLES
+
     public ArrayList<GlowyParticle> particles;
     public float particleTimer;
 
-    public static float particleTimeDilation = 45.0f;
+    public static float particleTimeDilation = 80.0f;
 
     public MariCharacterSelectScreen(){
+
+        chosenRelic = 0;
+
+        relicUpHb = new Hitbox(DEST_INFO_X + (-10.0F + 60.0f) * Settings.scale - 32.0F, START_INFO_Y + (40.0F + 120.0F - 160f) * Settings.scale, 55.0F * Settings.scale, 55.0F * Settings.scale);
+        relicDownHb = new Hitbox(DEST_INFO_X + (-10.0F + 60.0f) * Settings.scale - 32.0F, START_INFO_Y + (40.0F - 160f) * Settings.scale,55.0F * Settings.scale, 55.0F * Settings.scale);
+
+        this.infoX = START_INFO_X;
+        this.infoY = START_INFO_Y;
+
+        name = Mari.characterStrings.NAMES[0];
+        hp = Mari.START_HP + "/" + Mari.START_HP;
+        gold = Mari.START_GOLD;
+        flavorText = Mari.characterStrings.TEXT[0];
+
+        settingsPanel = MariMod.settingsPanel;
+        wasJustSelected = false;
+
         foregroundColorTimer = 0;
         foregroundGlowColorTimer = 0;
         particleTimer = 0;
         particles = new ArrayList<>();
     }
 
+    //RELICS, CLASS IDENTIFIERS, and SKIN
+    //0 - The Spark, None, School Uniform
+    //1 – Stage Directions, Drama, Mijuku Dreamer
+    //2 - Pink Handbag, Energy, Casual Outfit
+
+    public AbstractCard.CardTags getSelectedClass(){
+        switch (chosenClass){
+            case 0:
+                return null;
+            case 1:
+                return MariCustomTags.DRAMA;
+            case 2:
+                return MariCustomTags.ENERGY;
+            default:
+                return null;
+        }
+    }
+
     public void update(){
 
-        particleTimer -= Gdx.graphics.getRawDeltaTime() * particleTimeDilation;
-        particleTimeDilation = MathUtils.lerp(particleTimeDilation, 1.0f, Gdx.graphics.getRawDeltaTime() * 2.0f);
-        if(particleTimer <= 0){
-            particles.add(new GlowyParticle(MathUtils.random(0,7)));
-            particleTimer += 0.12f;
+        relicUpHb.update();
+        relicDownHb.update();
+        if (InputHelper.justClickedLeft) {
+            if (relicUpHb.hovered) {
+                relicUpHb.clickStarted = true;
+            } else if (relicDownHb.hovered) {
+                relicDownHb.clickStarted = true;
+            }
+        }
+        if(relicUpHb.clicked){
+            chosenRelic--;
+            relicUpHb.clicked = false;
+            if(chosenRelic < 0) chosenRelic = OPTIONS-1;
+            chosenClass = chosenRelic;
+        }
+        if(relicDownHb.clicked){
+            chosenRelic++;
+            relicDownHb.clicked = false;
+            if(chosenRelic >= OPTIONS) chosenRelic = 0;
+            chosenClass = chosenRelic;
+
+            //BaseMod.modSettingsUp = true;
+            //MariMod.settingsPanel.isUp = true;
         }
 
-        foregroundColorTimer += Gdx.graphics.getRawDeltaTime();
-        float foregroundBrightness = 0.90f + MathUtils.sin(foregroundColorTimer * MathUtils.PI/4.0f) * 0.10f;
-        foregroundColor = new Color(foregroundBrightness, foregroundBrightness, foregroundBrightness, 1.0f);
+        boolean selected = false;
+        for(CharacterOption c: CardCrawlGame.mainMenuScreen.charSelectScreen.options) {
+            if(c.selected && c.c.chosenClass.equals(PlayerClassEnum.MARI)) selected = true;
+        }
 
-        foregroundGlowColorTimer += Gdx.graphics.getRawDeltaTime();
-        float foregroundGlowBrightness = 0.90f + MathUtils.sin(foregroundGlowColorTimer * MathUtils.PI/2.4f) * 0.10f;
-        foregroundGlowColor = new Color(foregroundGlowBrightness, foregroundGlowBrightness, foregroundGlowBrightness, 0.50f);
+        if (selected) {
+            this.infoX = MathHelper.uiLerpSnap(this.infoX, DEST_INFO_X);
+        } else {
+            this.infoX = MathHelper.uiLerpSnap(this.infoX, START_INFO_X);
+        }
 
-        Iterator itr = particles.iterator();
-        while(itr.hasNext()){
-            GlowyParticle p = (GlowyParticle)itr.next();
-            p.update();
-            if(p.toBeDeleted){
-                itr.remove();
+        if(selected) {
+            wasJustSelected = true;
+
+            particleTimer -= Gdx.graphics.getRawDeltaTime() * particleTimeDilation;
+            particleTimeDilation = MathUtils.lerp(particleTimeDilation, 1.0f, Gdx.graphics.getRawDeltaTime() * 3.0f);
+            if (particleTimer <= 0) {
+                particles.add(new GlowyParticle(MathUtils.random(0, 7)));
+                particleTimer += 0.12f;
             }
+            Iterator itr = particles.iterator();
+            while (itr.hasNext()) {
+                GlowyParticle p = (GlowyParticle) itr.next();
+                p.update();
+                if (p.toBeDeleted) {
+                    itr.remove();
+                }
+            }
+
+            switch (chosenRelic){
+                case 0:
+                    backgroundColor.r = MathUtils.lerp(backgroundColor.r, 1.0f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    backgroundColor.g = MathUtils.lerp(backgroundColor.g, 1.0f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    backgroundColor.b = MathUtils.lerp(backgroundColor.b, 1.0f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    break;
+                case 1:
+                    backgroundColor.r = MathUtils.lerp(backgroundColor.r, 0.5f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    backgroundColor.g = MathUtils.lerp(backgroundColor.g, 1.0f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    backgroundColor.b = MathUtils.lerp(backgroundColor.b, 0.8f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    break;
+                case 2:
+                    backgroundColor.r = MathUtils.lerp(backgroundColor.r, 1.0f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    backgroundColor.g = MathUtils.lerp(backgroundColor.g, 0.6f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    backgroundColor.b = MathUtils.lerp(backgroundColor.b, 0.8f, Gdx.graphics.getRawDeltaTime() * 0.5f);
+                    break;
+                default:
+                    break;
+            }
+
+            foregroundColorTimer += Gdx.graphics.getRawDeltaTime();
+            float foregroundBrightness = 0.90f + MathUtils.sin(foregroundColorTimer * MathUtils.PI / 4.0f) * 0.10f;
+            foregroundColor = new Color(foregroundBrightness, foregroundBrightness, foregroundBrightness, 1.0f);
+
+            foregroundGlowColorTimer += Gdx.graphics.getRawDeltaTime();
+            float foregroundGlowBrightness = 0.90f + MathUtils.sin(foregroundGlowColorTimer * MathUtils.PI / 2.4f) * 0.10f;
+            foregroundGlowColor = new Color(foregroundGlowBrightness, foregroundGlowBrightness, foregroundGlowBrightness, 0.50f);
+        }else{
+            if(wasJustSelected){
+                wasJustSelected = false;
+                BaseMod.modSettingsUp = false;
+                MariMod.settingsPanel.isUp = false;
+            }
+        }
+
+        if(settingsPanel != null && settingsPanel.isUp){
+            settingsPanel.update();
         }
     }
 
     public void render(SpriteBatch sb){
-        if(backgroundColor == null){
-            backgroundColor = Color.WHITE.cpy();
-        }
-        if(foregroundColor == null){
-            foregroundColor = Color.WHITE.cpy();
-        }
-        if(foregroundGlowColor == null){
-            foregroundGlowColor = Color.WHITE.cpy();
-        }
-        if(backgroundTexture == null){
-            backgroundTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariPortraitBg.png");
-            background = ImageMaster.vfxAtlas.addRegion("MariSelectBg", backgroundTexture, 0, 0, 1920, 1200);
-        }
-        if(foregroundTexture == null){
-            foregroundTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariPortraitFront.png");
-            foreground = ImageMaster.vfxAtlas.addRegion("MariSelectFront", foregroundTexture, 0, 0, 1920, 1200);
-        }
-        if(particleTexture == null){
-            particleTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariGlowyParticle.png");
-            particleImg = ImageMaster.vfxAtlas.addRegion("MariSelectParticles", particleTexture, 0, 0, 256, 256);
-        }
-        if(backgroundGlowTexture == null){
-            backgroundGlowTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariPortraitGlow.png");
-            backgroundGlow = ImageMaster.vfxAtlas.addRegion("MariSelectGlow", backgroundGlowTexture, 0, 0, 1920, 1200);
-        }
         Color prevColor = sb.getColor();
 
-        sb.setColor(foregroundColor);
-        sb.draw(this.background, (float) Settings.WIDTH / 2.0F - 960.0F, (float)Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
+        boolean selected = false;
+        for(CharacterOption c: CardCrawlGame.mainMenuScreen.charSelectScreen.options) {
+            if(c.selected && c.c.chosenClass.equals(PlayerClassEnum.MARI)) selected = true;
+        }
+        if(selected) {
+            if (backgroundColor == null) {
+                backgroundColor = Color.WHITE.cpy();
+                foregroundColor = Color.WHITE.cpy();
+                foregroundGlowColor = Color.WHITE.cpy();
+            }
+            if (backgroundTexture == null) {
+                backgroundTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariPortraitBg.png");
+                background = ImageMaster.vfxAtlas.addRegion("MariSelectBg", backgroundTexture, 0, 0, 1920, 1200);
+                foregroundTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariPortraitFront.png");
+                foreground = ImageMaster.vfxAtlas.addRegion("MariSelectFront", foregroundTexture, 0, 0, 1920, 1200);
+                particleTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariGlowyParticle.png");
+                particleImg = ImageMaster.vfxAtlas.addRegion("MariSelectParticles", particleTexture, 0, 0, 256, 256);
+                backgroundGlowTexture = ImageMaster.loadImage("mari_mod/images/charSelect/MariPortraitGlow.png");
+                backgroundGlow = ImageMaster.vfxAtlas.addRegion("MariSelectGlow", backgroundGlowTexture, 0, 0, 1920, 1200);
+                upArrowTexture = ImageMaster.loadImage("mari_mod/images/charSelect/tinyUpArrow.png");
+                upArrowImg = ImageMaster.vfxAtlas.addRegion("MariUpArrow", upArrowTexture, 0, 0, 48, 48);
+                downArrowTexture = ImageMaster.loadImage("mari_mod/images/charSelect/tinyDownArrow.png");
+                downArrowImg = ImageMaster.vfxAtlas.addRegion("MariDownArrow", downArrowTexture, 0, 0, 48, 48);
+                settingsTexture = ImageMaster.loadImage("mari_mod/images/charSelect/settingsButton.png");
+                settingsImg = ImageMaster.vfxAtlas.addRegion("MariSettingsButton", settingsTexture, 0, 0, 160, 138);
+                testGridTexture = ImageMaster.loadImage("mari_mod/images/charSelect/testGrid.png");
+                testGridImg = ImageMaster.vfxAtlas.addRegion("MariTestGrid", testGridTexture, 0, 0, 3000, 3000);
+            }
 
-        sb.setColor(foregroundGlowColor);
-        sb.draw(this.backgroundGlow, (float) Settings.WIDTH / 2.0F - 960.0F, (float)Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
+            sb.setColor(backgroundColor);
+            sb.draw(this.background, (float) Settings.WIDTH / 2.0F - 960.0F, (float) Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
+
+            //sb.setColor(foregroundGlowColor);
+            //sb.draw(this.backgroundGlow, (float) Settings.WIDTH / 2.0F - 960.0F, (float) Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
 
 
-        Iterator itr = particles.iterator();
-        while(itr.hasNext()){
-            ((GlowyParticle)itr.next()).render(sb, particleImg);
+            Iterator itr = particles.iterator();
+            while (itr.hasNext()) {
+                ((GlowyParticle) itr.next()).render(sb, particleImg);
+            }
+
+            sb.setColor(foregroundColor);
+            sb.draw(this.foreground, (float) Settings.WIDTH / 2.0F - 960.0F, (float) Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
+
+            renderButtons(sb);
+            sb.draw(this.testGridImg, 0, 0, 0, 0, 3000, 3000, Settings.scale, Settings.scale, 0.0F);
         }
 
-        sb.setColor(foregroundColor);
-        sb.draw(this.foreground, (float) Settings.WIDTH / 2.0F - 960.0F, (float)Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
+        renderInfo(sb);
+        renderRelics(sb);
+        renderSettings(sb);
 
         sb.setColor(prevColor);
+
+
+    }
+
+    public void renderInfo(SpriteBatch sb){
+
+        sb.setColor(Color.WHITE);
+
+        FontHelper.renderSmartText(sb, FontHelper.bannerNameFont, this.name, this.infoX + (-35.0F + 200.0f) * Settings.scale, this.infoY + NAME_OFFSET_Y, 99999.0F, 38.0F * Settings.scale, Settings.GOLD_COLOR.cpy());
+
+        sb.draw(ImageMaster.TP_HP, this.infoX + (-10.0F) * Settings.scale - 32.0F, this.infoY + (90.0f + 95.0F + 9.0f) * Settings.scale - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, TEXT[4] + this.hp, this.infoX + 18.0F * Settings.scale, this.infoY + (90.0f + 102.0F + 9.0f) * Settings.scale, 10000.0F, 10000.0F, Settings.RED_TEXT_COLOR);
+
+        sb.draw(ImageMaster.TP_GOLD, this.infoX + (-10.0F - 4.0F) * Settings.scale - 32.0F, this.infoY + (50.0f + 95.0F + 9.0f) * Settings.scale - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, TEXT[5] + this.gold, this.infoX + 18.0F * Settings.scale, this.infoY + (50.0f + 102.0F + 9.0f) * Settings.scale, 10000.0F, 10000.0F, Settings.GOLD_COLOR);
+
+        FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, this.flavorText, this.infoX - 26.0F * Settings.scale, this.infoY + (40.0F + 80.0F) * Settings.scale, 10000.0F, 30.0F * Settings.scale, Settings.CREAM_COLOR);
+
+    }
+
+    public void renderButtons(SpriteBatch sb){
+        if (!relicUpHb.hovered) {
+            sb.setColor(Color.LIGHT_GRAY);
+        } else {
+            sb.setColor(Color.WHITE);
+        }
+        sb.draw(upArrowTexture, (this.infoX - DEST_INFO_X) + relicUpHb.cX + (-24.0F * Settings.scale), relicUpHb.cY + (-24.0F * Settings.scale), 24.0F, 24.0F, 48.0F, 48.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 48, 48, false, false);
+        if (!relicDownHb.hovered) {
+            sb.setColor(Color.LIGHT_GRAY);
+        } else {
+            sb.setColor(Color.WHITE);
+        }
+        sb.draw(downArrowTexture, (this.infoX - DEST_INFO_X) + relicDownHb.cX + (-24.0F * Settings.scale), relicDownHb.cY + (-24.0F * Settings.scale), 24.0F, 24.0F, 48.0F, 48.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 48, 48, false, false);
+
+        sb.draw(settingsTexture, (1710.0F * Settings.scale), (220.0F * Settings.scale), 80.0F, 69.0F, 160.0F, 138.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 160, 138, false, false);
+
+        relicUpHb.render(sb);
+        relicDownHb.render(sb);
+    }
+
+    public void renderRelics(SpriteBatch sb){
+
+        AbstractRelic r = RelicLibrary.getRelic((Mari.getChosenRelic(chosenRelic)));
+        r.updateDescription(PlayerClassEnum.MARI);
+        Hitbox relicHitbox = new Hitbox(80.0F * Settings.scale * (0.01F + (1.0F - 0.019F * 1)), 80.0F * Settings.scale);
+        relicHitbox.move(this.infoX + (18.0F) * Settings.scale, this.infoY + (-60.0F + 28.0F) * Settings.scale);
+        relicHitbox.render(sb);
+        relicHitbox.update();
+        if (relicHitbox.hovered) {
+            if ((float) InputHelper.mX < 1400.0F * Settings.scale) {
+                TipHelper.queuePowerTips((float)InputHelper.mX + 60.0F * Settings.scale, (float)InputHelper.mY - 50.0F * Settings.scale, r.tips);
+            } else {
+                TipHelper.queuePowerTips((float)InputHelper.mX - 350.0F * Settings.scale, (float)InputHelper.mY - 50.0F * Settings.scale, r.tips);
+            }
+        }
+
+        sb.setColor(new Color(0.0F, 0.0F, 0.0F, 0.25F));
+        sb.draw(r.outlineImg, this.infoX + (-50.0F) * Settings.scale, this.infoY + (-60.0F + 28.0F -64.0f) * Settings.scale, 64.0F, 64.0F, 128.0F, 128.0F, Settings.scale * (0.01F + (1.0F - 0.019F * 1)), Settings.scale * (0.01F + (1.0F - 0.019F * 1)), 0.0F, 0, 0, 128, 128, false, false);
+        sb.setColor(Color.WHITE);
+        sb.draw(r.img, this.infoX + (-50.0F) * Settings.scale, this.infoY + (-60.0F + 28.0F -64.0f) * Settings.scale, 64.0F, 64.0F, 128.0F, 128.0F, Settings.scale * (0.01F + (1.0F - 0.019F * 1)), Settings.scale * (0.01F + (1.0F - 0.019F * 1)), 0.0F, 0, 0, 128, 128, false, false);
+
+    }
+
+    public void renderSettings(SpriteBatch sb){
+        if(settingsPanel != null && settingsPanel.isUp){
+            settingsPanel.render(sb);
+        }
     }
 
     public class GlowyParticle{
@@ -391,5 +632,14 @@ public class MariCharacterSelectScreen {
             sb.setColor(this.currentColor);
             sb.draw(img, cX - (128 * settingScale), cY - (128 * settingScale), 0,0,256,256, masterScale, masterScale, 0.0f);
         }
+    }
+
+    static {
+        uiStrings = CardCrawlGame.languagePack.getUIString("CharacterOption");
+        TEXT = uiStrings.TEXT;
+        DEST_INFO_X = 200.0F * Settings.scale;
+        START_INFO_X = -800.0F * Settings.scale;
+        START_INFO_Y = (float)Settings.HEIGHT / 2.0F;
+        NAME_OFFSET_Y = 200.0F * Settings.scale;
     }
 }
