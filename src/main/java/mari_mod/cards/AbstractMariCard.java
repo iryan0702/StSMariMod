@@ -114,6 +114,7 @@ public abstract class AbstractMariCard extends CustomCard {
         super.resetAttributes();
     }
 
+    /*
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean canUse = super.canUse(p, m);
         if(limitedByGoldCost) {
@@ -128,13 +129,14 @@ public abstract class AbstractMariCard extends CustomCard {
             }
         }
         return canUse;
-    }
+    }*/
 
     @Override
     public void applyPowers() {
         super.applyPowers();
         float tmpRadiance = baseRadiance;
         radiance = MathUtils.floor(tmpRadiance);
+        this.glowColor = getNotKindledColor();
 
         if(recallPreview && recallType != null){
             AbstractCard target = MariRecallAction.findRecallTarget(recallType);
@@ -145,6 +147,13 @@ public abstract class AbstractMariCard extends CustomCard {
                 System.out.println("creating new preview for: " + this.cardsToPreview.name);
             }
         }
+    }
+
+    public Color getNotKindledColor(){
+        if(this.goldCost > AbstractDungeon.player.gold && this.limitedByGoldCost){
+            return Color.RED.cpy();
+        }
+        return AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
     }
 
     @Override
@@ -177,6 +186,7 @@ public abstract class AbstractMariCard extends CustomCard {
                     if(hoveredEnemy.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
                         AbstractMariCard.currentlyKindledCard = this;
                         AbstractMariCard.currentKindleTarget = hoveredEnemy;
+                        this.glowColor = Color.GOLD.cpy();
                         isKindled = true;
                         stillKindled = true;
                     }
@@ -191,6 +201,7 @@ public abstract class AbstractMariCard extends CustomCard {
                     if(p.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
                         AbstractMariCard.currentlyKindledCard = this;
                         AbstractMariCard.currentKindleTarget = p;
+                        this.glowColor = Color.GOLD.cpy();
                         isKindled = true;
                         stillKindled = true;
                     }
@@ -206,6 +217,7 @@ public abstract class AbstractMariCard extends CustomCard {
         }else if(stillKindled){
             stillKindled = false;
             AbstractMariCard.kindleTimer = 0.0f;
+            this.glowColor = getNotKindledColor();
         }
 
         for(KindleParticle p : particles){

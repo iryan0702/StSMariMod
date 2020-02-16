@@ -290,43 +290,46 @@ public class MariMod implements
 
     public static void spendGold(int goldCost){ //TODO: Work on checking if goldCost > 0 if necessary
         AbstractPlayer p = AbstractDungeon.player;
-        lastGoldAmountSpent = Math.min(p.gold, goldCost);
 
-        if(goldCost > 0){
-            timesMariSpentGoldThisCombat++;
-        }
-        goldSpentByMariThisCombat += lastGoldAmountSpent;
+        if(p.gold >= goldCost) {
+            lastGoldAmountSpent = Math.min(p.gold, goldCost);
+            investGoldIndependently(goldCost);
 
-        p.loseGold(goldCost);
-        if(p.hasPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID)){
-            AbstractPower power = p.getPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID);
-            int reduction = Math.min(power.amount, goldCost);
-            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,power,reduction));
-            power.flashWithoutSound();
+            if (goldCost > 0) {
+                timesMariSpentGoldThisCombat++;
+            }
+            goldSpentByMariThisCombat += lastGoldAmountSpent;
+
+            p.loseGold(goldCost);
+            if (p.hasPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID)) {
+                AbstractPower power = p.getPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID);
+                int reduction = Math.min(power.amount, goldCost);
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p, p, power, reduction));
+                power.flashWithoutSound();
+            }
+            if (p.hasPower(Delicacy_Power.POWER_ID) && goldCost > 0) {
+                AbstractPower power = p.getPower(Delicacy_Power.POWER_ID);
+                power.onSpecificTrigger();
+            }
+            if (p.hasPower(Flaunt_Power.POWER_ID) && goldCost > 0) {
+                AbstractPower power = p.getPower(Flaunt_Power.POWER_ID);
+                power.onSpecificTrigger();
+            }
+            if (p.hasPower(Cash_Back_Power.POWER_ID) && goldCost > 0) {
+                AbstractPower power = p.getPower(Cash_Back_Power.POWER_ID);
+                power.onSpecificTrigger();
+            }
+            if (p.hasRelic(MariTheSpark.ID) && goldCost > 0) {
+                AbstractRelic relic = p.getRelic(MariTheSpark.ID);
+                relic.onSpendGold();
+            }
+        }else{
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new FrailPower(p,1,false), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new WeakPower(p,1,false), 1));
         }
-        if(p.hasPower(Delicacy_Power.POWER_ID)){
-            AbstractPower power = p.getPower(Delicacy_Power.POWER_ID);
-            power.onSpecificTrigger();
-        }
-        if(p.hasPower(Flaunt_Power.POWER_ID)){
-            AbstractPower power = p.getPower(Flaunt_Power.POWER_ID);
-            power.onSpecificTrigger();
-        }
-        if(p.hasPower(Cash_Back_Power.POWER_ID)){
-            AbstractPower power = p.getPower(Cash_Back_Power.POWER_ID);
-            p.gainGold ((int)((float) goldCost * power.amount * 0.01F));
-            power.flashWithoutSound();
-        }
-        if(p.hasRelic(MariTheSpark.ID) && goldCost > 0) {
-            AbstractRelic relic = p.getRelic(MariTheSpark.ID);
-            relic.onSpendGold();
-        }
-        if(goldCost > 0){
-            timesMariSpentGoldThisCombat++;
-        }
-        goldSpentByMariThisCombat += goldCost;
         p.hand.applyPowers();
         p.hand.glowCheck();
+
     }
 
 
