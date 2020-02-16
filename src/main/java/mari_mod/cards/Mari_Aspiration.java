@@ -16,7 +16,7 @@ public class Mari_Aspiration extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
     private static final CardType TYPE = CardType.POWER;
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Aspiration(){
@@ -29,6 +29,11 @@ public class Mari_Aspiration extends AbstractMariCard {
     @Override
     public AbstractCard makeCopy() {
         return new Mari_Aspiration();
+    }
+
+    @Override
+    public float getTitleFontSize() {
+        return 19;
     }
 
     @Override
