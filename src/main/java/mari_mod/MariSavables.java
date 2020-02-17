@@ -15,6 +15,7 @@ public class MariSavables {
     public int lifetimeGoldInvested;
     public int goldInvested;
     public int totalGoldReturns;
+    public int rewardRerollCost;
 
     //STEWSHINE SAVES
     public CardSave stewshineCardA;
@@ -49,6 +50,7 @@ public class MariSavables {
         this.lifetimeGoldInvested = loadedSavables.lifetimeGoldInvested;
         this.goldInvested = loadedSavables.goldInvested;
         this.totalGoldReturns = loadedSavables.totalGoldReturns;
+        this.rewardRerollCost = loadedSavables.rewardRerollCost;
 
         this.stewshineCardA = loadedSavables.stewshineCardA;
         this.stewshineCardB = loadedSavables.stewshineCardB;
@@ -72,6 +74,7 @@ public class MariSavables {
         this.goldInvested = 0;
         this.totalGoldReturns = 0;
         this.lifetimeGoldInvested = 0;
+        this.rewardRerollCost = 10;
         //this.currentClass = null; //do not reset – setter is handled beforehand in initializeCardPoolsPatch
         this.stewshineCardA = null;
         this.stewshineCardB = null;

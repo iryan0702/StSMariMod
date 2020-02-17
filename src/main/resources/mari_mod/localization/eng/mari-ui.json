@@ -39,6 +39,13 @@
       "#pMari #pMod NL List the cards in Exhausted order: with the bottom of the Exhaust pile on top."
     ]
   },
+  "MariRerollCardRewardButton": {
+    "TEXT": [
+      "Reroll Cards",
+      "#pMari #pMod NL Reroll cards in this reward for #b",
+      " #yInvested Gold. Rerolled cards will have the same rarity."
+    ]
+  },
   "MariPurgeCardsFromExhaustAction": {
     "TEXT": [
       "Choose a card in your exhaust pile to purge.",

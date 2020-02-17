@@ -17,23 +17,25 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
-import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.PrismaticShard;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.screens.ExhaustPileViewScreen;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 import mari_mod.MariMod;
+import mari_mod.patches.MariRerollCardRewardPatch;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
-public class ExhaustPileViewOrderButton {
+public class RerollCardRewardButton {
     private static final Color HOVER_BLEND_COLOR = new Color(1.0F, 1.0F, 1.0F, 0.4F);
     private static final float SHOW_X;
     private static final float DRAW_Y;
@@ -41,19 +43,17 @@ public class ExhaustPileViewOrderButton {
     private float current_x;
     private float target_x;
     private boolean isHidden;
-    public static boolean isOrdered;
     private float particleTimer;
     public Hitbox hb;
     public CardGroup orderedGroup;
     public CardGroup rarityGroup;
     public ArrayList<PowerTip> buttonTips;
     public ArrayList<AbstractGameEffect> buttonEffects;
-    public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("MariExhaustPileViewOrderButton");
+    public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("MariRerollCardRewardButton");
     public static final String tipHeader = uiStrings.TEXT[0];
-    public static final String tipBody = uiStrings.TEXT[1];
 
 
-    public ExhaustPileViewOrderButton() {
+    public RerollCardRewardButton() {
         this.current_x = HIDE_X;
         this.target_x = this.current_x;
         this.isHidden = true;
@@ -62,7 +62,7 @@ public class ExhaustPileViewOrderButton {
         this.hb.move(SHOW_X, DRAW_Y);
         buttonEffects = new ArrayList<>();
         buttonTips = new ArrayList<>();
-        buttonTips.add(new PowerTip(tipHeader, tipBody));
+        updateTip();
     }
 
     public void update() {
@@ -83,15 +83,17 @@ public class ExhaustPileViewOrderButton {
             }
         }
 
-        if (isOrdered) {
+        if (!MariRerollCardRewardPatch.isMostRecentRewardRerolled() && MariMod.saveableKeeper.goldInvested >= MariMod.saveableKeeper.rewardRerollCost) {
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
-                this.particleTimer = 0.2F;
-                buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.PURPLE));
-                buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.MAGENTA));
-                buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.MAGENTA));
-                if(MathUtils.randomBoolean(0.02f)){
+                this.particleTimer = 2F;
+                for(int i = 0; i < 20; i++) {
+                    buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.YELLOW));
                     buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.GOLD));
+                    buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.ORANGE));
+                    if(MathUtils.randomBoolean(0.02f)){
+                        buttonEffects.add(new LightFlareParticleEffect(this.hb.cX, this.hb.cY, Color.GOLD));
+                    }
                 }
             }
         }
@@ -110,6 +112,14 @@ public class ExhaustPileViewOrderButton {
             if(e.isDone) ita.remove();
         }
 
+    }
+
+    public void updateTip(){
+        if(buttonTips.size() <= 0){
+            buttonTips.add(new PowerTip(tipHeader, uiStrings.TEXT[1] + MariMod.saveableKeeper.rewardRerollCost + uiStrings.TEXT[2]));
+        }else{
+            buttonTips.set(0, new PowerTip(tipHeader, uiStrings.TEXT[1] + MariMod.saveableKeeper.rewardRerollCost + uiStrings.TEXT[2]));
+        }
     }
 
     public void hideInstantly() {
@@ -140,7 +150,7 @@ public class ExhaustPileViewOrderButton {
         }
         sb.setColor(Color.WHITE);
         this.renderButton(sb);
-        if (isOrdered) {
+        if (!MariRerollCardRewardPatch.isMostRecentRewardRerolled() && MariMod.saveableKeeper.goldInvested >= MariMod.saveableKeeper.rewardRerollCost) {
             sb.setBlendFunction(770, 1);
             sb.setColor(new Color(1.0F, 0.6F, 1.0F, 1.0F));
             float derp = Interpolation.swingOut.apply(1.0F, 1.1F, MathUtils.cosDeg((float)(System.currentTimeMillis() / 4L % 360L)) / 12.0F);
@@ -148,29 +158,17 @@ public class ExhaustPileViewOrderButton {
             sb.setBlendFunction(770, 771);
         }
 
-        if (this.hb.hovered && !this.hb.clickStarted) {
+        if (this.hb.hovered && !this.hb.clickStarted && !MariRerollCardRewardPatch.isMostRecentRewardRerolled() && MariMod.saveableKeeper.goldInvested >= MariMod.saveableKeeper.rewardRerollCost) {
             sb.setBlendFunction(770, 1);
             sb.setColor(HOVER_BLEND_COLOR);
             this.renderButton(sb);
             sb.setBlendFunction(770, 771);
         }
 
-        if (this.hb.clicked) {
+        if (this.hb.clicked && !MariRerollCardRewardPatch.isMostRecentRewardRerolled() && MariMod.saveableKeeper.goldInvested >= MariMod.saveableKeeper.rewardRerollCost) {
             this.hb.clicked = false;
-            isOrdered = !isOrdered;
-            if (isOrdered) {
-                for(AbstractCard c : orderedGroup.group){
-                    c.current_x = Settings.WIDTH/2f;
-                    c.current_y = Settings.HEIGHT/2f;
-                }
-                ReflectionHacks.setPrivate(AbstractDungeon.exhaustPileViewScreen, ExhaustPileViewScreen.class, "exhaustPileCopy",orderedGroup);
-            } else {
-                for(AbstractCard c : rarityGroup.group){
-                    c.current_x = Settings.WIDTH/2f;
-                    c.current_y = Settings.HEIGHT/2f;
-                }
-                ReflectionHacks.setPrivate(AbstractDungeon.exhaustPileViewScreen, ExhaustPileViewScreen.class, "exhaustPileCopy",rarityGroup);
-            }
+            MariRerollCardRewardPatch.setMostRecentRewardRerolled(true);
+            rerollCards();
         }
         this.renderControllerUi(sb);
         if(this.hb.hovered) {
@@ -179,6 +177,55 @@ public class ExhaustPileViewOrderButton {
         if (!this.isHidden) {
             this.hb.render(sb);
         }
+    }
+
+    private void rerollCards(){
+
+        MariMod.saveableKeeper.goldInvested -= MariMod.saveableKeeper.rewardRerollCost;
+        MariMod.saveableKeeper.rewardRerollCost += 10;
+        CardCrawlGame.sound.play("GOLD_JINGLE");
+
+        RewardItem item = MariRerollCardRewardPatch.mostRecentReward;
+        ArrayList<AbstractCard> newItem = new ArrayList<>();
+        for(AbstractCard c: item.cards){
+            boolean isDupe;
+            AbstractCard newCard;
+            do {
+
+                isDupe = false;
+                if (AbstractDungeon.player.hasRelic(PrismaticShard.ID)) {
+                    newCard = (CardLibrary.getAnyColorCard(c.rarity));
+                } else {
+                    newCard = (AbstractDungeon.getCard(c.rarity));
+                }
+
+                for(AbstractRelic r: AbstractDungeon.player.relics){
+                    r.onPreviewObtainCard(newCard);
+                }
+
+                for(AbstractCard ac: newItem){
+                    if(ac.cardID.equals(newCard.cardID)){
+                        isDupe = true;
+                    }
+                }
+                for(AbstractCard ac: item.cards){
+                    if(ac.cardID.equals(newCard.cardID)){
+                        isDupe = true;
+                    }
+                }
+
+            }while(isDupe);
+            newItem.add(newCard);
+
+        }
+
+        item.cards.clear();
+        for(AbstractCard c: newItem){
+            item.cards.add(c);
+            c.current_x = Settings.WIDTH / 2f;
+            c.current_y = Settings.HEIGHT / 2f;
+        }
+        AbstractDungeon.cardRewardScreen.rewardGroup = newItem;
     }
 
     private void renderButton(SpriteBatch sb) {
@@ -197,6 +244,5 @@ public class ExhaustPileViewOrderButton {
         SHOW_X = 140.0F * Settings.scale;
         DRAW_Y = (float)Settings.HEIGHT / 2.0F;
         HIDE_X = SHOW_X - 400.0F * Settings.scale;
-        isOrdered = false;
     }
 }
