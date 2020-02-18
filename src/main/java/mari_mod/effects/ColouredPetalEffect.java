@@ -20,7 +20,13 @@ public class ColouredPetalEffect extends AbstractGameEffect {
     private float y;
     private float vY;
     private float vX;
-    private boolean driftLeft;
+    private float swayTime;
+    private float xSwayMagnitude;
+    private float ySwayMagnitude;
+    private float swaySpeed;
+    private float xAfterSway;
+    private float yAfterSway;
+    private boolean flipH;
     private float scaleY;
     private int frame = 0;
     private float animTimer = 0.05F;
@@ -37,9 +43,14 @@ public class ColouredPetalEffect extends AbstractGameEffect {
             this.renderBehind = true;
         }
 
-        this.vY = MathUtils.random(200.0F, 300.0F) * this.scale * Settings.scale;
-        this.vX = MathUtils.random(-100.0F, 100.0F) * this.scale * Settings.scale;
-        this.driftLeft = false;
+        this.vY = MathUtils.random(60.0F, 80.0F) * this.scale * Settings.scale;
+        this.vX = MathUtils.random(-10.0F, 10.0F) * this.scale * Settings.scale;
+
+        this.swayTime = MathUtils.random(0.0f, 360.0F);
+        this.swaySpeed = MathUtils.random(1.8f, 2.2F);
+        this.xSwayMagnitude = MathUtils.random(80.0f, 100.0F) * this.scale * Settings.scale;
+        this.ySwayMagnitude = MathUtils.random(40.0f, 50.0F) * this.scale * Settings.scale;
+        this.flipH = true;
 
         this.scale *= Settings.scale;
         if (MathUtils.randomBoolean()) {
@@ -47,23 +58,21 @@ public class ColouredPetalEffect extends AbstractGameEffect {
         }
 
         this.color = color;
-        this.duration = 4.0F;
+        this.duration = 8.0F;
     }
 
     public void update() {
         this.y -= this.vY * Gdx.graphics.getDeltaTime();
         this.x += this.vX * Gdx.graphics.getDeltaTime();
 
-        if(this.driftLeft){
-            this.vX += -10.f * this.scale * Settings.scale * Gdx.graphics.getDeltaTime();
-            if(this.vX < -100.f * this.scale * Settings.scale){
-                this.driftLeft = false;
-            }
+        this.swayTime += Gdx.graphics.getDeltaTime();
+        this.xAfterSway = this.x + MathUtils.sin(this.swayTime * this.swaySpeed) * this.xSwayMagnitude;
+        this.yAfterSway = this.y + MathUtils.sin(this.swayTime * this.swaySpeed * 2) * this.ySwayMagnitude;
+
+        if(MathUtils.sin(this.swayTime * this.swaySpeed) >= 0){
+            flipH = true;
         }else{
-            this.vX += 10.f * this.scale * Settings.scale * Gdx.graphics.getDeltaTime();
-            if(this.vX > 100.f * this.scale * Settings.scale){
-                this.driftLeft = true;
-            }
+            flipH = false;
         }
 
         this.animTimer -= Gdx.graphics.getDeltaTime() / this.scale;
@@ -131,7 +140,7 @@ public class ColouredPetalEffect extends AbstractGameEffect {
 
     private void renderImg(SpriteBatch sb, Texture img, boolean flipH, boolean flipV) {
         sb.setBlendFunction(770, 1);
-        sb.draw(img, this.x, this.y, 16.0F, 16.0F, 32.0F, 32.0F, this.scale, this.scale * this.scaleY, this.rotation, 0, 0, 32, 32, flipH, flipV);
+        sb.draw(img, this.xAfterSway, this.yAfterSway, 16.0F, 16.0F, 32.0F, 32.0F, this.scale, this.scale * this.scaleY, this.rotation, 0, 0, 32, 32, this.flipH, flipV);
         sb.setBlendFunction(770, 771);
     }
 }
