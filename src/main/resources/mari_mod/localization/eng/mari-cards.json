@@ -53,7 +53,7 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "marimod:Recall 1 of !M! special types of cards. NL Remove the option chosen this combat."
+    "DESCRIPTION": "Ethereal. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall 1 of !M! special types of cards. NL Remove the option chosen this combat."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -89,7 +89,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. marimod:Fading. marimod:Invest 10. NL Apply !MARI_RADIANCE! marimod:Radiance. NL If marimod:Recalled, apply !MARI_RADIANCE! marimod:Radiance to ALL characters and Purge this card."
+    "DESCRIPTION": "Innate. marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters. NL If marimod:Recalled, play and Purge this card."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",

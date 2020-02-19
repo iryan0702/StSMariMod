@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.IncreaseCostAction;
 import mari_mod.actions.MariReminisceAction;
+import mari_mod.actions.MariSpendGoldAction;
 import mari_mod.screens.MariReminisceScreen;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +31,7 @@ public class Mari_Reminisce extends AbstractMariCard {
     private static final int COST = 0;
     private static final int CHOICES = 3;
     private static final int CHOICES_UPGRADE = 1;
+    private static final int BASE_GOLD_COST = 10;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -40,14 +42,18 @@ public class Mari_Reminisce extends AbstractMariCard {
 
     public Mari_Reminisce(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
+        this.baseGoldCost = BASE_GOLD_COST;
+        this.goldCost = this.baseGoldCost;
         this.baseMagicNumber = CHOICES;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = false;
+        this.isEthereal = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
+        addToBot(new MariSpendGoldAction(this.goldCost));
         AbstractDungeon.actionManager.addToBottom(new MariReminisceAction(this,canPullRadiance,canPullSpend,canPullExhaust,canPullQuotations, this.uuid));
 
         int optionsLeft = 0;
