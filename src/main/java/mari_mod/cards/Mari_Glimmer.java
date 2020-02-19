@@ -28,7 +28,7 @@ public class Mari_Glimmer extends AbstractMariCard{
     private static final int RADIANCE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL;
 
     public Mari_Glimmer(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
