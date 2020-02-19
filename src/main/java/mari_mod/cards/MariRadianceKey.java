@@ -13,7 +13,7 @@ public class MariRadianceKey extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractMariCard) card).radiance != ((AbstractMariCard) card).baseRadiance;
+        return ((AbstractMariCard) card).upgradedRadiance || ((AbstractMariCard) card).radiance != ((AbstractMariCard) card).baseRadiance;
     }
 
     @Override
