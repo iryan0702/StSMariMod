@@ -30,7 +30,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "If this card is in your discard pile, it #yexhausts. Fading cards have a #b5% chance of disappearing from card rewards for each Fading card in your deck."
+    "DESCRIPTION": "If this card is in your discard pile, it #yexhausts. Fading cards have a #b8% chance of disappearing from card rewards for each Fading card in your deck."
   },
   {
     "PROPER_NAME": "Recall",

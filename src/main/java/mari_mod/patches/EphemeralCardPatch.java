@@ -132,7 +132,7 @@ public class EphemeralCardPatch {
                 int ephemeralOdds = 100;
                 for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
                     if (EphemeralField.ephemeral.get(c)) {
-                        ephemeralOdds -= 5;
+                        ephemeralOdds -= 8;
                     }
                 }
                 cardsToRemove.clear();
