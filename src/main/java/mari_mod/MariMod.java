@@ -33,6 +33,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.events.beyond.Falling;
+import com.megacrit.cardcrawl.events.city.MaskedBandits;
+import com.megacrit.cardcrawl.events.exordium.GoldenIdolEvent;
+import com.megacrit.cardcrawl.events.exordium.ShiningLight;
+import com.megacrit.cardcrawl.events.exordium.Sssserpent;
 import com.megacrit.cardcrawl.helpers.EffectHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -64,6 +69,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import mari_mod.characters.Mari;
 import mari_mod.cards.*;
+import mari_mod.eventUtil.*;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.patches.PlayerClassEnum;
 
@@ -529,11 +535,13 @@ public class MariMod implements
 
         BaseMod.addSaveField("saveableKeeper", this);
 
-        BaseMod.addEvent(MariFallingEvent.ID, MariFallingEvent.class, TheBeyond.ID);
-        BaseMod.addEvent(MariShiningLightEvent.ID, MariShiningLightEvent.class, Exordium.ID);
-        BaseMod.addEvent(MariSssserpent.ID, MariSssserpent.class, Exordium.ID);
-        BaseMod.addEvent(MariMaskedBandits.ID, MariMaskedBandits.class, TheCity.ID);
-        BaseMod.addEvent(MariGoldenIdolEvent.ID, MariGoldenIdolEvent.class, Exordium.ID);
+
+        EventUtils.registerEvent(MariFallingEvent.ID, MariFallingEvent.class, Mari.class, Falling.ID, EventUtils.EventType.FULL_REPLACE);
+        EventUtils.registerEvent(MariShiningLightEvent.ID, MariShiningLightEvent.class, Mari.class, ShiningLight.ID, EventUtils.EventType.FULL_REPLACE);
+        EventUtils.registerEvent(MariSssserpent.ID, MariSssserpent.class, Mari.class, Sssserpent.ID, EventUtils.EventType.FULL_REPLACE);
+        EventUtils.registerEvent(MariMaskedBandits.ID, MariMaskedBandits.class, Mari.class, MaskedBandits.ID, EventUtils.EventType.FULL_REPLACE);
+        EventUtils.registerEvent(MariGoldenIdolEvent.ID, MariGoldenIdolEvent.class, Mari.class, GoldenIdolEvent.ID, EventUtils.EventType.FULL_REPLACE);
+
         /*for(int i = 0; i < 100; i++) {
             BaseMod.addEvent(AllMariModEvents.ID + i, AllMariModEvents.class);
         }*/

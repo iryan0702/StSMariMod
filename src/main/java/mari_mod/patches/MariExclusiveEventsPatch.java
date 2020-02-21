@@ -14,10 +14,11 @@ import mari_mod.events.*;
 
 import java.util.ArrayList;
 
-@SpirePatch(clz = AbstractDungeon.class, method = "getEvent")
+@Deprecated
+//@SpirePatch(clz = AbstractDungeon.class, method = "getEvent")
 public class MariExclusiveEventsPatch {
 
-    @SpireInsertPatch(locator = Locator.class, localvars = {"tmp"})
+    //@SpireInsertPatch(locator = Locator.class, localvars = {"tmp"})
     public static void Insert(Random rng, ArrayList<String> tmp) {
         if (AbstractDungeon.player.chosenClass == PlayerClassEnum.MARI) {
             tmp.removeIf(d -> d.equals(Falling.ID));
