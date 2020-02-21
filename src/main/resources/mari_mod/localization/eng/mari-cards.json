@@ -95,11 +95,6 @@
     "NAME": "Golden Glint",
     "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !MARI_RADIANCE! marimod:Radiance and !B! Block. NL Exhaust."
   },
-  "MariMod:Mari_The_Beach_Episode": {
-    "NAME": "The Beach Episode",
-    "DESCRIPTION": "Remove all Block and Frail from ANY character. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed.",
-    "UPGRADE_DESCRIPTION": "Remove all Block and Frail from ALL characters. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed."
-  },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
     "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL The next time you marimod:Invest Gold, deal damage to ALL enemies equal to Gold marimod:Invested.",
@@ -373,7 +368,12 @@
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
-    "DESCRIPTION": "marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with a debuff."
+    "DESCRIPTION": "marimod:Fading. NL Gain !B! Block and 1 Frail. Gain !M! Gold for each unique debuff you have."
+  },
+  "MariMod:Mari_The_Beach_Episode": {
+    "NAME": "The Beach Episode",
+    "DESCRIPTION": "Remove all Block and Frail from ANY character. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed.",
+    "UPGRADE_DESCRIPTION": "Remove all Block and Frail from ALL characters. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed."
   },
   "MariMod:Mari_Unveiled_Secret": {
     "NAME": "Unveiled Secret",
