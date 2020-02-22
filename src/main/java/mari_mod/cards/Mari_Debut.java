@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -60,10 +61,21 @@ public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
 
     @Override
     public void onRecall() {
-        AbstractPlayer p = AbstractDungeon.player;
         this.purgeOnUse = true;
-        this.setAngle(0f, true);
-        addToTop(new NewQueueCardAction(this, null));
+
+        AbstractDungeon.player.hand.group.remove(this);
+        AbstractDungeon.getCurrRoom().souls.remove(this);
+        AbstractDungeon.player.limbo.group.add(this);
+        this.target_x = (float) Settings.WIDTH / 2.0F + 200.0F * Settings.scale;
+        this.target_y = (float)Settings.HEIGHT / 2.0F;
+        this.targetAngle = 0.0F;
+        this.lighten(false);
+        this.drawScale = 0.12F;
+        this.targetDrawScale = 0.75F;
+        this.applyPowers();
+
+        addToBot(new MariWaitAction(0.1F));
+        addToBot(new NewQueueCardAction(this, null, false, true));
     }
 
     @Override

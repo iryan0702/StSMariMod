@@ -39,17 +39,16 @@ public class MariRecallAction extends AbstractGameAction {
             c.unfadeOut();
             c.current_x = Settings.WIDTH * 2;
             c.current_y = Settings.HEIGHT / 2f;
-            if (c instanceof OnRecallCard) {
-                ((OnRecallCard) c).onRecall();
-            }
 
             if( c instanceof PurgeOnRecallCard){
                 c.target_x = Settings.WIDTH / 4f;
                 c.target_y = Settings.HEIGHT / 2f;
                 c.current_x = Settings.WIDTH / 4f;
                 c.current_y = Settings.HEIGHT / 2f;
-                p.exhaustPile.removeCard(c);
                 p.limbo.addToTop(c);
+                if (c instanceof OnRecallCard) {
+                    ((OnRecallCard) c).onRecall();
+                }
                 addToTop(new MariPurgeSpecificCardAction(c,AbstractDungeon.player.limbo,false));
             }else {
                 if (p.hand.size() >= BaseMod.MAX_HAND_SIZE) {
@@ -64,6 +63,10 @@ public class MariRecallAction extends AbstractGameAction {
 
                 p.hand.refreshHandLayout();
                 p.hand.applyPowers();
+
+                if (c instanceof OnRecallCard) {
+                    ((OnRecallCard) c).onRecall();
+                }
             }
         }
 
