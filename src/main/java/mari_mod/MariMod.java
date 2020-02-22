@@ -727,9 +727,9 @@ public class MariMod implements
 
             BaseMod.addCard(new Mari_Drama1());
             BaseMod.addCard(new Mari_Drama2());
-            BaseMod.addCard(new Mari_Repressed());
-
-            BaseMod.addCard(new Mari_Aspiration());
+            BaseMod.addCard(new Mari_Repression());
+            BaseMod.addCard(new Mari_$Choose_Pain());
+            BaseMod.addCard(new Mari_$Choose_Grief());
 
             /*
             //ATTACKS COMMON

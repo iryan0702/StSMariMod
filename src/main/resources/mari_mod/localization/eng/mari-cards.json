@@ -396,8 +396,8 @@
     "NAME": "Let Loose",
     "DESCRIPTION": "Gain [E] and deal !D! damage, then discard cards in your hand that cannot be played and deal !D! damage for each."
   },
-  "MariMod:Mari_Repressed": {
-    "NAME": "Repressed",
+  "MariMod:Mari_Repression": {
+    "NAME": "Repression",
     "DESCRIPTION": "marimod:Glaring. NL If marimod:Recalled, gain 1 Frail or Vulnerable. NL Purge when discarded."
   },
   "MariMod:Mari_$Choose_Pain": {

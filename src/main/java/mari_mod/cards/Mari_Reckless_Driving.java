@@ -35,13 +35,13 @@ public class Mari_Reckless_Driving extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseDamage = ATTACK_DMG;
         this.damage = this.baseDamage;
-        this.cardsToPreview = new Mari_Repressed();
+        this.cardsToPreview = new Mari_Repression();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), 1, false, true));
+        AbstractDungeon.actionManager.addToBottom(new MariMakeTempCardInExhaustPileAction(new Mari_Repression(), 1, false, true));
         //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new VulnerablePower(p,1,false),1));
     }
 

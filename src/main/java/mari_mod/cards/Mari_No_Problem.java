@@ -43,6 +43,7 @@ public class Mari_No_Problem extends AbstractMariCard {
         this.baseMagicNumber = SUFFLE_AMOUNT;
         this.magicNumber =  this.baseMagicNumber;
         this.tags.add(MariCustomTags.QUOTATIONS);
+        this.cardsToPreview = new Mari_Repression();
         this.exhaust = true;
     }
 

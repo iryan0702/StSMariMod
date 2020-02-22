@@ -21,19 +21,19 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class Mari_Repressed extends AbstractMariCard implements OnRecallCard{
-    public static final Logger logger = LogManager.getLogger(Mari_Repressed.class.getName());
-    public static final String ID = "MariMod:Mari_Repressed";
+public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
+    public static final Logger logger = LogManager.getLogger(Mari_Repression.class.getName());
+    public static final String ID = "MariMod:Mari_Repression";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 3;
     private static final CardType TYPE = CardType.STATUS;
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
 
-    public Mari_Repressed(){
+    public Mari_Repression(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
         tags.add(MariCustomTags.GLARING);
     }
@@ -57,7 +57,7 @@ public class Mari_Repressed extends AbstractMariCard implements OnRecallCard{
 
     @Override
     public AbstractCard makeCopy() {
-        return new Mari_Repressed();
+        return new Mari_Repression();
     }
 
     @Override

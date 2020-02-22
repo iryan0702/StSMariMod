@@ -31,6 +31,7 @@ public class Mari_Tough_Front extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseBlock = BLOCK;
         this.block =  this.baseBlock;
+        this.cardsToPreview = new Mari_Repression();
         //this.isAnyTarget = true;
         //this.tags.add(MariCustomTags.KINDLE);
     }
@@ -39,7 +40,7 @@ public class Mari_Tough_Front extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
-        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), 1, false, true));
+        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repression(), 1, false, true));
 
 
 
