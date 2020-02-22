@@ -411,6 +411,10 @@
     "NAME": "Infinite Aspiration",
     "DESCRIPTION": "marimod:Fading. NL At the start of your turn, gain infinite [E]."
   },
+  "MariMod:Mari_Shiny_Swap": {
+    "NAME": "Shiny Swap",
+    "DESCRIPTION": "marimod:Fading. NL marimod:Recall a marimod:Radiance card. NL Exhaust a card. NL Put a card on top of your draw pile."
+  },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
     "DESCRIPTION": "Swap any character's marimod:Radiance with this card's. Has !M! marimod:Radiance."
