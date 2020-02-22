@@ -50,7 +50,7 @@ public class No_Problem_Power extends AbstractPower
     @Override
     public void atStartOfTurnPostDraw() {
         for(int i = 0; i < this.amount; i++){
-            addToBot(new MariRecallAction(MariRecallAction.RecallType.GLARING));
+            addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
         }
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }

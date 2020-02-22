@@ -29,18 +29,19 @@ public class Mari_No_Problem extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    //public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
     //private static final int UPGRADE_COST = 0;
-    private static final int SUFFLE_AMOUNT = 2;
-    private static final int RECALL_AMOUT = 3;
+    private static final int SHUFFLE_AMOUNT = 2;
+    private static final int RECALL_AMOUT = 2;
+    private static final int UPGRADE_RECALL = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
 
     public Mari_No_Problem(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = SUFFLE_AMOUNT;
+        this.baseMagicNumber = RECALL_AMOUT;
         this.magicNumber =  this.baseMagicNumber;
         this.tags.add(MariCustomTags.QUOTATIONS);
         this.cardsToPreview = new Mari_Repression();
@@ -50,8 +51,8 @@ public class Mari_No_Problem extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
-        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repressed(), this.magicNumber, false, false));
-        addToBot(new ApplyPowerAction(p, p, new No_Problem_Power(p, RECALL_AMOUT), RECALL_AMOUT));
+        addToBot(new MariMakeTempCardInExhaustPileAction(new Mari_Repression(), SHUFFLE_AMOUNT, false, true));
+        addToBot(new ApplyPowerAction(p, p, new No_Problem_Power(p, this.magicNumber), this.magicNumber));
     }
 
     @Override
@@ -62,8 +63,7 @@ public class Mari_No_Problem extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            upgradeMagicNumber(UPGRADE_RECALL);
             upgradeName();
             this.retain = true;
         }
