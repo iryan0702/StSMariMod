@@ -85,7 +85,7 @@
   },
   "MariMod:Mari_Delicacy": {
     "NAME": "Delicacy",
-    "DESCRIPTION": "One time each turn, when you [#fbccff]spend[] Gold, gain Block equal to gold [#fbccff]spent[]."
+    "DESCRIPTION": "The first time you marimod:Invest Gold each turn, gain Block equal to gold marimod:Invested."
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
@@ -114,8 +114,8 @@
   },
   "MariMod:Mari_Spontaneous_Strike": {
     "NAME": "Spontaneous Strike",
-    "DESCRIPTION": "Deal damage equal to NL twice the total cost of all other cards in your hand.",
-    "UPGRADE_DESCRIPTION": "Deal damage equal to NL 3 + twice the total cost of all other cards in your hand.",
+    "DESCRIPTION": "Deal damage equal to NL twice the total cost of all cards in your hand.",
+    "UPGRADE_DESCRIPTION": "Deal damage equal to NL 3 + twice the total cost of all cards in your hand.",
     "EXTENDED_DESCRIPTION": [
       " NL (Deals !D! damage)"
     ]
@@ -383,7 +383,7 @@
   },
   "MariMod:Mari_Unveiled_Secret": {
     "NAME": "Unveiled Secret",
-    "DESCRIPTION": "marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you start your next turn with no Block."
+    "DESCRIPTION": "Remove all Block and Frail from ANY character. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed."
   },
   "MariMod:Mari_Reckless_Spending": {
     "NAME": "Reckless Spending",
@@ -400,7 +400,7 @@
   },
   "MariMod:Mari_Let_Loose": {
     "NAME": "Let Loose",
-    "DESCRIPTION": "Gain [E] and deal !D! damage, then discard cards in your hand that cannot be played and deal !D! damage for each."
+    "DESCRIPTION": "Gain [E] and deal !D! damage, then discard all cards you cannot play and deal !D! damage for each."
   },
   "MariMod:Mari_Repression": {
     "NAME": "Repression",
