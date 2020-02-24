@@ -264,7 +264,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block. NL marimod:Kindle: Purge a card in your exhaust pile and marimod:Recall a marimod:Radiance card."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block. NL Draw a card. NL marimod:Kindle: Purge a card in your exhaust pile."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",

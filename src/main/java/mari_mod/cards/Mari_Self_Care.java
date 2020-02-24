@@ -58,13 +58,14 @@ public class Mari_Self_Care extends AbstractMariCard {
             target = p;
         }
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        addToBot(new DrawCardAction(p,1));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
 
         ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
-        kindleActions.add(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+        //kindleActions.add(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
         kindleActions.add(new MariPurgeCardsFromExhaustAction(1));
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, kindleActions));
 
