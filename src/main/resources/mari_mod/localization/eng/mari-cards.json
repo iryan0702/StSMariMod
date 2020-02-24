@@ -367,12 +367,19 @@
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
-    "DESCRIPTION": "marimod:Fading. NL Gain !B! Block and 1 Frail. Gain !M! Gold for each unique debuff you have."
+    "DESCRIPTION": "marimod:Fading. NL Gain !B! Block and 1 Frail. NL Gain !M! Gold for each debuff you have."
   },
   "MariMod:Mari_The_Beach_Episode": {
-    "NAME": "The Beach Episode",
-    "DESCRIPTION": "Remove all Block and Frail from ANY character. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed.",
-    "UPGRADE_DESCRIPTION": "Remove all Block and Frail from ALL characters. NL Gain !MARI_RADIANCE! marimod:Radiance for every 5 Block or 1 Frail removed."
+    "NAME": "Beach Episode",
+    "DESCRIPTION": "marimod:Fading. NL Remove up to !M! Block from ANY character. Gain 2 Gold for each Block Removed."
+  },
+  "MariMod:Mari_Introduction_Episode": {
+    "NAME": "Introduction Episode",
+    "DESCRIPTION": "marimod:Fading. NL Draw !M! cards. NL Gain 3 Gold for each card in your hand."
+  },
+  "MariMod:Mari_Filler_Episode": {
+    "NAME": "Filler Episode",
+    "DESCRIPTION": "marimod:Fading. NL Gain 5 gold for each card in your hand. NL Retain !M! cards and end your turn."
   },
   "MariMod:Mari_Unveiled_Secret": {
     "NAME": "Unveiled Secret",

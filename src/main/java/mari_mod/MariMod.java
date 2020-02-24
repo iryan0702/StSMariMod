@@ -721,8 +721,10 @@ public class MariMod implements
 
             BaseMod.addCard(new Mari_Lie_In_Wait());
             BaseMod.addCard(new Mari_Emotional_Episode());
-            BaseMod.addCard(new Mari_Unveiled_Secret());
-            BaseMod.addCard(new Mari_Reckless_Spending());
+            BaseMod.addCard(new Mari_Filler_Episode());
+            BaseMod.addCard(new Mari_Introduction_Episode());
+            //BaseMod.addCard(new Mari_Unveiled_Secret());
+            //BaseMod.addCard(new Mari_Reckless_Spending());
             BaseMod.addCard(new Mari_Let_Loose());
 
             BaseMod.addCard(new Mari_Shiny_Swap());
