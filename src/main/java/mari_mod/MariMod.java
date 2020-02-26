@@ -482,6 +482,8 @@ public class MariMod implements
     public static Texture featherVfx2;
     public static Texture featherVfx3;
     public static Texture featherVfx4;
+    public static Texture starFieldVfx;
+    public static Texture smokeVfx;
 
     public static ModPanel settingsPanel;
     public static ShaderProgram goldShader;
@@ -505,6 +507,8 @@ public class MariMod implements
         featherVfx2 = ImageMaster.loadImage("mari_mod/images/effects/feather2.png");
         featherVfx3 = ImageMaster.loadImage("mari_mod/images/effects/feather3.png");
         featherVfx4 = ImageMaster.loadImage("mari_mod/images/effects/feather4.png");
+        starFieldVfx = ImageMaster.loadImage("mari_mod/images/effects/mariStarField.png");
+        smokeVfx = ImageMaster.loadImage("mari_mod/images/effects/mariSmoke.png");
 
         logger.info("initialize mod badge");
         // Mod badge

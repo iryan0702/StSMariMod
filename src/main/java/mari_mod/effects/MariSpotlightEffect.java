@@ -17,18 +17,25 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 public class MariSpotlightEffect extends AbstractGameEffect {
     float maxDuration;
     boolean doSound;
+    boolean flashFade;
     float xPos;
-    float fastIn = 0.2f;
+    float fastIn;
     float slowOut;
     float width;
 
     public MariSpotlightEffect(float duration, float xPos, float width, boolean doSound) {
+        this(duration,xPos,width,doSound, 0.2f, new Color(1.0F, 1.0F, 0.8F, 0.5F));
+    }
+
+    public MariSpotlightEffect(float duration, float xPos, float width, boolean doSound, float fastIn, Color c) {
         this.maxDuration = duration;
         this.duration = this.maxDuration;
         this.xPos = xPos;
         this.width = width;
         this.doSound = doSound;
-        this.color = new Color(1.0F, 1.0F, 0.8F, 0.5F);
+        this.color = c;
+        this.flashFade = flashFade;
+        this.fastIn = fastIn;
         this.slowOut = duration - this.fastIn;
     }
 
@@ -40,7 +47,7 @@ public class MariSpotlightEffect extends AbstractGameEffect {
         this.duration -= Gdx.graphics.getDeltaTime();
         if (this.duration > this.maxDuration - this.fastIn) {
             this.color.a = Interpolation.pow5In.apply(0.5F, 0.0F, (this.duration - (this.maxDuration - this.fastIn)) / fastIn);
-        } else if (this.duration < this.slowOut){
+        } else if (this.duration < this.slowOut) {
             this.color.a = Interpolation.exp10In.apply(0.0F, 0.5F, this.duration / this.slowOut);
         }
 

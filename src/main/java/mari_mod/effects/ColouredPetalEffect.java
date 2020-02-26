@@ -33,29 +33,32 @@ public class ColouredPetalEffect extends AbstractGameEffect {
     private static final int W = 32;
 
     public ColouredPetalEffect(Color color) {
-        this.x = MathUtils.random(100.0F * Settings.scale, 1820.0F * Settings.scale);
-        this.y = (float)Settings.HEIGHT + MathUtils.random(20.0F, 300.0F) * Settings.scale;
+        this.x = MathUtils.random(-100.0F * Settings.scale, 1820.0F * Settings.scale);
+        this.scale = MathUtils.random(0.5f,MathUtils.random(1f,MathUtils.random(1F, 4F)));
+        this.y = (float)Settings.HEIGHT + MathUtils.random(20.0F, 200.0F) * Settings.scale * this.scale;
         this.frame = MathUtils.random(8);
         this.rotation = MathUtils.random(-10.0F, 10.0F);
-        this.scale = MathUtils.random(1.0F, 2.5F);
         this.scaleY = MathUtils.random(1.0F, 1.2F);
         if (this.scale < 1.5F) {
             this.renderBehind = true;
         }
 
-        this.vY = MathUtils.random(60.0F, 80.0F) * this.scale * Settings.scale;
-        this.vX = MathUtils.random(-10.0F, 10.0F) * this.scale * Settings.scale;
+        this.vY = MathUtils.random(140.0F, 200.0F) * this.scale * Settings.scale;
+        this.vX = MathUtils.random(5.0F, 50.0F) * this.scale * Settings.scale;
 
         this.swayTime = MathUtils.random(0.0f, 360.0F);
         this.swaySpeed = MathUtils.random(1.8f, 2.2F);
-        this.xSwayMagnitude = MathUtils.random(80.0f, 100.0F) * this.scale * Settings.scale;
-        this.ySwayMagnitude = MathUtils.random(40.0f, 50.0F) * this.scale * Settings.scale;
+        this.xSwayMagnitude = MathUtils.random(20.0f, 40.0F) * this.scale * Settings.scale;
+        this.ySwayMagnitude = MathUtils.random(10.0f, 20.0F) * this.scale * Settings.scale;
         this.flipH = true;
 
         this.scale *= Settings.scale;
         if (MathUtils.randomBoolean()) {
             this.rotation += 180.0F;
         }
+
+        this.xAfterSway = Settings.scale * -1000f;
+        this.yAfterSway = Settings.scale * -1000f;
 
         this.color = color;
         this.duration = 8.0F;
@@ -75,9 +78,9 @@ public class ColouredPetalEffect extends AbstractGameEffect {
             flipH = false;
         }
 
-        this.animTimer -= Gdx.graphics.getDeltaTime() / this.scale;
+        this.animTimer -= Gdx.graphics.getDeltaTime();
         if (this.animTimer < 0.0F) {
-            this.animTimer += 0.05F;
+            this.animTimer += 0.1F;
             ++this.frame;
             if (this.frame > 11) {
                 this.frame = 0;
@@ -91,6 +94,10 @@ public class ColouredPetalEffect extends AbstractGameEffect {
             this.color.a = this.duration;
         }
 
+    }
+
+    public void earlyFade(){
+        this.duration = 1.0f;
     }
 
     public void render(SpriteBatch sb) {
