@@ -100,7 +100,7 @@
   "MariMod:Flawless_Form_Power": {
     "NAME": "Flawless Form",
     "DESCRIPTIONS": [
-      "Whenever you spend more energy on a card than the previous on the same turn, gain #b",
+      "Whenever you spend a different amount of energy on a card than the previous, gain #b",
       " energy.",
       " (You haven't played a card this turn)",
       " (The last card you played costs #b",

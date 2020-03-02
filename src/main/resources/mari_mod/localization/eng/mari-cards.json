@@ -44,8 +44,8 @@
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
-    "DESCRIPTION": "Whenever you spend less energy on a card than the previous on the same turn, NL draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Whenever you spend less energy on a card than the previous on the same turn, NL draw !M! card."
+    "DESCRIPTION": "Whenever you spend less energy on a card than the previous, NL draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Whenever you spend less energy on a card than the previous, NL draw !M! card."
   },
   "MariMod:Mari_Mic_Check": {
     "NAME": "Mic Check",
@@ -286,8 +286,8 @@
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
-    "DESCRIPTION": "Whenever you spend more energy on a card than the previous on the same turn, gain [E].",
-    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend more energy on a card than the previous on the same turn, gain [E]."
+    "DESCRIPTION": "Whenever you spend a different amount of energy on a card than the previous, gain [E].",
+    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend a different amount of energy on a card than the previous, gain [E]."
   },
   "MariMod:Mari_Heavy_Metal": {
     "NAME": "Heavy Metal",

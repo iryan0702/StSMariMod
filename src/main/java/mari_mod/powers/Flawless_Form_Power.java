@@ -63,10 +63,10 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
 
     @Override
     public void atStartOfTurnPostDraw() {
-        MariMod.previousCardCost = 9999;
+        //MariMod.previousCardCost = 9999;
         super.atStartOfTurnPostDraw();
-        this.lastCost = 9999;
-        this.amount2 = -1;
+        //this.lastCost = 9999;
+        //this.amount2 = -1;
         updateDescription();
     }
 
@@ -74,7 +74,7 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
         int cost = card.costForTurn;
         if(card.cost == -1) cost = card.energyOnUse;
         if(card.freeToPlayOnce) cost = 0;
-        if(cost > this.lastCost){
+        if(cost != this.lastCost){
             AbstractDungeon.actionManager.addToBottom(new MariDelayedDelayedActionActionAction(new GainEnergyAction(this.amount)));
             this.flashWithoutSound();
         }

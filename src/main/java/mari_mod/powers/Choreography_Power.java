@@ -62,10 +62,10 @@ public class Choreography_Power extends TwoAmountPowerByKiooehtButIJustChangedIt
 
     @Override
     public void atStartOfTurnPostDraw() {
-        MariMod.previousCardCost = 9999;
+        //MariMod.previousCardCost = 9999;
         super.atStartOfTurnPostDraw();
-        this.lastCost = -9;
-        this.amount2 = this.lastCost;
+        //this.lastCost = -9;
+        //this.amount2 = this.lastCost;
         updateDescription();
     }
 
