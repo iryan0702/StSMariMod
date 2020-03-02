@@ -422,6 +422,16 @@
     "NAME": "Shiny Swap",
     "DESCRIPTION": "marimod:Fading. NL marimod:Recall a marimod:Radiance card. NL Exhaust a card. NL Put a card on top of your draw pile."
   },
+  "MariMod:Mari_Sit_Back": {
+    "NAME": "Sit Back",
+    "DESCRIPTION": "marimod:Glaring. NL If played or marimod:Recalled, gain !B! Block X times. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [" NL (Blocks !M! times.)"]
+  },
+  "MariMod:Mari_Recurring_Theme": {
+    "NAME": "Recurring Theme",
+    "DESCRIPTION": "marimod:Recall a marimod:Glaring card.",
+    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Recall a marimod:Glaring card."
+  },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
     "DESCRIPTION": "Swap any character's marimod:Radiance with this card's. Has !M! marimod:Radiance."
