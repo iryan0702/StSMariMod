@@ -34,7 +34,7 @@ public class ColouredPetalEffect extends AbstractGameEffect {
 
     public ColouredPetalEffect(Color color) {
         this.x = MathUtils.random(-100.0F * Settings.scale, 1820.0F * Settings.scale);
-        this.scale = MathUtils.random(0.5f,MathUtils.random(1f,MathUtils.random(1F, 4F)));
+        this.scale = MathUtils.random(0.5f,MathUtils.random(1f,MathUtils.random(1F, MathUtils.random(1F, 8F))));
         this.y = (float)Settings.HEIGHT + MathUtils.random(20.0F, 200.0F) * Settings.scale * this.scale;
         this.frame = MathUtils.random(8);
         this.rotation = MathUtils.random(-10.0F, 10.0F);
