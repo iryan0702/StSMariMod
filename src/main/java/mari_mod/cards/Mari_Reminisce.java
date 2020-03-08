@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.PlayTopCardAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.IncreaseCostAction;
+import mari_mod.actions.MariRecallAction;
 import mari_mod.actions.MariReminisceAction;
 import mari_mod.actions.MariSpendGoldAction;
 import mari_mod.screens.MariReminisceScreen;
@@ -29,8 +31,8 @@ public class Mari_Reminisce extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
-    private static final int CHOICES = 3;
-    private static final int CHOICES_UPGRADE = 1;
+    private static final int USES = 2;
+    private static final int TOTAL_USES_UPGRADE = 3;
     private static final int BASE_GOLD_COST = 10;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
@@ -44,9 +46,12 @@ public class Mari_Reminisce extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
-        this.baseMagicNumber = CHOICES;
-        this.magicNumber = this.baseMagicNumber;
-        this.exhaust = false;
+
+        this.recallPreview = true;
+        this.recallType = MariRecallAction.RecallType.RADIANCE;
+
+        ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, USES);
+        ExhaustiveField.ExhaustiveFields.exhaustive.set(this, USES);
         this.isEthereal = true;
     }
 
@@ -54,21 +59,8 @@ public class Mari_Reminisce extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
 
         addToBot(new MariSpendGoldAction(this.goldCost));
-        AbstractDungeon.actionManager.addToBottom(new MariReminisceAction(this,canPullRadiance,canPullSpend,canPullExhaust,canPullQuotations, this.uuid));
+        addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
 
-        int optionsLeft = 0;
-        if(this.upgraded && canPullExhaust){
-            optionsLeft++;
-        }
-        if(canPullRadiance) optionsLeft++;
-        if(canPullSpend) optionsLeft++;
-        if(canPullQuotations) optionsLeft++;
-
-        this.baseMagicNumber--;
-        this.magicNumber = this.baseMagicNumber;
-        if(optionsLeft <= 1){
-            this.exhaust = true;
-        }
     }
 
     @Override
@@ -85,8 +77,9 @@ public class Mari_Reminisce extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.upgradeMagicNumber(CHOICES_UPGRADE);
-            this.canPullExhaust = true;
+            ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, TOTAL_USES_UPGRADE);
+            ExhaustiveField.ExhaustiveFields.exhaustive.set(this, TOTAL_USES_UPGRADE);
+            ExhaustiveField.ExhaustiveFields.isExhaustiveUpgraded.set(this, true);
         }
     }
 }

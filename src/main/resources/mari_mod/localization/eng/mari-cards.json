@@ -53,7 +53,11 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Ethereal. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall 1 of !M! special types of cards. NL Remove the option chosen this combat."
+    "DESCRIPTION": "Ethereal. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall a marimod:Radiance card. NL Exhausts in !stslib:ex!",
+    "EXTENDED_DESCRIPTION": [
+      " play.",
+      " plays."
+    ]
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
