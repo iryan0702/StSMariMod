@@ -15,11 +15,12 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import mari_mod.actions.MariCollectThoughtsAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
 import mari_mod.actions.MariUnsuccessfulKindleAction;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Collect_Thoughts extends AbstractMariCard { //TODO: MAKE CARD DISCARD MEMORIZED TO PREVENT DRAW BBEFORE RESOLVE ISSUES
+public class Mari_Collect_Thoughts extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Collect_Thoughts.class.getName());
     public static final String ID = "MariMod:Mari_Collect_Thoughts";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -34,9 +35,9 @@ public class Mari_Collect_Thoughts extends AbstractMariCard { //TODO: MAKE CARD 
 
     public Mari_Collect_Thoughts(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.exhaust = true;
         this.isAnyTarget = true;
         this.tags.add(MariCustomTags.KINDLE);
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
