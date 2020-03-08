@@ -24,6 +24,7 @@ public class PerfectPerformanceEffect extends AbstractGameEffect {
     private float timer = 0.1F;
     private final float START_TIME = 7.0F;
     private final float FEATHER_SPAWN_END = 3.0F;
+    private final float SMOKE_SPAWN_END = 6.0F;
     private final float FEATHER_FADE = 1.0F;
     private boolean endFeathers;
     private boolean beginMusicFade;
@@ -63,9 +64,17 @@ public class PerfectPerformanceEffect extends AbstractGameEffect {
         this.timer -= Gdx.graphics.getDeltaTime();
         if (this.timer < 0.0F && this.duration > FEATHER_SPAWN_END) {
             this.timer += 0.1F;
-            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.6F, MathUtils.random(0.5F, 0.7F), MathUtils.random(0.9F, 1.0F), 1.0F)));
-            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.5F, MathUtils.random(0.4F, 0.6F), MathUtils.random(0.8F, 1.0F), 1.0F)));
-            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.4F, MathUtils.random(0.3F, 0.5F), MathUtils.random(0.9F, 1.0F), 1.0F)));
+            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.6F, MathUtils.random(0.5F, 0.7F), MathUtils.random(0.9F, 1.0F), MathUtils.random(1.0F, 0.8F))));
+            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.5F, MathUtils.random(0.4F, 0.6F), MathUtils.random(0.8F, 1.0F), MathUtils.random(0.9F, 0.7F))));
+            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.4F, MathUtils.random(0.3F, 0.5F), MathUtils.random(0.9F, 1.0F), MathUtils.random(0.9F, 0.7F))));
+            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.5F, MathUtils.random(0.4F, 0.6F), MathUtils.random(0.8F, 1.0F), MathUtils.random(0.8F, 0.6F))));
+            AbstractDungeon.effectsQueue.add(new ColouredPetalEffect(new Color(0.4F, MathUtils.random(0.3F, 0.5F), MathUtils.random(0.9F, 1.0F), MathUtils.random(0.8F, 0.6F))));
+
+            if(this.duration > SMOKE_SPAWN_END) {
+                for(int i = 0; i < 25; i++) {
+                    AbstractDungeon.effectsQueue.add(new MariSmokeEffect());
+                }
+            }
         }else if(!endFeathers && this.duration < FEATHER_FADE){
             endFeathers = true;
             for(AbstractGameEffect e: AbstractDungeon.effectList){
