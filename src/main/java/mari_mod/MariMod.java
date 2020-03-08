@@ -144,7 +144,8 @@ public class MariMod implements
     public static int frailAmount = 0;
     public static int choreographyAmount = 0;
     public static int flawlessFormAmount = 0;
-    public static int previousCardCost = 0;
+    public static int previousCardCost = 999;
+    public static int previousCardCostAfterUse = 999;
     @Override
     public void receivePowersModified() {
 
@@ -267,6 +268,7 @@ public class MariMod implements
 
     private void resetBattleStats(){
         MariStatTracker.debuffsReceivedThisAndLastEnemyTurn = 0;
+        MariStatTracker.investAmountsThisCombat.clear();
         goldSpentByMariThisCombat = 0;
         timesMariPlayedAttacksThisCombat = 0;
         timesMariPlayedSkillsThisCombat = 0;
@@ -297,8 +299,6 @@ public class MariMod implements
                 BaseMod.addAudio("MariMod:MariLimelight", "mari_mod/audio/MariLimelight.ogg");
     }
 
-    public static int lastGoldAmountSpent = 0;
-
     //Hooked to start of AbstractPlayer.loseGold
     public static void loseGold(int amount){
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
@@ -315,7 +315,7 @@ public class MariMod implements
         return goldReturns;
     }
 
-    public static void investGoldIndependently(int goldInvested){
+    public static void gainInvestGoldIndependently(int goldInvested){
         saveableKeeper.goldInvested += goldInvested;
         saveableKeeper.lifetimeGoldInvested += goldInvested;
     }
@@ -324,13 +324,13 @@ public class MariMod implements
         AbstractPlayer p = AbstractDungeon.player;
 
         if(p.gold >= goldCost) {
-            lastGoldAmountSpent = Math.min(p.gold, goldCost);
-            investGoldIndependently(goldCost);
+            gainInvestGoldIndependently(goldCost);
 
             if (goldCost > 0) {
                 timesMariSpentGoldThisCombat++;
+                MariStatTracker.investAmountsThisCombat.add(goldCost);
+                goldSpentByMariThisCombat += goldCost;
             }
-            goldSpentByMariThisCombat += lastGoldAmountSpent;
 
             p.loseGold(goldCost);
             if (p.hasPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID)) {
@@ -399,6 +399,8 @@ public class MariMod implements
         int cost = card.costForTurn;
         if(card.cost == -1) cost = card.energyOnUse;
         if(card.freeToPlayOnce) cost = 0;
+
+        previousCardCostAfterUse = previousCardCost;
         previousCardCost = cost;
         if(cost == 1) played1Cost = true;
         if(cost == 2) played2Cost = true;

@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
 import mari_mod.MariMod;
+import mari_mod.MariStatTracker;
 import mari_mod.actions.MariDelayedDamageRandomEnemyActionAction;
 import mari_mod.actions.MariWaitAction;
 import org.apache.logging.log4j.LogManager;
@@ -53,7 +54,7 @@ public class Flaunt_Power extends AbstractPower
 
     @Override
     public void onSpecificTrigger() {
-        int goldSpent = MariMod.lastGoldAmountSpent;
+        int goldSpent = (MariStatTracker.investAmountsThisCombat.size() > 0) ? MariStatTracker.investAmountsThisCombat.get(MariStatTracker.investAmountsThisCombat.size()-1) : 0;
         AbstractPlayer p = AbstractDungeon.player;
 
         if(this.amount > 0) {

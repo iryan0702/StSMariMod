@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import mari_mod.MariMod;
+import mari_mod.MariStatTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -57,7 +58,7 @@ public class Delicacy_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     @Override
     public void onSpecificTrigger() {
-        int goldSpent = MariMod.lastGoldAmountSpent;
+        int goldSpent = (MariStatTracker.investAmountsThisCombat.size() > 0) ? MariStatTracker.investAmountsThisCombat.get(MariStatTracker.investAmountsThisCombat.size()-1) : 0;
         if(this.amount2 > 0) {
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,AbstractDungeon.player,goldSpent));
             this.flash();

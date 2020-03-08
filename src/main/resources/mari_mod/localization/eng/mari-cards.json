@@ -101,12 +101,14 @@
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL The next time you marimod:Invest Gold, deal damage to ALL enemies equal to Gold marimod:Invested.",
-    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL The next !M! times you marimod:Invest Gold, deal damage to ALL enemies equal to Gold marimod:Invested."
+    "DESCRIPTION": "Deal damage to ALL enemies equal to the least of your last !M! marimod:Invest amounts this combat.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deals !D! damage)"
+    ]
   },
   "MariMod:Mari_Expenses": {
     "NAME": "Expenses",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for every 5 Gold [#fbccff]spent[] this combat."
+    "DESCRIPTION": "Deal !D! damage. NL Deals 1 additional damage for every !M! marimod:Invested Gold you have."
   },
   "MariMod:Mari_The_Planisphere": {
     "NAME": "The Planisphere",

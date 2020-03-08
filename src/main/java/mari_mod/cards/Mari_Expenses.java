@@ -21,9 +21,9 @@ public class Mari_Expenses extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 2;
-    private static final int DAMAGE = 14;
-    private static final int SCALING = 1;
-    private static final int UPGRADE_SCALING = 1;
+    private static final int DAMAGE = 12;
+    private static final int SCALING = 75;
+    private static final int UPGRADE_SCALING = -25;
     //private static final int GOLD_PER_SCALE = 10;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -50,9 +50,7 @@ public class Mari_Expenses extends AbstractMariCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
 
-        int dam = DAMAGE;
-
-        this.baseDamage = dam + this.magicNumber * (MariMod.goldSpentByMariThisCombat/5);
+        this.baseDamage = DAMAGE + (MariMod.saveableKeeper.goldInvested/this.magicNumber);
         this.damage =  this.baseDamage;
 
         super.calculateCardDamage(mo);
@@ -62,9 +60,7 @@ public class Mari_Expenses extends AbstractMariCard {
     @Override
     public void applyPowers() {
 
-        int dam = DAMAGE;
-
-        this.baseDamage = dam + this.magicNumber * (MariMod.goldSpentByMariThisCombat/5);
+        this.baseDamage = DAMAGE + (MariMod.saveableKeeper.goldInvested/this.magicNumber);
         this.damage =  this.baseDamage;
 
         super.applyPowers();
