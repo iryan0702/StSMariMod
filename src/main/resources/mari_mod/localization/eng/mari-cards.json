@@ -162,7 +162,7 @@
   },
   "MariMod:Mari_Defiance": {
     "NAME": "Defiance",
-    "DESCRIPTION": "Gain !B! Block. NL Lose 1 Frail to gain !B! more Block.",
+    "DESCRIPTION": "Gain !B! Block. NL marimod:Kindle: Lose 1 Frail to gain !B! more Block.",
     "EXTENDED_DESCRIPTION": [
       "(!M! Block total)"
     ]

@@ -19,15 +19,19 @@ import java.util.ArrayList;
 public class MariDefianceAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariDefianceAction.class.getName());
     public AbstractCard card;
+    public boolean success;
 
     public MariDefianceAction(AbstractCard defianceCard) {
         this.actionType = ActionType.BLOCK;
         this.card = defianceCard;
+        this.success = AbstractDungeon.player.hasPower(FrailPower.POWER_ID);
     }
 
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
-        AbstractDungeon.actionManager.addToTop(new GainBlockAction(p,p,this.card.block));
+        if(success) {
+            AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.card.block));
+        }
         this.isDone = true;
     }
 }
