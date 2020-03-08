@@ -732,7 +732,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Let_Loose());
 
             BaseMod.addCard(new Mari_Shiny_Swap());
-            BaseMod.addCard(new Mari_Sit_Back());
+            BaseMod.addCard(new Mari_Anticipate());
             BaseMod.addCard(new Mari_Recurring_Theme());
 
             BaseMod.addCard(new Mari_Drama1());

@@ -58,6 +58,7 @@ public abstract class AbstractMariCard extends CustomCard {
     private boolean targetingEnemy = false;
     private boolean isKindled = false;
     private boolean stillKindled = false;
+    public Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
 
     public boolean recallPreview = false;
     public MariRecallAction.RecallType recallType;
@@ -153,7 +154,7 @@ public abstract class AbstractMariCard extends CustomCard {
         if(this.goldCost > AbstractDungeon.player.gold && this.limitedByGoldCost){
             return Color.RED.cpy();
         }
-        return AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        return defaultGlowColor;
     }
 
     @Override

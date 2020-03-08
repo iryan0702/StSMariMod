@@ -422,10 +422,9 @@
     "NAME": "Shiny Swap",
     "DESCRIPTION": "marimod:Fading. NL marimod:Recall a marimod:Radiance card. NL Exhaust a card. NL Put a card on top of your draw pile."
   },
-  "MariMod:Mari_Sit_Back": {
-    "NAME": "Sit Back",
-    "DESCRIPTION": "marimod:Glaring. NL If played or marimod:Recalled, gain !B! Block X times. NL Exhaust.",
-    "EXTENDED_DESCRIPTION": [" NL (Blocks !M! times.)"]
+  "MariMod:Mari_Anticipate": {
+    "NAME": "Anticipate",
+    "DESCRIPTION": "Gain !B! Block X times. NL If this costs less than the last card played this combat, gain X [E]."
   },
   "MariMod:Mari_Recurring_Theme": {
     "NAME": "Recurring Theme",
