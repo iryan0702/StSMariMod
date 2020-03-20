@@ -301,11 +301,11 @@
   },
   "MariMod:Mari_Stewshine": {
     "NAME": "Stewshine!",
-    "DESCRIPTION": "Play three combined cards. NL (Special Relic Card.)",
+    "DESCRIPTION": "Add three cards to your hand. NL (Special Relic Card.)",
     "EXTENDED_DESCRIPTION":[
-        "Has the text of: ",
+        "Add:",
         "\"",
-        "[#EFC851]Exhaust.[]"
+        "to your hand. NL [#EFC851]Exhaust.[]"
       ]
   },
   "MariMod:Mari_Grand_Scheme": {

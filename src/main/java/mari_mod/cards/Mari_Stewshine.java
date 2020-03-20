@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.ReApplyPowersAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -39,7 +40,7 @@ public class Mari_Stewshine extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -53,7 +54,7 @@ public class Mari_Stewshine extends AbstractMariCard {
     private String closingSymbol;
 
     public Mari_Stewshine(){
-        super(ID, NAME, MariMod.saveableKeeper.stewshineCost, DESCRIPTION, TYPE, RARITY, TARGET, CardColorEnum.MARI);
+        super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET, CardColorEnum.MARI);
         this.exhaust = true;
         canColorCodeInThisLanguage = true;
         if(Settings.language.equals(Settings.GameLanguage.ZHS)){
@@ -66,7 +67,7 @@ public class Mari_Stewshine extends AbstractMariCard {
         hoverTimer = 0;
         MariSavables saves = MariMod.saveableKeeper;
         number = saves.stewshineCards;
-        int cost = 0;
+        int cost = 1;
 
         if(number >= 1) {
             this.refreshOneTimeCardStats();
@@ -82,53 +83,16 @@ public class Mari_Stewshine extends AbstractMariCard {
         //this.costForTurn = cost;
     }
 
-    @Override
-    public void triggerWhenDrawn() {
-        if(AbstractDungeon.player.hasPower(ConfusionPower.POWER_ID)) {
-            this.confused = true;
-            int newCost = AbstractDungeon.cardRandomRng.random(3);
-            logger.info("PLAYER HAS CONFUSION! NEW COST: " + newCost);
-            if (this.cost != newCost) {
-                this.cost = newCost;
-                this.costForTurn = this.cost;
-                this.isCostModified = true;
-            }
-        }
-        super.triggerWhenDrawn();
-        if(this.card1 != null){
-            this.card1.triggerWhenDrawn();
-            this.card2.triggerWhenDrawn();
-            this.card3.triggerWhenDrawn();
-        }
-    }
 
-    @Override
-    public void atTurnStart() {
-        super.atTurnStart();
-        AbstractPlayer p = AbstractDungeon.player;
-        if(this.card1 != null){
-            if(p.hand.group.contains(this)) {
-                p.hand.group.add(this.card1);
-                p.hand.group.add(this.card2);
-                p.hand.group.add(this.card3);
-                this.card1.atTurnStart();
-                this.card2.atTurnStart();
-                this.card3.atTurnStart();
-                p.hand.group.remove(this.card1);
-                p.hand.group.remove(this.card2);
-                p.hand.group.remove(this.card3);
-            }else{
-                this.card1.atTurnStart();
-                this.card2.atTurnStart();
-                this.card3.atTurnStart();
-            }
-        }
-    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        MariSavables saves = MariMod.saveableKeeper;
+        addToBot(new MakeTempCardInHandAction(this.card1.makeSameInstanceOf()));
+        addToBot(new MakeTempCardInHandAction(this.card2.makeSameInstanceOf()));
+        addToBot(new MakeTempCardInHandAction(this.card3.makeSameInstanceOf()));
+
+        /*MariSavables saves = MariMod.saveableKeeper;
         number = saves.stewshineCards;
 
         logger.info("STEWSHINE BEING USED!: REFRESH CARD STATS");
@@ -194,49 +158,9 @@ public class Mari_Stewshine extends AbstractMariCard {
             if(this.card1.cost == -1 || this.card2.cost == -1 || this.card3.cost == -1){
                 this.costForTurn = this.energyOnUse;
             }
-        }
+        }*/
     }
 
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p,m);
-
-        logger.info("SUPER CAN USE: " + canUse);
-        logger.info("STEWSHINE CARD PLAYABLE: " + this.cardPlayable(m));
-        logger.info("STEWSHINE CARD 1 CARD PLAYABLE: " + this.card1.cardPlayable(m));
-        logger.info("STEWSHINE CARD 2 CARD PLAYABLE: " + this.card2.cardPlayable(m));
-        logger.info("STEWSHINE CARD 3 CARD PLAYABLE: " + this.card3.cardPlayable(m));
-
-        if(!canUse || !this.card1.cardPlayable(m) || !this.card2.cardPlayable(m) || !this.card3.cardPlayable(m)){
-            logger.info("STEWSHINE CAN USE RETURN FALSE");
-            this.stopGlowing();
-            return false;
-        }
-        logger.info("STEWSHINE CAN USE RETURN TRUE");
-        this.beginGlowing();
-        return true;
-    }
-
-    @Override
-    public void applyPowers(){
-        this.refreshCards();
-        if(this.card1 != null) {
-            this.card1.applyPowers();
-            if(this.card1.retain){
-                this.retain = true;
-            }
-            this.card2.applyPowers();
-            if(this.card2.retain){
-                this.retain = true;
-            }
-            this.card3.applyPowers();
-            if(this.card3.retain){
-                this.retain = true;
-            }
-        }
-        super.applyPowers();
-        refreshCardCost();
-    }
 
 
     public void update() {
@@ -323,123 +247,7 @@ public class Mari_Stewshine extends AbstractMariCard {
     }
 
     public void refreshOneTimeCardStats(){
-        logger.info("REFRESHING CARD STATS");
         refreshCards();
-        ArrayList<CardTags> tempTags = new ArrayList<>();
-        for(CardTags tag: this.tags) {
-            tempTags.add(tag);
-        }
-        for(CardTags tag: tempTags) {
-            this.tags.remove(tag);
-        }
-
-        this.baseGoldCost = 0;
-        this.goldCost = 0;
-
-        CardTarget finalTargetType = CardTarget.NONE;
-
-        if(number >= 1){
-            if(this.card1.isAnyTarget) {
-                this.isAnyTarget = true;
-                finalTargetType = CardTarget.SELF;
-            }
-        }
-        if(number >= 2){
-            if(this.card2.isAnyTarget) {
-                this.isAnyTarget = true;
-                finalTargetType = CardTarget.SELF;
-            }
-        }
-        if(number >= 3){
-            if(this.card3.isAnyTarget) {
-                this.isAnyTarget = true;
-                finalTargetType = CardTarget.SELF;
-            }
-        }
-
-        if(number >= 1){
-            if(this.card1.hasTag(MariCustomTags.QUOTATIONS)){
-                this.tags.add(MariCustomTags.QUOTATIONS);
-            }
-            if(this.card1.hasTag(MariCustomTags.RADIANCE)){
-                this.tags.add(MariCustomTags.RADIANCE);
-            }
-            if(this.card1.hasTag(MariCustomTags.SPEND)){
-                this.tags.add(MariCustomTags.SPEND);
-            }
-            if(this.card1.hasTag(MariCustomTags.KINDLE)){
-                this.tags.add(MariCustomTags.KINDLE);
-            }
-            if(this.card1.isEthereal){
-                this.isEthereal = true;
-            }
-            if(this.card1.isInnate){
-                this.isInnate = true;
-            }
-            if(this.card1.target == CardTarget.ENEMY){
-                this.isAnyTarget = false;
-                finalTargetType = CardTarget.ENEMY;
-            }
-            this.baseGoldCost += this.card1.baseGoldCost;
-        }
-        if(number >= 2){
-            if(this.card2.hasTag(MariCustomTags.QUOTATIONS)){
-                this.tags.add(MariCustomTags.QUOTATIONS);
-            }
-            if(this.card2.hasTag(MariCustomTags.RADIANCE)){
-                this.tags.add(MariCustomTags.RADIANCE);
-            }
-            if(this.card2.hasTag(MariCustomTags.SPEND)){
-                this.tags.add(MariCustomTags.SPEND);
-            }
-            if(this.card2.hasTag(MariCustomTags.KINDLE)){
-                this.tags.add(MariCustomTags.KINDLE);
-            }
-            if(this.card2.isEthereal){
-                this.isEthereal = true;
-            }
-            if(this.card2.isInnate){
-                this.isInnate = true;
-            }
-            if(this.card2.target == CardTarget.ENEMY){
-                this.isAnyTarget = false;
-                finalTargetType = CardTarget.ENEMY;
-            }
-            this.baseGoldCost += this.card2.baseGoldCost;
-        }
-        if(number >= 3){
-            if(this.card3.hasTag(MariCustomTags.QUOTATIONS)){
-                this.tags.add(MariCustomTags.QUOTATIONS);
-            }
-            if(this.card3.hasTag(MariCustomTags.RADIANCE)){
-                this.tags.add(MariCustomTags.RADIANCE);
-            }
-            if(this.card3.hasTag(MariCustomTags.SPEND)){
-                this.tags.add(MariCustomTags.SPEND);
-            }
-            if(this.card3.hasTag(MariCustomTags.KINDLE)){
-                this.tags.add(MariCustomTags.KINDLE);
-            }
-            if(this.card3.isEthereal){
-                this.isEthereal = true;
-            }
-            if(this.card3.isInnate){
-                this.isInnate = true;
-            }
-            if(this.card3.target == CardTarget.ENEMY){
-                this.isAnyTarget = false;
-                finalTargetType = CardTarget.ENEMY;
-            }
-            this.baseGoldCost += this.card3.baseGoldCost;
-        }
-        this.goldCost = this.baseGoldCost;
-        if(this.target != finalTargetType) {
-            this.target = finalTargetType;
-            logger.info("DIFFERENT TARGETING: IS NOW " + finalTargetType);
-        }
-
-        initializeDescription();
-        refreshCardCost();
     }
 
     public void refreshCards(){
@@ -472,25 +280,6 @@ public class Mari_Stewshine extends AbstractMariCard {
         this.rawDescription += EXTENDED_DESCRIPTION[2];
 
 
-    }
-
-    public void refreshCardCost(){
-        int cost = 0;
-        if(this.confused) cost = this.cost;
-        if(this.card1 != null) {
-            if (!this.confused || this.card1.cardID.equals(Mari_Lets_Go.ID))
-                cost += Math.max(0, this.card1.costForTurn);
-            if (!this.confused || this.card2.cardID.equals(Mari_Lets_Go.ID))
-                cost += Math.max(0, this.card2.costForTurn);
-            if (!this.confused || this.card3.cardID.equals(Mari_Lets_Go.ID))
-                cost += Math.max(0, this.card3.costForTurn);
-            if (!this.confused) {
-                this.cost = cost;
-                this.costForTurn = cost;
-            } else {
-                this.costForTurn = cost;
-            }
-        }
     }
 
     @Override
@@ -545,22 +334,6 @@ public class Mari_Stewshine extends AbstractMariCard {
             this.rawDescription += this.card3.name;
             if(canColorCodeInThisLanguage) this.rawDescription += "[]";
 
-            int cost = 0;
-
-            if(number >= 1) {
-                cost += Math.max(0,this.card1.cost);
-            }
-            if(number >= 2){
-                cost+= Math.max(0,this.card2.cost);
-            }
-            if(number >= 3){
-                cost+= Math.max(0,this.card3.cost);
-            }
-            if(cost != this.cost){
-                this.costForTurn = cost;
-                this.cost = cost;
-                this.upgradedCost = true;
-            }
             if(canColorCodeInThisLanguage) this.rawDescription += " NL ";
             this.rawDescription += EXTENDED_DESCRIPTION[2];
             initializeDescription();

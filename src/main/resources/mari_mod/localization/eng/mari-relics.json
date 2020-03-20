@@ -18,7 +18,7 @@
     "NAME": "Stewshine!",
     "FLAVOR": "Personal recipe by Mari Ohara, only costs 100,000¥ a bowl.",
     "DESCRIPTIONS": [
-      "Upon pickup, select #b3 cards from #b20 random cards. Combine their cost and card text into one exhaust skill.",
+      "Upon pickup, choose #b3 cards in your deck. Combine them into a #b1 cost #yExhaust Skill which adds the chosen cards to your hand.",
       "Choose 1 card to combine.",
       "Choose 2 cards to combine.",
       "Choose 3 cards to combine."

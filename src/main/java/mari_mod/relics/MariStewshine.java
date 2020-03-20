@@ -52,27 +52,11 @@ public class MariStewshine extends AbstractMariRelic
         AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE;
 
 
-
+        CardGroup tmp = AbstractDungeon.player.masterDeck.getPurgeableCards();
         CardGroup mariCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
-        for(int i = 0; i < 20; ++i) {
-            AbstractCard card;
-            do {
-                card = AbstractDungeon.getCard(AbstractDungeon.rollRarity()).makeCopy();
-            }while(card == null || card instanceof Mari_Undying_Spark);
-            if (mariCards.contains(card)) {
-                --i;
-            } else {
-                if (card.type == AbstractCard.CardType.ATTACK && AbstractDungeon.player.hasRelic("Molten Egg 2")) {
-                    card.upgrade();
-                } else if (card.type == AbstractCard.CardType.SKILL && AbstractDungeon.player.hasRelic("Toxic Egg 2")) {
-                    card.upgrade();
-                } else if (card.type == AbstractCard.CardType.POWER && AbstractDungeon.player.hasRelic("Frozen Egg 2")) {
-                    card.upgrade();
-                }
-
-                mariCards.addToBottom(card);
-            }
+        for(AbstractCard c: tmp.group) {
+            mariCards.addToTop(c);
         }
 
         Iterator var6 = mariCards.group.iterator();
@@ -82,14 +66,21 @@ public class MariStewshine extends AbstractMariRelic
             UnlockTracker.markCardAsSeen(c.cardID);
         }
 
-        cardSelectSize = mariCards.size();
-        selectNeeded = Math.min(cardSelectSize,3);
+        selectNeeded = 3;
         MariSavables saves = MariMod.saveableKeeper;
         saves.stewshineCards = selectNeeded;
 
         if(selectNeeded > 0) {
             AbstractDungeon.gridSelectScreen.open(mariCards, selectNeeded, this.DESCRIPTIONS[selectNeeded], false, false, false, true);
         }
+    }
+
+    @Override
+    public boolean canSpawn() {
+        if(AbstractDungeon.player.masterDeck.getPurgeableCards().size() < 3){
+            return false;
+        }
+        return super.canSpawn();
     }
 
     public void update() {
@@ -106,14 +97,12 @@ public class MariStewshine extends AbstractMariRelic
                 saves.stewshineCardC = new CardSave(select3.cardID, select3.timesUpgraded, select3.misc);
                 saves.increaseStewshineCost(select3.cost);
                 AbstractDungeon.topLevelEffects.add(new PurgeCardEffect((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(2), (float)Settings.WIDTH / 2.0F + 30.0F * Settings.scale + AbstractCard.IMG_WIDTH / 2.0F * 3, (float)Settings.HEIGHT / 2.0F));
-            }
-            if(selectNeeded >= 2) {
+
                 select2 = AbstractDungeon.gridSelectScreen.selectedCards.get(1);
                 saves.stewshineCardB = new CardSave(select2.cardID, select2.timesUpgraded, select2.misc);
                 saves.increaseStewshineCost(select2.cost);
                 AbstractDungeon.topLevelEffects.add(new PurgeCardEffect((AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(1), (float) Settings.WIDTH / 2.0F - 30.0F * Settings.scale, (float)Settings.HEIGHT / 2.0F));
-            }
-            if(selectNeeded >= 1) {
+
                 select1 = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
                 saves.stewshineCardA = new CardSave(select1.cardID, select1.timesUpgraded, select1.misc);
                 saves.increaseStewshineCost(select1.cost);
@@ -124,7 +113,12 @@ public class MariStewshine extends AbstractMariRelic
                 stewshineCard.initializeDescription();
 
                 AbstractDungeon.topLevelEffects.add(new ShowCardAndObtainEffect(stewshineCard,(float)Settings.WIDTH / 2.0F + 30.0F * Settings.scale + AbstractCard.IMG_WIDTH / 2.0F * 5, (float)Settings.HEIGHT / 2.0F));
+
+                AbstractDungeon.player.masterDeck.removeCard(select1);
+                AbstractDungeon.player.masterDeck.removeCard(select2);
+                AbstractDungeon.player.masterDeck.removeCard(select3);
             }
+
 
 
             Iterator var1 = AbstractDungeon.gridSelectScreen.selectedCards.iterator();

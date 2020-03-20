@@ -230,6 +230,15 @@ public class MariMod implements
         }else{
             ReflectionHacks.setPrivate(CardCrawlGame.cursor, GameCursor.class, "img", ImageMaster.loadImage("images/ui/cursors/gold2.png"));
         }
+
+        Iterator cards = AbstractDungeon.player.masterDeck.group.iterator();
+        while(cards.hasNext()){
+            AbstractCard c = (AbstractCard) cards.next();
+            if(c instanceof Mari_Stewshine){
+                ((Mari_Stewshine) c).refreshCards();
+                c.initializeDescription();
+            }
+        }
     }
 
     @Override
