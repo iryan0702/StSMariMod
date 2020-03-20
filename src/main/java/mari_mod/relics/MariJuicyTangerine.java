@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import mari_mod.MariMod;
-import mari_mod.characters.Mari;
 import mari_mod.patches.PlayerClassEnum;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;

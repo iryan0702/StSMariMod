@@ -4,25 +4,9 @@
 
 package mari_mod.patches;
 
-import basemod.ReflectionHacks;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.ReflectionHelper;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.OverlayMenu;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.helpers.TipHelper;
-import com.megacrit.cardcrawl.helpers.input.InputHelper;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;

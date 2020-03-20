@@ -1,7 +1,6 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,8 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.powers.Choreography_Power;
-import mari_mod.powers.Lie_In_Wait_Power;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,27 +1,16 @@
 package mari_mod.relics;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import mari_mod.MariMod;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.rewards.MariUncommonReward;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import mari_mod.MariMod;
-
-import static com.megacrit.cardcrawl.rewards.RewardItem.REWARD_ITEM_X;
 
 public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
 {

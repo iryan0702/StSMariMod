@@ -1,17 +1,8 @@
 package mari_mod.cards;
 
-import basemod.BaseMod;
-import basemod.abstracts.CustomCard;
-import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.google.gson.reflect.TypeToken;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.utility.ReApplyPowersAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.CardSave;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,18 +11,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ConfusionPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import mari_mod.MariMod;
 import mari_mod.MariSavables;
-import mari_mod.actions.*;
 import mari_mod.patches.CardColorEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class Mari_Stewshine extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Stewshine.class.getName());

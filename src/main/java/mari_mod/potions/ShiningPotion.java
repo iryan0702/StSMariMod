@@ -11,16 +11,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.potions.AbstractPotion.PotionEffect;
-import com.megacrit.cardcrawl.potions.AbstractPotion.PotionRarity;
-import com.megacrit.cardcrawl.potions.AbstractPotion.PotionSize;
-import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import mari_mod.powers.Radiance_Power;
 

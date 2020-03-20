@@ -1,10 +1,11 @@
 package mari_mod.patches;
 
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.LineFinder;
+import com.evacipated.cardcrawl.modthespire.lib.Matcher;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertLocator;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.Falling;
 import com.megacrit.cardcrawl.events.city.MaskedBandits;
-import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenIdolEvent;
 import com.megacrit.cardcrawl.events.exordium.ShiningLight;
 import com.megacrit.cardcrawl.events.exordium.Sssserpent;

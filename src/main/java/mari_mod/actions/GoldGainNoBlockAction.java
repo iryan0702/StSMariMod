@@ -2,19 +2,14 @@ package mari_mod.actions;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
-import com.megacrit.cardcrawl.vfx.combat.PowerDebuffEffect;
 import mari_mod.MariMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
 
 public class GoldGainNoBlockAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(GoldGainNoBlockAction.class.getName());

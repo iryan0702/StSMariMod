@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-
 public class MariAddNewActionsToSavedActionsAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariAddNewActionsToSavedActionsAction.class.getName());
 

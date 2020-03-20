@@ -8,16 +8,10 @@ package mari_mod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.EnergizedBluePower;
-import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import mari_mod.MariMod;
-import mari_mod.powers.Gold_Gain_Start_Of_Turn_Power;
 import mari_mod.powers.Gold_Spend_Start_Of_Turn_Power;
-import mari_mod.powers.Radiance_Power;
 
 public class MariGrandSchemeAction extends AbstractGameAction {
     private boolean freeToPlayOnce;

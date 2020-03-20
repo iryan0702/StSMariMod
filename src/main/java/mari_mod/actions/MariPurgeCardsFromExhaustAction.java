@@ -6,7 +6,6 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
@@ -16,8 +15,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
-
-import java.util.Iterator;
 
 public class MariPurgeCardsFromExhaustAction extends AbstractGameAction {
     private static final UIStrings uiStrings;

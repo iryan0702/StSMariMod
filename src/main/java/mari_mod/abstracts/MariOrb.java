@@ -9,8 +9,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import mari_mod.MariMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

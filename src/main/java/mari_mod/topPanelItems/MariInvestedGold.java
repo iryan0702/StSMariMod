@@ -7,11 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.TipHelper;
-import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import mari_mod.MariMod;
 
 public class MariInvestedGold extends TopPanelItem {

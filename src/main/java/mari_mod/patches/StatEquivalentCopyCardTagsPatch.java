@@ -2,16 +2,10 @@ package mari_mod.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import javassist.expr.ExprEditor;
-import javassist.expr.MethodCall;
 import mari_mod.cards.AbstractMariCard;
-import mari_mod.cards.MariCustomTags;
 
 import java.util.ArrayList;
 

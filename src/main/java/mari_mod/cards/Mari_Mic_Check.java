@@ -1,10 +1,6 @@
 package mari_mod.cards;
 
-import basemod.BaseMod;
-import basemod.helpers.BaseModCardTags;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,12 +12,6 @@ import mari_mod.actions.MariMicCheckAction;
 import mari_mod.patches.MariMusicalAttackEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import static basemod.BaseMod.MAX_HAND_SIZE;
 
 public class Mari_Mic_Check extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Strike.class.getName());

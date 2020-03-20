@@ -2,7 +2,6 @@ package mari_mod.events;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +13,6 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import mari_mod.cards.Mari_The_HELICOPTER;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class MariFallingEvent extends AbstractImageEvent {
     public static final String ID = "MariMod:Falling";

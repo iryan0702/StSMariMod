@@ -1,7 +1,6 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,11 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
-import mari_mod.actions.MariFragileHopeAction;
-import mari_mod.actions.MariHugAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.patches.EphemeralCardPatch;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

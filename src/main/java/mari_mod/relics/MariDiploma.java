@@ -2,10 +2,7 @@ package mari_mod.relics;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mari_mod.MariMod;
-import mari_mod.patches.CardColorEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -3,8 +3,8 @@ package mari_mod.eventUtil.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
-import mari_mod.eventUtil.EventUtils;
 import javassist.CtBehavior;
+import mari_mod.eventUtil.EventUtils;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,5 @@
 package mari_mod.cards;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -8,9 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.MariMod;
 import mari_mod.actions.MariAweAction;
-import mari_mod.actions.MariIdolizeAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

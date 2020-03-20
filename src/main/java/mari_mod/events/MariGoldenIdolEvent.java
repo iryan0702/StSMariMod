@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.curses.Injury;
 import com.megacrit.cardcrawl.cards.curses.Pain;
-import com.megacrit.cardcrawl.cards.curses.Writhe;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;

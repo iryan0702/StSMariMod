@@ -1,20 +1,16 @@
 package mari_mod.patches;
 
 import basemod.ReflectionHacks;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.monsters.city.BanditLeader;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.EventRoom;
 import javassist.CtBehavior;
 import mari_mod.events.MariMaskedBandits;
-import mari_mod.relics.MariShiningIdol;
 
 public class MariRomeoTalkPatch {
 

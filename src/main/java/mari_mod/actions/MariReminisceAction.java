@@ -14,18 +14,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import mari_mod.MariMod;
 import mari_mod.cards.*;
-import mari_mod.screens.MariReminisceScreen;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
-import static basemod.BaseMod.MAX_HAND_SIZE;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
 
 public class MariReminisceAction extends AbstractGameAction {
     UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("MariReminisce");

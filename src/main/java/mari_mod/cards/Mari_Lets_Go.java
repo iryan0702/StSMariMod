@@ -1,6 +1,5 @@
 package mari_mod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,11 +7,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import mari_mod.MariMod;
 import mari_mod.actions.MariDrawnCardsTrackerAction;
 import mari_mod.actions.MariLetsGoAction;
 import org.apache.logging.log4j.LogManager;

@@ -1,26 +1,15 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PoisonPower;
-import com.megacrit.cardcrawl.vfx.combat.PotionBounceEffect;
-import mari_mod.effects.MariShiningTornadoEffect;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.Iterator;
-import java.util.UUID;
 
 public class MariShiningTornadoAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariShiningTornadoAction.class.getName());

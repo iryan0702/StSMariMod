@@ -4,19 +4,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ShaderHelper;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import mari_mod.MariMod;
 import mari_mod.cards.AbstractMariCard;
-import mari_mod.powers.No_Problem_Power;
-import mari_mod.relics.MariStageDirections;
-import mari_mod.relics.MariTheaterScript;
 
 
 public class MariCardRenderShaderPatch {

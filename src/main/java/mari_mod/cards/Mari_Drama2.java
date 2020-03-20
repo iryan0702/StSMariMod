@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import mari_mod.powers.Debuff_Energy_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

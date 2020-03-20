@@ -1,26 +1,13 @@
 package mari_mod.actions;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.AutoplayCardAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
-import mari_mod.MariMod;
-import mari_mod.cards.AbstractMariCard;
-import mari_mod.cards.Mari_Oh_My_God;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

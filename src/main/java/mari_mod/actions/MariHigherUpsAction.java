@@ -15,10 +15,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import mari_mod.cards.Mari_Higher_Ups;
 import mari_mod.cards.Mari_Stewshine;
 import mari_mod.patches.CardColorEnum;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.Iterator;
 

@@ -6,15 +6,11 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import mari_mod.effects.MariEphemeralExhaustEffect;
-import mari_mod.effects.MariEphemeralExhaustFlameEffect;
 
 public class MariPurgeSpecificCardAction extends AbstractGameAction {
     private AbstractCard targetCard;

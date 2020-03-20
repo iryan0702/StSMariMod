@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
-import mari_mod.characters.Mari;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

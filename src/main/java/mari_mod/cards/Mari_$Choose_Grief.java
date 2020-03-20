@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

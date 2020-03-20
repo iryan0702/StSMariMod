@@ -5,7 +5,6 @@
 
 package mari_mod.ui;
 
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,8 +15,10 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
-import com.megacrit.cardcrawl.helpers.*;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
@@ -25,14 +26,12 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.PrismaticShard;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.screens.ExhaustPileViewScreen;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 import mari_mod.MariMod;
 import mari_mod.patches.MariRerollCardRewardPatch;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 
 public class RerollCardRewardButton {

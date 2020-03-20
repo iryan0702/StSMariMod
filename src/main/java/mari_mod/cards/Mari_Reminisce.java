@@ -1,27 +1,15 @@
 package mari_mod.cards;
 
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.common.PlayTopCardAction;
-import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.IncreaseCostAction;
 import mari_mod.actions.MariRecallAction;
-import mari_mod.actions.MariReminisceAction;
 import mari_mod.actions.MariSpendGoldAction;
-import mari_mod.screens.MariReminisceScreen;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static basemod.BaseMod.MAX_HAND_SIZE;
-import static mari_mod.MariMod.mariReminisceScreen;
 
 public class Mari_Reminisce extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Reminisce.class.getName());

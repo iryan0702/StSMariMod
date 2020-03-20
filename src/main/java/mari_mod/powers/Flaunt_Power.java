@@ -2,7 +2,6 @@ package mari_mod.powers;
 
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,12 +15,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
 import mari_mod.MariMod;
 import mari_mod.MariStatTracker;
-import mari_mod.actions.MariDelayedDamageRandomEnemyActionAction;
 import mari_mod.actions.MariWaitAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
 
 
 public class Flaunt_Power extends AbstractPower

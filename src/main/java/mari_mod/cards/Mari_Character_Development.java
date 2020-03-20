@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.powers.Character_Development_Power;
-import mari_mod.powers.Choreography_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

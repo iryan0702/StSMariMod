@@ -2,38 +2,25 @@
 
 package mari_mod.patches;
 
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
-import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import javassist.expr.ExprEditor;
-import javassist.expr.MethodCall;
-import mari_mod.MariMod;
 import mari_mod.actions.EphemeralDelayedExhaustSpecificCardAction;
-import mari_mod.actions.MariEphemeralWaitAction;
-import mari_mod.actions.MariWaitAction;
-import mari_mod.cards.*;
+import mari_mod.cards.Mari_Aspiration;
+import mari_mod.cards.Mari_Supervision;
 import mari_mod.effects.EphemeralCardRewardEffect;
 import mari_mod.effects.MariEphemeralExhaustEffect;
-import mari_mod.effects.MariEphemeralExhaustFlameEffect;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class EphemeralCardPatch {

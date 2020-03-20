@@ -1,35 +1,20 @@
 package mari_mod.cards;
 
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.ShakeScreenAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.trials.AbstractTrial;
-import com.megacrit.cardcrawl.vfx.combat.DamageImpactLineEffect;
-import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
-import mari_mod.MariMod;
 import mari_mod.actions.MariSpendGoldAction;
-import mari_mod.effects.MariHelicopterEffect;
 import mari_mod.effects.MariTheFlyingCarEffect;
-import mari_mod.powers.Cash_Back_Power;
 import mari_mod.powers.Radiance_Power;
-import mari_mod.relics.AbstractMariRelic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.swing.*;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 

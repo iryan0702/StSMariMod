@@ -2,19 +2,14 @@ package mari_mod.events;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.curses.Regret;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.map.MapEdge;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import mari_mod.MariMod;
 import mari_mod.MariSavables;
 import mari_mod.relics.MariTheSpark;
@@ -22,8 +17,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.currMapNode;
 
 public class MariSnackShackEvent extends AbstractImageEvent {
     public static final Logger logger = LogManager.getLogger(MariSnackShackEvent.class.getName());

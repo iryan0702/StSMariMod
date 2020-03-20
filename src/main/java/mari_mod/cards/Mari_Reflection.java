@@ -1,8 +1,5 @@
 package mari_mod.cards;
 
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.DamageHooks;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -10,11 +7,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.MariMod;
-import mari_mod.actions.MariHugAction;
 import mari_mod.actions.MariReflectionAction;
 import mari_mod.actions.MariSpendGoldAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

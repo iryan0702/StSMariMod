@@ -18,8 +18,6 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-
 public class MariEphemeralExhaustFlameEffect extends AbstractGameEffect {
     public static final Logger logger = LogManager.getLogger(MariEphemeralExhaustFlameEffect.class.getName());
     private TextureAtlas.AtlasRegion img = this.getImg();

@@ -5,9 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import mari_mod.cards.AbstractMariCard;
-import mari_mod.relics.AbstractMariRelic;
 
-import java.util.Iterator;
 import java.util.UUID;
 
 public class ModifyRadianceAction extends AbstractGameAction {

@@ -1,19 +1,14 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
-import mari_mod.MariMod;
 import mari_mod.actions.MariEmotionalEpisodeAction;
 import mari_mod.patches.EphemeralCardPatch;
-import mari_mod.powers.Gold_Gain_Debuff_Power;
-import mari_mod.powers.Gold_Gain_Not_Damaged_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

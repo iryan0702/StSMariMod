@@ -1,23 +1,12 @@
 package mari_mod.cards;
 
-import basemod.helpers.BaseModCardTags;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.unique.BouncingFlaskAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.PotionBounceEffect;
-import mari_mod.actions.MariShiningTornadoAction;
 import mari_mod.actions.MariStartShiningTornadoAction;
-import mari_mod.effects.MariShiningTornadoEffect;
-import mari_mod.effects.MariShiningTornadoFirstTossEffect;
 import mari_mod.patches.EphemeralCardPatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

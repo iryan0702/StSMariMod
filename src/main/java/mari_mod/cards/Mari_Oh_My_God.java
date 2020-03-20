@@ -1,15 +1,12 @@
 package mari_mod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.MariMod;
-import mari_mod.actions.MariDefianceAction;
 import mari_mod.actions.MariOhMyGodAction;
-import mari_mod.powers.Oh_My_God_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

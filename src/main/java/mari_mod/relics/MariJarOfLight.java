@@ -1,19 +1,13 @@
 package mari_mod.relics;
 
-import basemod.abstracts.CustomBottleRelic;
-import com.evacipated.cardcrawl.mod.stslib.relics.BetterOnSmithRelic;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import mari_mod.MariMod;
 import mari_mod.actions.MariJarOfLightAction;
-import mari_mod.actions.MariIncreaseRadianceInHandAction;
-import mari_mod.cards.AbstractMariCard;
-import mari_mod.cards.Mari_Strike;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 //
-import java.util.function.Predicate;
 
 public class MariJarOfLight extends AbstractMariRelic
 {

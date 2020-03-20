@@ -8,16 +8,13 @@ package mari_mod.effects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import com.megacrit.cardcrawl.vfx.combat.CardPoofEffect;
-import java.util.Iterator;
 
 public class MariShowCardAndAddToExhaustEffect extends AbstractGameEffect {
     private static final float EFFECT_DUR = 1.0F;

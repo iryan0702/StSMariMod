@@ -12,9 +12,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mari_mod.patches.EphemeralCardPatch;
+import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import mari_mod.powers.Radiance_Power;
 
 public class Mari_Glow extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Glow.class.getName());

@@ -3,20 +3,12 @@ package mari_mod.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import javassist.CtBehavior;
 import mari_mod.MariMod;
 import mari_mod.cards.MariCustomTags;
 import mari_mod.cards.Mari_Aspiration;
-import mari_mod.cards.Mari_Supervision;
-import mari_mod.powers.No_Problem_Power;
-import mari_mod.relics.MariStageDirections;
-import mari_mod.relics.MariTheaterScript;
 
 import java.util.Iterator;
 

@@ -3,7 +3,6 @@ package mari_mod.actions;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import mari_mod.MariMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

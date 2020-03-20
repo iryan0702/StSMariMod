@@ -1,9 +1,7 @@
 package mari_mod.charSelectScreen;
 
 import basemod.BaseMod;
-import basemod.ModBadge;
 import basemod.ModPanel;
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,7 +16,6 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import mari_mod.MariMod;
 import mari_mod.cards.MariCustomTags;
 import mari_mod.characters.Mari;
@@ -26,7 +23,6 @@ import mari_mod.patches.PlayerClassEnum;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
 
 public class MariCharacterSelectScreen {
     private static final UIStrings uiStrings;

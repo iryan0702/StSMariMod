@@ -1,7 +1,5 @@
 package mari_mod.cards;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,8 +13,6 @@ import mari_mod.actions.MariUnsuccessfulKindleAction;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static basemod.BaseMod.MAX_HAND_SIZE;
 
 public class Mari_Expensive_Tastes extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Expensive_Tastes.class.getName());

@@ -1,14 +1,12 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariSetCostOfALLCardsAction;
-import mari_mod.powers.Choreography_Power;
 import mari_mod.powers.Supervision_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

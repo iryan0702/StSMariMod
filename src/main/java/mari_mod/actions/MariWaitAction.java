@@ -6,9 +6,7 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.Settings;
 
 public class MariWaitAction extends AbstractGameAction {
     public MariWaitAction(float setDur) {

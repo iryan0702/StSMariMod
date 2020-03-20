@@ -3,18 +3,13 @@ package mari_mod.powers;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
-import com.megacrit.cardcrawl.vfx.combat.PowerDebuffEffect;
 import mari_mod.MariMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

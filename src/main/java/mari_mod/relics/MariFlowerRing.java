@@ -1,13 +1,10 @@
 package mari_mod.relics;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.BetterOnLoseHpRelic;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mari_mod.MariMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

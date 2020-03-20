@@ -6,8 +6,6 @@ import com.megacrit.cardcrawl.audio.MainMusic;
 import com.megacrit.cardcrawl.audio.MusicMaster;
 import com.megacrit.cardcrawl.audio.TempMusic;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
 

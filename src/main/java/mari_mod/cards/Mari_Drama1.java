@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.effects.MariLockOnEffect;
 import mari_mod.powers.Debuff_Energy_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

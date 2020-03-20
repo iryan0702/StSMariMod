@@ -3,13 +3,11 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariLoseInvestedGoldAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Cash_Back_Power;
-import mari_mod.powers.Character_Development_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

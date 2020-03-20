@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.MariMod;
 import mari_mod.actions.MariGainGoldAction;
 import mari_mod.powers.Gold_Loss_Start_Of_Turn_Power;
 import org.apache.logging.log4j.LogManager;

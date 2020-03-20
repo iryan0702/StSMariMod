@@ -8,7 +8,6 @@ package mari_mod.actions;
 import basemod.BaseMod;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
 import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
 import com.megacrit.cardcrawl.cards.SoulGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;

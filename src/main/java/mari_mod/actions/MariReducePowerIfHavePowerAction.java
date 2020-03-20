@@ -7,20 +7,9 @@ package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import mari_mod.MariMod;
-import mari_mod.cards.*;
-
-import java.util.ArrayList;
-import java.util.UUID;
-
-import static basemod.BaseMod.MAX_HAND_SIZE;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
 
 public class MariReducePowerIfHavePowerAction extends AbstractGameAction {
     private String powerID;
