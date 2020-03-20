@@ -2,7 +2,7 @@
   "MariMod:SnackShack": {
     "NAME": "Snack Shack",
     "DESCRIPTIONS": [
-      "As you realize that you are running low on #yGold you come a cross a familiar-looking shack. A voice shrieks from the closed blinds. @\"DO@ @YOU@ @HAVE@ @SOMETHING@ @TO@ @SELL,@ @YOUNG@ @LADY?\"@ NL NL ...It seems like you can place something on the counter to sell it.",
+      "As you realize that you are running low on #yGold, you come a cross a familiar-looking shack. A voice shrieks from the closed blinds. @\"DO@ @YOU@ @HAVE@ @SOMETHING@ @TO@ @SELL,@ @YOUNG@ @LADY?\"@ NL NL ...It seems like you can place something on the counter to sell it.",
       "You place #pThe #pSpark on the counter. A hand shoots out from the blinds and removes the relic. @\"THANKS@ @FOR@ @THE@ @RELIC,@ @YOUNG@ @LADY!\"@",
       "@\"HEY!@ @DON'T@ @FORGET@ @YOUR@ #y@GOLD!\"@",
       "Whew. Almost forgot about that.",
@@ -75,8 +75,25 @@
       "~Grab~ ~em'~ ... NL NL ...Bear?"
     ],
     "OPTIONS": [
-      "[Ask to Join] #rPay #r[JOIN] #rGold.",
-      "[Locked] Requires: [JOIN] Gold.",
+      "[Ask to Join] #yRequires: #y[JOIN] #yInvested #yGold.",
+      "[Locked] Requires: [JOIN] Invested Gold.",
+      "[Buy] #rPay #r[BUY] #rGold. #gObtain #gRed #gMask.",
+      "[Ambush]"
+    ]
+  },
+  "MariMod:Masked Bandits 2": {
+    "NAME": "Masked Bandits 2",
+    "DESCRIPTIONS": [
+      "While wondering around a narrow corridor looking for an exit, you hear a familiar voice in the distance approaching you.",
+      "Hey! Hey! Young lady!",
+      "So, we tried out this \"Investing\" thing you told us about...",
+      "...It's great! NL Pointy's always loved making these ~weird~ lil' masks, NL so we put our money into a mask shop! NL Now we get to make lots of ~shiny~ ~shiny~ #ygold without putting Bear in danger!",
+      "You like #yshinies too, huh?",
+      "~Grab~ ~em'~ ... NL NL ...Bear?"
+    ],
+    "OPTIONS": [
+      "[Ask to Join] #yRequires: #y[JOIN] #yInvested #yGold.",
+      "[Locked] Requires: [JOIN] Invested Gold.",
       "[Buy] #rPay #r[BUY] #rGold. #gObtain #gRed #gMask.",
       "[Ambush]"
     ]

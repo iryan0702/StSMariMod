@@ -45,7 +45,7 @@ public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
         if(AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
 
             flash();
-            this.counter += MariMod.lastGoldAmountSpent;
+            //this.counter += MariMod.lastGoldAmountSpent;
 
         }
     }
@@ -56,6 +56,8 @@ public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         MariMod.gainGold(10);
     }
+
+
 
     @Override
     public void onRightClick() {

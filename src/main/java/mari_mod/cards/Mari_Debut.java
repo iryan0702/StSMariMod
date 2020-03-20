@@ -72,6 +72,7 @@ public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
         this.lighten(false);
         this.drawScale = 0.12F;
         this.targetDrawScale = 0.75F;
+        this.freeToPlayOnce = true;
         this.applyPowers();
 
         addToBot(new NewQueueCardAction(this, null, true, true));
