@@ -60,6 +60,7 @@ import mari_mod.actions.CardFlashAction;
 import mari_mod.actions.MariUpdateRecentPowersAction;
 import mari_mod.charSelectScreen.MariCharacterSelectScreen;
 import mari_mod.events.*;
+import mari_mod.potions.ShiningPotion;
 import mari_mod.powers.*;
 import mari_mod.relics.*;
 import mari_mod.screens.KindleFtue;
@@ -782,6 +783,7 @@ public class MariMod implements
 
     public void receiveEditPotions() {
         logger.info("begin editing potions");
+        BaseMod.addPotion(ShiningPotion.class, new Color(1,0,0,1), new Color(0,1,0,0), new Color(0,0,1,0), ShiningPotion.POTION_ID);
         //BaseMod.addPotion(FuelPotion.class, new Color(0.3f,0.3f,0.3f,1.0f), new Color(0.1f,0.1f,0.1f,1.0f), new Color(0.5f,0.5f,0.5f,1.0f), FuelPotion.POTION_ID, PlayerClassEnum.MAD_SCIENTIST);
         logger.info("end editing potions");
     }
@@ -829,7 +831,7 @@ public class MariMod implements
         BaseMod.loadCustomStrings(RelicStrings.class, loadJson("mari_mod/localization/" + language + "/mari-relics.json"));
         BaseMod.loadCustomStrings(PowerStrings.class, loadJson("mari_mod/localization/" + language + "/mari-powers.json"));
         BaseMod.loadCustomStrings(UIStrings.class, loadJson("mari_mod/localization/" + language + "/mari-ui.json"));
-        //BaseMod.loadCustomStrings(PotionStrings.class, loadJson("mari_mod/localization/" + language + "/mari-potions.json"));
+        BaseMod.loadCustomStrings(PotionStrings.class, loadJson("mari_mod/localization/" + language + "/mari-potions.json"));
         BaseMod.loadCustomStrings(CharacterStrings.class, loadJson("mari_mod/localization/" + language + "/mari-characters.json"));
         BaseMod.loadCustomStrings(EventStrings.class, loadJson("mari_mod/localization/" + language + "/mari-events.json"));
         logger.info("done editing strings");

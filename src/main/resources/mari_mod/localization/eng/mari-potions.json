@@ -1,0 +1,9 @@
+{
+  "MariMod:ShiningPotion": {
+    "NAME": "Shining Potion",
+    "DESCRIPTIONS": [
+      "Apply #b",
+      " #yRadiance to ALL characters twice."
+    ]
+  }
+}
