@@ -7,13 +7,16 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
+import mari_mod.effects.MariSpotlightEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -76,6 +79,9 @@ public class Choreography_Power extends TwoAmountPowerByKiooehtButIJustChangedIt
         if(cost < this.lastCost){
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,this.amount,false));
             this.flashWithoutSound();
+
+            AbstractPlayer p = AbstractDungeon.player;
+            AbstractDungeon.effectList.add(new MariSpotlightEffect(7.0f, p.drawX + p.hb_x /*+ p.hb_w/2f*/, Settings.WIDTH / (4f) * (p.hb_w / 220f), false, 0.2f, new Color(0.55f,0.376f,0.627f,0.5f)));
         }
         this.lastCost = cost;
         this.amount2 = this.lastCost;

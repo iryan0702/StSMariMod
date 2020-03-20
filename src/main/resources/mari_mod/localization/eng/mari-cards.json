@@ -292,8 +292,8 @@
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
-    "DESCRIPTION": "Whenever you spend a different amount of energy on a card than the previous, gain [E].",
-    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend a different amount of energy on a card than the previous, gain [E]."
+    "DESCRIPTION": "Whenever you spend more energy on a card than the previous, gain [E] equal to the difference.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend more energy on a card than the previous, gain [E] equal to the difference."
   },
   "MariMod:Mari_Heavy_Metal": {
     "NAME": "Heavy Metal",

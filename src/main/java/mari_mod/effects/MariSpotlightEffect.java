@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
+import static com.badlogic.gdx.graphics.GL20.*;
+
 public class MariSpotlightEffect extends AbstractGameEffect {
     float maxDuration;
     boolean doSound;
@@ -59,10 +61,10 @@ public class MariSpotlightEffect extends AbstractGameEffect {
     }
 
     public void render(SpriteBatch sb) {
+        sb.setBlendFunction(GL_SRC_ALPHA, GL_ONE);
         sb.setColor(this.color);
-        sb.setBlendFunction(770, 1);
         sb.draw(ImageMaster.SPOTLIGHT_VFX, this.xPos - this.width/2f, 0.0F, this.width, (float)Settings.HEIGHT);
-        sb.setBlendFunction(770, 771);
+        sb.setBlendFunction(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
 
     public void dispose() {
