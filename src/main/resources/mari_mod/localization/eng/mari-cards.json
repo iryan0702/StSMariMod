@@ -36,11 +36,11 @@
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance."
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !M! Block at the end of your turns. Each turn, the Block gain is halved."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL At the end of your turn, gain !M! Block. Each turn, the Block gain is halved."
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
@@ -97,7 +97,7 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !MARI_RADIANCE! marimod:Radiance and !B! Block. NL Exhaust."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !MARI_RADIANCE! marimod:Radiance and !B! Block. NL Exhaust."
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
@@ -128,7 +128,7 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall a marimod:Radiance card. NL Exhaust."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall a marimod:Radiance card. NL Exhaust."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",
@@ -193,11 +193,11 @@
   },
   "MariMod:Mari_The_GOLDEN_STATUE": {
     "NAME": "The GOLDEN STATUE",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !B! Block and deal !D! damage."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block NL Deal !D! damage."
   },
   "MariMod:Mari_The_HELICOPTER": {
     "NAME": "The HELICOPTER",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL deal !D! damage to a random enemy !M! times."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage to a random enemy !M! times."
   },
   "MariMod:Mari_Pent_Up_Emotions": {
     "NAME": "Pent-up Emotions",
@@ -209,7 +209,7 @@
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to NL gain !M! [E] and draw !M! cards. NL Can be upgraded any number of times. NL Exhaust."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !M! [E] and draw !M! cards. NL Can be upgraded any number of times. NL Exhaust."
   },
   "MariMod:Mari_Supervision": {
     "NAME": "Supervision",
@@ -235,8 +235,8 @@
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Instead of drawing regularly, you choose cards from your draw pile to put into your hand at the start of your turn.",
-    "UPGRADE_DESCRIPTION": "Innate. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Instead of drawing regularly, you choose cards from your draw pile to put into your hand at the start of your turn."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Instead of drawing regularly, you choose cards from your draw pile to put into your hand at the start of your turn.",
+    "UPGRADE_DESCRIPTION": "Innate. marimod:Invest !MARI_GOLD_COST!. NL Instead of drawing regularly, you choose cards from your draw pile to put into your hand at the start of your turn."
   },
   "MariMod:Mari_All_Or_Nothing": {
     "NAME": "\"All or Nothing!\"",
@@ -283,8 +283,8 @@
   },
   "MariMod:Mari_Higher_Ups": {
     "NAME": "Higher-Ups",
-    "DESCRIPTION": "Choose ANY Mari card to add to your hand. Reduce its cost to 0 this turn and [#fbccff]Spend[] !MARI_GOLD_COST! Gold for each [E] reduced. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Choose ANY Upgraded Mari card to add to your hand. Reduce its cost to 0 this turn and [#fbccff]Spend[] !MARI_GOLD_COST! Gold for each [E] reduced. NL Exhaust."
+    "DESCRIPTION": "Choose ANY Mari card to add to your hand. Reduce its cost to 0 this turn and marimod:Invest !MARI_GOLD_COST! for each [E] reduced. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose ANY Upgraded Mari card to add to your hand. Reduce its cost to 0 this turn and marimod:Invest !MARI_GOLD_COST! for each [E] reduced. NL Exhaust."
   },
   "MariMod:Mari_Wishing_Fountain": {
     "NAME": "Wishing Fountain",
@@ -310,7 +310,7 @@
   },
   "MariMod:Mari_Grand_Scheme": {
     "NAME": "Grand Scheme",
-    "DESCRIPTION": "marimod:Fading. NL Gain 15 Gold !M! times. At the start of your next !M! turns, [#fbccff]spend[] 15 Gold."
+    "DESCRIPTION": "marimod:Fading. NL Gain 15 Gold !M! times. At the start of your next !M! turns, marimod:Invest 15."
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
@@ -351,8 +351,8 @@
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",
-    "DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its marimod:Radiance to ALL other characters. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "[#fbccff]Spend[] !MARI_GOLD_COST! Gold to target ANY character. Apply its marimod:Radiance to ALL other characters."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Target ANY character. Apply its marimod:Radiance to ALL other characters. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. Target ANY character. Apply its marimod:Radiance to ALL other characters."
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
@@ -393,7 +393,7 @@
   },
   "MariMod:Mari_Reckless_Spending": {
     "NAME": "Reckless Spending",
-    "DESCRIPTION": "marimod:Fading. NL [#fbccff]Spend[] !MARI_GOLD_COST! Gold. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn."
+    "DESCRIPTION": "marimod:Fading. NL marimod:Invest !MARI_GOLD_COST!. NL Draw a card. NL Gain !M! Gold if you do not lose HP until your next turn."
   },
   "MariMod:Mari_Drama1": {
     "NAME": "Drama 1",
