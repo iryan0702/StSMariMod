@@ -37,11 +37,22 @@
     "NAMES":[
       "Recall",
       "recall",
-      "Recalled",
-      "recalled",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Return the bottom-most card from the exhaust Pile to your hand."
+    "DESCRIPTION": "Return the bottom-most #yGlaring card from your exhaust pile to your hand. If you do, add a copy of this card to your draw pile. If there are no #yGlaring cards, return the bottom-most #yRadiance card instead."
+  },
+  {
+    "PROPER_NAME": "Recalled",
+    "NAMES":[
+      "Recalled",
+      "recalled",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Returned from the exhaust pile by a #yRecall effect."
   },
   {
     "PROPER_NAME": "Glaring",
@@ -74,7 +85,7 @@
       "invested",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Spend an amount of Gold and play a card. If you do not have enough Gold, gain #b1 #yFrail and #yWeak. Invested Gold is kept between combats."
+    "DESCRIPTION": "Spend an amount of Gold and play a card. If you do not have enough Gold, gain #b1 #yFrail and #yWeak."
   },
   {
     "PROPER_NAME": "Payout",
