@@ -1,7 +1,9 @@
 package mari_mod.powers;
 
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -12,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class No_Problem_Power extends AbstractPower
+public class No_Problem_Power extends AbstractPower implements NonStackablePower
 {
     public static final String POWER_ID = "MariMod:No_Problem_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -20,7 +22,8 @@ public class No_Problem_Power extends AbstractPower
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public No_Problem_Power(AbstractCreature owner, int bufferAmt)
+    public AbstractCard card;
+    public No_Problem_Power(AbstractCreature owner, int bufferAmt, AbstractCard triggerCard)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
@@ -28,6 +31,7 @@ public class No_Problem_Power extends AbstractPower
         this.amount = bufferAmt;
         this.owner = owner;
         this.isTurnBased = true;
+        this.card = triggerCard;
         this.updateDescription();
         MariMod.setPowerImages(this);
         this.priority = 10;
@@ -43,7 +47,7 @@ public class No_Problem_Power extends AbstractPower
     @Override
     public void atStartOfTurnPostDraw() {
         for(int i = 0; i < this.amount; i++){
-            addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+            addToBot(new MariRecallAction(this.card));
         }
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }

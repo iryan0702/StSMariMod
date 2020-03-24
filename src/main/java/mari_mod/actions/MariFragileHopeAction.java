@@ -24,7 +24,7 @@ public class MariFragileHopeAction extends AbstractGameAction {
         }
         AbstractPlayer p = AbstractDungeon.player;
         if(recalls > 0) {
-            AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+            //AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
         }
         this.isDone = true;
     }

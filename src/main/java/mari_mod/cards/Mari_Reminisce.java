@@ -19,8 +19,6 @@ public class Mari_Reminisce extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
-    private static final int USES = 2;
-    private static final int TOTAL_USES_UPGRADE = 3;
     private static final int BASE_GOLD_COST = 10;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
@@ -36,18 +34,16 @@ public class Mari_Reminisce extends AbstractMariCard {
         this.goldCost = this.baseGoldCost;
 
         this.recallPreview = true;
-        this.recallType = MariRecallAction.RecallType.RADIANCE;
 
-        ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, USES);
-        ExhaustiveField.ExhaustiveFields.exhaustive.set(this, USES);
         this.isEthereal = true;
+        this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
         addToBot(new MariSpendGoldAction(this.goldCost));
-        addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+        addToBot(new MariRecallAction(this));
 
     }
 
@@ -65,9 +61,9 @@ public class Mari_Reminisce extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, TOTAL_USES_UPGRADE);
-            ExhaustiveField.ExhaustiveFields.exhaustive.set(this, TOTAL_USES_UPGRADE);
-            ExhaustiveField.ExhaustiveFields.isExhaustiveUpgraded.set(this, true);
+            this.isEthereal = false;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 }

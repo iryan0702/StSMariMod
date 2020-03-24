@@ -1,13 +1,15 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariGlimmerFollowUpAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.patches.EphemeralCardPatch;
+import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,11 +33,19 @@ public class Mari_Glimmer extends AbstractMariCard{
         this.radiance = this.baseRadiance;
 
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.recallPreview = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE, new MariGlimmerFollowUpAction(this.radiance)));
+        //addToBot(new MariRecallAction(this, new MariGlimmerFollowUpAction(this.radiance)));
+        addToBot(new MariRecallAction(this));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new Radiance_Power(mo, this.radiance), this.radiance));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new Radiance_Power(mo, this.radiance), this.radiance));
+        }
     }
 
     @Override

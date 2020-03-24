@@ -3,13 +3,16 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import mari_mod.actions.MariRecallAction;
+import mari_mod.actions.MariSuccessfulKindleAction;
 import mari_mod.patches.EphemeralCardPatch;
+import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,18 +31,31 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
     public Mari_Fragile_Hope(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.isAnyTarget = true;
+        this.tags.add(MariCustomTags.KINDLE);
         this.recallPreview = true;
-        this.recallType = MariRecallAction.RecallType.RADIANCE;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractCreature target;
+        if(m != null) {
+            target = m;
+        }else{
+            target = p;
+        }
+
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, 1, false), 1));
-        addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
         //AbstractDungeon.actionManager.addToBottom(new MariFragileHopeAction());
         //if(this.upgraded) {
         //    AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         //}
+
+        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
+            this.successfulKindle(target);
+        }
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction(this)));
+
     }
 
     @Override

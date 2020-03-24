@@ -24,12 +24,11 @@ public class Mari_Recurring_Theme extends AbstractMariCard{
     public Mari_Recurring_Theme(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.recallPreview = true;
-        this.recallType = MariRecallAction.RecallType.GLARING;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new MariRecallAction(MariRecallAction.RecallType.GLARING));
+        this.addToBot(new MariRecallAction(this));
     }
 
     @Override

@@ -11,6 +11,7 @@ import mari_mod.actions.MariPurgeCardsFromExhaustAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.actions.MariSpendGoldAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
+import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,12 +31,13 @@ public class Mari_Tea_Time extends AbstractMariCard {
 
     public Mari_Tea_Time(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.tags.add(MariCustomTags.SPEND);
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
-        this.exhaust = true;
         this.isAnyTarget = true;
         this.tags.add(MariCustomTags.KINDLE);
+        this.recallPreview = true;
     }
 
     @Override
@@ -53,7 +55,7 @@ public class Mari_Tea_Time extends AbstractMariCard {
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction(MariRecallAction.RecallType.RADIANCE)));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction(this)));
     }
 
     @Override

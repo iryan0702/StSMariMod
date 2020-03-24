@@ -10,8 +10,8 @@
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "marimod:Fading. NL marimod:Recall a marimod:Radiance card. Apply !MARI_RADIANCE! marimod:Radiance to ALL characters once for each [E] it costs.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL marimod:Recall a marimod:Radiance card. Apply !MARI_RADIANCE! marimod:Radiance to ALL characters once for each [E] it costs."
+    "DESCRIPTION": "marimod:Fading. NL marimod:Recall and apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL marimod:Recall and apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
@@ -53,11 +53,8 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Ethereal. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall a marimod:Radiance card. NL Exhausts in !stslib:ex!",
-    "EXTENDED_DESCRIPTION": [
-      " play.",
-      " plays."
-    ]
+    "DESCRIPTION": "Ethereal. NL marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall. NL Exhaust."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -77,11 +74,11 @@
   },
   "MariMod:Mari_Tough_Front": {
     "NAME": "Tough Front",
-    "DESCRIPTION": "Gain [E] [E]. NL Gain !B! Block. NL Add a *Repressed to the bottom of your exhaust pile."
+    "DESCRIPTION": "Gain [E] [E]. NL Gain !B! Block. NL Add a *Repression to the bottom of your exhaust pile."
   },
   "MariMod:Mari_Reckless_Driving": {
     "NAME": "Reckless Driving",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Repressed to the bottom of your exhaust pile."
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Repression to the bottom of your exhaust pile."
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
@@ -128,7 +125,7 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall a marimod:Radiance card. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",
@@ -205,7 +202,7 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "Lose all Vulnerable and add 2 *Repressed to the bottom of your exhaust pile. Next turn, marimod:Recall !M! marimod:Radiance cards. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL Gain !B! Block. NL Repress. Next turn, marimod:Recall."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
@@ -356,8 +353,8 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "marimod:Fading. NL Gain 1 Frail. NL marimod:Recall a marimod:Radiance card.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Gain 1 Frail. NL marimod:Recall a marimod:Radiance card."
+    "DESCRIPTION": "marimod:Fading. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall."
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
@@ -426,7 +423,7 @@
   },
   "MariMod:Mari_Shiny_Swap": {
     "NAME": "Shiny Swap",
-    "DESCRIPTION": "marimod:Fading. NL marimod:Recall a marimod:Radiance card. NL Exhaust a card. NL Put a card on top of your draw pile."
+    "DESCRIPTION": "marimod:Fading. NL marimod:Recall. NL Put a card on top of your draw pile."
   },
   "MariMod:Mari_Anticipate": {
     "NAME": "Anticipate",
@@ -434,8 +431,8 @@
   },
   "MariMod:Mari_Recurring_Theme": {
     "NAME": "Recurring Theme",
-    "DESCRIPTION": "marimod:Recall a marimod:Glaring card.",
-    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Recall a marimod:Glaring card."
+    "DESCRIPTION": "marimod:Recall.",
+    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Recall."
   },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",

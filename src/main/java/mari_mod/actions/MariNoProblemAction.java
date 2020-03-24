@@ -23,7 +23,7 @@ public class MariNoProblemAction extends AbstractGameAction {
         AbstractPlayer p = AbstractDungeon.player;
         AbstractPower power = p.getPower(VulnerablePower.POWER_ID);
         if(power != null) {
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new No_Problem_Power(p, power.amount), power.amount));
+            //AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new No_Problem_Power(p, power.amount), power.amount));
         }
         this.isDone = true;
     }

@@ -63,19 +63,19 @@ public class MariReminisceAction extends AbstractGameAction {
         if(!retrieveCard) {
             if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Loss.ID)) {
                 sourceCard.canPullExhaust = false;
-                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.EXHAUST));
+                //AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.EXHAUST));
                 retrieveCard = true;
             } else if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Uchiura.ID)) {
                 sourceCard.canPullRadiance = false;
-                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
+                //AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
                 retrieveCard = true;
             } else if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Luxury.ID)) {
                 sourceCard.canPullSpend = false;
-                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.SPEND));
+                //AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.SPEND));
                 retrieveCard = true;
             } else if (MariMod.mariReminisceScreen.choice.cardID.equals(Mari_$Memories_Of_Performance.ID)) {
                 sourceCard.canPullQuotations = false;
-                AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.QUOTATIONS));
+                //AbstractDungeon.actionManager.addToTop(new MariRecallAction(MariRecallAction.RecallType.QUOTATIONS));
                 retrieveCard = true;
             }
         }

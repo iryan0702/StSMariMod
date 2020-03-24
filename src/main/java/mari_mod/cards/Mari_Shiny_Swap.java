@@ -26,12 +26,12 @@ public class Mari_Shiny_Swap extends AbstractMariCard {
     public Mari_Shiny_Swap(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.recallPreview = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
-        this.addToBot(new ExhaustAction(1, false));
+        this.addToBot(new MariRecallAction(this));
         this.addToBot(new PutOnDeckAction(p, p, 1, false));
 
     }

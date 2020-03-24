@@ -55,7 +55,6 @@ public abstract class AbstractMariCard extends CustomCard {
     public Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
 
     public boolean recallPreview = false;
-    public MariRecallAction.RecallType recallType;
 
 
     private static final float FPS_SCALE = (240f / Settings.MAX_FPS);
@@ -133,8 +132,8 @@ public abstract class AbstractMariCard extends CustomCard {
         radiance = MathUtils.floor(tmpRadiance);
         this.glowColor = getNotKindledColor();
 
-        if(recallPreview && recallType != null){
-            AbstractCard target = MariRecallAction.findRecallTarget(recallType);
+        if(recallPreview){
+            AbstractCard target = MariRecallAction.findRecallTarget();
             if(target == null){
                 this.cardsToPreview = null;
             }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid) {

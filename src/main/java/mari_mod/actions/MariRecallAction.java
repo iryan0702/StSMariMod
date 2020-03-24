@@ -2,6 +2,7 @@ package mari_mod.actions;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -17,28 +18,32 @@ public class MariRecallAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariRecallAction.class.getName());
     public static AbstractCard recalledCard;
     public AbstractGameAction followUpAction;
-    public RecallType recallType;
+    public AbstractCard recallCard;
     private AbstractPlayer p;
 
-    public MariRecallAction(RecallType rT) {
-        this(rT, null);
+    public MariRecallAction(AbstractCard card) {
+        this(card, null);
     }
 
-    public MariRecallAction(RecallType rT, AbstractGameAction followUpAction) {
+    public MariRecallAction(AbstractCard card, AbstractGameAction followUpAction) {
         this.actionType = ActionType.CARD_MANIPULATION;
-        this.recallType = rT;
+        this.recallCard = card;
         this.p = AbstractDungeon.player;
         this.followUpAction = followUpAction;
     }
 
     public void update() {
-        AbstractCard c = findRecallTarget(recallType);
+        AbstractCard c = findRecallTarget();
         recalledCard = c;
 
         if(c != null) {
             c.unfadeOut();
             c.current_x = Settings.WIDTH * 2;
             c.current_y = Settings.HEIGHT / 2f;
+
+            if(c.hasTag(MariCustomTags.GLARING)){
+                addToTop(new MakeTempCardInDrawPileAction(this.recallCard.makeStatEquivalentCopy(), 1, true, true));
+            }
 
             if( c instanceof PurgeOnRecallCard){
                 c.target_x = Settings.WIDTH / 4f;
@@ -77,7 +82,7 @@ public class MariRecallAction extends AbstractGameAction {
         this.isDone = true;
     }
 
-    public static AbstractCard findRecallTarget(RecallType recallType){
+    public static AbstractCard findRecallTarget(){
         AbstractPlayer p = AbstractDungeon.player;
         boolean cardFound = false;
         AbstractCard retVal = null;
@@ -86,15 +91,13 @@ public class MariRecallAction extends AbstractGameAction {
             if(c.hasTag(MariCustomTags.GLARING)){
                 cardFound = true;
             }
-            if (recallType == RecallType.RADIANCE && c.tags.contains(MariCustomTags.RADIANCE)) {
-                cardFound = true;
-            } else if (recallType == RecallType.SPEND && c.tags.contains(MariCustomTags.SPEND)) {
-                cardFound = true;
-            } else if (recallType == RecallType.QUOTATIONS && c.tags.contains(MariCustomTags.QUOTATIONS)) {
-                cardFound = true;
-            } else if (recallType == RecallType.EPHEMERAL && EphemeralCardPatch.EphemeralField.ephemeral.get(c)) {
-                cardFound = true;
-            } else if (recallType == RecallType.EXHAUST && c.exhaust) {
+            if (cardFound) {
+                retVal = c;
+            }
+        }
+        for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
+            AbstractCard c = p.exhaustPile.group.get(i);
+            if(c.hasTag(MariCustomTags.RADIANCE)){
                 cardFound = true;
             }
             if (cardFound) {
@@ -105,11 +108,5 @@ public class MariRecallAction extends AbstractGameAction {
     }
 
     public static enum RecallType{
-        RADIANCE,
-        SPEND,
-        QUOTATIONS,
-        EXHAUST,
-        EPHEMERAL,
-        GLARING
     }
 }
