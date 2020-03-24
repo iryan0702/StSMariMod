@@ -94,7 +94,7 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !MARI_RADIANCE! marimod:Radiance and !B! Block. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL marimod:Invest !MARI_GOLD_COST!. NL Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block."
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
