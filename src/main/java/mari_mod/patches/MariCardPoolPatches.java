@@ -13,13 +13,17 @@ import mari_mod.cards.Mari_Aspiration;
 import java.util.Iterator;
 
 
-public class MariInitializeCardPoolsPatch {
+public class MariCardPoolPatches {
+
+    public static CardGroup fadingCards;
 
     @SpirePatch(clz = AbstractDungeon.class, method = "initializeCardPools")
     public static class RemoveCardsFromInitializedPoolsPatch {
 
         @SpirePostfixPatch
         public static void Postfix(AbstractDungeon ad) {
+
+            fadingCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
             System.out.println("REMOVE CARDS FROM POOLS AFTER INITIALIZE");
             System.out.println("REMOVE CARDS FROM POOLS AFTER INITIALIZE");
@@ -35,6 +39,23 @@ public class MariInitializeCardPoolsPatch {
             removeMedalFromPool(AbstractDungeon.srcUncommonCardPool);
             removeMedalFromPool(AbstractDungeon.srcRareCardPool);
 
+            moveFadingFromPool(AbstractDungeon.commonCardPool);
+            moveFadingFromPool(AbstractDungeon.uncommonCardPool);
+            moveFadingFromPool(AbstractDungeon.rareCardPool);
+            moveFadingFromPool(AbstractDungeon.srcCommonCardPool);
+            moveFadingFromPool(AbstractDungeon.srcUncommonCardPool);
+            moveFadingFromPool(AbstractDungeon.srcRareCardPool);
+        }
+
+        public static void moveFadingFromPool(CardGroup g){
+            Iterator cards = g.group.iterator();
+            while(cards.hasNext()){
+                AbstractCard c = (AbstractCard)cards.next();
+                if(EphemeralCardPatch.EphemeralField.ephemeral.get(c)){
+                    fadingCards.addToTop(c);
+                    cards.remove();
+                }
+            }
         }
 
         public static void removeMedalFromPool(CardGroup g){

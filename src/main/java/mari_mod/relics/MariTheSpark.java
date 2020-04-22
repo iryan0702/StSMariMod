@@ -8,35 +8,26 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mari_mod.MariMod;
 import mari_mod.patches.CardColorEnum;
+import mari_mod.rewards.MariFadingReward;
 import mari_mod.rewards.MariUncommonReward;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
+public class MariTheSpark extends AbstractMariRelic
 {
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     public static final String ID = "MariMod:MariTheSpark";
-    public static final int REWARD_COST = 40;
+    public static final int REWARD_COST = 10;
     public static RewardItem reward;
     public MariTheSpark()
     {
         super(ID, AbstractRelic.RelicTier.STARTER, AbstractRelic.LandingSound.CLINK);
-        this.counter = 0;
+        this.counter = REWARD_COST;
     }
 
     public String getUpdatedDescription()
     {
         return this.DESCRIPTIONS[0] + REWARD_COST + this.DESCRIPTIONS[1];
-    }
-
-    public void onSpendGold()
-    {
-        if(AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-
-            flash();
-            //this.counter += MariMod.lastGoldAmountSpent;
-
-        }
     }
 
     @Override
@@ -48,7 +39,7 @@ public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
 
 
 
-    @Override
+    /*@Override
     public void onRightClick() {
         if(MariMod.saveableKeeper.goldInvested > REWARD_COST) {
             reward = new MariUncommonReward(CardColorEnum.MARI);
@@ -57,24 +48,24 @@ public class MariTheSpark extends AbstractMariRelic implements ClickableRelic
             AbstractDungeon.combatRewardScreen.positionRewards();
             MariMod.saveableKeeper.goldInvested -= REWARD_COST;
         }
-    }
+    }*/
 
-    /*@Override
+    @Override
     public void onTrigger() {
         if(!AbstractDungeon.getCurrRoom().smoked) {
-            if (this.counter >= REWARD_COST) {
+            if (MariMod.saveableKeeper.brilliance >= this.counter) {
                 this.flash();
-                while (this.counter >= REWARD_COST) {
-                    reward = new MariUncommonReward(CardColorEnum.MARI);
+                while (MariMod.saveableKeeper.brilliance >= this.counter) {
+                    reward = new MariFadingReward(CardColorEnum.MARI);
                     AbstractDungeon.getCurrRoom().addCardReward(reward);
-                    this.counter -= REWARD_COST;
+                    this.counter += REWARD_COST;
                 }
                 AbstractDungeon.combatRewardScreen.setupItemReward();
                 AbstractDungeon.combatRewardScreen.positionRewards();
                 AbstractDungeon.combatRewardScreen.update();
             }
         }
-    }*/
+    }
 
     public AbstractRelic makeCopy()
     {
