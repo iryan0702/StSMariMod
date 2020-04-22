@@ -53,8 +53,8 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Ethereal. NL marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall. NL Exhaust."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall.",
+    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -125,7 +125,7 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",
@@ -202,7 +202,7 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "marimod:Fading. NL Gain !B! Block. NL Repress. Next turn, marimod:Recall."
+    "DESCRIPTION": "Gain !B! Block. NL Repress. Next turn, marimod:Recall."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
@@ -353,8 +353,8 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "marimod:Fading. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall."
+    "DESCRIPTION": "Gain 1 Frail. NL marimod:Kindle: marimod:Recall.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall."
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
@@ -423,7 +423,7 @@
   },
   "MariMod:Mari_Shiny_Swap": {
     "NAME": "Shiny Swap",
-    "DESCRIPTION": "marimod:Fading. NL marimod:Recall. NL Put a card on top of your draw pile."
+    "DESCRIPTION": "marimod:Recall. NL Put a card on top of your draw pile."
   },
   "MariMod:Mari_Anticipate": {
     "NAME": "Anticipate",
@@ -432,7 +432,7 @@
   "MariMod:Mari_Recurring_Theme": {
     "NAME": "Recurring Theme",
     "DESCRIPTION": "marimod:Recall.",
-    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Recall."
+    "UPGRADE_DESCRIPTION": "marimod:Recall, then put a *Recurring *Theme from your draw pile into your hand."
   },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",

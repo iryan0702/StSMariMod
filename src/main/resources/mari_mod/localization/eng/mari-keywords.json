@@ -41,7 +41,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Return the bottom-most #yGlaring card from your exhaust pile to your hand. If you do, shuffle a copy of this card into your draw pile. If there are no #yGlaring cards, return the bottom-most #yRadiance card instead."
+    "DESCRIPTION": "Return the bottom-most #yGlaring card from your exhaust pile to your hand. If there are no #yGlaring cards, return the bottom-most #yRadiance card."
   },
   {
     "PROPER_NAME": "Recalled",
