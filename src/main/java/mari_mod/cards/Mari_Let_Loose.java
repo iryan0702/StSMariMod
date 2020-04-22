@@ -39,7 +39,6 @@ public class Mari_Let_Loose extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         AbstractDungeon.actionManager.addToBottom(new MariRepressedStrikeAction(m, this.damage));
     }
 
