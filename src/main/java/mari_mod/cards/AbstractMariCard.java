@@ -46,6 +46,7 @@ public abstract class AbstractMariCard extends CustomCard {
 
     public int baseRadiance = 0;
     public int radiance = 0;
+    public boolean modifiedRadiance = false;
     public boolean upgradedRadiance = false;
 
     public boolean isAnyTarget = false;

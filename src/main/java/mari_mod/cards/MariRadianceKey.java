@@ -13,12 +13,12 @@ public class MariRadianceKey extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractMariCard) card).upgradedRadiance || ((AbstractMariCard) card).radiance != ((AbstractMariCard) card).baseRadiance;
+        return ((AbstractMariCard) card).modifiedRadiance;
     }
 
     @Override
     public void setIsModified(AbstractCard card, boolean v) {
-        ((AbstractMariCard) card).upgradedRadiance = v;
+        ((AbstractMariCard) card).modifiedRadiance = v;
         // Do something such that isModified will return the value v.
         // This method is only necessary if you want smith upgrade previews to function correctly.
     }
@@ -50,7 +50,7 @@ public class MariRadianceKey extends DynamicVariable {
 
     public Color getIncreasedValueColor()
     {
-        return Color.GOLD.cpy();
+        return Settings.GREEN_TEXT_COLOR;
     }
 
     public Color getDecreasedValueColor()
