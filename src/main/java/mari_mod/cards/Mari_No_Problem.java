@@ -27,14 +27,13 @@ public class Mari_No_Problem extends AbstractMariCard {
     private static final int SHUFFLE_AMOUNT = 1;
     private static final int RECALL_AMOUT = 1;
     private static final int BLOCK = 8;
-    private static final int UPGRADE_BLOCK = 12;
+    private static final int UPGRADE_BLOCK = 4;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
 
     public Mari_No_Problem(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.baseMagicNumber = RECALL_AMOUT;
         this.magicNumber =  this.baseMagicNumber;
         this.tags.add(MariCustomTags.QUOTATIONS);

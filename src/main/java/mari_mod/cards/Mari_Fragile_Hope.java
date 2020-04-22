@@ -30,7 +30,6 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
 
     public Mari_Fragile_Hope(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.isAnyTarget = true;
         this.tags.add(MariCustomTags.KINDLE);
         this.recallPreview = true;

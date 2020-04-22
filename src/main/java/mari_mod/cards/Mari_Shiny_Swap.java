@@ -25,7 +25,6 @@ public class Mari_Shiny_Swap extends AbstractMariCard {
 
     public Mari_Shiny_Swap(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.recallPreview = true;
     }
 

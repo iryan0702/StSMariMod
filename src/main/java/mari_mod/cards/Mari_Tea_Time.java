@@ -31,7 +31,6 @@ public class Mari_Tea_Time extends AbstractMariCard {
 
     public Mari_Tea_Time(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.tags.add(MariCustomTags.SPEND);
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;

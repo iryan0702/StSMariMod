@@ -34,9 +34,6 @@ public class Mari_Reminisce extends AbstractMariCard {
         this.goldCost = this.baseGoldCost;
 
         this.recallPreview = true;
-
-        this.isEthereal = true;
-        this.exhaust = true;
     }
 
     @Override
@@ -61,7 +58,7 @@ public class Mari_Reminisce extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.isEthereal = false;
+            this.selfRetain = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.MariCustomTags;
 import mari_mod.cards.OnRecallCard;
 import mari_mod.cards.PurgeOnRecallCard;
@@ -40,10 +41,6 @@ public class MariRecallAction extends AbstractGameAction {
             c.unfadeOut();
             c.current_x = Settings.WIDTH * 2;
             c.current_y = Settings.HEIGHT / 2f;
-
-            if(c.hasTag(MariCustomTags.GLARING)){
-                addToTop(new MakeTempCardInDrawPileAction(this.recallCard.makeStatEquivalentCopy(), 1, true, true));
-            }
 
             if( c instanceof PurgeOnRecallCard){
                 c.target_x = Settings.WIDTH / 4f;
