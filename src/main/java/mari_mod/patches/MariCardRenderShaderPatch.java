@@ -21,6 +21,10 @@ public class MariCardRenderShaderPatch {
                 sb.end();
                 sb.setShader(MariMod.goldShader);
                 sb.begin();
+            }else if(instance instanceof AbstractMariCard && ((AbstractMariCard)instance).faded){
+                sb.end();
+                sb.setShader(MariMod.greyShader);
+                sb.begin();
             }
         }
     }

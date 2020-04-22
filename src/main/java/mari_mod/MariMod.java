@@ -482,9 +482,13 @@ public class MariMod implements
 
     public static ModPanel settingsPanel;
     public static ShaderProgram goldShader;
+    public static ShaderProgram greyShader;
+    public static ShaderProgram outlineShader;
     @Override
     public void receivePostInitialize() {
         goldShader = new ShaderProgram(Gdx.files.internal("mari_mod/shaders/golden/vertexShader.vs").readString(),Gdx.files.internal("mari_mod/shaders/golden/fragShader.fs").readString());
+        greyShader = new ShaderProgram(Gdx.files.internal("mari_mod/shaders/grayscale/vertexShader.vs").readString(),Gdx.files.internal("mari_mod/shaders/grayscale/fragShader.fs").readString());
+        outlineShader = new ShaderProgram(Gdx.files.internal("mari_mod/shaders/outline/vertexShader.vs").readString(),Gdx.files.internal("mari_mod/shaders/outline/fragShader.fs").readString());
 
 
         cardMedalDramaTexture = ImageMaster.loadImage("mari_mod/images/cardui/512/cardDramaMedal.png");
