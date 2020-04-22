@@ -49,7 +49,7 @@ public class Mari_Expenses extends AbstractMariCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
 
-        this.baseDamage = DAMAGE + (MariMod.saveableKeeper.goldInvested/this.magicNumber);
+        this.baseDamage = DAMAGE + (MariMod.saveableKeeper.brilliance/this.magicNumber);
         this.damage =  this.baseDamage;
 
         super.calculateCardDamage(mo);
@@ -59,7 +59,7 @@ public class Mari_Expenses extends AbstractMariCard {
     @Override
     public void applyPowers() {
 
-        this.baseDamage = DAMAGE + (MariMod.saveableKeeper.goldInvested/this.magicNumber);
+        this.baseDamage = DAMAGE + (MariMod.saveableKeeper.brilliance/this.magicNumber);
         this.damage =  this.baseDamage;
 
         super.applyPowers();

@@ -32,7 +32,7 @@ public class Cash_Back_Power extends AbstractPower
     }
 
     public void onVictory() {
-        MariMod.payoutGold(0.01f * this.amount);
+        //MariMod.payoutGold(0.01f * this.amount);
     }
 
     public void stackPower(int stackAmount)

@@ -85,13 +85,13 @@
       "invested",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Spend an amount of Gold and play a card. If you do not have enough Gold, gain #b1 #yFrail and #yWeak."
+    "DESCRIPTION": "Convert an amount of Gold into #yBrilliance. If you do not have enough Gold, gain #b1 #yFrail and #yWeak."
   },
   {
-    "PROPER_NAME": "Payout",
+    "PROPER_NAME": "Brilliance",
     "NAMES":[
-      "Payout",
-      "payout",
+      "Brilliance",
+      "brilliance",
       "UNUSED_RESERVE",
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"

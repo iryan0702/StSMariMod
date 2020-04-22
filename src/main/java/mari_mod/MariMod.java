@@ -305,29 +305,19 @@ public class MariMod implements
     //Hooked to start of AbstractPlayer.loseGold
     public static void loseGold(int amount){
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
-            saveableKeeper.goldInvested += amount;
-            saveableKeeper.lifetimeGoldInvested += amount;
+            saveableKeeper.brilliance += amount;
         }
     }
 
-    public static int payoutGold(float percent){
-        int goldReturns = MathUtils.floor(MariMod.saveableKeeper.goldInvested * percent);
-        MariMod.saveableKeeper.goldInvested -= goldReturns;
-        MariMod.saveableKeeper.totalGoldReturns += goldReturns;
-        MariMod.gainGold(goldReturns);
-        return goldReturns;
-    }
-
-    public static void gainInvestGoldIndependently(int goldInvested){
-        saveableKeeper.goldInvested += goldInvested;
-        saveableKeeper.lifetimeGoldInvested += goldInvested;
+    public static void gainBrillianceIndependently(int goldInvested){
+        saveableKeeper.brilliance += goldInvested;
     }
 
     public static void spendGold(int goldCost){ //TODO: Work on checking if goldCost > 0 if necessary
         AbstractPlayer p = AbstractDungeon.player;
 
         if(p.gold >= goldCost) {
-            gainInvestGoldIndependently(goldCost);
+            gainBrillianceIndependently(goldCost);
 
             if (goldCost > 0) {
                 timesMariSpentGoldThisCombat++;
@@ -630,6 +620,7 @@ public class MariMod implements
         BaseMod.addDynamicVariable(new MariRadianceKey());
         logger.info("begin editing cards");
         try {
+
             //Attacks BASE
             BaseMod.addCard(new Mari_Strike());
             BaseMod.addCard(new Mari_Defend());
@@ -745,6 +736,8 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Repression());
             BaseMod.addCard(new Mari_$Choose_Pain());
             BaseMod.addCard(new Mari_$Choose_Grief());
+
+
 
             /*
             //ATTACKS COMMON

@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariLoseInvestedGoldAction;
+//import mari_mod.actions.MariLoseInvestedGoldAction;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Cash_Back_Power;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +34,7 @@ public class Mari_Cash_Back extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new MariLoseInvestedGoldAction(10));
+        //addToBot(new MariLoseInvestedGoldAction(10));
         addToBot(new ApplyPowerAction(p, p, new Cash_Back_Power(p, this.magicNumber), this.magicNumber));
     }
 
