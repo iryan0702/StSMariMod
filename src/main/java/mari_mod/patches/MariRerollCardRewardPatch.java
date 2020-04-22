@@ -1,3 +1,4 @@
+/*
 package mari_mod.patches;
 
 import basemod.ReflectionHacks;
@@ -103,3 +104,4 @@ public class MariRerollCardRewardPatch {
         public static SpireField<Boolean> rerolled = new SpireField<>(() -> false);
     }
 }
+*/

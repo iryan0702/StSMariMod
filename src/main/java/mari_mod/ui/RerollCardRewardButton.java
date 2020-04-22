@@ -3,6 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
+/*
 package mari_mod.ui;
 
 import com.badlogic.gdx.Gdx;
@@ -244,4 +245,4 @@ public class RerollCardRewardButton {
         DRAW_Y = (float)Settings.HEIGHT / 2.0F;
         HIDE_X = SHOW_X - 400.0F * Settings.scale;
     }
-}
+}*/
