@@ -15,18 +15,18 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
+public class Mari_Debut extends AbstractMariCard{
     public static final Logger logger = LogManager.getLogger(Mari_Debut.class.getName());
     public static final String ID = "MariMod:Mari_Debut";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
+    private static final int COST = 0;
+    //private static final int UPGRADE_COST = 0;
     //private static final int BASE_GOLD_COST = 10;
     private static final int BASE_RADIANCE = 3;
-    //private static final int RADIANCE_UPGRADE = 1;
+    private static final int RADIANCE_UPGRADE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ALL;
@@ -52,7 +52,7 @@ public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
         //addToBot(new ModifyRadianceAction(this.uuid, RADIANCE_DECAY));
     }
 
-    @Override
+    /*@Override
     public void onRecall() {
         this.purgeOnUse = true;
 
@@ -69,7 +69,7 @@ public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
         this.applyPowers();
 
         addToBot(new NewQueueCardAction(this, null, true, true));
-    }
+    }*/
 
     @Override
     public AbstractCard makeCopy() {
@@ -79,7 +79,7 @@ public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            this.upgradeBaseCost(UPGRADE_COST);
+            this.upgradeRadiance(RADIANCE_UPGRADE);
             //this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
             upgradeName();

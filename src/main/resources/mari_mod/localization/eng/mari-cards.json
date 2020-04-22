@@ -90,7 +90,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters. NL If marimod:Recalled, play and Purge this card."
+    "DESCRIPTION": "Innate. marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
