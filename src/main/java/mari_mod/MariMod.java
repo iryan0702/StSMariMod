@@ -735,8 +735,8 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Anticipate());
             BaseMod.addCard(new Mari_Recurring_Theme());
 
-            BaseMod.addCard(new Mari_Drama1());
-            BaseMod.addCard(new Mari_Drama2());
+            //BaseMod.addCard(new Mari_Drama1());
+            //BaseMod.addCard(new Mari_Drama2());
             BaseMod.addCard(new Mari_Repression());
             BaseMod.addCard(new Mari_$Choose_Pain());
             BaseMod.addCard(new Mari_$Choose_Grief());
