@@ -23,12 +23,19 @@ public class StatEquivalentCopyCardTagsPatch {
         if(__instance instanceof AbstractMariCard && card instanceof AbstractMariCard){
             AbstractMariCard castInstance = (AbstractMariCard)__instance;
             AbstractMariCard castCard = (AbstractMariCard)card;
-            castCard.baseRadiance = castInstance.baseRadiance;
-            castCard.baseGoldCost = castInstance.baseGoldCost;
-            castCard.radiance = castInstance.baseRadiance;
             castCard.goldCost = castInstance.baseGoldCost;
-            System.out.println("NEW CARD TRIGGERED: it has " + castCard.baseRadiance + " " + castCard.radiance + " " + castCard.baseGoldCost + " " + castCard.goldCost);
+            castCard.baseGoldCost = castInstance.baseGoldCost;
             EphemeralCardPatch.EphemeralField.ephemeral.set(castCard,EphemeralCardPatch.EphemeralField.ephemeral.get(castInstance));
+
+            //Extra initializeDescription to ensure that the copy has the keyword Fading replaced with Faded.
+            castCard.faded = castInstance.faded;
+            if(castInstance.faded){
+                castCard.initializeDescription();
+                castCard.setFadedStats();
+            }else{
+                castCard.baseRadiance = castInstance.baseRadiance;
+                castCard.radiance = castInstance.baseRadiance;
+            }
         }
     }
 

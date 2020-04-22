@@ -48,6 +48,7 @@ public abstract class AbstractMariCard extends CustomCard {
     public int radiance = 0;
     public boolean modifiedRadiance = false;
     public boolean upgradedRadiance = false;
+    public boolean faded = false;
 
     public boolean isAnyTarget = false;
     private boolean targetingEnemy = false;
@@ -139,9 +140,26 @@ public abstract class AbstractMariCard extends CustomCard {
                 this.cardsToPreview = null;
             }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid) {
                 this.cardsToPreview = target.makeSameInstanceOf();
+                if(this.cardsToPreview instanceof AbstractMariCard && ((AbstractMariCard) this.cardsToPreview).faded){
+                    ((AbstractMariCard)this.cardsToPreview).baseRadiance = 1;
+                    ((AbstractMariCard)this.cardsToPreview).radiance = 1;
+                }
                 System.out.println("creating new preview for: " + this.cardsToPreview.name);
             }
         }
+
+        if(faded){
+            setFadedStats();
+        }
+    }
+
+    //Placed in a separate function as it is accessed by applyPowers, statEquivalentCopy patch, and ephemeralCard patch
+    public void setFadedStats(){
+        this.baseRadiance = 1;
+        this.radiance = 1;
+        this.upgradedRadiance = false;
+        this.rawDescription = this.rawDescription.replace("Fading", "Faded");
+        this.initializeDescription();
     }
 
     public Color getNotKindledColor(){

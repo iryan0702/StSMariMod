@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import javassist.CtBehavior;
 import mari_mod.actions.EphemeralDelayedExhaustSpecificCardAction;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.Mari_Aspiration;
 import mari_mod.cards.Mari_Supervision;
 import mari_mod.effects.EphemeralCardRewardEffect;
@@ -64,6 +65,11 @@ public class EphemeralCardPatch {
                     //ReflectionHacks.setPrivate(exhaustAction, ExhaustSpecificCardAction.class, "startingDuration", 0.01f);
                     //ReflectionHacks.setPrivate(exhaustAction, AbstractGameAction.class, "duration", 0.01f);
                     AbstractDungeon.actionManager.addToTop(exhaustAction);
+
+                    if(nextEphemeralCardToExhaust instanceof AbstractMariCard){
+                        ((AbstractMariCard)nextEphemeralCardToExhaust).faded = true;
+                        ((AbstractMariCard)nextEphemeralCardToExhaust).setFadedStats();
+                    }
                     //AbstractDungeon.actionManager.addToTop(new MariEphemeralWaitAction(0.25f));
                     ephemeralJustTriggered = true;
                 }else{
