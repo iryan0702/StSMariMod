@@ -103,8 +103,9 @@ public class EphemeralCardPatch {
     }
 
     //
-    //EPHEMERAL GENERATION
+    //EPHEMERAL GENERATION – DEPRECATED REGULAR FUNCTION AS FADING REWARD ADDED
     //
+
 
     public static ArrayList<AbstractCard> cardsToRemove = new ArrayList<>();
     public static ArrayList<Integer> indexOfRemoveCards = new ArrayList<>();
@@ -139,7 +140,7 @@ public class EphemeralCardPatch {
                         indexOfRemoveCards.add(i);
                         ephemeralTriggered = true;
 
-                    }else if(EphemeralField.ephemeral.get(__instance.cards.get(i)) && ephemeralOdds <= AbstractDungeon.cardRng.random(99)){
+                    }/*else if(EphemeralField.ephemeral.get(__instance.cards.get(i)) && ephemeralOdds <= AbstractDungeon.cardRng.random(99)){
 
                         AbstractCard oldCard = __instance.cards.get(i);
                         cardsToRemove.add(oldCard);
@@ -158,7 +159,7 @@ public class EphemeralCardPatch {
                         }
                         __instance.cards.set(i, newCard);
                         ephemeralTriggered = true;
-                    }
+                    }*/
                 }
                 if(ephemeralTriggered){
                     mostRecentRewardSelectDelay = 2.5f;
@@ -235,6 +236,12 @@ public class EphemeralCardPatch {
     public static class EphemeralRewardCheckField {
         public static SpireField<Boolean> ephemeralChecked = new SpireField<>(() -> false);
     }
+
+    ////////////////////
+    ////////////////////
+    ////////////////////
+    ////////////////////
+    ////////////////////
 
     /*@SpirePatch(
             clz = AbstractDungeon.class,
