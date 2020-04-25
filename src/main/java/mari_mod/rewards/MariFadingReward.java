@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RewardGlowEffect;
+import mari_mod.cards.MariCustomTags;
 import mari_mod.patches.MariCardPoolPatches;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class MariFadingReward extends RewardItem {
         for(int i = 0; i < cardsToJankReplace; i++){
             AbstractCard cardToAdd = MariCardPoolPatches.fadingCards.getRandomCard(true).makeCopy();
             AbstractCard.CardRarity targetRarity = AbstractDungeon.rollRarity();
-            while(cardListDuplicate(cardToAdd) && cardToAdd.rarity != targetRarity){
+            while(cardListDuplicate(cardToAdd) || cardToAdd.rarity != targetRarity){
                 cardToAdd = MariCardPoolPatches.fadingCards.getRandomCard(true).makeCopy();
             }
             this.cards.add(cardToAdd);
