@@ -20,7 +20,7 @@ public class Mari_Golden_Glint extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 0;
-    private static final int BASE_GOLD_COST = 10;
+    private static final int BASE_GOLD_COST = 5;
     private static final int BASE_RADIANCE_GAIN = 3;
     private static final int UPGRADE_RADIANCE_GAIN = 1;
     private static final int BASE_BLOCK = 6;

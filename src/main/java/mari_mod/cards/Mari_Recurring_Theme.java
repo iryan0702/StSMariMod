@@ -25,7 +25,6 @@ public class Mari_Recurring_Theme extends AbstractMariCard{
 
     public Mari_Recurring_Theme(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.recallPreview = true;
     }
 

@@ -17,9 +17,9 @@ public class Mari_Reminisce extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 0;
-    private static final int BASE_GOLD_COST = 10;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
+    private static final int BASE_GOLD_COST = 5;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -58,8 +58,7 @@ public class Mari_Reminisce extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.selfRetain = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBaseCost(UPGRADE_COST);
             this.initializeDescription();
         }
     }

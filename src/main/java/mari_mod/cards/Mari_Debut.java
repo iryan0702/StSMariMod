@@ -25,7 +25,7 @@ public class Mari_Debut extends AbstractMariCard{
     private static final int COST = 0;
     //private static final int UPGRADE_COST = 0;
     //private static final int BASE_GOLD_COST = 10;
-    private static final int BASE_RADIANCE = 3;
+    private static final int BASE_RADIANCE = 4;
     private static final int RADIANCE_UPGRADE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;

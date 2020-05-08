@@ -21,7 +21,7 @@ public class Mari_Shine extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 0;
-    private static final int BASE_RADIANCE = 3;
+    private static final int BASE_RADIANCE = 2;
     private static final int UPGRADE_RADIANCE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -50,43 +50,18 @@ public class Mari_Shine extends AbstractMariCard {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        if(this.target == CardTarget.SELF) {
-            this.baseRadiance = this.magicNumber;
-            for (AbstractPower p : AbstractDungeon.player.powers) {
-                if (p.type == AbstractPower.PowerType.DEBUFF) {
-                    this.baseRadiance++;
-                }
-            }
-            super.applyPowers();
-            this.baseRadiance = this.magicNumber;
-        }else if(mo != null){
-            this.baseRadiance = this.magicNumber;
-            for (AbstractPower p : mo.powers) {
-                if (p.type == AbstractPower.PowerType.DEBUFF) {
-                    this.baseRadiance++;
-                }
-            }
-            super.applyPowers();
-            this.baseRadiance = this.magicNumber;
-        }
-    }
-
-    @Override
     public void applyPowers() {
 
-        if(this.target == CardTarget.SELF) {
-            this.baseRadiance = this.magicNumber;
-            for (AbstractPower p : AbstractDungeon.player.powers) {
-                if (p.type == AbstractPower.PowerType.DEBUFF) {
-                    this.baseRadiance++;
-                }
+        this.baseRadiance = this.magicNumber;
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p.type == AbstractPower.PowerType.DEBUFF) {
+                this.baseRadiance += 2;
             }
-
-            super.applyPowers();
-            this.baseRadiance = this.magicNumber;
         }
+
+        super.applyPowers();
+        this.baseRadiance = this.magicNumber;
+        this.modifiedRadiance = this.baseRadiance != this.radiance;
     }
 
     @Override
