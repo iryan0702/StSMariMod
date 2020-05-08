@@ -9,13 +9,16 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import javassist.CtBehavior;
 import mari_mod.actions.EphemeralDelayedExhaustSpecificCardAction;
+import mari_mod.actions.MariFadeCardAction;
 import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.Mari_Aspiration;
 import mari_mod.cards.Mari_Supervision;
@@ -65,17 +68,23 @@ public class EphemeralCardPatch {
                     //ReflectionHacks.setPrivate(exhaustAction, ExhaustSpecificCardAction.class, "startingDuration", 0.01f);
                     //ReflectionHacks.setPrivate(exhaustAction, AbstractGameAction.class, "duration", 0.01f);
                     AbstractDungeon.actionManager.addToTop(exhaustAction);
-
-                    if(nextEphemeralCardToExhaust instanceof AbstractMariCard){
-                        ((AbstractMariCard)nextEphemeralCardToExhaust).faded = true;
-                        ((AbstractMariCard)nextEphemeralCardToExhaust).setFadedStats();
-                    }
                     //AbstractDungeon.actionManager.addToTop(new MariEphemeralWaitAction(0.25f));
                     ephemeralJustTriggered = true;
                 }else{
                     ephemeralJustTriggered = false;
                 }
             //}
+        }
+    }
+
+    @SpirePatch(clz = AbstractPlayer.class, method = "useCard")
+    public static class EphemeralFadeCardOnUsePatch {
+
+        @SpirePostfixPatch
+        public static void Postfix(AbstractPlayer _instance, AbstractCard c, AbstractMonster monster, int energyOnUse) {
+            if(c instanceof AbstractMariCard && !((AbstractMariCard)c).faded && EphemeralField.ephemeral.get(c)){
+                AbstractDungeon.actionManager.addToBottom(new MariFadeCardAction((AbstractMariCard)c));
+            }
         }
     }
 
