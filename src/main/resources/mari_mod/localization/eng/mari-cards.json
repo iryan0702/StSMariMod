@@ -256,7 +256,7 @@
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
-    "DESCRIPTION": "Deal !D! damage to an enemy if it does not intend to attack. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance to an enemy if it does not intend to attack.",
     "EXTENDED_DESCRIPTION": [
       "That enemy wants to attack. Not approved!"
     ]
