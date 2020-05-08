@@ -30,7 +30,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "If this card is in your discard pile, it #yexhausts and becomes #yFaded. #yFaded cards can only apply #b1 #yRadiance at once. (Fading cards have a #b8% chance of disappearing from card rewards for each Fading card in your deck.)"
+    "DESCRIPTION": "If a #yFading card is in your discard pile, it #yexhausts. After playing a #yFading card, it becomes #yFaded. #yFaded cards can only apply #b1 #yRadiance at once."
   },
   {
     "PROPER_NAME": "Faded",
@@ -41,7 +41,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "If this card is in your discard pile, it #yexhausts. #yFaded cards can only apply #b1 #yRadiance at once."
+    "DESCRIPTION": "If a #yFaded card is in your discard pile, it #yexhausts. #yFaded cards can only apply #b1 #yRadiance at once."
   },
   {
     "PROPER_NAME": "Recall",
@@ -52,7 +52,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Return the bottom-most #yGlaring card from your exhaust pile to your hand. If there are no #yGlaring cards, return the bottom-most #yRadiance card."
+    "DESCRIPTION": "Return the bottom-most #yGlaring card in your exhaust pile to your hand. NL If you have none, return the bottom-most #yFading #yRadiance card. NL If you have none, return the bottom-most #yFaded #yRadiance card."
   },
   {
     "PROPER_NAME": "Recalled",
@@ -96,7 +96,18 @@
       "invested",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Convert an amount of Gold into #yBrilliance. If you do not have enough Gold, gain #b1 #yFrail and #yWeak."
+    "DESCRIPTION": "Convert an amount of Gold into #yBrilliance. If you do not have enough Gold, gain #b1 #yFrail and #yWeak instead."
+  },
+  {
+    "PROPER_NAME": "Repress",
+    "NAMES":[
+      "Repress",
+      "repress",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "When played, add a #yRepression to the bottom of your exhaust pile. #yRepression cards have #yGlaring and are #yRecalled first."
   },
   {
     "PROPER_NAME": "Brilliance",

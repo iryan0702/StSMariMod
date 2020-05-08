@@ -74,11 +74,11 @@
   },
   "MariMod:Mari_Tough_Front": {
     "NAME": "Tough Front",
-    "DESCRIPTION": "Gain [E] [E]. NL Gain !B! Block. NL Add a *Repression to the bottom of your exhaust pile."
+    "DESCRIPTION": "marimod:Repress. NL Gain [E] [E]. NL Gain !B! Block."
   },
   "MariMod:Mari_Reckless_Driving": {
     "NAME": "Reckless Driving",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Repression to the bottom of your exhaust pile."
+    "DESCRIPTION": "marimod:Repress. NL Deal !D! damage."
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
@@ -202,7 +202,7 @@
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
-    "DESCRIPTION": "Gain !B! Block. NL Repress. Next turn, marimod:Recall."
+    "DESCRIPTION": "marimod:Repress. NL Gain !B! Block. NL Next turn, marimod:Recall."
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
