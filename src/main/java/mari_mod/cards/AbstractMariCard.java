@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -138,7 +139,7 @@ public abstract class AbstractMariCard extends CustomCard {
             AbstractCard target = MariRecallAction.findRecallTarget();
             if(target == null){
                 this.cardsToPreview = null;
-            }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid) {
+            }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid || (this.cardsToPreview instanceof AbstractMariCard && ((AbstractMariCard)this.cardsToPreview).faded) != ((AbstractMariCard)target).faded) {
                 this.cardsToPreview = target.makeSameInstanceOf();
                 if(this.cardsToPreview instanceof AbstractMariCard && ((AbstractMariCard) this.cardsToPreview).faded){
                     ((AbstractMariCard)this.cardsToPreview).baseRadiance = 1;
