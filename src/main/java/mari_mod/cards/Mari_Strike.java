@@ -25,7 +25,6 @@ public class Mari_Strike extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
     private static final int ATTACK_DMG = 6;
-    private static final int UPGRADE_ATTACK_DMG = 1;
     public static final int RADIANCE_AMOUNT = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.BASIC;
@@ -50,10 +49,11 @@ public class Mari_Strike extends AbstractMariCard {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         if(upgraded) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
-            addToBot(new MariDowngradeStrikeAction(this));
+            //addToBot(new MariDowngradeStrikeAction(this));
         }
     }
 
+    //UNUSED
     public void downgrade(){
         this.upgraded = false;
         this.timesUpgraded--;
@@ -86,7 +86,6 @@ public class Mari_Strike extends AbstractMariCard {
             this.initializeDescription();
             this.tags.add(MariCustomTags.RADIANCE);
             upgradeName();
-            upgradeDamage(UPGRADE_ATTACK_DMG);
         }
     }
 }
