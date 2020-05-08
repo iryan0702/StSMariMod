@@ -94,7 +94,16 @@ public class MariRecallAction extends AbstractGameAction {
         }
         for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
             AbstractCard c = p.exhaustPile.group.get(i);
-            if(c.hasTag(MariCustomTags.RADIANCE)){
+            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && !((AbstractMariCard)c).faded){
+                cardFound = true;
+            }
+            if (cardFound) {
+                retVal = c;
+            }
+        }
+        for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
+            AbstractCard c = p.exhaustPile.group.get(i);
+            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && ((AbstractMariCard)c).faded){
                 cardFound = true;
             }
             if (cardFound) {
