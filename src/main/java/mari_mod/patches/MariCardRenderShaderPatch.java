@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ShaderHelper;
 import mari_mod.MariMod;
 import mari_mod.cards.AbstractMariCard;
+import mari_mod.cards.MariCustomTags;
 
 
 public class MariCardRenderShaderPatch {
@@ -17,7 +18,7 @@ public class MariCardRenderShaderPatch {
 
         @SpirePrefixPatch
         public static void Prefix(AbstractCard instance, SpriteBatch sb) {
-            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance && AbstractMariCard.kindleTimer > MariKindleArrowPatch.MariKindleArrowTailPatch.kindleTime) {
+            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance && AbstractMariCard.kindleTimer > MariKindleArrowPatch.MariKindleArrowTailPatch.kindleTime || instance.hasTag(MariCustomTags.GLARING)) {
                 sb.end();
                 sb.setShader(MariMod.goldShader);
                 sb.begin();
