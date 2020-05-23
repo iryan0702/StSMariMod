@@ -173,8 +173,8 @@
   },
   "MariMod:Mari_Undying_Spark": {
     "NAME": "Undying Spark",
-    "DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. After you gain Frail, marimod:Recall this card. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. After you gain Frail or Vulnerable, marimod:Recall this card. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance to a random character. NL Cannot become marimod:Faded.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. NL Cannot become marimod:Faded."
   },
   "MariMod:Mari_zzz": {
     "NAME": "zzz...?",

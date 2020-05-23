@@ -22,6 +22,7 @@ import mari_mod.actions.MariFadeCardAction;
 import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.Mari_Aspiration;
 import mari_mod.cards.Mari_Supervision;
+import mari_mod.cards.Mari_Undying_Spark;
 import mari_mod.effects.EphemeralCardRewardEffect;
 import mari_mod.effects.MariEphemeralExhaustEffect;
 
@@ -82,7 +83,7 @@ public class EphemeralCardPatch {
 
         @SpirePostfixPatch
         public static void Postfix(AbstractPlayer _instance, AbstractCard c, AbstractMonster monster, int energyOnUse) {
-            if(c instanceof AbstractMariCard && !((AbstractMariCard)c).faded && EphemeralField.ephemeral.get(c)){
+            if(c instanceof AbstractMariCard && !((AbstractMariCard)c).faded && EphemeralField.ephemeral.get(c) && !(c instanceof Mari_Undying_Spark)){
                 AbstractDungeon.actionManager.addToBottom(new MariFadeCardAction((AbstractMariCard)c));
             }
         }
