@@ -34,6 +34,7 @@ public class Mari_Let_Loose extends AbstractMariCard {
         this.damage = this.baseDamage;
 
         this.tags.add(CardTags.STRIKE);
+        this.tags.add(MariCustomTags.RECOVER);
     }
 
     @Override

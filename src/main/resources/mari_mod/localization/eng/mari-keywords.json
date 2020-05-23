@@ -119,5 +119,16 @@
       "UNUSED_RESERVE"
     ],
     "DESCRIPTION": "Convert an amount of #yInvested Gold into regular Gold."
+  },
+  {
+    "PROPER_NAME": "Recover",
+    "NAMES":[
+      "Recover",
+      "recover",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Immediate recover all but #b1 energy cost when played."
   }
 ]

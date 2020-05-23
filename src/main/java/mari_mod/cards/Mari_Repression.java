@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -28,10 +29,12 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
     public Mari_Repression(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
         tags.add(MariCustomTags.GLARING);
+        tags.add(MariCustomTags.RECOVER);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+
     }
 
     @Override

@@ -31,8 +31,8 @@ public class MariRepressedStrikeAction extends AbstractGameAction {
 
     public void update() {
 
-        GainEnergyAction e = new GainEnergyAction(1);
-        e.update();
+        //GainEnergyAction e = new GainEnergyAction(1);
+        //e.update();
 
         AbstractPlayer p = AbstractDungeon.player;
         CardGroup g = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
