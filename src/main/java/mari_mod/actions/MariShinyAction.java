@@ -14,10 +14,12 @@ public class MariShinyAction extends AbstractGameAction {
     private static final float DURATION = 0.01F;
     public AbstractCreature target;
     public boolean targetAll;
+    public boolean faded;
 
-    public MariShinyAction(AbstractCreature target, boolean targetAll) {
+    public MariShinyAction(AbstractCreature target, boolean targetAll, boolean faded) {
         this.target = target;
         this.targetAll = targetAll;
+        this.faded = faded;
     }
 
     public void update() {
@@ -25,20 +27,20 @@ public class MariShinyAction extends AbstractGameAction {
             for(AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters){
                 if(m.hasPower(Radiance_Power.POWER_ID)) {
                     Radiance_Power radPower = (Radiance_Power) m.getPower(Radiance_Power.POWER_ID);
-                    int current = radPower.amount;
+                    int current = this.faded ? Math.min(1,radPower.amount) : radPower.amount;
                     radPower.burstOfParticles(150);
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new Radiance_Power(m, current), current));
                 }
             }
             if(AbstractDungeon.player.hasPower(Radiance_Power.POWER_ID)) {
                 Radiance_Power radPower = (Radiance_Power) AbstractDungeon.player.getPower(Radiance_Power.POWER_ID);
-                int current = radPower.amount;
+                int current = this.faded ? Math.min(1,radPower.amount) : radPower.amount;
                 radPower.burstOfParticles(150);
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Radiance_Power(AbstractDungeon.player, current), current));
             }
         }else if(this.target.hasPower(Radiance_Power.POWER_ID)) {
             Radiance_Power radPower = (Radiance_Power) this.target.getPower(Radiance_Power.POWER_ID);
-            int current = radPower.amount;
+            int current = this.faded ? Math.min(1,radPower.amount) : radPower.amount;
             radPower.burstOfParticles(150);
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.target, AbstractDungeon.player, new Radiance_Power(this.target, current), current));
         }

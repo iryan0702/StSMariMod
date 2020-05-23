@@ -23,8 +23,13 @@
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
-    "DESCRIPTION": "Double ANY NL character's marimod:Radiance. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Double ALL NL characters' marimod:Radiance. NL Exhaust."
+    "DESCRIPTION": "marimod:Fading. NL Double ANY NL character's marimod:Radiance.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. NL Double ALL NL character's marimod:Radiance.",
+    "EXTENDED_DESCRIPTION": [
+      "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character that has marimod:Radiance.",
+      "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters that have marimod:Radiance."
+    ]
+
   },
   "MariMod:Mari_Defend": {
     "NAME": "Defend",
