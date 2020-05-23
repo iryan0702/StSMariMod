@@ -133,7 +133,7 @@ public class MariMod implements
     public static boolean played1Cost = false;
     public static boolean played2Cost = false;
     public static boolean played3Cost = false;
-    public static boolean perfectPerformance = false;
+    public static int energySpentThisTurn = 0;
     public static int vulnerableAmount = 0;
     public static int frailAmount = 0;
     public static int choreographyAmount = 0;
@@ -185,13 +185,6 @@ public class MariMod implements
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if((abstractPower.ID.equals(FrailPower.POWER_ID) || abstractPower.ID.equals(VulnerablePower.POWER_ID)) && abstractCreature.isPlayer){
-            for(AbstractCard c: AbstractDungeon.player.exhaustPile.group){
-                if(c instanceof Mari_Undying_Spark){
-                    ((Mari_Undying_Spark)c).returnToHand(abstractPower);
-                }
-            }
-        }
         if(abstractPower.type == AbstractPower.PowerType.DEBUFF && abstractCreature.isPlayer){
             MariStatTracker.debuffsReceivedThisAndLastEnemyTurn++;
         }
@@ -282,7 +275,7 @@ public class MariMod implements
         played1Cost = false;
         played2Cost = false;
         played3Cost = false;
-        perfectPerformance = false;
+        energySpentThisTurn = 0;
         vulnerableAmount = 0;
         frailAmount = 0;
         choreographyAmount = 0;
@@ -383,7 +376,7 @@ public class MariMod implements
         played1Cost = false;
         played2Cost = false;
         played3Cost = false;
-        perfectPerformance = false;
+        energySpentThisTurn = 0;
         return true;
     }
 

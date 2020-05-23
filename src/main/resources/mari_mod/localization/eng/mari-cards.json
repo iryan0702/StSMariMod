@@ -246,12 +246,10 @@
   },
   "MariMod:Mari_Perfect_Performance": {
     "NAME": "Perfect Performance",
-    "DESCRIPTION": "Retain. NL Deal !D! damage to ALL enemies. Can only be played if you have NL spent 1, 2, and 3 [E] on cards this turn.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Can only be played if you have spent at least 10 [E] on cards this turn.",
     "EXTENDED_DESCRIPTION": [
-      "Retain. NL Deal !D! damage to ALL enemies. Can only be played if you have NL spent ",
-      "1[], ",
-      "2[], and ",
-      "3[] [E] NL on cards this turn."
+      "NL ( You have spent !M! [E] )",
+      "Can only be played if you spend !M! more [E] on cards this turn."
     ],
     "UPGRADE_DESCRIPTION": "More practice!"
   },

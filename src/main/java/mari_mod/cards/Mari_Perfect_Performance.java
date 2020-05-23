@@ -48,6 +48,15 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
     @Override
     public void applyPowers() {
         super.applyPowers();
+
+        String desc = DESCRIPTION;
+        if(MariMod.energySpentThisTurn > 0){
+            desc += EXTENDED_DESCRIPTION[0];
+            baseMagicNumber = magicNumber = MariMod.energySpentThisTurn;
+        }
+        this.rawDescription = desc;
+        this.initializeDescription();
+        /*
         this.retain = true;
         String desc;
         if(Settings.language.equals(Settings.GameLanguage.ZHS)){
@@ -75,6 +84,7 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
         }
         this.rawDescription = desc;
         this.initializeDescription();
+        */
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
@@ -83,7 +93,7 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
         if(!canUse){
             return false;
         }
-        canUse = MariMod.perfectPerformance;
+        canUse = MariMod.energySpentThisTurn > 10;
         if(!canUse){
             this.cantUseMessage = UPGRADE_DESCRIPTION;
         }
