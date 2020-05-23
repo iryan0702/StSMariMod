@@ -18,8 +18,8 @@ public class Mari_The_Light_We_Chase extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    public static final int RADIANCE_GAIN = 1;
-    public static final int AMOUNT = 2;
+    public static final int AMOUNT = 1;
+    public static final int UPGRADE_AMOUNT = 1;
     private static final int COST = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -27,7 +27,6 @@ public class Mari_The_Light_We_Chase extends AbstractMariCard {
 
     public Mari_The_Light_We_Chase(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.tags.add(MariCustomTags.RADIANCE);
 
         //this.baseRadiance = RADIANCE_GAIN;
         //this.radiance = this.baseRadiance;
@@ -38,14 +37,12 @@ public class Mari_The_Light_We_Chase extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if(this.upgraded) {
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-        }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new The_Light_We_Chase_Power(p, this.magicNumber), this.magicNumber));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
+            upgradeMagicNumber(UPGRADE_AMOUNT);
             upgradeName();
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();

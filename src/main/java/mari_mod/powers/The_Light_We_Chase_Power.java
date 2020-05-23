@@ -13,7 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class The_Light_We_Chase_Power extends AbstractPower
+public class The_Light_We_Chase_Power extends AbstractPower implements OnSuccessfulKindlePower
 {
     public static final String POWER_ID = "MariMod:The_Light_We_Chase_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -41,6 +41,14 @@ public class The_Light_We_Chase_Power extends AbstractPower
     }
 
     @Override
+    public void onSuccessfulKindle(AbstractPlayer player, AbstractCreature kindleTarget) {
+        for(int i = 0; i < this.amount; i++) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(kindleTarget, player, new Radiance_Power(kindleTarget, 1), 1));
+        }
+    }
+
+    /*
+    @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         AbstractPlayer p = AbstractDungeon.player;
         if(power.ID.equals(Radiance_Power.POWER_ID) && !target.isPlayer){
@@ -48,7 +56,7 @@ public class The_Light_We_Chase_Power extends AbstractPower
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, 1), 1));
             }
         }
-    }
+    }*/
 
     /*
     @Override

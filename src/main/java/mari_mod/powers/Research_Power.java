@@ -1,16 +1,23 @@
 package mari_mod.powers;
 
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import mari_mod.MariMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Research_Power extends AbstractPower
+public class Research_Power extends AbstractPower implements OnSuccessfulKindlePower
 {
     public static final String POWER_ID = "MariMod:Research_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -35,6 +42,17 @@ public class Research_Power extends AbstractPower
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
+    }
+
+    @Override
+    public void onSuccessfulKindle(AbstractPlayer player, AbstractCreature kindleTarget) {
+
+        if(!kindleTarget.isPlayer) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(kindleTarget, player, new StrengthPower(kindleTarget, -this.amount), -this.amount));
+            if (!kindleTarget.hasPower(ArtifactPower.POWER_ID)) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(kindleTarget, player, new GainStrengthPower(kindleTarget, this.amount), this.amount));
+            }
+        }
     }
 
     @Override

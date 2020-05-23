@@ -52,7 +52,8 @@
   },
   "MariMod:The_Light_We_Chase_Power": {
     "NAME": "The Light We Chase",
-    "DESCRIPTIONS": ["Whenever an enemy gains Radiance, you gain #b1 #yRadiance #b",
+    "DESCRIPTIONS": ["Whenever you successfully #ykindle, apply #b1 #yRadiance to the target.",
+      "Whenever you successfully #ykindle, apply #b1 #yRadiance to the target #b",
       " times."]
   },
   "MariMod:No_Problem_Power": {

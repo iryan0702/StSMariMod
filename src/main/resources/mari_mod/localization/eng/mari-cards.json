@@ -194,8 +194,8 @@
   },
   "MariMod:Mari_The_Light_We_Chase": {
     "NAME": "The Light We Chase",
-    "DESCRIPTION": "Whenever an enemy gains marimod:Radiance, you gain 1 marimod:Radiance !M! times.",
-    "UPGRADE_DESCRIPTION": "Gain [E]. NL Whenever an enemy gains marimod:Radiance, you gain 1 marimod:Radiance !M! times."
+    "DESCRIPTION": "Whenever you successfully marimod:Kindle, apply 1 marimod:Radiance to the target.",
+    "UPGRADE_DESCRIPTION": "Whenever you successfully marimod:Kindle, apply 1 marimod:Radiance to the target !M! times."
   },
   "MariMod:Mari_The_GOLDEN_STATUE": {
     "NAME": "The GOLDEN STATUE",
