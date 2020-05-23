@@ -10,8 +10,8 @@
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "marimod:Fading. NL marimod:Recall, then apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL marimod:Recall, then apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice. NL If marimod:Recalled, gain [E].",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice. NL If marimod:Recalled, gain [E]."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
