@@ -19,7 +19,11 @@
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "marimod:Fading. NL Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Draw a card."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Plays thrice if you have spent !M! or more [E] this turn.",
+    "EXTENDED_DESCRIPTION": [
+      " (",
+      "!)"
+    ]
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
