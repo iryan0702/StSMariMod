@@ -277,7 +277,7 @@ public class MariCharacterSelectScreen {
             sb.draw(this.foreground, (float) Settings.WIDTH / 2.0F - 960.0F, (float) Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 1920.0F, 1200.0F, Settings.scale, Settings.scale, 0.0F);
 
             renderButtons(sb);
-            sb.draw(this.testGridImg, 0, 0, 0, 0, 3000, 3000, Settings.scale, Settings.scale, 0.0F);
+            //sb.draw(this.testGridImg, 0, 0, 0, 0, 3000, 3000, Settings.scale, Settings.scale, 0.0F);
         }
 
         renderInfo(sb);

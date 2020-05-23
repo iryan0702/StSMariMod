@@ -15,7 +15,7 @@
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. NL Apply 2 more for each debuff you have."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. NL Applies 2 more for each debuff you have."
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",

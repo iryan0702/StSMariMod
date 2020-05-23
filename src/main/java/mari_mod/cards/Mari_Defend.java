@@ -31,7 +31,7 @@ public class Mari_Defend extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseBlock = BLOCK;
         this.block =  this.baseBlock;
-        this.tags.add(BaseModCardTags.BASIC_DEFEND);
+        this.tags.add(CardTags.STARTER_DEFEND);
         this.tags.add(MariCustomTags.KINDLE);
         this.isAnyTarget = true;
     }

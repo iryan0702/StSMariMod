@@ -58,6 +58,7 @@ public class MariTheSpark extends AbstractMariRelic
                 while (MariMod.saveableKeeper.brilliance >= this.counter) {
                     reward = new MariFadingReward(CardColorEnum.MARI);
                     AbstractDungeon.getCurrRoom().addCardReward(reward);
+                    MariMod.saveableKeeper.brilliance -= this.counter;
                     this.counter += REWARD_COST;
                 }
                 AbstractDungeon.combatRewardScreen.setupItemReward();

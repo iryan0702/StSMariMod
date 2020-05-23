@@ -388,12 +388,10 @@ public class MariMod implements
 
         previousCardCostAfterUse = previousCardCost;
         previousCardCost = cost;
+        energySpentThisTurn += cost;
         if(cost == 1) played1Cost = true;
         if(cost == 2) played2Cost = true;
         if(cost == 3) played3Cost = true;
-        if(played1Cost && played2Cost && played3Cost){
-            perfectPerformance = true;
-        }
         if(card.type == AbstractCard.CardType.SKILL){
             timesMariPlayedSkillsThisCombat++;
         }
