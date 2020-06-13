@@ -129,6 +129,6 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Immediate recover all but #b1 energy cost when played."
+    "DESCRIPTION": "Immediately recover all but #b1 energy cost when played."
   }
 ]
