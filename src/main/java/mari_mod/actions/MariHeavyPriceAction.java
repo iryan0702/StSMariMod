@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@Deprecated
 public class MariHeavyPriceAction extends AbstractGameAction {
     private DamageInfo info;
     public static final Logger logger = LogManager.getLogger(MariHeavyPriceAction.class.getName());

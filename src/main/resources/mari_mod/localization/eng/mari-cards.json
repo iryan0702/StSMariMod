@@ -125,11 +125,7 @@
   },
   "MariMod:Mari_Spontaneous_Strike": {
     "NAME": "Spontaneous Strike",
-    "DESCRIPTION": "Deal damage equal to NL twice the total cost of all cards in your hand.",
-    "UPGRADE_DESCRIPTION": "Deal damage equal to NL 3 + twice the total cost of all cards in your hand.",
-    "EXTENDED_DESCRIPTION": [
-      " NL (Deals !D! damage)"
-    ]
+    "DESCRIPTION": "Deal !D! damage. NL Deals 1 more for each [E] spent this turn."
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
