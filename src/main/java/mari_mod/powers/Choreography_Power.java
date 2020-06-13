@@ -91,11 +91,7 @@ public class Choreography_Power extends TwoAmountPowerByKiooehtButIJustChangedIt
         }else{
             wholeDescription = DESCRIPTION[1] + this.amount + DESCRIPTION[2];
         }
-        if(this.lastCost == -9) {
-            wholeDescription += DESCRIPTION[3];
-        }else{
-            wholeDescription += DESCRIPTION[4] + this.lastCost + DESCRIPTION[5];
-        }
+        wholeDescription += DESCRIPTION[3] + this.lastCost + DESCRIPTION[4];
         this.description = wholeDescription;
     }
 }

@@ -26,10 +26,10 @@ public class MariRenderDanceIndicatorPatch {
                 if (__instance.cost == -1) cost = EnergyPanel.getCurrentEnergy();
                 if (__instance.freeToPlayOnce) cost = 0;
 
-                if (MariMod.choreographyAmount > 0 && cost < MariMod.previousCardCost && MariMod.previousCardCost != 9999) {
+                if (MariMod.choreographyAmount > 0 && cost < MariMod.previousCardCost) {
                     sb.draw(MariMod.choreographyFormIndicatorTexture, __instance.current_x - 256.0F, __instance.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, __instance.drawScale * Settings.scale, __instance.drawScale * Settings.scale, __instance.angle, 0, 0, 512, 512, false, false);
                 }
-                if (MariMod.flawlessFormAmount > 0 && cost > MariMod.previousCardCost && MariMod.previousCardCost != 9999) {
+                if (MariMod.flawlessFormAmount > 0 && cost == MariMod.previousCardCost + 1) {
                     sb.draw(MariMod.flawlessFormIndicatorTexture, __instance.current_x - 256.0F, __instance.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, __instance.drawScale * Settings.scale, __instance.drawScale * Settings.scale, __instance.angle, 0, 0, 512, 512, false, false);
                 }
             }

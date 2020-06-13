@@ -9,10 +9,9 @@
   },
   "MariMod:Choreography_Power": {
     "NAME": "Choreography",
-    "DESCRIPTIONS": ["Whenever you spend less energy on a card than the previous on the same turn, draw a card.",
-      "Whenever you spend less energy on a card than the previous on the same turn, draw #b",
+    "DESCRIPTIONS": ["Whenever you spend less [E] on a card than the last, draw a card.",
+      "Whenever you spend less [E] on a card than the last, draw #b",
       " cards.",
-    " (You haven't played a card this turn.)",
     " (The last card you played costs #b",
     " [REMOVE_SPACE].)"]
   },
@@ -101,9 +100,7 @@
   "MariMod:Flawless_Form_Power": {
     "NAME": "Flawless Form",
     "DESCRIPTIONS": [
-      "Whenever you spend more energy on a card than the previous, gain energy equal to the difference",
-      " (You haven't played a card this turn)",
-      " (The last card you played costs #b",
+      "Whenever you spend #b1 more [E] on a card than the last, refund all energy spent (The last card you played cost #b",
       " [REMOVE_SPACE].)"
     ]
   },

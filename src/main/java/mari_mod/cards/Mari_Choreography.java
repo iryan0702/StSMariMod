@@ -16,7 +16,6 @@ public class Mari_Choreography extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
     private static final int DRAW = 1;
     //private static final int UPGRADE_DRAW = 1;
@@ -38,8 +37,6 @@ public class Mari_Choreography extends AbstractMariCard {
 
     public void upgrade() {
         if (!this.upgraded) {
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
             //upgradeMagicNumber(UPGRADE_DRAW);

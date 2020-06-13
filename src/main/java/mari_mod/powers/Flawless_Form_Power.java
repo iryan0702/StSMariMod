@@ -73,8 +73,8 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
         int cost = card.costForTurn;
         if(card.cost == -1) cost = card.energyOnUse;
         if(card.freeToPlayOnce) cost = 0;
-        if(cost > this.lastCost){
-            AbstractDungeon.actionManager.addToBottom(new MariDelayedDelayedActionActionAction(new GainEnergyAction(cost - this.lastCost)));
+        if(cost == this.lastCost + 1){
+            AbstractDungeon.actionManager.addToBottom(new MariDelayedDelayedActionActionAction(new GainEnergyAction(cost)));
             this.flashWithoutSound();
 
             AbstractPlayer p = AbstractDungeon.player;
@@ -87,13 +87,6 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
     }
 
     public void updateDescription() {
-        String wholeDescription;
-        wholeDescription = DESCRIPTION[0];
-        if(this.lastCost == 9999) {
-            wholeDescription += DESCRIPTION[1];
-        }else{
-            wholeDescription += DESCRIPTION[2] + this.lastCost + DESCRIPTION[3];
-        }
-        this.description = wholeDescription;
+        this.description = DESCRIPTION[0] + this.lastCost + DESCRIPTION[1];
     }
 }
