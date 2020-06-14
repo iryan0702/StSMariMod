@@ -61,8 +61,7 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall.",
-    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall."
+    "DESCRIPTION": "Retain. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",

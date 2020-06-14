@@ -33,6 +33,7 @@ public class Mari_Reminisce extends AbstractMariCard {
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
 
+        this.selfRetain = true;
         this.recallPreview = true;
     }
 
