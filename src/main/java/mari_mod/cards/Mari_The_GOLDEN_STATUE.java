@@ -46,7 +46,7 @@ public class Mari_The_GOLDEN_STATUE extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new MariGoldenStatueEffect(m.hb.cX),0.1F));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new MariWaitAction(MariGoldenStatueEffect.ANIMATION_START-MariGoldenStatueEffect.FALL_END-0.6F));

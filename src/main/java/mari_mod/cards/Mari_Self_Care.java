@@ -56,7 +56,7 @@ public class Mari_Self_Care extends AbstractMariCard {
         }else{
             target = p;
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         addToBot(new DrawCardAction(p,1));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){

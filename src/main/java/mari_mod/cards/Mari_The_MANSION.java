@@ -37,7 +37,7 @@ public class Mari_The_MANSION extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new The_Mansion_Power(p, this.magicNumber),this.magicNumber));
         //AbstractDungeon.actionManager.addToBottom(new MariTheMANSIONAction(BLOCK_AMT, 3));
     }

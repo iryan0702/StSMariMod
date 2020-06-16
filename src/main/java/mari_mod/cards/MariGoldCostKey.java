@@ -12,9 +12,7 @@ public class MariGoldCostKey extends DynamicVariable {
     }
 
     @Override
-    public boolean isModified(AbstractCard card) {
-        return ((AbstractMariCard) card).goldCost != ((AbstractMariCard) card).baseGoldCost;
-    }
+    public boolean isModified(AbstractCard card) { return ((AbstractMariCard) card).goldCost != ((AbstractMariCard) card).baseGoldCost; }
 
     @Override
     public void setIsModified(AbstractCard card, boolean v) {
@@ -50,11 +48,11 @@ public class MariGoldCostKey extends DynamicVariable {
 
     public Color getIncreasedValueColor()
     {
-        return Settings.GREEN_TEXT_COLOR;
+        return Settings.RED_TEXT_COLOR;
     }
 
     public Color getDecreasedValueColor()
     {
-        return Settings.RED_TEXT_COLOR;
+        return Settings.GREEN_TEXT_COLOR;
     }
 }

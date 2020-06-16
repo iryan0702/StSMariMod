@@ -44,7 +44,7 @@ public class Mari_Golden_Glint extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
     }

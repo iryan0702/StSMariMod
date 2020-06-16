@@ -38,7 +38,7 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
 

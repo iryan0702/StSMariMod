@@ -62,7 +62,7 @@ public class MariHigherUpsAction extends AbstractGameAction {
 
                 while(var1.hasNext()) {
                     card = (AbstractCard)var1.next();
-                    AbstractDungeon.actionManager.addToTop(new MariSpendGoldAction(card.cost * this.goldCost));
+                    //AbstractDungeon.actionManager.addToTop(new MariSpendGoldAction(card.cost * this.goldCost)); TODO: DEPRECATED
                     card.costForTurn = 0;
                     card.unhover();
                     if (this.p.hand.size() == 10) {

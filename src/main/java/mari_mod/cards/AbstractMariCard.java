@@ -43,7 +43,7 @@ public abstract class AbstractMariCard extends CustomCard {
     public int baseGoldCost = 0;
     public int goldCost = 0;
     public boolean upgradedGoldCost = false;
-    public boolean limitedByGoldCost = true;
+    public boolean limitedByGoldCost = true; //is gold cost on card always explicitly paid?
 
     public int baseRadiance = 0;
     public int radiance = 0;
@@ -131,8 +131,13 @@ public abstract class AbstractMariCard extends CustomCard {
     @Override
     public void applyPowers() {
         super.applyPowers();
+
         float tmpRadiance = baseRadiance;
         radiance = MathUtils.floor(tmpRadiance);
+
+        float tmpGoldCost = baseGoldCost;
+        goldCost = MathUtils.floor(tmpGoldCost);
+
         this.glowColor = getNotKindledColor();
 
         if(recallPreview){

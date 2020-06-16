@@ -41,7 +41,7 @@ public class Mari_The_HELICOPTER extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
 
         this.magicNumber = ATTACK_TIMES;
         if(this.upgraded) this.magicNumber += ATTACK_TIME_UPGRADE;

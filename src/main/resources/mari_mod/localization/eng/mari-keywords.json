@@ -96,7 +96,7 @@
       "invested",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Convert an amount of Gold into #yBrilliance. If you do not have enough Gold, gain #b1 #yFrail and #yWeak instead."
+    "DESCRIPTION": "The first time played each combat, convert an amount of Gold into #yBrilliance. If you do not have enough Gold, gain #b1 #yFrail and #yWeak instead."
   },
   {
     "PROPER_NAME": "Repress",

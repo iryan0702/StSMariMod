@@ -36,7 +36,7 @@ public class Mari_Administrator_Privilege extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         //AbstractDungeon.actionManager.addToBottom(new ReprogramAction(p.drawPile.group.size()));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Administrator_Privilege_Power(p)));
 

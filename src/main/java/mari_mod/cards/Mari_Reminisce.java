@@ -40,7 +40,7 @@ public class Mari_Reminisce extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        addToBot(new MariSpendGoldAction(this.goldCost));
+        addToBot(new MariSpendGoldAction(this));
         addToBot(new MariRecallAction(this));
 
     }

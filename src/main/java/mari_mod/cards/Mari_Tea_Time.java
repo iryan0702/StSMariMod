@@ -47,7 +47,7 @@ public class Mari_Tea_Time extends AbstractMariCard {
         }else{
             target = p;
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
+        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new MariPurgeCardsFromExhaustAction(true));
 
 
