@@ -160,7 +160,8 @@
   },
   "MariMod:Mari_Lets_Go": {
     "NAME": "\"Let's Go!\"",
-    "DESCRIPTION": "Draw !M! cards. NL Gain [E] for each 3 cost card drawn."
+    "DESCRIPTION": "Draw X cards. NL Gain X-1 [E].",
+    "UPGRADE_DESCRIPTION": "Draw X+1 cards. NL Gain X-1 [E]."
   },
   "MariMod:Mari_Defiance": {
     "NAME": "Defiance",
