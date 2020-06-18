@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -80,11 +81,14 @@ public class MariRecallAction extends AbstractGameAction {
     }
 
     public static AbstractCard findRecallTarget(){
-        AbstractPlayer p = AbstractDungeon.player;
+        return findRecallTarget(AbstractDungeon.player.exhaustPile);
+    }
+
+    public static AbstractCard findRecallTarget(CardGroup group){
         boolean cardFound = false;
         AbstractCard retVal = null;
-        for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
-            AbstractCard c = p.exhaustPile.group.get(i);
+        for (int i = 0; i < group.size() && !cardFound; i++) {
+            AbstractCard c = group.group.get(i);
             if(c.hasTag(MariCustomTags.GLARING)){
                 cardFound = true;
             }
@@ -92,8 +96,8 @@ public class MariRecallAction extends AbstractGameAction {
                 retVal = c;
             }
         }
-        for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
-            AbstractCard c = p.exhaustPile.group.get(i);
+        for (int i = 0; i < group.size() && !cardFound; i++) {
+            AbstractCard c = group.group.get(i);
             if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && !((AbstractMariCard)c).faded){
                 cardFound = true;
             }
@@ -101,8 +105,8 @@ public class MariRecallAction extends AbstractGameAction {
                 retVal = c;
             }
         }
-        for (int i = 0; i < p.exhaustPile.size() && !cardFound; i++) {
-            AbstractCard c = p.exhaustPile.group.get(i);
+        for (int i = 0; i < group.size() && !cardFound; i++) {
+            AbstractCard c = group.group.get(i);
             if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && ((AbstractMariCard)c).faded){
                 cardFound = true;
             }

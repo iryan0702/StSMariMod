@@ -35,8 +35,8 @@
   },
   "MariExhaustPileViewOrderButton": {
     "TEXT": [
-      "View Exhaust Order",
-      "#pMari #pMod NL List the cards in Exhausted order: with the bottom of the Exhaust pile on top."
+      "View Recall Order",
+      "#pMari #pMod NL List the cards in #yRecall order: The next card you would #yRecall on top."
     ]
   },
   "MariRerollCardRewardButton": {

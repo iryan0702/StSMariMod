@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.ExhaustPileViewScreen;
+import mari_mod.actions.MariRecallAction;
 import mari_mod.ui.ExhaustPileViewOrderButton;
 
 
@@ -48,6 +49,7 @@ public class MariExhaustPileViewOrderPatch {
             if(button.orderedGroup == null){
                 button.orderedGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             }
+            CardGroup tempGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             button.orderedGroup.clear();
 
             for(AbstractCard c: AbstractDungeon.player.exhaustPile.group){
@@ -58,10 +60,18 @@ public class MariExhaustPileViewOrderPatch {
                 toAdd.current_x = Settings.WIDTH/2f;
                 toAdd.current_y = Settings.HEIGHT/2f;
                 toAdd.lighten(true);
-                button.orderedGroup.addToTop(toAdd);
+                tempGroup.addToTop(toAdd);
             }
 
-            button.rarityGroup = new CardGroup(button.orderedGroup, CardGroup.CardGroupType.UNSPECIFIED);
+            AbstractCard sortCard = MariRecallAction.findRecallTarget(tempGroup);;
+            while(sortCard != null){
+                tempGroup.removeCard(sortCard);
+                button.orderedGroup.addToTop(sortCard);
+
+                sortCard = MariRecallAction.findRecallTarget(tempGroup);
+            }
+
+            button.rarityGroup = new CardGroup(AbstractDungeon.player.exhaustPile, CardGroup.CardGroupType.UNSPECIFIED);
             button.rarityGroup.sortAlphabetically(true);
             button.rarityGroup.sortByRarityPlusStatusCardType(true);
             for(AbstractCard c: button.rarityGroup.group){
