@@ -1,11 +1,15 @@
 {
   "MariMod:Radiance_Power": {
     "NAME": "Radiance",
-    "DESCRIPTIONS": ["Whenever a creature gains Radiance, it takes damage equal to its total Radiance. Decreases by #b1 at the end of this creature's turn.",
-    "Mari is very #yShiny! (Decreases by #b1 at the end of your turn.)",
+    "DESCRIPTIONS": ["Whenever a creature gains Radiance, it takes damage equal to its total #yRadiance [REMOVE_SPACE].",
+      " NL (Decreases to #b",
+      " at the end of this creature's turn.)",
       "Mari deals #b",
-      "% more damage! (Decreases by #b10% at the end of turn.)",
-      "% more damage! (Decreases by #b20% at the end of turn.)"]
+      "% more damage per #yRadiance for a total of #b",
+      "% increased damage!",
+      " NL (Decreases to #b",
+      "% at the end of your turn.)"
+    ]
   },
   "MariMod:Choreography_Power": {
     "NAME": "Choreography",
@@ -145,6 +149,11 @@
     "NAME": "Lie In Wait",
     "DESCRIPTIONS": ["At the start of your next turn, deal #b",
       " damage to ALL enemies."]
+  },
+  "MariMod:Intensity_Power": {
+    "NAME": "Intensity",
+    "DESCRIPTIONS": ["Each stack of #yRadiance provides #b",
+      "% more damage."]
   },
   "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Gleam and Glean",

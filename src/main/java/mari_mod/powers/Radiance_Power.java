@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
 import mari_mod.cards.AbstractMariCard;
 import mari_mod.relics.MariCorruptedSpark;
@@ -33,7 +34,8 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
-    public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
+    public static final float BASE_DAMAGE_BOOST = 0.05f;
+    public static final Logger logger = LogManager.getLogger(Radiance_Power.class.getName());
     ArrayList<RadianceParticle> radianceParticles;
     private DamageInfo radianceInfo;
     private float particleDelay;
@@ -85,12 +87,12 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
-        updateDescription();
         this.amount2 = this.amount - radianceDecayThisTurn;
 
         if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
             this.amount2 = -1;
         }
+        updateDescription();
     }
 
     @Override
@@ -99,7 +101,6 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
-        updateDescription();
         if(radianceDecayThisTurn > 0){
             this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
         }
@@ -109,6 +110,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
             this.amount2 = -1;
         }
+        updateDescription();
     }
 
     @Override
@@ -130,16 +132,20 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
         burstOfParticles(this.amount*4);
-        updateDescription();
         radianceDecayThisTurn += 1;
         this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
+        updateDescription();
     }
 
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if(this.owner.isPlayer) {
-            float damageBoost = (0.10F);
-            return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F +(this.amount * damageBoost)): damage;
+            float damageBoost = BASE_DAMAGE_BOOST;
+            AbstractPower intensity = this.owner.getPower(Intensity_Power.POWER_ID);
+            if(intensity != null){
+                damageBoost += intensity.amount * Intensity_Power.BOOST_PER_STACK;
+            }
+            return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F + (this.amount * damageBoost)) : damage;
         }
         else
             return damage;
@@ -148,9 +154,26 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     public void updateDescription() {
         if(this.owner.isPlayer) {
-            this.description = DESCRIPTION[2] + (this.amount * 10) + DESCRIPTION[3];
+
+            float fDamageBoostPer = BASE_DAMAGE_BOOST;
+            AbstractPower intensity = this.owner.getPower(Intensity_Power.POWER_ID);
+            if(intensity != null){
+                fDamageBoostPer += 0.01f * intensity.amount;
+            }
+            int damageBoostPer = MathUtils.round(fDamageBoostPer * 100);
+            int damageBoost = damageBoostPer * this.amount;
+            int damageBoostEndTurn = damageBoostPer * this.amount2;
+
+            this.description = DESCRIPTION[3] + ((int) damageBoostPer) + DESCRIPTION[4] + ((int) damageBoost) + DESCRIPTION[5];
+            if(this.amount2 >= 0){
+                this.description += DESCRIPTION[6] + ((int) damageBoostEndTurn) + DESCRIPTION[7];
+            }
+
         }else{
             this.description = DESCRIPTION[0];
+            if(this.amount2 >= 0){
+                this.description += DESCRIPTION[1] + this.amount2 + DESCRIPTION[2];
+            }
         }
     }
 
