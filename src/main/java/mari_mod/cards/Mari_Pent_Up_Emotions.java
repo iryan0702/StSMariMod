@@ -25,6 +25,8 @@ public class Mari_Pent_Up_Emotions extends AbstractMariCard {
     private static final int DAMAGE = 11;
     private static final int UPGRADE_DAMAGE = 3;
     private static final int ENERGY_GAIN = 1;
+    private static final int UNFRAIL_AMOUNT = 1;
+    private static final int UNFRAIL_AMOUNT_UPGRADE = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -33,6 +35,9 @@ public class Mari_Pent_Up_Emotions extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseDamage = DAMAGE;
         this.damage = this.baseDamage;
+
+        this.baseMagicNumber = UNFRAIL_AMOUNT;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
@@ -45,7 +50,7 @@ public class Mari_Pent_Up_Emotions extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GAIN));
-        AbstractDungeon.actionManager.addToBottom(new MariReducePowerIfHavePowerAction(p,p,FrailPower.POWER_ID,2));
+        AbstractDungeon.actionManager.addToBottom(new MariReducePowerIfHavePowerAction(p,p,FrailPower.POWER_ID,this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m,new DamageInfo(p,this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
@@ -53,6 +58,7 @@ public class Mari_Pent_Up_Emotions extends AbstractMariCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
+            upgradeMagicNumber(UNFRAIL_AMOUNT_UPGRADE);
         }
     }
 }

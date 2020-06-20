@@ -202,7 +202,7 @@
   },
   "MariMod:Mari_Pent_Up_Emotions": {
     "NAME": "Pent-up Emotions",
-    "DESCRIPTION": "Whenever you draw this card, gain 1 Frail. NL Gain [E] , deal !D! damage, and lose 2 Frail."
+    "DESCRIPTION": "Whenever you draw this card, gain 1 Frail. NL Gain [E] , lose !M! Frail, and deal !D! damage."
   },
   "MariMod:Mari_No_Problem": {
     "NAME": "\"No Problem!\"",
