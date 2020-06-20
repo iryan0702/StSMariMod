@@ -45,8 +45,8 @@ public class Mari_Debut extends AbstractMariCard{
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         //AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this.goldCost));
-        addToTop(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
-        addToTop(new MariDebutAction(this.radiance, false));
+        addToBot(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
+        addToBot(new MariDebutAction(this.radiance, false));
         //addToBot(new MariDebutAction(this.radiance, false));
         //AbstractDungeon.actionManager.addToBottom(new MariDebutAction(this.radiance, false));
         //addToBot(new ModifyRadianceAction(this.uuid, RADIANCE_DECAY));
