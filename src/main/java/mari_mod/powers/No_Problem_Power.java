@@ -47,7 +47,7 @@ public class No_Problem_Power extends AbstractPower implements NonStackablePower
     @Override
     public void atStartOfTurnPostDraw() {
         for(int i = 0; i < this.amount; i++){
-            addToBot(new MariRecallAction(this.card));
+            addToBot(new MariRecallAction());
         }
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }

@@ -41,7 +41,7 @@ public class Mari_Reminisce extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
 
         addToBot(new MariSpendGoldAction(this));
-        addToBot(new MariRecallAction(this));
+        addToBot(new MariRecallAction());
 
     }
 

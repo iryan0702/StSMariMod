@@ -30,7 +30,7 @@ public class Mari_Shiny_Swap extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new MariRecallAction(this));
+        this.addToBot(new MariRecallAction());
         this.addToBot(new PutOnDeckAction(p, p, 1, false));
 
     }

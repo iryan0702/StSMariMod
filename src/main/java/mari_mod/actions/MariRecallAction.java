@@ -20,16 +20,14 @@ public class MariRecallAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariRecallAction.class.getName());
     public static AbstractCard recalledCard;
     public AbstractGameAction followUpAction;
-    public AbstractCard recallCard;
     private AbstractPlayer p;
 
-    public MariRecallAction(AbstractCard card) {
-        this(card, null);
+    public MariRecallAction() {
+        this(null);
     }
 
-    public MariRecallAction(AbstractCard card, AbstractGameAction followUpAction) {
+    public MariRecallAction(AbstractGameAction followUpAction) {
         this.actionType = ActionType.CARD_MANIPULATION;
-        this.recallCard = card;
         this.p = AbstractDungeon.player;
         this.followUpAction = followUpAction;
     }

@@ -53,7 +53,7 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction(this)));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction()));
 
     }
 

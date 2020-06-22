@@ -30,7 +30,7 @@ public class Mari_Recurring_Theme extends AbstractMariCard{
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new MariRecallAction(this));
+        this.addToBot(new MariRecallAction());
         if(this.upgraded){
             //addToBot(new DrawPileToHandByCardIdAction(1, ID));
         }
