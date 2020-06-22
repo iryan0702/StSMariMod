@@ -10,9 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariPurgeCardsFromExhaustAction;
-import mari_mod.actions.MariSpendGoldAction;
-import mari_mod.actions.MariSuccessfulKindleAction;
+import mari_mod.actions.*;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,9 +25,8 @@ public class Mari_Self_Care extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 1;
     private static final int BASE_GOLD_COST = 5;
-    private static final int BLOCK_AMT = 10;
+    private static final int BLOCK_AMT = 5;
     private static final int UPGRADE_BLOCK_AMT = 3;
-    private static final int RADIANCE = 2;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -41,10 +38,10 @@ public class Mari_Self_Care extends AbstractMariCard {
         this.block = this.baseBlock;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
-        this.baseRadiance = RADIANCE;
-        this.radiance = this.baseRadiance;
         this.tags.add(MariCustomTags.KINDLE);
         this.isAnyTarget = true;
+        this.recallPreview = true;
+        this.recallIthCard = 2;
 
     }
 
@@ -56,17 +53,17 @@ public class Mari_Self_Care extends AbstractMariCard {
         }else{
             target = p;
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
-        addToBot(new DrawCardAction(p,1));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+        addToBot(new MariSpendGoldAction(this));
+        addToBot(new MariPurgeNextRecallAction());
+        addToBot(new MariRecallAction());
+
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
 
         ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
-        //kindleActions.add(new MariRecallAction(MariRecallAction.RecallType.RADIANCE));
-        kindleActions.add(new MariPurgeCardsFromExhaustAction(1));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, kindleActions));
+        kindleActions.add(new GainBlockAction(p, 1));
+        addToBot(new MariSuccessfulKindleAction(target, kindleActions));
 
     }
 
