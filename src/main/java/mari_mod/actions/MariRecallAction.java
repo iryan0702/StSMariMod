@@ -81,42 +81,48 @@ public class MariRecallAction extends AbstractGameAction {
     }
 
     public static AbstractCard findRecallTarget(){
-        return findRecallTarget(AbstractDungeon.player.exhaustPile);
+        return findRecallTarget(AbstractDungeon.player.exhaustPile, 1);
     }
 
     public static AbstractCard findRecallTarget(CardGroup group){
-        boolean cardFound = false;
-        AbstractCard retVal = null;
-        for (int i = 0; i < group.size() && !cardFound; i++) {
-            AbstractCard c = group.group.get(i);
-            if(c.hasTag(MariCustomTags.GLARING)){
-                cardFound = true;
-            }
-            if (cardFound) {
-                retVal = c;
-            }
-        }
-        for (int i = 0; i < group.size() && !cardFound; i++) {
-            AbstractCard c = group.group.get(i);
-            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && !((AbstractMariCard)c).faded){
-                cardFound = true;
-            }
-            if (cardFound) {
-                retVal = c;
-            }
-        }
-        for (int i = 0; i < group.size() && !cardFound; i++) {
-            AbstractCard c = group.group.get(i);
-            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && ((AbstractMariCard)c).faded){
-                cardFound = true;
-            }
-            if (cardFound) {
-                retVal = c;
-            }
-        }
-        return retVal;
+        return findRecallTarget(group, 1);
     }
 
-    public static enum RecallType{
+    public static AbstractCard findRecallTarget(int targetCard){
+        return findRecallTarget(AbstractDungeon.player.exhaustPile, targetCard);
+    }
+
+    // TODO: Recall target currently assumes GLARING/FADING RADIANCE/FADED RADIANCE are mutually exclusive sections, watch out!
+    public static AbstractCard findRecallTarget(CardGroup group, int targetCard){
+        int ithCardFound = 0;
+
+        for (int i = 0; i < group.size(); i++) {
+            AbstractCard c = group.group.get(i);
+            if(c.hasTag(MariCustomTags.GLARING)){
+                ithCardFound++;
+                if (ithCardFound == targetCard) {
+                    return c;
+                }
+            }
+        }
+        for (int i = 0; i < group.size(); i++) {
+            AbstractCard c = group.group.get(i);
+            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && !((AbstractMariCard)c).faded){
+                ithCardFound++;
+                if (ithCardFound == targetCard) {
+                    return c;
+                }
+            }
+        }
+        for (int i = 0; i < group.size(); i++) {
+            AbstractCard c = group.group.get(i);
+            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE) && c instanceof AbstractMariCard && ((AbstractMariCard)c).faded){
+                ithCardFound++;
+                if (ithCardFound == targetCard) {
+                    return c;
+                }
+            }
+        }
+        return null;
     }
 }
