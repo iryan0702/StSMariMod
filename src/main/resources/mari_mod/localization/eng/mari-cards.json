@@ -19,11 +19,7 @@
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Plays thrice if you have spent !M! or more [E] this turn.",
-    "EXTENDED_DESCRIPTION": [
-      " (",
-      "!)"
-    ]
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. NL If marimod:Recalled, gain !M! Block."
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
@@ -101,7 +97,7 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "marimod:Fading. NL marimod:Invest !MARI_GOLD_COST!. NL Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block."
+    "DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block."
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",

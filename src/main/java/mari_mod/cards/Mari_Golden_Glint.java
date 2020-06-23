@@ -23,7 +23,7 @@ public class Mari_Golden_Glint extends AbstractMariCard {
     private static final int BASE_GOLD_COST = 5;
     private static final int BASE_RADIANCE_GAIN = 3;
     private static final int UPGRADE_RADIANCE_GAIN = 1;
-    private static final int BASE_BLOCK = 6;
+    private static final int BASE_BLOCK = 4;
     private static final int UPGRADE_BLOCK_GAIN = 2;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
