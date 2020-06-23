@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -40,12 +41,19 @@ public class Mari_Sparkle extends AbstractMariCard implements OnRecallCard {
         this.radiance = this.baseRadiance = RADIANCE;
 
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.isAnyTarget = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        addToBot(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
+        AbstractCreature target;
+        if(m != null) {
+            target = m;
+        }else{
+            target = p;
+        }
+        addToBot(new ApplyPowerAction(target, p, new Radiance_Power(target, this.radiance), this.radiance));
 
     }
 

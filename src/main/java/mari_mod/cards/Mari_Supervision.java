@@ -17,10 +17,10 @@ public class Mari_Supervision extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
+    private static final int COST = 2;
+    private static final int UPGRADE_COST = 1;
     private static final int ENERGY_GAIN = 3;
-    private static final int GOLD_COST_UPGRADE = -5;
+    private static final int ENERGY_GAIN_UPGRADE = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -47,6 +47,7 @@ public class Mari_Supervision extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            upgradeMagicNumber(ENERGY_GAIN_UPGRADE);
             upgradeBaseCost(UPGRADE_COST);
         }
     }
