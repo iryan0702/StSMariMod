@@ -10,8 +10,8 @@
   },
   "MariMod:Mari_Glimmer": {
     "NAME": "Glimmer",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice. NL If marimod:Recalled, gain [E].",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice. NL If marimod:Recalled, gain [E]."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice. NL marimod:Reflect: gain [E].",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters twice. NL marimod:Reflect: gain [E]."
   },
   "MariMod:Mari_Shine": {
     "NAME": "Shine",
@@ -19,7 +19,7 @@
   },
   "MariMod:Mari_Sparkle": {
     "NAME": "Sparkle",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. NL If marimod:Recalled, gain !M! Block."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character. NL marimod:Reflect: gain !M! Block."
   },
   "MariMod:Mari_SHINY": {
     "NAME": "\"SHIIIIIINY!\"",
@@ -364,7 +364,7 @@
   },
   "MariMod:Mari_Lie_In_Wait": {
     "NAME": "Lie In Wait",
-    "DESCRIPTION": "marimod:Glaring. NL If marimod:Recalled, deal !M! damage to ALL enemies. NL marimod:Kindle: Gain !B! Block. NL Exhaust."
+    "DESCRIPTION": "marimod:Glaring. NL marimod:Reflect: deal !M! damage to ALL enemies. NL marimod:Kindle: Gain !B! Block. NL Exhaust."
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",
@@ -405,7 +405,7 @@
   },
   "MariMod:Mari_Repression": {
     "NAME": "Repression",
-    "DESCRIPTION": "marimod:Glaring. marimod:Recover. NL If marimod:Recalled, gain 1 Frail or Vulnerable. NL Purge when discarded."
+    "DESCRIPTION": "marimod:Glaring. marimod:Recover. NL marimod:Reflect: gain 1 Frail or Vulnerable. NL Purge when discarded."
   },
   "MariMod:Mari_$Choose_Pain": {
     "NAME": "Pain",

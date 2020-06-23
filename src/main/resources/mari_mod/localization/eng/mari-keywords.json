@@ -130,5 +130,16 @@
       "UNUSED_RESERVE"
     ],
     "DESCRIPTION": "Immediately recover all but #b1 energy cost when played."
+  },
+  {
+    "PROPER_NAME": "Reflect",
+    "NAMES":[
+      "Reflect",
+      "reflect",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Trigger an effect when returned from the exhaust pile by a #yRecall effect."
   }
 ]
