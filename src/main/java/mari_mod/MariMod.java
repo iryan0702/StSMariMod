@@ -657,8 +657,6 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Limelight());
 
 
-            BaseMod.addCard(new Mari_Flaunt());
-            BaseMod.addCard(new Mari_Cash_Back());
             BaseMod.addCard(new Mari_Golden_Glint());
             //BaseMod.addCard(new Mari_Idolize());
             BaseMod.addCard(new Mari_Perfect_Performance());
@@ -684,7 +682,6 @@ public class MariMod implements
 
 
             BaseMod.addCard(new Mari_Devilish_Assistant());
-            BaseMod.addCard(new Mari_Delicacy());
             BaseMod.addCard(new Mari_Wishing_Fountain());
             BaseMod.addCard(new Mari_Reminisce());
             //BaseMod.addCard(new Mari_From_Zero());
@@ -702,7 +699,6 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Pent_Up_Emotions());
 
             BaseMod.addCard(new Mari_Hug());
-            BaseMod.addCard(new Mari_The_Beach_Episode());
             BaseMod.addCard(new Mari_Its_Joke());
             BaseMod.addCard(new Mari_Second_Season());
             BaseMod.addCard(new Mari_Dolphin_Strike());
@@ -715,11 +711,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Reflection());
 
             BaseMod.addCard(new Mari_Lie_In_Wait());
-            BaseMod.addCard(new Mari_Emotional_Episode());
-            BaseMod.addCard(new Mari_Filler_Episode());
-            BaseMod.addCard(new Mari_Introduction_Episode());
-            //BaseMod.addCard(new Mari_Unveiled_Secret());
-            //BaseMod.addCard(new Mari_Reckless_Spending());
+
             BaseMod.addCard(new Mari_Let_Loose());
 
             BaseMod.addCard(new Mari_Shiny_Swap());
@@ -732,6 +724,16 @@ public class MariMod implements
             BaseMod.addCard(new Mari_$Choose_Pain());
             BaseMod.addCard(new Mari_$Choose_Grief());
 
+
+//            BaseMod.addCard(new Mari_Flaunt());
+//            BaseMod.addCard(new Mari_Cash_Back());
+//            BaseMod.addCard(new Mari_Delicacy());
+//            BaseMod.addCard(new Mari_The_Beach_Episode());
+//            BaseMod.addCard(new Mari_Emotional_Episode());
+//            BaseMod.addCard(new Mari_Filler_Episode());
+//            BaseMod.addCard(new Mari_Introduction_Episode());
+//            BaseMod.addCard(new Mari_Unveiled_Secret());
+//            BaseMod.addCard(new Mari_Reckless_Spending());
 
 
             /*
