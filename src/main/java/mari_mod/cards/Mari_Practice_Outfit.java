@@ -8,8 +8,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BarricadePower;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Practice_Outfit_Buff_Power;
+import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,32 +21,47 @@ public class Mari_Practice_Outfit extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    //public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
-    private static final int BLOCK = 7;
+    private static final int BLOCK = 20;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardTarget TARGET = CardTarget.ALL;
 
     public Mari_Practice_Outfit(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.exhaust = true;
         this.baseBlock = BLOCK;
         this.block = this.baseBlock;
-        isAnyTarget = true;
+        this.baseMagicNumber = BLOCK;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
-        if(m != null) {
-            target = m;
-        }else{
-            target = p;
+
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block, true ));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BarricadePower(p)));
+
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(mo, p, this.magicNumber, true ));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new BarricadePower(mo)));
+
         }
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(target,target,this.block, true));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, target, new Practice_Outfit_Buff_Power(target, 1), 1));
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        if(this.block != this.magicNumber){
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
+        }else{
+            this.rawDescription = DESCRIPTION;
+            this.initializeDescription();
+        }
     }
 
     public void upgrade() {
