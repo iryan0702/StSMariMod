@@ -57,7 +57,7 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Retain. NL marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall."
+    "DESCRIPTION": "Retain. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -266,7 +266,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge the next card you would marimod:Recall. NL marimod:Recall. NL marimod:Kindle: Gain !B! Block."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge the next card you would marimod:Recall, NL then marimod:Recall. NL marimod:Kindle: Gain !B! Block."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",
