@@ -15,9 +15,10 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 2;
-    private static final int INITIAL_ENERGY_GAIN = 2;
+    private static final int COST = 3;
+    private static final int INITIAL_ENERGY_AND_DRAW = 2;
     private static final int BASE_GOLD_COST = 10;
+    private static final int GOLD_COST_INCREASE = 5;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -29,7 +30,7 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
     public Mari_Boundless_Energy(int upgrades) {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.timesUpgraded = upgrades;
-        this.baseMagicNumber = INITIAL_ENERGY_GAIN;
+        this.baseMagicNumber = INITIAL_ENERGY_AND_DRAW;
         this.magicNumber = this.baseMagicNumber;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
@@ -50,6 +51,9 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
 
     public void upgrade() {
         this.upgradeMagicNumber(1);
+        if(this.goldCost > 0) {
+            this.upgradeGoldCost(GOLD_COST_INCREASE);
+        }
         ++this.timesUpgraded;
         this.upgraded = true;
         this.name = NAME + "+" + this.timesUpgraded;
