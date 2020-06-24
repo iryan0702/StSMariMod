@@ -228,8 +228,8 @@
   },
   "MariMod:Mari_Fire_Strike": {
     "NAME": "Fire Strike",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to an enemy X times.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to an enemy X+1 times."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character X times.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ANY character X+1 times."
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",

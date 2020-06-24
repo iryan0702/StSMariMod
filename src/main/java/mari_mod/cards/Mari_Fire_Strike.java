@@ -2,6 +2,7 @@ package mari_mod.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -23,7 +24,7 @@ public class Mari_Fire_Strike extends AbstractMariCard {
     private static final int RADIANCE_PER_ENERGY = 2;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.SELF;
 
     public Mari_Fire_Strike(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
@@ -32,14 +33,21 @@ public class Mari_Fire_Strike extends AbstractMariCard {
         this.baseRadiance = RADIANCE_PER_ENERGY;
         this.radiance = this.baseRadiance;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.isAnyTarget = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractCreature target;
+        if(m != null) {
+            target = m;
+        }else{
+            target = p;
+        }
         if (this.energyOnUse < EnergyPanel.totalCount) {
             this.energyOnUse = EnergyPanel.totalCount;
         }
-        AbstractDungeon.actionManager.addToBottom(new MariFireStrikeAction(p, m, this.energyOnUse, this.upgraded, this.freeToPlayOnce, this.radiance));
+        AbstractDungeon.actionManager.addToBottom(new MariFireStrikeAction(p, target, this.energyOnUse, this.upgraded, this.freeToPlayOnce, this.radiance));
     }
 
     @Override
