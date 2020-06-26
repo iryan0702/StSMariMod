@@ -34,7 +34,6 @@ public class Mari_Glimmer extends AbstractMariCard implements OnRecallCard{
         this.radiance = this.baseRadiance;
 
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
-        this.recallPreview = true;
     }
 
     @Override
