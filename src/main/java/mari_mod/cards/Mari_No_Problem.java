@@ -26,8 +26,8 @@ public class Mari_No_Problem extends AbstractMariCard {
     //private static final int UPGRADE_COST = 0;
     private static final int SHUFFLE_AMOUNT = 1;
     private static final int RECALL_AMOUT = 1;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_BLOCK = 4;
+    private static final int BLOCK = 7;
+    private static final int UPGRADE_BLOCK = 3;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
