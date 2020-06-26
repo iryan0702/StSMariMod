@@ -27,6 +27,7 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
     private static final int COST = 0;
     private static final int DAMAGE_AMT = 40;
     private static final int UPGRADE_DAMAGE_AMT = 10;
+    private static final int USE_THRESHOLD = 12;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
@@ -93,7 +94,7 @@ public class Mari_Perfect_Performance extends AbstractMariCard {
         if(!canUse){
             return false;
         }
-        canUse = MariMod.energySpentThisTurn > 10;
+        canUse = MariMod.energySpentThisTurn >= USE_THRESHOLD;
         if(!canUse){
             this.cantUseMessage = UPGRADE_DESCRIPTION;
         }
