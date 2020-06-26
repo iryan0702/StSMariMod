@@ -206,7 +206,7 @@
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. Gain !M! [E]. NL Draw !M! cards. NL Infinitely Upgradable. NL Exhaust."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !M! [E]. NL Draw !M! cards. NL Infinitely Upgradable. NL Exhaust."
   },
   "MariMod:Mari_Supervision": {
     "NAME": "Supervision",
