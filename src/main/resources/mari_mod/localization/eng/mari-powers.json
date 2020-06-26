@@ -1,7 +1,7 @@
 {
   "MariMod:Radiance_Power": {
     "NAME": "Radiance",
-    "DESCRIPTIONS": ["Whenever a creature gains Radiance, it takes damage equal to its total #yRadiance [REMOVE_SPACE].",
+    "DESCRIPTIONS": ["Whenever a creature gains Radiance, it loses HP equal to its total #yRadiance [REMOVE_SPACE].",
       " NL (Decreases to #b",
       " at the end of this creature's turn.)",
       "Mari deals #b",

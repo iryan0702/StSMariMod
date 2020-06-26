@@ -77,7 +77,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         this.amount += stackAmount;
         if(stackAmount > 0 && ((!this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)))) {
             this.flash();
-            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
+            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
         if(stackAmount > 0){
@@ -106,7 +106,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         }
         if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
             this.flash();
-            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
+            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
             this.amount2 = -1;
         }
@@ -128,7 +128,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
             this.amount += 1;
         }else if((!this.owner.isPlayer)) {
-            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS);
+            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
         burstOfParticles(this.amount*4);
