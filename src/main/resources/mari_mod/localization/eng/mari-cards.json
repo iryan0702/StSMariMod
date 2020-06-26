@@ -314,7 +314,8 @@
   },
   "MariMod:Mari_Lock_On": {
     "NAME": "\"Lock on!\"",
-    "DESCRIPTION": "Choose an enemy. After you target that enemy with a card this turn, gain [E]. NL Exhaust."
+    "DESCRIPTION": "Choose an enemy. After you target the enemy with a card this turn, gain [E]. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply 1 Vulnerable. After you target the enemy with a card this turn, gain [E]. NL Exhaust."
   },
   "MariMod:Mari_Hug": {
     "NAME": "Hug",

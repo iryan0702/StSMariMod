@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import mari_mod.powers.Lock_On_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,8 +19,8 @@ public class Mari_Lock_On extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -41,6 +42,9 @@ public class Mari_Lock_On extends AbstractMariCard {
             }
         }
         if(!enemyLockedOn){
+            if(this.upgraded){
+                addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
+            }
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Lock_On_Power(m, 0, m, null), 0));
         }
     }
@@ -53,8 +57,9 @@ public class Mari_Lock_On extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
         }
     }
 }
