@@ -181,7 +181,7 @@
   },
   "MariMod:Mari_Pretty_Bomber_Head": {
     "NAME": "\"Pretty Bomber Head!\"",
-    "DESCRIPTION": "Become Confused. NL Draw !M! more card each turn."
+    "DESCRIPTION": "Whenever you draw a card, randomize its cost to an equal or lower amount."
   },
   "MariMod:Mari_The_Light_We_Chase": {
     "NAME": "The Light We Chase",
