@@ -130,14 +130,17 @@ public abstract class AbstractMariCard extends CustomCard {
     }*/
 
     @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+
+        applyPowersToRadiance();
+    }
+
+    @Override
     public void applyPowers() {
         super.applyPowers();
 
-        float tmpRadiance = baseRadiance;
-        radiance = MathUtils.floor(tmpRadiance);
-
-        float tmpGoldCost = baseGoldCost;
-        goldCost = MathUtils.floor(tmpGoldCost);
+        applyPowersToRadiance();
 
         this.glowColor = getNotKindledColor();
 
@@ -154,6 +157,15 @@ public abstract class AbstractMariCard extends CustomCard {
                 System.out.println("creating new preview for: " + this.cardsToPreview.name);
             }
         }
+
+    }
+
+    public void applyPowersToRadiance(){
+        float tmpRadiance = baseRadiance;
+        radiance = MathUtils.floor(tmpRadiance);
+
+        float tmpGoldCost = baseGoldCost;
+        goldCost = MathUtils.floor(tmpGoldCost);
 
         if(faded){
             setFadedStats();

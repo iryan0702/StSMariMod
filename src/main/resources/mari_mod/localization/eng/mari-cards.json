@@ -255,10 +255,7 @@
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
-    "DESCRIPTION": "Deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance to an enemy if it does not intend to attack.",
-    "EXTENDED_DESCRIPTION": [
-      "That enemy wants to attack. Not approved!"
-    ]
+    "DESCRIPTION": "marimod:Fading. NL Remove all Block from ANY character, then apply !MARI_RADIANCE! marimod:Radiance. Applies 1 more for each !M! Block removed."
   },
   "MariMod:Mari_Dolphin_Strike": {
     "NAME": "Dolphin Strike",
