@@ -148,7 +148,7 @@ public abstract class AbstractMariCard extends CustomCard {
             AbstractCard target = MariRecallAction.findRecallTarget(recallIthCard);
             if(target == null){
                 this.cardsToPreview = null;
-            }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid || (this.cardsToPreview instanceof AbstractMariCard && ((AbstractMariCard)this.cardsToPreview).faded) != ((AbstractMariCard)target).faded) {
+            }else if(this.cardsToPreview == null || this.cardsToPreview.uuid != target.uuid || this.cardsToPreview.cost != target.cost || (this.cardsToPreview instanceof AbstractMariCard && ((AbstractMariCard)this.cardsToPreview).faded) != ((AbstractMariCard)target).faded) {
                 this.cardsToPreview = target.makeSameInstanceOf();
                 if(this.cardsToPreview instanceof AbstractMariCard && ((AbstractMariCard) this.cardsToPreview).faded){
                     ((AbstractMariCard)this.cardsToPreview).baseRadiance = 1;
