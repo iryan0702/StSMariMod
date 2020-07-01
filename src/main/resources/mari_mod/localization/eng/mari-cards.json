@@ -124,7 +124,7 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile. NL marimod:Kindle: marimod:Recall."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile, then marimod:Recall."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",

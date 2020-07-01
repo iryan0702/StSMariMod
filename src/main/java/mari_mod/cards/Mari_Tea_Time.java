@@ -34,27 +34,28 @@ public class Mari_Tea_Time extends AbstractMariCard {
         this.tags.add(MariCustomTags.SPEND);
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
-        this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
-        this.recallPreview = true;
+//        this.isAnyTarget = true;
+//        this.tags.add(MariCustomTags.KINDLE);
+//        this.recallPreview = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
-        if(m != null) {
-            target = m;
-        }else{
-            target = p;
-        }
+//        AbstractCreature target;
+//        if(m != null) {
+//            target = m;
+//        }else{
+//            target = p;
+//        }
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new MariPurgeCardsFromExhaustAction(true));
 
 
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction()));
+//        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
+//            this.successfulKindle(target);
+//        }
+//        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction()));
+        addToBot(new MariRecallAction());
     }
 
     @Override
