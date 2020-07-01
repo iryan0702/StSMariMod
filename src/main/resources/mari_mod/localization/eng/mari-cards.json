@@ -403,7 +403,7 @@
   },
   "MariMod:Mari_Let_Loose": {
     "NAME": "Let Loose",
-    "DESCRIPTION": "Gain [E] and deal !D! damage, then discard all cards you cannot play and deal !D! damage for each."
+    "DESCRIPTION": "Gain [E] and deal !D! damage, then replace each card you cannot play with a *Spark."
   },
   "MariMod:Mari_Repression": {
     "NAME": "Repression",
@@ -438,6 +438,11 @@
     "NAME": "Toss Uniform",
     "DESCRIPTION": "Deal !D! damage to ANY character, it gains twice the damage taken as Block.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Deal !D! damage to ANY character, it gains twice the damage taken as Block."
+  },
+  "MariMod:Mari_Spark": {
+    "NAME": "Spark",
+    "DESCRIPTION": "marimod:Fading. NL If you target an enemy, deal !D! damage. NL Otherwise, marimod:Recall.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL If you target an enemy, deal !D! damage. NL Otherwise, marimod:Recall."
   },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",

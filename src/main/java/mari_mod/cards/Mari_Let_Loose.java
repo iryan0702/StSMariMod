@@ -3,6 +3,7 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -34,13 +35,15 @@ public class Mari_Let_Loose extends AbstractMariCard {
         this.damage = this.baseDamage;
 
         this.tags.add(CardTags.STRIKE);
-        this.tags.add(MariCustomTags.RECOVER);
+
+        this.cardsToPreview = new Mari_Spark();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        AbstractDungeon.actionManager.addToBottom(new MariRepressedStrikeAction(m, this.damage));
+        AbstractDungeon.actionManager.addToBottom(new MariRepressedStrikeAction());
     }
 
     @Override

@@ -718,6 +718,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Anticipate());
             BaseMod.addCard(new Mari_Recurring_Theme());
             BaseMod.addCard(new Mari_Toss_Uniform());
+            BaseMod.addCard(new Mari_Spark());
 
             //BaseMod.addCard(new Mari_Drama1());
             //BaseMod.addCard(new Mari_Drama2());
