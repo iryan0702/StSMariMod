@@ -155,6 +155,13 @@
     "DESCRIPTIONS": ["Each stack of #yRadiance provides #b",
       "% more damage."]
   },
+  "MariMod:Exchange_Power": {
+    "NAME": "Exchange",
+    "DESCRIPTIONS": ["The next card you play draws a card and gives [E] equal to its cost instead.",
+      "The next #b",
+      " cards you play draws a card and gives [E] equal to its cost instead."
+    ]
+  },
   "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Gleam and Glean",
     "DESCRIPTIONS": ["Whenever you apply #yRadiance to an enemy, gain #b",

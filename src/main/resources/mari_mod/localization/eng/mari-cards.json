@@ -281,7 +281,8 @@
   },
   "MariMod:Mari_Wishing_Fountain": {
     "NAME": "Wishing Fountain",
-    "DESCRIPTION": "Gain !M! Gold and [E]. NL Lose any unspent Gold from this card next turn. NL Exhaust."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL The next card you play regains all energy costs and draws a card instead.",
+    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL The next !M! cards you play regains all energy costs and draws a card instead."
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
