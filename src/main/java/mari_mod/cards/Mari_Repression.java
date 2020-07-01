@@ -22,6 +22,7 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 3;
+    private static final int ENERGY_GAIN = 2;
     private static final CardType TYPE = CardType.STATUS;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -29,12 +30,11 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
     public Mari_Repression(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
         tags.add(MariCustomTags.GLARING);
-        tags.add(MariCustomTags.RECOVER);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
+        addToBot(new GainEnergyAction(ENERGY_GAIN));
     }
 
     @Override
