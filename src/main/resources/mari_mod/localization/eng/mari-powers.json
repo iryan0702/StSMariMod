@@ -104,7 +104,7 @@
   "MariMod:Flawless_Form_Power": {
     "NAME": "Flawless Form",
     "DESCRIPTIONS": [
-      "Whenever you spend #b1 more [E] on a card than the last, refund all energy spent (The last card you played cost #b",
+      "Whenever you spend #b1 more [E] on a card than the last, regain all energy spent (The last card you played cost #b",
       " [REMOVE_SPACE].)"
     ]
   },

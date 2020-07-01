@@ -286,8 +286,8 @@
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
-    "DESCRIPTION": "Whenever you spend 1 more [E] on a card than the last, πrefund all energy spent.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend 1 more [E] on a card than the last, πrefund all energy spent."
+    "DESCRIPTION": "Whenever you spend 1 more [E] on a card than the last, regain all energy spent.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Whenever you spend 1 more [E] on a card than the last, regain all energy spent."
   },
   "MariMod:Mari_Heavy_Metal": {
     "NAME": "Heavy Metal",
