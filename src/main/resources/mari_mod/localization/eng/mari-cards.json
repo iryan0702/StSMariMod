@@ -407,7 +407,7 @@
   },
   "MariMod:Mari_Repression": {
     "NAME": "Repression",
-    "DESCRIPTION": "marimod:Glaring. marimod:Recover. NL marimod:Reflect: gain 1 Frail or Vulnerable. NL Purge when discarded."
+    "DESCRIPTION": "marimod:Glaring. NL marimod:Reflect: choose to gain 1 Frail or Vulnerable. NL Purge when discarded. NL Gain 2 Energy."
   },
   "MariMod:Mari_$Choose_Pain": {
     "NAME": "Pain",
