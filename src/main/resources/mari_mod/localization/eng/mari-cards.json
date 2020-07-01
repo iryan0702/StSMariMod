@@ -173,7 +173,7 @@
   },
   "MariMod:Mari_zzz": {
     "NAME": "zzz...?",
-    "DESCRIPTION": "Whenever you draw this card, gain !B! Block and 1 Vulnerable. NL marimod:Kindle: Gain [E] and lose 2 Vulnerable."
+    "DESCRIPTION": "Whenever you draw this card, gain !B! Block and 1 Vulnerable. NL marimod:Kindle: lose !M! Vulnerable."
   },
   "MariMod:Mari_Second_Season": {
     "NAME": "Second Season",

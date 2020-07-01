@@ -25,10 +25,11 @@ public class Mari_zzz extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int BLOCK = 10;
     private static final int UPGRADE_BLOCK = 3;
-    private static final int ENERGY_GAIN = 1;
+    private static final int VULN_LOSS = 1;
+    private static final int VULN_LOSS_UPGRADE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,6 +38,7 @@ public class Mari_zzz extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseBlock = BLOCK;
         this.block = this.baseBlock;
+        this.magicNumber = this.baseMagicNumber = VULN_LOSS;
         this.tags.add(MariCustomTags.KINDLE);
         this.isAnyTarget = true;
     }
@@ -62,8 +64,7 @@ public class Mari_zzz extends AbstractMariCard {
         }
 
         ArrayList<AbstractGameAction> things = new ArrayList<>();
-        things.add((new MariReducePowerIfHavePowerAction(p,p, VulnerablePower.POWER_ID,2)));
-        things.add((new GainEnergyAction(ENERGY_GAIN)));
+        things.add((new MariReducePowerIfHavePowerAction(p,p, VulnerablePower.POWER_ID,this.magicNumber)));
 
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, things));
     }
@@ -72,6 +73,7 @@ public class Mari_zzz extends AbstractMariCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
+            upgradeMagicNumber(VULN_LOSS_UPGRADE);
         }
     }
 }
