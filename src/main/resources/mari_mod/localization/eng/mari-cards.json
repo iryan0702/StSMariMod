@@ -262,7 +262,7 @@
   },
   "MariMod:Mari_Dolphin_Strike": {
     "NAME": "Dolphin Strike",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL marimod:Kindle: Deal damage an extra time."
+    "DESCRIPTION": "marimod:Glaring. Ethereal. NL Deal !D! damage twice. NL marimod:Reflect: Deals !M! more damage this combat."
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
