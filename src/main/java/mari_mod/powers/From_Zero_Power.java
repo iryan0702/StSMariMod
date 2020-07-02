@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
 import mari_mod.actions.MariApplyRandomRadianceAction;
+import mari_mod.cards.OnRecallCard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +45,9 @@ public class From_Zero_Power extends AbstractPower implements NonStackablePower
         if(cost == 0){
             this.flashWithoutSound();
             action.exhaustCard = true;
-            AbstractDungeon.actionManager.addToBottom(new MariApplyRandomRadianceAction(this.amount));
+            for (int i = 0; i < this.amount; i++) {
+                AbstractDungeon.actionManager.addToBottom(new MariApplyRandomRadianceAction(1));
+            }
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
         }
     }

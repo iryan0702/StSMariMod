@@ -8,11 +8,13 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.MariCustomTags;
 import mari_mod.cards.OnRecallCard;
 import mari_mod.cards.PurgeOnRecallCard;
 import mari_mod.patches.EphemeralCardPatch;
+import mari_mod.powers.OnRecallPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -64,6 +66,12 @@ public class MariRecallAction extends AbstractGameAction {
 
                 p.hand.refreshHandLayout();
                 p.hand.applyPowers();
+
+                for(AbstractRelic r: p.relics){
+                    if(r instanceof OnRecallPower){
+                        ((OnRecallPower)r).onRecallCard(c);
+                    }
+                }
 
                 if (c instanceof OnRecallCard) {
                     ((OnRecallCard) c).onRecall();

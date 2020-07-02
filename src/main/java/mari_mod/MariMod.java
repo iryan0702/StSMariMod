@@ -684,7 +684,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Devilish_Assistant());
             BaseMod.addCard(new Mari_Wishing_Fountain());
             BaseMod.addCard(new Mari_Reminisce());
-            //BaseMod.addCard(new Mari_From_Zero());
+            BaseMod.addCard(new Mari_From_Zero());
 
             BaseMod.addCard(new Mari_Pretty_Bomber_Head());
             BaseMod.addCard(new Mari_Tea_Time());
