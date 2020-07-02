@@ -297,9 +297,9 @@ public class MariMod implements
 
     //Hooked to start of AbstractPlayer.loseGold
     public static void loseGold(int amount){
-        if (AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
-            saveableKeeper.brilliance += amount;
-        }
+//        if (AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
+//            saveableKeeper.brilliance += amount;
+//        }
     }
 
     public static void gainBrillianceIndependently(int goldInvested){
