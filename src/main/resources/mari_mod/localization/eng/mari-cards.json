@@ -255,7 +255,7 @@
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
-    "DESCRIPTION": "marimod:Fading. NL Remove all Block from ANY character, then apply !MARI_RADIANCE! marimod:Radiance. Applies 1 more for each !M! Block removed."
+    "DESCRIPTION": "marimod:Fading. NL Remove all Block from ANY character, then apply !MARI_RADIANCE! marimod:Radiance. Applies 1 more for each !M! Block it has."
   },
   "MariMod:Mari_Dolphin_Strike": {
     "NAME": "Dolphin Strike",
