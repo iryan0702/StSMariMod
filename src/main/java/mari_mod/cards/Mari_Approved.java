@@ -60,7 +60,8 @@ public class Mari_Approved extends AbstractMariCard {
         this.baseRadiance = this.realBaseRadiance;
 
         int blockCount = 0;
-        if(mo == null){ // mo == null applied on play for SELF target cards
+        AbstractPlayer p = AbstractDungeon.player;
+        if(mo == null || (p.isDraggingCard && p.hoveredCard.equals(this) && target == CardTarget.SELF)){ // mo == null applied on play for SELF target cards (not null on preview when there's only one enemy: add SELF condition when player is dragging this card)
             blockCount = AbstractDungeon.player.currentBlock;
         }else{
             blockCount = mo.currentBlock;
