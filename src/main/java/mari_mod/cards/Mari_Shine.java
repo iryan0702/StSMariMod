@@ -50,6 +50,22 @@ public class Mari_Shine extends AbstractMariCard {
     }
 
     @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+
+        this.baseRadiance = this.magicNumber;
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p.type == AbstractPower.PowerType.DEBUFF) {
+                this.baseRadiance += 2;
+            }
+        }
+
+        super.calculateCardDamage(mo);
+
+        this.baseRadiance = this.magicNumber;
+        this.modifiedRadiance = this.baseRadiance != this.radiance;
+    }
+
+    @Override
     public void applyPowers() {
 
         this.baseRadiance = this.magicNumber;
