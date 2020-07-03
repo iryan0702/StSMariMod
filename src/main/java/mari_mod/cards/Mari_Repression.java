@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariPurgeSpecificCardAction;
+import mari_mod.actions.MariRecallAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,6 +49,7 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
         choices.add(new Mari_$Choose_Grief());
         choices.add(new Mari_$Choose_Pain());
         this.addToBot(new ChooseOneAction(choices));
+        this.addToBot(new MariRecallAction());
     }
 
     @Override
