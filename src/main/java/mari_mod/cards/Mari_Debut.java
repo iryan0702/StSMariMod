@@ -1,6 +1,7 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,18 +16,19 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Debut extends AbstractMariCard{
+public class Mari_Debut extends AbstractMariCard implements OnRecallCard{
     public static final Logger logger = LogManager.getLogger(Mari_Debut.class.getName());
     public static final String ID = "MariMod:Mari_Debut";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 0;
+    private static final int COST = 1;
     //private static final int UPGRADE_COST = 0;
     //private static final int BASE_GOLD_COST = 10;
     private static final int BASE_RADIANCE = 4;
     private static final int RADIANCE_UPGRADE = 1;
+    private static final int ENERGY_GAIN = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ALL;
@@ -50,6 +52,11 @@ public class Mari_Debut extends AbstractMariCard{
         //addToBot(new MariDebutAction(this.radiance, false));
         //AbstractDungeon.actionManager.addToBottom(new MariDebutAction(this.radiance, false));
         //addToBot(new ModifyRadianceAction(this.uuid, RADIANCE_DECAY));
+    }
+
+    @Override
+    public void onRecall() {
+        addToTop(new GainEnergyAction(ENERGY_GAIN));
     }
 
     /*@Override

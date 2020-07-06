@@ -93,7 +93,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
+    "DESCRIPTION": "Innate. marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters. NL marimod:Reflect: Gain [E]."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
