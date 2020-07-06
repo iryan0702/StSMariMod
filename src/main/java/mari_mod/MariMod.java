@@ -128,7 +128,6 @@ public class MariMod implements
     public static int timesMariSpentGoldThisCombat = 0;
     public static int timesMariPlayedAttacksThisCombat = 0;
     public static int timesMariPlayedSkillsThisCombat = 0;
-    public static int timesOMGUsedThisTurn = 0;  //STAT RESET BY MARIOMG CARD
     public static boolean played0Cost = false;
     public static boolean played1Cost = false;
     public static boolean played2Cost = false;
@@ -269,7 +268,6 @@ public class MariMod implements
         timesMariPlayedAttacksThisCombat = 0;
         timesMariPlayedSkillsThisCombat = 0;
         timesMariSpentGoldThisCombat = 0;
-        timesOMGUsedThisTurn = 0;
         MariMod.recentPowers.clear();
         played0Cost = false;
         played1Cost = false;

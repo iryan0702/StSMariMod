@@ -320,11 +320,7 @@
   },
   "MariMod:Mari_Oh_My_God": {
     "NAME": "\"Oh My God!\"",
-    "DESCRIPTION": "Play and Exhaust a copy of the last Attack added to your deck on ALL attacking enemies. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Play and Exhaust a copy of the last Attack added to your deck on ALL enemies. NL Exhaust.",
-    "EXTENDED_DESCRIPTION": [
-      "Calm down! No one's not attacking!"
-    ]
+    "DESCRIPTION": "Trigger the marimod:Reflect effects of ALL cards in your exhaust pile. NL Exhaust."
   },
   "MariMod:Mari_Old_Costume": {
     "NAME": "Old Costume",
