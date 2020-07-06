@@ -21,6 +21,7 @@ public class Mari_Let_Loose extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
     private static final int ATTACK_DMG = 7;
     private static final int UPGRADE_ATTACK_DMG = 2;
@@ -43,7 +44,7 @@ public class Mari_Let_Loose extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        AbstractDungeon.actionManager.addToBottom(new MariRepressedStrikeAction());
+        AbstractDungeon.actionManager.addToBottom(new MariRepressedStrikeAction(this.upgraded));
     }
 
     @Override
@@ -54,8 +55,11 @@ public class Mari_Let_Loose extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
             upgradeName();
             upgradeDamage(UPGRADE_ATTACK_DMG);
+            this.cardsToPreview.upgrade();
         }
     }
 }

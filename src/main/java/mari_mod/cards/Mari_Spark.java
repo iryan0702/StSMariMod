@@ -27,6 +27,7 @@ public class Mari_Spark extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
     private static final int DAMAGE = 5;
+    private static final int UPGRADE_DAMAGE = 2;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,6 +38,8 @@ public class Mari_Spark extends AbstractMariCard {
         this.damage = this.baseDamage;
         this.isAnyTarget = true;
         this.recallPreview = true;
+
+        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
     @Override
@@ -64,6 +67,7 @@ public class Mari_Spark extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            upgradeDamage(UPGRADE_DAMAGE);
             this.selfRetain = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

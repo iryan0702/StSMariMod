@@ -25,9 +25,11 @@ import org.apache.logging.log4j.Logger;
 public class MariRepressedStrikeAction extends AbstractGameAction {
     private DamageInfo info;
     public static final Logger logger = LogManager.getLogger(MariRepressedStrikeAction.class.getName());
+    boolean upgraded;
 
-    public MariRepressedStrikeAction() {
+    public MariRepressedStrikeAction(boolean upgraded) {
         this.actionType = ActionType.CARD_MANIPULATION;
+        this.upgraded = upgraded;
     }
 
     public void update() {
@@ -39,7 +41,11 @@ public class MariRepressedStrikeAction extends AbstractGameAction {
         CardGroup g = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for(AbstractCard c: p.hand.group) {
             if(!c.canUse(p, null)) {
-                addToTop(new MakeTempCardInHandAction(new Mari_Spark()));
+                AbstractCard cardToAdd = new Mari_Spark();
+                if(upgraded){
+                    cardToAdd.upgrade();
+                }
+                addToTop(new MakeTempCardInHandAction(cardToAdd));
                 g.addToTop(c);
             }
         }
