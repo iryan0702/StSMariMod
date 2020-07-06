@@ -53,6 +53,10 @@ public class No_Problem_Power extends AbstractPower implements NonStackablePower
     }
 
     public void updateDescription() {
-        this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1];
+        if(this.amount == 1){
+            this.description = DESCRIPTION[0];
+        }else{
+            this.description = DESCRIPTION[1] + this.amount + DESCRIPTION[2];
+        }
     }
 }
