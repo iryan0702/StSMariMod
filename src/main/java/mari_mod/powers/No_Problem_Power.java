@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class No_Problem_Power extends AbstractPower implements NonStackablePower
+public class No_Problem_Power extends AbstractPower
 {
     public static final String POWER_ID = "MariMod:No_Problem_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
