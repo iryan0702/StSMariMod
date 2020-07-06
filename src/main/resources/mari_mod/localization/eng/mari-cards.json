@@ -290,7 +290,7 @@
   },
   "MariMod:Mari_Heavy_Metal": {
     "NAME": "Heavy Metal",
-    "DESCRIPTION": "Remove and apply all your Vulnerable to ALL enemies, then deal !D! damage to them."
+    "DESCRIPTION": "Apply !M! Vulnerable to ANY character. NL Deal !D! damage to ALL enemies, affected by your Vulnerable."
   },
   "MariMod:Mari_Stewshine": {
     "NAME": "Stewshine!",
