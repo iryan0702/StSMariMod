@@ -34,7 +34,6 @@ public class No_Problem_Power extends AbstractPower
         this.card = triggerCard;
         this.updateDescription();
         MariMod.setPowerImages(this);
-        this.priority = 10;
     }
 
     public void stackPower(int stackAmount)
