@@ -325,7 +325,7 @@
   "MariMod:Mari_Old_Costume": {
     "NAME": "Old Costume",
     "DESCRIPTION": "Target ANY character. It gains !M! Block and 1 Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Target ANY character. It gains !M! Block and 1 Vulnerable. NL Gain !B! Block."
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Target ANY character. It gains !M! Block and 1 Vulnerable."
   },
   "MariMod:Mari_Closure": {
     "NAME": "Closure",

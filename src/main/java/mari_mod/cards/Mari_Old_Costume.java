@@ -38,20 +38,22 @@ public class Mari_Old_Costume extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
         AbstractCreature target;
         if(m != null) {
             target = m;
         }else{
             target = p;
         }
+
+        if(this.upgraded) AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+
+
         if(m != null) {
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(target, p, this.magicNumber));
         }else{
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.magicNumber));
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new VulnerablePower(target, VULNERABLE, false), this.VULNERABLE));
-        if(this.upgraded) AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
     }
 
     @Override
