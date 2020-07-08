@@ -12,15 +12,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Gold_Gain_Start_Of_Turn_Power extends AbstractPower
+public class Gold_Gain_End_Of_Combat_Power extends AbstractPower
 {
-    public static final String POWER_ID = "MariMod:Gold_Gain_Start_Of_Turn_Power";
+    public static final String POWER_ID = "MariMod:Gold_Gain_End_Of_Combat_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static PowerType POWER_TYPE = PowerType.BUFF;
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
-    public Gold_Gain_Start_Of_Turn_Power(AbstractCreature owner, int bufferAmt)
+    public Gold_Gain_End_Of_Combat_Power(AbstractCreature owner, int bufferAmt)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
@@ -40,10 +40,9 @@ public class Gold_Gain_Start_Of_Turn_Power extends AbstractPower
         }
 
     @Override
-    public void atStartOfTurnPostDraw() {
-        super.atStartOfTurnPostDraw();
+    public void onVictory() {
+        super.onVictory();
         MariMod.gainGold(this.amount);
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
     }
 
     public void updateDescription() {

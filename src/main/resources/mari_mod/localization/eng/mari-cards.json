@@ -238,7 +238,7 @@
   },
   "MariMod:Mari_All_Or_Nothing": {
     "NAME": "\"All or Nothing!\"",
-    "DESCRIPTION": "Set the cost of ALL your cards to 0 or 3, randomly. NL marimod:Kindle: Does not affect 0-cost cards. NL Exhaust."
+    "DESCRIPTION": "Innate. Ethereal. NL Draw !M! cards. NL Lose ALL Gold until the end of combat. NL Exhaust."
   },
   "MariMod:Mari_Perfect_Performance": {
     "NAME": "Perfect Performance",

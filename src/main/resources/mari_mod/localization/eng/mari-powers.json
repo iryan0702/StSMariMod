@@ -107,9 +107,9 @@
       " [REMOVE_SPACE].)"
     ]
   },
-  "MariMod:Gold_Gain_Start_Of_Turn_Power": {
-    "NAME": "Gold Gain: Turn Start",
-    "DESCRIPTIONS": ["At the start of your next turn, gain #b",
+  "MariMod:Gold_Gain_End_Of_Combat_Power": {
+    "NAME": "Reclaim Spoils",
+    "DESCRIPTIONS": ["At the end of combat, gain #b",
       " Gold."]
   },
   "MariMod:Gold_Spend_Start_Of_Turn_Power": {

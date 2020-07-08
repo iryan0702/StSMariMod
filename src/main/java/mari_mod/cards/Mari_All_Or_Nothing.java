@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -21,36 +22,29 @@ public class Mari_All_Or_Nothing extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int UPGRADE_COST = 0;
-    private static final int COST = 3;
+    private static final int COST = 0;
+    private static final int DRAW = 4;
+    private static final int DRAW_UPGRADE = 6;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_All_Or_Nothing(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
+
         this.tags.add(MariCustomTags.QUOTATIONS);
-        this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+
+        this.magicNumber = this.baseMagicNumber = DRAW;
+
+        this.isEthereal = true;
         this.exhaust = true;
+        this.isInnate = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
-        if(m != null) {
-            target = m;
-        }else{
-            target = p;
-        }
-
-
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
-
-        AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new MariAllOrNothingAction(false, this)));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAllOrNothingAction(true, this)));
+        addToBot(new DrawCardAction(this.magicNumber));
+        addToBot(new MariAllOrNothingAction());
     }
 
     @Override
@@ -61,8 +55,8 @@ public class Mari_All_Or_Nothing extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            upgradeBaseCost(UPGRADE_COST);
             upgradeName();
+            upgradeMagicNumber(DRAW_UPGRADE);
         }
     }
 
