@@ -52,11 +52,11 @@ public class Gold_Spend_Start_Of_Turn_Power extends TwoAmountPowerByKiooehtButIJ
         super.atStartOfTurnPostDraw();
         this.flash();
         AbstractPlayer p = AbstractDungeon.player;
-        //addToBot(new MariSpendGoldAction(this.amount2)); TODO: DEPRECATED
+        addToBot(new MariSpendGoldAction(this.amount2));
         if(this.amount <= 1) {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, this.ID));
         }else {
-            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, this, 1));
         }
     }
 

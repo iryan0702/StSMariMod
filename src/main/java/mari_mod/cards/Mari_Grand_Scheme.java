@@ -33,6 +33,8 @@ public class Mari_Grand_Scheme extends AbstractMariCard {
         this.tags.add(MariCustomTags.SPEND);
         this.baseMagicNumber = GOLD_GAIN_TURNS;
         this.magicNumber = this.baseMagicNumber;
+        this.goldCost = this.baseGoldCost = GOLD_GAIN;
+        this.limitedByGoldCost = false;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 
@@ -42,6 +44,7 @@ public class Mari_Grand_Scheme extends AbstractMariCard {
             addToBot(new MariGainGoldAction(GOLD_GAIN));
         }
         addToBot(new ApplyPowerAction(p, p, new Gold_Spend_Start_Of_Turn_Power(p, this.magicNumber, GOLD_GAIN)));
+        this.goldCost = this.baseGoldCost = 0;
     }
 
     /*

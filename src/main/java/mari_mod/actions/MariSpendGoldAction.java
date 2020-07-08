@@ -9,19 +9,29 @@ import org.apache.logging.log4j.Logger;
 
 public class MariSpendGoldAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariSpendGoldAction.class.getName());
-    private AbstractMariCard sourceCard;
+    private AbstractMariCard sourceCard = null;
+    private int amount;
 
     public MariSpendGoldAction(AbstractMariCard sourceCard) {
         this.actionType = ActionType.SPECIAL;
         this.sourceCard = sourceCard;
     }
 
+    public MariSpendGoldAction(int amount) {
+        this.actionType = ActionType.SPECIAL;
+        this.amount = amount;
+    }
+
     public void update() {
-        if(this.sourceCard.goldCost > 0) {
-            MariMod.spendGold(this.sourceCard.goldCost);
+        if(this.sourceCard != null) {
+            if (this.sourceCard.goldCost > 0) {
+                MariMod.spendGold(this.sourceCard.goldCost);
+            }
+            this.sourceCard.goldCost = 0;
+            this.sourceCard.baseGoldCost = 0;
+        }else{
+            MariMod.spendGold(amount);
         }
-        this.sourceCard.goldCost = 0;
-        this.sourceCard.baseGoldCost = 0;
         this.isDone = true;
     }
 }

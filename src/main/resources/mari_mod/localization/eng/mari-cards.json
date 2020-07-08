@@ -303,7 +303,7 @@
   },
   "MariMod:Mari_Grand_Scheme": {
     "NAME": "Grand Scheme",
-    "DESCRIPTION": "marimod:Fading. NL Gain 15 Gold !M! times. At the start of your next !M! turns, marimod:Invest 15."
+    "DESCRIPTION": "marimod:Fading. NL Gain 15 Gold !M! times. At the start of your next !M! turns, marimod:Invest !MARI_GOLD_COST!."
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
