@@ -28,7 +28,7 @@ public class Mari_Devilish_Assistant extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Devilish_Assistant_Power(p, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Devilish_Assistant_Power(p)));
     }
 
     public void upgrade() {

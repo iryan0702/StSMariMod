@@ -21,9 +21,7 @@
   },
   "MariMod:Devilish_Assistant_Power": {
     "NAME": "Devilish Assistant",
-    "DESCRIPTIONS": ["At the start your turn, play the last card you played on the same target for free.",
-      "At the start your turn, play the last card you played on the same target for free #b",
-      " times."]
+    "DESCRIPTIONS": ["At the start your turn, #yexhaust a card and gain [E] equal to its cost."]
   },
   "MariMod:Character_Development_Power": {
     "NAME": "Character Development",
