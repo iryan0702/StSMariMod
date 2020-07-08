@@ -275,8 +275,8 @@
   },
   "MariMod:Mari_Higher_Ups": {
     "NAME": "Higher-Ups",
-    "DESCRIPTION": "Choose ANY Mari card to add to your hand. Reduce its cost to 0 this turn and marimod:Invest !MARI_GOLD_COST! for each [E] reduced. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Choose ANY Upgraded Mari card to add to your hand. Reduce its cost to 0 this turn and marimod:Invest !MARI_GOLD_COST! for each [E] reduced. NL Exhaust."
+    "DESCRIPTION": "This turn, the next card you spend 3 or more [E] on is played twice.",
+    "UPGRADE_DESCRIPTION": "The next card you spend 3 or more [E] on is played twice."
   },
   "MariMod:Mari_Wishing_Fountain": {
     "NAME": "Wishing Fountain",

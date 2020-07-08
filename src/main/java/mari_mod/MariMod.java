@@ -15,7 +15,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -48,7 +47,6 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Turnip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import mari_mod.actions.CardFlashAction;
 import mari_mod.actions.MariUpdateRecentPowersAction;
@@ -361,6 +359,13 @@ public class MariMod implements
         }
         p.hand.applyPowers();
         p.hand.glowCheck();
+    }
+
+    public static int calculateEffectiveCardCost(AbstractCard card){
+        int cost = card.costForTurn;
+        if (card.cost == -1) cost = card.energyOnUse;
+        if (card.freeToPlayOnce || card.isInAutoplay) cost = 0;
+        return cost;
     }
 
     public static void afterPlayerBeforeEnemyTurn(){

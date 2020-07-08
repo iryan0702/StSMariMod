@@ -165,6 +165,18 @@
     "NAME": "Pretty Bomber ...Head?",
     "DESCRIPTIONS": ["Whenever you draw a card, randomize its cost to an equal or lower amount."]
   },
+  "MariMod:Higher_Ups_Turn_Power": {
+    "NAME": "Higher-Ups",
+    "DESCRIPTIONS": ["This turn, the next card you spend 3 or more [E] on is played twice.",
+      "This turn, the next #b",
+      " cards you spend 3 or more [E] on are played twice."]
+  },
+  "MariMod:Higher_Ups_Power": {
+    "NAME": "Higher-Higher-Ups",
+    "DESCRIPTIONS": ["The next card you spend 3 or more [E] on is played twice.",
+      "The next #b",
+      " cards you spend 3 or more [E] on are played twice."]
+  },
   "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Gleam and Glean",
     "DESCRIPTIONS": ["Whenever you apply #yRadiance to an enemy, gain #b",
