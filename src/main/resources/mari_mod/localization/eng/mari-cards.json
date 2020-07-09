@@ -356,7 +356,8 @@
   },
   "MariMod:Mari_Excitement": {
     "NAME": "Excitement",
-    "DESCRIPTION": "After drawing 3 cards in a turn, whenever you draw a card, gain !M! marimod:Radiance."
+    "DESCRIPTION": "For every [E] you spend, gain 1 marimod:Radiance.",
+    "UPGRADE_DESCRIPTION": "Gain [E]. NL For every [E] you spend, gain 1 marimod:Radiance."
   },
   "MariMod:Mari_Lie_In_Wait": {
     "NAME": "Lie In Wait",

@@ -2,6 +2,7 @@ package mari_mod.powers;
 
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -23,15 +24,13 @@ public class Excitement_Power extends AbstractPower
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     public static final int REQUIRED_DRAW = 3;
-    public int radianceGain;
     public Excitement_Power(AbstractCreature owner, int bufferAmt)
     {
         this.name = NAME;
         this.type = POWER_TYPE;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = 0;
-        this.radianceGain = bufferAmt;
+        this.amount = bufferAmt;
         this.isTurnBased = false;
         this.updateDescription();
         this.priority = 6;
@@ -42,23 +41,16 @@ public class Excitement_Power extends AbstractPower
     {
         logger.info("this stacks: " + stackAmount);
         this.fontScale = 8.0F;
-        this.radianceGain += stackAmount;
+        this.amount += stackAmount;
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        this.amount = 0;
-    }
-
-    @Override
-    public void onCardDraw(AbstractCard card) {
+    public void onUseCard(AbstractCard card, UseCardAction action) {
         AbstractPlayer p = AbstractDungeon.player;
-        super.onCardDraw(card);
-        this.amount++;
-        if(this.amount > REQUIRED_DRAW){
-            for (int i = 0; i < this.radianceGain; i++) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, 1), 1));
-            }
+        super.onUseCard(card, action);
+        int repeat = MariMod.calculateEffectiveCardCost(card) * this.amount;
+        for(int i = 0; i < repeat; i++){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, 1), 1));
         }
     }
 
@@ -72,10 +64,10 @@ public class Excitement_Power extends AbstractPower
     public void updateDescription() {
         //this.description = DESCRIPTION[0] + this.amount + DESCRIPTION[1] + (int) (damageBoost*100F+0.1F) + DESCRIPTION[2];
 
-        if(this.radianceGain == 1) {
+        if(this.amount == 1) {
             this.description = DESCRIPTION[0];
         }else{
-            this.description = DESCRIPTION[1] + this.radianceGain + DESCRIPTION[2];
+            this.description = DESCRIPTION[1] + this.amount + DESCRIPTION[2];
         }
     }
 }
