@@ -2,7 +2,6 @@ package mari_mod.actions;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -55,26 +54,26 @@ public class MariRecallAction extends AbstractGameAction {
                 addToTop(new MariPurgeSpecificCardAction(c,AbstractDungeon.player.limbo,false));
             }else {
                 if (p.hand.size() >= BaseMod.MAX_HAND_SIZE) {
-                    p.drawPile.moveToDiscardPile(c);
                     p.createHandIsFullDialog();
+                    recalledCard = null;
                 } else {
                     p.hand.addToHand(c);
-                }
 
-                c.fadingOut = false;
-                p.exhaustPile.removeCard(c);
+                    c.fadingOut = false;
+                    p.exhaustPile.removeCard(c);
 
-                p.hand.refreshHandLayout();
-                p.hand.applyPowers();
+                    p.hand.refreshHandLayout();
+                    p.hand.applyPowers();
 
-                for(AbstractRelic r: p.relics){
-                    if(r instanceof OnRecallPower){
-                        ((OnRecallPower)r).onRecallCard(c);
+                    for(AbstractRelic r: p.relics){
+                        if(r instanceof OnRecallPower){
+                            ((OnRecallPower)r).onRecallCard(c);
+                        }
                     }
-                }
 
-                if (c instanceof OnRecallCard) {
-                    ((OnRecallCard) c).onRecall();
+                    if (c instanceof OnRecallCard) {
+                        ((OnRecallCard) c).onRecall();
+                    }
                 }
             }
         }
