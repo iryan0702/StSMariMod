@@ -49,7 +49,8 @@
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
-    "DESCRIPTION": "Whenever you spend less [E] on a card than the last, draw !M! card."
+    "DESCRIPTION": "Whenever you spend less [E] on a card than the last, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain [E]. NL Whenever you spend less [E] on a card than the last, draw !M! card."
   },
   "MariMod:Mari_Mic_Check": {
     "NAME": "Mic Check",
@@ -69,7 +70,8 @@
   },
   "MariMod:Mari_Character_Development": {
     "NAME": "Character Development",
-    "DESCRIPTION": "Whenever you fully lose a debuff, NL gain 2 Strength."
+    "DESCRIPTION": "Whenever you fully lose a debuff, NL gain 2 Strength.",
+    "UPGRADE_DESCRIPTION": "Gain [E]. NL Whenever you fully lose a debuff, NL gain 2 Strength."
   },
   "MariMod:Mari_Shining_Tornado": {
     "NAME": "\"Mari's Shining Tornado!\"",
