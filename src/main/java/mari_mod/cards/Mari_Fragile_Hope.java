@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import mari_mod.actions.MariFragileHopeAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,7 +53,7 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
         if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
             this.successfulKindle(target);
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariRecallAction()));
+        addToBot(new MariSuccessfulKindleAction(target, new MariRecallAction(new MariFragileHopeAction())));
 
     }
 
