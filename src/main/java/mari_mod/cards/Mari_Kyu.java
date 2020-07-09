@@ -1,7 +1,6 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,7 +13,7 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Kyu extends AbstractMariCard {
+public class Mari_Kyu extends AbstractMariCard implements OnRecallCard{
     public static final Logger logger = LogManager.getLogger(Mari_Strike.class.getName());
     public static final String ID = "MariMod:Mari_Kyu";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -23,7 +22,7 @@ public class Mari_Kyu extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 9;
     private static final int RADIANCE_COUNT = 9;
-    private static final int LESS_COST = 2;
+    private static final int LESS_COST = 3;
     private static final int LESS_COST_UPGRADE = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -46,7 +45,8 @@ public class Mari_Kyu extends AbstractMariCard {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
     }
 
-    public void triggerOnExhaust() {
+    @Override
+    public void onRecall() {
         for(int i = 0; i < this.magicNumber; i++) {
             this.addToTop(new ReduceCostAction(this.uuid, 1));
         }
