@@ -7,15 +7,16 @@ package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.cards.MariCustomTags;
 
 import java.util.ArrayList;
 
 public class MariSecondSeasonAction extends AbstractGameAction {
-    private ArrayList<AbstractCard> list = new ArrayList<AbstractCard>();
     private AbstractPlayer p = AbstractDungeon.player;
 
     public MariSecondSeasonAction() {
@@ -24,26 +25,36 @@ public class MariSecondSeasonAction extends AbstractGameAction {
     }
 
     public void update() {
-        if(!p.exhaustPile.isEmpty()) {
+        replaceAndMoveToDrawFrom(p.exhaustPile);
+        replaceAndMoveToDrawFrom(p.drawPile);
+        replaceAndMoveToDrawFrom(p.discardPile);
+        replaceAndMoveToDrawFrom(p.hand);
 
-            ArrayList<AbstractCard> cardsToMove = new ArrayList<>();
-            for(AbstractCard cardToCheck: p.exhaustPile.group){
-                if(cardToCheck.hasTag(MariCustomTags.RADIANCE)) {
-                    cardsToMove.add(cardToCheck);
-                }
-            }
-            for(AbstractCard cardToRetrieve: cardsToMove) {
-                    cardToRetrieve.unfadeOut();
-                    cardToRetrieve.freeToPlayOnce = true;
-                    p.drawPile.addToRandomSpot(cardToRetrieve);
+        p.hand.refreshHandLayout();
+        p.hand.applyPowers();
 
-                    cardToRetrieve.fadingOut = false;
-                    p.exhaustPile.removeCard(cardToRetrieve);
+        this.isDone = true;
+    }
 
-                    p.hand.refreshHandLayout();
-                    p.hand.applyPowers();
+    public void replaceAndMoveToDrawFrom(CardGroup cardGroup){
+
+        ArrayList<AbstractCard> cardsToMove = new ArrayList<>();
+        for(AbstractCard cardToCheck: cardGroup.group){
+            if(cardToCheck instanceof AbstractMariCard && cardToCheck.hasTag(MariCustomTags.RADIANCE) && ((AbstractMariCard)cardToCheck).faded) {
+                cardsToMove.add(cardToCheck);
             }
         }
-        this.isDone = true;
+        for(AbstractCard cardToRetrieve: cardsToMove) {
+            AbstractCard replacement = cardToRetrieve.makeCopy();
+
+            for (int i = 0; i < cardToRetrieve.timesUpgraded; i++) {
+                replacement.upgrade();
+            }
+
+            p.drawPile.addToRandomSpot(replacement);
+            cardGroup.removeCard(cardToRetrieve);
+
+        }
+
     }
 }

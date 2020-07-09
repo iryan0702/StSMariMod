@@ -177,7 +177,8 @@
   },
   "MariMod:Mari_Second_Season": {
     "NAME": "Second Season",
-    "DESCRIPTION": "marimod:Fading. NL Return marimod:Radiance cards from your exhaust pile to your draw pile, they cost 0 until played."
+    "DESCRIPTION": "marimod:Fading. NL Replace ALL marimod:Faded marimod:Radiance cards with marimod:Fading copies and shuffle them into your draw pile.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Replace ALL marimod:Faded marimod:Radiance cards with marimod:Fading copies and shuffle them into your draw pile."
   },
   "MariMod:Mari_Pretty_Bomber_Head": {
     "NAME": "\"Pretty Bomber Head!\"",

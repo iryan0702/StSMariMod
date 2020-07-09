@@ -17,8 +17,8 @@ public class Mari_Second_Season extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-    private static final int COST_UPGRADE = 0;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -42,7 +42,9 @@ public class Mari_Second_Season extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(COST_UPGRADE);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
+            selfRetain = true;
         }
     }
 }
