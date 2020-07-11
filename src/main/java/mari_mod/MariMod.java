@@ -40,16 +40,12 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Turnip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import mari_mod.actions.CardFlashAction;
-import mari_mod.actions.MariUpdateRecentPowersAction;
 import mari_mod.cards.*;
 import mari_mod.charSelectScreen.MariCharacterSelectScreen;
 import mari_mod.characters.Mari;
@@ -120,7 +116,7 @@ public class MariMod implements
 
 
     public static MariSavables saveableKeeper = new MariSavables();
-    public static ArrayList<AbstractPower> recentPowers = new ArrayList<>();
+    public static ArrayList<AbstractPower> recentDebuffs = new ArrayList<>();
     public static MariInvestedGold investedGoldTopPanelItem;
     public static int goldSpentByMariThisCombat = 0;
     public static int timesMariSpentGoldThisCombat = 0;
@@ -142,11 +138,36 @@ public class MariMod implements
 
         AbstractPlayer p = AbstractDungeon.player;
 
+        for(AbstractPower power: recentDebuffs){
+            if(getEffectivePowerType(power) != AbstractPower.PowerType.DEBUFF || !p.powers.contains(power)){
+                for(AbstractPower power1: p.powers){
+                    if(power1 instanceof Character_Development_Power){
+                        power1.onSpecificTrigger();
+                    }
+                }
+            }
+        }
 
-        AbstractDungeon.actionManager.addToTop(new MariUpdateRecentPowersAction());
+        for(AbstractPower power: p.powers){
+            if(getEffectivePowerType(power) == AbstractPower.PowerType.DEBUFF && !recentDebuffs.contains(power)){
+                for(AbstractPower power1: p.powers){
+                    if(power1 instanceof Withdrawal_Power){
+                        power1.onSpecificTrigger();
+                    }
+                }
+                for(AbstractCard card: getAllInCombatCards()){
+                    if(card instanceof Mari_Slap){
+                        ((Mari_Slap)card).boost();
+                    }
+                }
+            }
+        }
 
-        if(p.hasPower(Character_Development_Power.POWER_ID)) {
-            p.getPower(Character_Development_Power.POWER_ID).onSpecificTrigger();
+        recentDebuffs.clear();
+        for(AbstractPower power: AbstractDungeon.player.powers){
+            if(getEffectivePowerType(power) == AbstractPower.PowerType.DEBUFF){
+                recentDebuffs.add(power);
+            }
         }
 
         if(p.hasPower(VulnerablePower.POWER_ID)){
@@ -180,9 +201,28 @@ public class MariMod implements
         p.hand.glowCheck();
     }
 
+    public static AbstractPower.PowerType getEffectivePowerType(AbstractPower p){
+        if(p instanceof StrengthPower || p instanceof DexterityPower || p instanceof FocusPower){
+            if(p.amount == 0){
+                return null;
+            }
+        }
+        return p.type;
+    }
+
+    public static ArrayList<AbstractCard> getAllInCombatCards(){
+        ArrayList<AbstractCard> retVal = new ArrayList<>();
+        AbstractPlayer p = AbstractDungeon.player;
+        retVal.addAll(p.drawPile.group);
+        retVal.addAll(p.hand.group);
+        retVal.addAll(p.exhaustPile.group);
+        retVal.addAll(p.discardPile.group);
+        return retVal;
+    }
+
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if(abstractPower.type == AbstractPower.PowerType.DEBUFF && abstractCreature.isPlayer){
+        if(getEffectivePowerType(abstractPower) == AbstractPower.PowerType.DEBUFF && abstractCreature.isPlayer){
             MariStatTracker.debuffsReceivedThisAndLastEnemyTurn++;
         }
     }
@@ -266,7 +306,7 @@ public class MariMod implements
         timesMariPlayedAttacksThisCombat = 0;
         timesMariPlayedSkillsThisCombat = 0;
         timesMariSpentGoldThisCombat = 0;
-        MariMod.recentPowers.clear();
+        recentDebuffs.clear();
         played0Cost = false;
         played1Cost = false;
         played2Cost = false;

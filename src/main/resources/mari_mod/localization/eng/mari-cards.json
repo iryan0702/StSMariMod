@@ -254,7 +254,7 @@
   },
   "MariMod:Mari_Slap": {
     "NAME": "Slap!",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage for each debuff you received this turn and last enemy turn."
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more whenever you gain a debuff you do not already have. NL Exhaust."
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
@@ -340,7 +340,7 @@
   },
   "MariMod:Mari_Withdrawal": {
     "NAME": "Withdrawal",
-    "DESCRIPTION": "Whenever you gain a debuff, gain !M! Block."
+    "DESCRIPTION": "Whenever you gain a debuff you do not have, gain !M! Block."
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",

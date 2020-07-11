@@ -1,9 +1,7 @@
 package mari_mod.powers;
 
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Withdrawal_Power extends AbstractPower implements OnReceivePowerPower
+public class Withdrawal_Power extends AbstractPower
 {
     public static final String POWER_ID = "MariMod:Withdrawal_Power";
     private static final PowerStrings cardStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -43,12 +41,9 @@ public class Withdrawal_Power extends AbstractPower implements OnReceivePowerPow
     }
 
     @Override
-    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if(power.type == PowerType.DEBUFF && target.isPlayer){
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.amount, true));
-        }
-        return true;
+    public void onSpecificTrigger() {
+        super.onSpecificTrigger();
+        addToBot(new GainBlockAction(AbstractDungeon.player, this.amount));
     }
 
     public void updateDescription() {

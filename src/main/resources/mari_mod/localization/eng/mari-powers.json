@@ -132,7 +132,7 @@
   },
   "MariMod:Withdrawal_Power": {
     "NAME": "Withdrawal",
-    "DESCRIPTIONS": ["Whenever you receive a debuff, gain #b",
+    "DESCRIPTIONS": ["Whenever you gain a debuff you do not have, gain #b",
       " #yBlock [REMOVE_SPACE]."]
   },
   "MariMod:Research_Power": {
