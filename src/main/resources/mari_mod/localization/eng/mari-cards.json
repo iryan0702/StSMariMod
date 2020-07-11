@@ -83,7 +83,7 @@
   },
   "MariMod:Mari_Reckless_Driving": {
     "NAME": "Reckless Driving",
-    "DESCRIPTION": "marimod:Repress. NL Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance."
+    "DESCRIPTION": "marimod:Repress. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Deal !D! damage."
   },
   "MariMod:Mari_Cash_Back": {
     "NAME": "Cash Back",
