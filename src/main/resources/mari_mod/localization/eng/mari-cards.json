@@ -274,7 +274,7 @@
   },
   "MariMod:Mari_Kyu": {
     "NAME": "\"Kyu!\"",
-    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. NL If exhausted, costs !M! less this combat."
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance. NL If marimod:Reflect: costs !M! less this combat."
   },
   "MariMod:Mari_Higher_Ups": {
     "NAME": "Higher-Ups",
