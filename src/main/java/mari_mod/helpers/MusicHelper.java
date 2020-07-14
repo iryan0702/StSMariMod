@@ -58,4 +58,13 @@ public class MusicHelper {
             }
         }
     }
+
+    @SuppressWarnings("unchecked")
+    public static void fadeInAllMainMusic(){
+        ArrayList<MainMusic> mainTrack = (ArrayList<MainMusic>)ReflectionHacks.getPrivate(CardCrawlGame.music, MusicMaster.class, "mainTrack");
+        for(MainMusic m: mainTrack){
+            m.unsilence();
+            m.isFadingOut = false;
+        }
+    }
 }

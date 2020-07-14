@@ -108,5 +108,20 @@
       "[Wait] #gObtain #gThe #yShining #yIdol #ginstead. #rAll #rescape #roptions #rbecome #rworse.",
       "[Outrun] #rBecome #rCursed #r- #rPain."
     ]
+  },
+  "MariMod:MariTheTemple": {
+    "NAME": "The Sound of Rain",
+    "DESCRIPTIONS": [
+      "intro:[intro text: you find temple with leaky roof]",
+      "do:[catch text]",
+      "do not:[you leave]",
+      "listen:[you hear beautiful and calming sounds of raindrops]"
+    ],
+    "OPTIONS": [
+      "do:[Catch Rain] #rLose #r[Relic]. #gGain #g[card].",
+      "do not:[Ignore]",
+      "leave:[Leave]",
+      "listen:[Listen]"
+    ]
   }
 }

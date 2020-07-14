@@ -318,7 +318,7 @@ public class MariMod implements
         flawlessFormAmount = 0;
     }
 
-            @Override
+    @Override
     public void receiveAddAudio() {
         BaseMod.addAudio("MariMod:MariTheFlyingCar", "mari_mod/audio/MariTheFlyingCar.ogg");
         BaseMod.addAudio("MariMod:MariCharacterSelect", "mari_mod/audio/MariIntro.ogg");
@@ -327,8 +327,19 @@ public class MariMod implements
         BaseMod.addAudio("MariMod:MariHeliMid", "mari_mod/audio/MariHeliMid.ogg");
         BaseMod.addAudio("MariMod:MariHeliOut", "mari_mod/audio/MariHeliOut.ogg");
         BaseMod.addAudio("MariMod:MariMusicalAttack", "mari_mod/audio/MariMusicalAttack.ogg");
-                BaseMod.addAudio("MariMod:MariPerfectPerformance", "mari_mod/audio/MariPerfectPerformance.ogg");
-                BaseMod.addAudio("MariMod:MariLimelight", "mari_mod/audio/MariLimelight.ogg");
+        BaseMod.addAudio("MariMod:MariPerfectPerformance", "mari_mod/audio/MariPerfectPerformance.ogg");
+        BaseMod.addAudio("MariMod:MariLimelight", "mari_mod/audio/MariLimelight.ogg");
+
+        BaseMod.addAudio("MariMod:MariRaindrop1", "mari_mod/audio/MariRaindrop1.ogg");
+        BaseMod.addAudio("MariMod:MariRaindrop2", "mari_mod/audio/MariRaindrop2.ogg");
+        BaseMod.addAudio("MariMod:MariRaindrop3", "mari_mod/audio/MariRaindrop3.ogg");
+        BaseMod.addAudio("MariMod:MariRaindrop4", "mari_mod/audio/MariRaindrop4.ogg");
+        BaseMod.addAudio("MariMod:MariRaindrop5", "mari_mod/audio/MariRaindrop5.ogg");
+        BaseMod.addAudio("MariMod:MariRaindropP1", "mari_mod/audio/MariRaindropP1.ogg");
+        BaseMod.addAudio("MariMod:MariRaindropP2", "mari_mod/audio/MariRaindropP2.ogg");
+        BaseMod.addAudio("MariMod:MariRaindropP3", "mari_mod/audio/MariRaindropP3.ogg");
+        BaseMod.addAudio("MariMod:MariRaindropP4", "mari_mod/audio/MariRaindropP4.ogg");
+        BaseMod.addAudio("MariMod:MariRaindropP5", "mari_mod/audio/MariRaindropP5.ogg");
     }
 
     //Hooked to start of AbstractPlayer.loseGold
@@ -513,6 +524,7 @@ public class MariMod implements
     public static Texture featherVfx4;
     public static Texture starFieldVfx;
     public static Texture smokeVfx;
+    public static Texture rainVfx;
 
     public static ModPanel settingsPanel;
     public static ShaderProgram goldShader;
@@ -542,6 +554,7 @@ public class MariMod implements
         featherVfx4 = ImageMaster.loadImage("mari_mod/images/effects/feather4.png");
         starFieldVfx = ImageMaster.loadImage("mari_mod/images/effects/mariStarField.png");
         smokeVfx = ImageMaster.loadImage("mari_mod/images/effects/mariSmoke.png");
+        rainVfx = ImageMaster.loadImage("mari_mod/images/effects/MariRaindrop.png");
 
         logger.info("initialize mod badge");
         // Mod badge
@@ -578,6 +591,8 @@ public class MariMod implements
         EventUtils.registerEvent(MariSssserpent.ID, MariSssserpent.class, Mari.class, Sssserpent.ID, EventUtils.EventType.FULL_REPLACE);
         EventUtils.registerEvent(MariMaskedBandits.ID, MariMaskedBandits.class, Mari.class, MaskedBandits.ID, EventUtils.EventType.FULL_REPLACE);
         EventUtils.registerEvent(MariGoldenIdolEvent.ID, MariGoldenIdolEvent.class, Mari.class, GoldenIdolEvent.ID, EventUtils.EventType.FULL_REPLACE);
+
+        BaseMod.addEvent(MariTheTemple.ID, MariTheTemple.class);
 
         /*for(int i = 0; i < 100; i++) {
             BaseMod.addEvent(AllMariModEvents.ID + i, AllMariModEvents.class);
