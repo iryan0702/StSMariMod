@@ -1,15 +1,18 @@
 package mari_mod.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mari_mod.MariMod;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.patches.CardColorEnum;
+import mari_mod.patches.EphemeralCardPatch;
+import mari_mod.powers.Intensity_Power;
 import mari_mod.rewards.MariFadingReward;
-import mari_mod.rewards.MariUncommonReward;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,16 +28,24 @@ public class MariTheSpark extends AbstractMariRelic
         this.counter = REWARD_COST;
     }
 
-    public String getUpdatedDescription()
-    {
-        return this.DESCRIPTIONS[0] + REWARD_COST + this.DESCRIPTIONS[1];
-    }
-
     @Override
     public void atBattleStartPreDraw() {
         this.flash();
-        AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        AbstractPlayer p = AbstractDungeon.player;
+        AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(p, this));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Intensity_Power(p, 3), 3));
         MariMod.gainGold(10);
+
+        updateCost();
+    }
+
+    public void updateCost(){
+        this.counter = 0;
+        for(AbstractCard c : AbstractDungeon.player.masterDeck.group){
+            if(EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c instanceof AbstractMariCard && !((AbstractMariCard)c).faded){
+                this.counter += 10;
+            }
+        }
     }
 
 
@@ -55,11 +66,10 @@ public class MariTheSpark extends AbstractMariRelic
         if(!AbstractDungeon.getCurrRoom().smoked) {
             if (MariMod.saveableKeeper.brilliance >= this.counter) {
                 this.flash();
-                while (MariMod.saveableKeeper.brilliance >= this.counter) {
+                if (MariMod.saveableKeeper.brilliance >= this.counter) {
                     reward = new MariFadingReward(CardColorEnum.MARI);
                     AbstractDungeon.getCurrRoom().addCardReward(reward);
                     MariMod.saveableKeeper.brilliance -= this.counter;
-                    this.counter += REWARD_COST;
                 }
                 AbstractDungeon.combatRewardScreen.setupItemReward();
                 AbstractDungeon.combatRewardScreen.positionRewards();
@@ -72,4 +82,10 @@ public class MariTheSpark extends AbstractMariRelic
     {
         return new MariTheSpark();
     }
+
+    public String getUpdatedDescription()
+    {
+        return this.DESCRIPTIONS[0] + this.counter + this.DESCRIPTIONS[1];
+    }
+
 }

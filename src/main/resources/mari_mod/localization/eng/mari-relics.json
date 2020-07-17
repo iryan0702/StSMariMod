@@ -3,8 +3,8 @@
     "NAME": "The Spark",
     "FLAVOR": "\"SHIIIIIIIIINY!\" – Mari Ohara, Probably.",
     "DESCRIPTIONS": [
-      "At the start of combat, gain #y10",
-      " Gold you [#fbccff]spend[] in combat, NL gain an extra #yuncommon card reward in your next combat reward."
+      "At the start of combat, gain #b10 Gold and #b3 #yIntensity. [At the end of combat, if you have #b",
+      " #yBrilliance (cost is #b10 per #yFading card you own), consume that much #yBrilliance and receive an extra card reward with #yFading cards.] (This functionality is a placeholder for an end of combat shop for Fading cards, numbers only update at start of combat)"
     ]
   },
   "MariMod:MariDiploma": {
