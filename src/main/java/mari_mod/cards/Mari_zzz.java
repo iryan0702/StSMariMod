@@ -3,7 +3,6 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,8 +27,7 @@ public class Mari_zzz extends AbstractMariCard {
     private static final int COST = 1;
     private static final int BLOCK = 10;
     private static final int UPGRADE_BLOCK = 3;
-    private static final int VULN_LOSS = 1;
-    private static final int VULN_LOSS_UPGRADE = 1;
+    private static final int VULN_LOSS = 2;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -73,7 +71,6 @@ public class Mari_zzz extends AbstractMariCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
-            upgradeMagicNumber(VULN_LOSS_UPGRADE);
         }
     }
 }
