@@ -223,7 +223,7 @@
   },
   "MariMod:Mari_Limelight": {
     "NAME": "Limelight",
-    "DESCRIPTION": "At the end of your turn, apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
+    "DESCRIPTION": "marimod:Fading. NL At the end of your turn, apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
   },
   "MariMod:Mari_From_Zero": {
     "NAME": "From Zero...",
