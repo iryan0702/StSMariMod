@@ -193,7 +193,7 @@
   },
   "MariMod:Mari_The_GOLDEN_STATUE": {
     "NAME": "The GOLDEN STATUE",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block NL Deal !D! damage."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block NL Deal !D! damage. NL If Fatal, gain !M! Gold."
   },
   "MariMod:Mari_The_HELICOPTER": {
     "NAME": "The HELICOPTER",

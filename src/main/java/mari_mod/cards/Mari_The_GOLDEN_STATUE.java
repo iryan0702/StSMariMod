@@ -1,14 +1,12 @@
 package mari_mod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.unique.GreedAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariSpendGoldAction;
@@ -25,10 +23,12 @@ public class Mari_The_GOLDEN_STATUE extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
     private static final int BASE_GOLD_COST = 15;
-    private static final int BLOCK_AMT = 19;
+    private static final int BLOCK_AMT = 15;
     private static final int UPGRADE_BLOCK_AMT = 5;
-    private static final int DAMAGE_AMT = 19;
+    private static final int DAMAGE_AMT = 15;
     private static final int UPGRADE_DAMAGE_AMT = 5;
+    private static final int GOLD_GAIN = 15;
+    private static final int UPGRADE_GOLD_GAIN = 5;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -42,15 +42,17 @@ public class Mari_The_GOLDEN_STATUE extends AbstractMariCard {
         this.baseDamage = DAMAGE_AMT;
         this.damage = this.baseDamage;
         this.goldCost = this.baseGoldCost;
+        this.magicNumber = GOLD_GAIN;
+        this.baseMagicNumber = this.magicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new MariGoldenStatueEffect(m.hb.cX),0.1F));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-        AbstractDungeon.actionManager.addToBottom(new MariWaitAction(MariGoldenStatueEffect.ANIMATION_START-MariGoldenStatueEffect.FALL_END-0.6F));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new MariSpendGoldAction(this));
+        addToBot(new VFXAction(new MariGoldenStatueEffect(m.hb.cX),0.1F));
+        addToBot(new GainBlockAction(p, p, this.block));
+        addToBot(new MariWaitAction(MariGoldenStatueEffect.ANIMATION_START-MariGoldenStatueEffect.FALL_END-0.6F));
+        addToBot(new GreedAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), this.magicNumber));
 
     }
 
@@ -65,6 +67,7 @@ public class Mari_The_GOLDEN_STATUE extends AbstractMariCard {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK_AMT);
             upgradeDamage(UPGRADE_DAMAGE_AMT);
+            upgradeMagicNumber(UPGRADE_GOLD_GAIN);
         }
     }
 
