@@ -178,7 +178,7 @@ public class Mari extends CustomPlayer {
 
         String starterRelic = getChosenRelic(MariCharacterSelectScreen.chosenRelic);
 
-        if(starterRelic == "oh no"){
+        if(starterRelic.equals("oh no")){
             starterRelic = Circlet.ID;
         }
 
