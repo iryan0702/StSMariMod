@@ -35,6 +35,7 @@ public class Mari_Reckless_Driving extends AbstractMariCard {
         this.damage = this.baseDamage;
         this.baseRadiance = this.radiance = RADIANCE;
         this.cardsToPreview = new Mari_Repression();
+        this.tags.add(MariCustomTags.RADIANCE);
     }
 
     @Override
