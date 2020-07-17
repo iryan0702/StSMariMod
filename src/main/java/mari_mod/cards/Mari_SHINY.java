@@ -49,7 +49,7 @@ public class Mari_SHINY extends AbstractMariCard {
             target = p;
         }
 
-        AbstractDungeon.actionManager.addToBottom(new MariShinyAction(target, this.upgraded, this.faded));
+        AbstractDungeon.actionManager.addToBottom(new MariShinyAction(target, this.upgraded, this.radiance, this.faded));
         AbstractDungeon.effectList.add(new BorderFlashEffect(new Color(1.0f, 1.0f, 0.6f, 1.0f), true));
         AbstractDungeon.effectList.add(new BorderFlashEffect(new Color(1.0f, 1.0f, 0.6f, 1.0f), true));
         AbstractDungeon.effectList.add(new BorderFlashEffect(new Color(1.0f, 1.0f, 0.6f, 1.0f), true));
