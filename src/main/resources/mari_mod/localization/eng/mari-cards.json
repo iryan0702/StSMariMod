@@ -114,7 +114,7 @@
   },
   "MariMod:Mari_The_Planisphere": {
     "NAME": "The Planisphere",
-    "DESCRIPTION": "marimod:Fading. NL Choose 1 of 3 cards to add to your hand. marimod:Kindle: Gain [E] equal to its cost."
+    "DESCRIPTION": "marimod:Fading. NL Choose 1 of 3 marimod:Fading cards to add to your hand, it costs 0 this turn."
   },
   "MariMod:Mari_Overexertion": {
     "NAME": "Overexertion",

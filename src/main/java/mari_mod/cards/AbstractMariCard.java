@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -174,8 +173,8 @@ public abstract class AbstractMariCard extends CustomCard {
 
     //Placed in a separate function as it is accessed by applyPowers, statEquivalentCopy patch, and ephemeralCard patch
     public void setFadedStats(){
-        this.baseRadiance = 1;
-        this.radiance = 1;
+        this.baseRadiance = Math.min(1, baseRadiance);
+        this.radiance = Math.min(1, radiance);
         this.upgradedRadiance = false;
         this.rawDescription = this.rawDescription.replace("Fading", "Faded");
         this.initializeDescription();
