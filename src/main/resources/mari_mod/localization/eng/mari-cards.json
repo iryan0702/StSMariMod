@@ -255,7 +255,7 @@
   },
   "MariMod:Mari_Slap": {
     "NAME": "Slap!",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more whenever you gain a debuff you do not already have. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you gain a debuff you do not have, this deals !M! more until played."
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
