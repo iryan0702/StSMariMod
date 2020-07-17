@@ -63,7 +63,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         MariMod.setPowerImages(this);
         this.particleDelay = 0.0F;
         this.priority = 99;
-        logger.info("initialize: amount " + bufferAmt);
+//        logger.info("initialize: amount " + bufferAmt);
     }
 
     public void stackPower(int initialStackAmount)
@@ -72,7 +72,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)){
             stackAmount += 1;
         }
-        logger.info("this stacks: by" + stackAmount);
+//        logger.info("this stacks: by" + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         if(stackAmount > 0 && ((!this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)))) {
@@ -83,11 +83,11 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(stackAmount > 0){
             burstOfParticles(stackAmount*4);
             radianceDecayThisTurn += 1;
+            this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
         }
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
-        this.amount2 = this.amount - radianceDecayThisTurn;
 
         if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
             this.amount2 = -1;
