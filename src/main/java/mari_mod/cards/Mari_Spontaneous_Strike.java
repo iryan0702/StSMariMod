@@ -6,13 +6,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import mari_mod.MariMod;
-import mari_mod.actions.MariHeavyPriceAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,7 +43,7 @@ public class Mari_Spontaneous_Strike extends AbstractMariCard {
     public void calculateCardDamage(AbstractMonster mo) {
         this.baseDamage = this.magicNumber;
 
-        this.baseDamage += MariMod.energySpentThisTurn;
+        this.baseDamage += MariMod.energySpentThisTurn * 2;
         super.calculateCardDamage(mo);
 
         this.baseDamage = this.magicNumber;

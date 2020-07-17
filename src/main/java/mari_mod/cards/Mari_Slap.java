@@ -20,9 +20,9 @@ public class Mari_Slap extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 1;
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 8;
     private static final int UPGRADE_DAMAGE = 0;
-    private static final int SCALING = 1;
+    private static final int SCALING = 2;
     private static final int UPGRADE_SCALING = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -53,13 +53,16 @@ public class Mari_Slap extends AbstractMariCard {
 
     public void boost(){
         this.baseDamage += this.magicNumber;
+        if(AbstractDungeon.player.hand.contains(this)){
+            applyPowers();
+        }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_SCALING);
-            upgradeDamage(UPGRADE_DAMAGE);
+            //upgradeDamage(UPGRADE_DAMAGE);
             veryBaseDamage += UPGRADE_DAMAGE;
             this.initializeDescription();
         }
