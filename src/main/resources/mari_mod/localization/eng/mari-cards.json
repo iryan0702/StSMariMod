@@ -345,8 +345,13 @@
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Target ANY character. Apply its marimod:Radiance to ALL other characters. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. Target ANY character. Apply its marimod:Radiance to ALL other characters."
+    "DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL Apply marimod:Radiance equal to your marimod:Radiance.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL You and an enemy gain marimod:Radiance equal to each other's marimod:Radiance.",
+    "EXTENDED_DESCRIPTION": [
+      "marimod:Faded. marimod:Invest !MARI_GOLD_COST!. NL If you have marimod:Radiance, apply !MARI_RADIANCE! marimod:Radiance.",
+      "marimod:Faded. marimod:Invest !MARI_GOLD_COST!. NL You and an enemy gain !MARI_RADIANCE! marimod:Radiance if the other has marimod:Radiance."
+    ]
+
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
