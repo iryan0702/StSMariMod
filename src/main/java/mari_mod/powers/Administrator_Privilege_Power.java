@@ -1,16 +1,16 @@
 package mari_mod.powers;
 
 
-import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
-import com.megacrit.cardcrawl.actions.defect.SeekAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
-import mari_mod.actions.MariHandGlowCheckAction;
-import mari_mod.actions.MariWaitAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,10 +22,6 @@ public class Administrator_Privilege_Power extends AbstractPower
     public static PowerType POWER_TYPE = PowerType.BUFF;
     public static final String NAME = cardStrings.NAME;
     public static final String[] DESCRIPTION = cardStrings.DESCRIPTIONS;
-    private static final int GOLD_COST = 20;
-    private static final int ENERGY_GAIN = 3;
-    public int originalDraw;
-    public int yetToDraw;
     public static final Logger logger = LogManager.getLogger(MariMod.class.getName());
     public Administrator_Privilege_Power(AbstractCreature owner)
     {
@@ -38,43 +34,25 @@ public class Administrator_Privilege_Power extends AbstractPower
         MariMod.setPowerImages(this);
     }
 
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        this.originalDraw = AbstractDungeon.player.gameHandSize;
-        AbstractDungeon.player.gameHandSize = 0;
-    }
-
-    @Override
-    public void atStartOfTurn() {
-        int deckSize = AbstractDungeon.player.drawPile.group.size();
-        AbstractDungeon.actionManager.addToTop(new MariHandGlowCheckAction());
-        if (this.originalDraw > deckSize) {
-            int tmp = this.originalDraw - deckSize;
-            AbstractDungeon.actionManager.addToTop(new SeekAction(tmp));
-            AbstractDungeon.actionManager.addToTop(new EmptyDeckShuffleAction());
-            if (deckSize != 0) {
-                AbstractDungeon.actionManager.addToTop(new SeekAction(deckSize));
+    public void atEndOfTurn(boolean isPlayer) {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            int totalCost = 0;
+            for(AbstractCard c: AbstractDungeon.player.hand.group){
+                int cost = MariMod.calculateEffectiveCardCostNotOnPlay(c);
+                if(cost > 0) totalCost += cost;
+                logger.info("Card name: " + c.name + " cost: " + cost + " total cost: " + totalCost);
             }
-        }else{
-            AbstractDungeon.actionManager.addToTop(new SeekAction(this.originalDraw));
+            if(totalCost > 0) {
+                int[] damages = new int[AbstractDungeon.getMonsters().monsters.size()];
+                for(int i = 0; i < damages.length; ++i) {
+                    damages[i] = totalCost;
+                }
+                this.flash();
+                this.addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, damages, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
+            }
         }
-        super.atStartOfTurn();
-        AbstractDungeon.actionManager.addToTop(new MariWaitAction(1.0F));
-    }
 
-    @Override
-    public void onRemove() {
-        AbstractDungeon.player.gameHandSize = this.originalDraw;
-        super.onRemove();
     }
-
-    @Override
-    public void onVictory() {
-        AbstractDungeon.player.gameHandSize = this.originalDraw;
-        super.onVictory();
-    }
-
 
     public void updateDescription() {
         this.description = DESCRIPTION[0];

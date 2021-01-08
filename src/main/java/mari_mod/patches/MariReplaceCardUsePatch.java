@@ -1,24 +1,16 @@
 package mari_mod.patches;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.GameCursor;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.controller.CInputAction;
-import com.megacrit.cardcrawl.helpers.input.InputAction;
-import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
+import mari_mod.MariMod;
 import mari_mod.actions.MariReducePowerIfHavePowerAction;
 import mari_mod.powers.Exchange_Power;
 
@@ -57,11 +49,16 @@ public class MariReplaceCardUsePatch
         if(card.freeToPlayOnce) cost = 0;
 
         AbstractPlayer p = AbstractDungeon.player;
-        if(card.cost == -1) {
-            AbstractDungeon.player.energy.use(card.energyOnUse);
-        }
 
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(cost));
+
+        boolean shouldSpendAndGainEnergy = MariMod.calculateEffectiveCardCost(card) <= EnergyPanel.getCurrentEnergy();
+
+        if(shouldSpendAndGainEnergy) {
+            if (card.cost == -1) {
+                AbstractDungeon.player.energy.use(card.energyOnUse);
+            }
+            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(cost));
+        }
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
         AbstractDungeon.actionManager.addToBottom(new MariReducePowerIfHavePowerAction(p, p, Exchange_Power.POWER_ID, 1));
     }

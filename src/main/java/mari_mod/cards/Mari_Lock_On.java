@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,9 +10,12 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import mari_mod.effects.MariLockOnEffect;
 import mari_mod.powers.Lock_On_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import static mari_mod.effects.MariLockOnEffect.TOTAL_TIME;
 
 public class Mari_Lock_On extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Strike.class.getName());
@@ -34,6 +38,7 @@ public class Mari_Lock_On extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Lock_On_Power(p, 1, m, AbstractPower.PowerType.BUFF), 1));
+        addToBot(new VFXAction(new MariLockOnEffect(m.hb.cX, m.hb.cY), TOTAL_TIME));
 
         boolean enemyLockedOn = false;
         for(AbstractMonster enemy : AbstractDungeon.getCurrRoom().monsters.monsters){

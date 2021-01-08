@@ -75,20 +75,26 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 //        logger.info("this stacks: by" + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if(stackAmount > 0 && ((!this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)))) {
-            this.flash();
-            this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
-            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
+        if(stackAmount > 0){
+            if((!this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID))){
+                this.flash();
+                this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
+                AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
+            }
+//            if(this.owner.isPlayer){
+//                addToTop(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new VigorPower(AbstractDungeon.player, this.amount), this.amount));
+//            }
         }
+
         if(stackAmount > 0){
             burstOfParticles(stackAmount*4);
             radianceDecayThisTurn += 1;
             this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
         }
+
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
-
         if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
             this.amount2 = -1;
         }
@@ -131,6 +137,9 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
+//        else{
+//            addToTop(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new VigorPower(AbstractDungeon.player, this.amount), this.amount));
+//        }
         burstOfParticles(this.amount*4);
         radianceDecayThisTurn += 1;
         this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
@@ -142,13 +151,12 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(this.owner.isPlayer) {
             float damageBoost = BASE_DAMAGE_BOOST;
             AbstractPower intensity = this.owner.getPower(Intensity_Power.POWER_ID);
-            if(intensity != null){
+            if(intensity != null) {
                 damageBoost += intensity.amount * Intensity_Power.BOOST_PER_STACK;
             }
             return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F + (this.amount * damageBoost)) : damage;
         }
-        else
-            return damage;
+        else return damage;
     }
 
 

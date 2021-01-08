@@ -46,6 +46,7 @@ public class MariTheSpark extends AbstractMariRelic
                 this.counter += 10;
             }
         }
+        this.description = getUpdatedDescription();
     }
 
 

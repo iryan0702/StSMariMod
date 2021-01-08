@@ -177,6 +177,15 @@
       "The next #b",
       " cards you spend 3 or more [E] on are played twice."]
   },
+  "MariMod:The_Tea_Power": {
+    "NAME": "The Tea",
+    "DESCRIPTIONS": ["At the end of this turn, gain ",
+      "#b",
+      " ",
+      ", ",
+      ".",
+      "At the end of this turn, do nothing."]
+  },
   "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Gleam and Glean",
     "DESCRIPTIONS": ["Whenever you apply #yRadiance to an enemy, gain #b",

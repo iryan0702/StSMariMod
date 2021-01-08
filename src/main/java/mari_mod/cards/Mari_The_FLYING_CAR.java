@@ -26,9 +26,9 @@ public class Mari_The_FLYING_CAR extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
     private static final int BASE_GOLD_COST = 15;
-    private static final int ATTACK_DMG = 32;
-    private static final int UPGRADE_ATTACK_DMG = 10;
-    private static final int RADIANCE = 5;
+    private static final int ATTACK_DMG = 28;
+    private static final int UPGRADE_ATTACK_DMG = 8;
+    private static final int RADIANCE = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -51,9 +51,10 @@ public class Mari_The_FLYING_CAR extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new MariTheFlyingCarEffect(m.hb.cX, m.hb.cY),1.5F));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
     }
 
     @Override

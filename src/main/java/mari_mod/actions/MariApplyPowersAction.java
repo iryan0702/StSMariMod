@@ -7,16 +7,16 @@ import org.apache.logging.log4j.Logger;
 
 public class MariApplyPowersAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariApplyPowersAction.class.getName());
-    public AbstractCard defianceCard;
+    public AbstractCard card;
 
-    public MariApplyPowersAction(AbstractCard defianceCard) {
+    public MariApplyPowersAction(AbstractCard card) {
         this.actionType = ActionType.BLOCK;
-        this.amount = defianceCard.block;
-        this.defianceCard = defianceCard;
+        this.amount = card.block;
+        this.card = card;
     }
 
     public void update() {
-        this.defianceCard.applyPowers();
+        this.card.applyPowers();
         this.isDone = true;
     }
 }

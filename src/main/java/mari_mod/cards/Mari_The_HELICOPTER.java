@@ -22,8 +22,9 @@ public class Mari_The_HELICOPTER extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 3;
     private static final int BASE_GOLD_COST = 15;
-    private static final int ATTACK_DMG = 6;
-    private static final int ATTACK_TIMES = 6;
+    private static final int ATTACK_DMG = 8;
+    private static final int ATTACK_DMG_UHH = -2;
+    private static final int ATTACK_TIMES = 4;
     private static final int ATTACK_TIME_UPGRADE = 2;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -71,6 +72,7 @@ public class Mari_The_HELICOPTER extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            upgradeDamage(ATTACK_DMG_UHH);
             upgradeMagicNumber(ATTACK_TIME_UPGRADE);
         }
     }

@@ -41,11 +41,11 @@
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Apply !MARI_RADIANCE! marimod:Radiance twice. NL Deal !D! damage."
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL At the end of your turns, gain !M! Block. Each turn, the Block gain is halved."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Reduce your Weak, Frail, and Vulnerable to 1. NL Gain !B! Block."
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
@@ -127,7 +127,7 @@
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile, then marimod:Recall."
+    "DESCRIPTION": "Lose ALL your debuffs until the end of your turn."
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",
@@ -237,8 +237,8 @@
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Instead of drawing regularly, you choose cards from your draw pile to put into your hand at the start of your turn.",
-    "UPGRADE_DESCRIPTION": "Innate. marimod:Invest !MARI_GOLD_COST!. NL Instead of drawing regularly, you choose cards from your draw pile to put into your hand at the start of your turn."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL At the end of your turn, ALL enemies lose HP equal to the total cost of your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. marimod:Invest !MARI_GOLD_COST!. NL At the end of your turn, ALL enemies lose HP equal to the total cost of your hand."
   },
   "MariMod:Mari_All_Or_Nothing": {
     "NAME": "\"All or Nothing!\"",
@@ -311,7 +311,7 @@
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
-    "DESCRIPTION": "marimod:Fading. NL Shuffle a copy of your hand into your draw pile. NL marimod:Kindle: Upgrade your hand first."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile, then marimod:Recall."
   },
   "MariMod:Mari_Lock_On": {
     "NAME": "\"Lock on!\"",
@@ -333,7 +333,7 @@
   },
   "MariMod:Mari_Closure": {
     "NAME": "Closure",
-    "DESCRIPTION": "Gain !B! Block and permanently decrease the Block by 2. NL Can be upgraded any number of times to increase Block by !M!.",
+    "DESCRIPTION": "Gain !B! Block. NL If you had no Block before playing this card, decrease this card's Block by !M! this combat.",
     "EXTENDED_DESCRIPTION": [
       "Conclusion",
       "Gain !B! Block. NL Can be upgraded any number of times to increase Block by !M!. NL (...Did we save it?)"
