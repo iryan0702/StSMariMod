@@ -4,11 +4,10 @@
     "DESCRIPTIONS": ["Whenever a creature gains Radiance, it loses HP equal to its total #yRadiance [REMOVE_SPACE].",
       " NL (Decreases to #b",
       " at the end of this creature's turn.)",
-      "Mari deals #b",
-      "% more damage per #yRadiance for a total of #b",
-      "% increased damage!",
+      "Mari's attacks have base damage increased up to #b",
+      " [REMOVE_SPACE].",
       " NL (Decreases to #b",
-      "% at the end of your turn.)"
+      " at the end of your turn.)"
     ]
   },
   "MariMod:Choreography_Power": {

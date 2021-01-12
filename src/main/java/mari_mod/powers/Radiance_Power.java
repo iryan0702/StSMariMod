@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import mari_mod.MariMod;
 import mari_mod.cards.AbstractMariCard;
 import mari_mod.relics.MariCorruptedSpark;
@@ -27,7 +26,16 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
+/*
+    RADIANCE:
+    Main mechanic in MariMod
+    Enemies take damage after gaining Radiance equal to the amount of Radiance it has
+    Mari's attacks have base damage increased to her amount of Radiance
+    After a character gains Radiance, it loses 1 Radiance at the end of turn
 
+    Radiance is a TwoAmountPower, amount2 displays the Radiance a character will have at the end of turn
+    Radiance also includes a particle system which emits particles based on stack amount and stack timing
+ */
 public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABitSoItShowsZeroAndIsADifferentColor
 {
     public static final String POWER_ID = "MariMod:Radiance_Power";
@@ -62,31 +70,28 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         this.updateDescription();
         MariMod.setPowerImages(this);
         this.particleDelay = 0.0F;
-        this.priority = 99;
-//        logger.info("initialize: amount " + bufferAmt);
+        this.priority = -99;
     }
 
     public void stackPower(int initialStackAmount)
     {
         int stackAmount = initialStackAmount;
+
         if(AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)){
             stackAmount += 1;
         }
-//        logger.info("this stacks: by" + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
+
+        // Deal damage to enemy if stack applied is positive
+        // Additionally, apply particle effect and update counter for next turn amount
         if(stackAmount > 0){
             if((!this.owner.isPlayer && !AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID))){
                 this.flash();
                 this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
                 AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
             }
-//            if(this.owner.isPlayer){
-//                addToTop(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new VigorPower(AbstractDungeon.player, this.amount), this.amount));
-//            }
-        }
 
-        if(stackAmount > 0){
             burstOfParticles(stackAmount*4);
             radianceDecayThisTurn += 1;
             this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
@@ -95,6 +100,8 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         if(this.amount <= 0){
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
+
+        // set amount2 is -1 to not display next turn amount
         if(!this.owner.isPlayer && AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID)) {
             this.amount2 = -1;
         }
@@ -121,7 +128,6 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        //this.reducePower((AbstractDungeon.player.hasRelic(MariDiploma.ID) ? 2 : 1));
         if(!AbstractDungeon.player.hasRelic(MariCorruptedSpark.ID) || owner.isPlayer) {
             this.reducePower(radianceDecayThisTurn);
             radianceDecayThisTurn = 0;
@@ -137,9 +143,6 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             this.radianceInfo = new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS);
             AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, this.radianceInfo, AbstractGameAction.AttackEffect.NONE, true));
         }
-//        else{
-//            addToTop(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new VigorPower(AbstractDungeon.player, this.amount), this.amount));
-//        }
         burstOfParticles(this.amount*4);
         radianceDecayThisTurn += 1;
         this.amount2 = Math.max(0,this.amount - radianceDecayThisTurn);
@@ -149,12 +152,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if(this.owner.isPlayer) {
-            float damageBoost = BASE_DAMAGE_BOOST;
-            AbstractPower intensity = this.owner.getPower(Intensity_Power.POWER_ID);
-            if(intensity != null) {
-                damageBoost += intensity.amount * Intensity_Power.BOOST_PER_STACK;
-            }
-            return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F + (this.amount * damageBoost)) : damage;
+            return type == DamageInfo.DamageType.NORMAL ? Math.max(damage, this.amount) : damage;
         }
         else return damage;
     }
@@ -162,21 +160,10 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     public void updateDescription() {
         if(this.owner.isPlayer) {
-
-            float fDamageBoostPer = BASE_DAMAGE_BOOST;
-            AbstractPower intensity = this.owner.getPower(Intensity_Power.POWER_ID);
-            if(intensity != null){
-                fDamageBoostPer += 0.01f * intensity.amount;
-            }
-            int damageBoostPer = MathUtils.round(fDamageBoostPer * 100);
-            int damageBoost = damageBoostPer * this.amount;
-            int damageBoostEndTurn = damageBoostPer * this.amount2;
-
-            this.description = DESCRIPTION[3] + ((int) damageBoostPer) + DESCRIPTION[4] + ((int) damageBoost) + DESCRIPTION[5];
+            this.description = DESCRIPTION[3] + this.amount + DESCRIPTION[4];
             if(this.amount2 >= 0){
-                this.description += DESCRIPTION[6] + ((int) damageBoostEndTurn) + DESCRIPTION[7];
+                this.description += DESCRIPTION[5] + this.amount2 + DESCRIPTION[6];
             }
-
         }else{
             this.description = DESCRIPTION[0];
             if(this.amount2 >= 0){
@@ -184,6 +171,9 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             }
         }
     }
+
+    ////UPDATES AND BEHAVIOR FOR RADIANCE PARTICLES
+    //(Kindle sparks only appear when a card is being kindled)
 
     @Override
     public void update(int slot) {
@@ -198,12 +188,14 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         }
     }
 
+    //When a character gains Radiance, it gains a burst of particles
     public void burstOfParticles(int amount){
         for (int i = 0; i < amount && i < 200 ; i++) {
             radianceParticles.add(new RadianceParticle(this.owner, false, true));
         }
     }
 
+    //When a card is kindled, particles swarm to the card
     public void kindleSeek(){
         for(RadianceParticle p: radianceParticles){
             p.kindleSeek();
@@ -273,6 +265,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         }
 
         public void update() {
+            // Particles slow down vertically
             if (this.vY != 0.0F) {
                 this.y += this.vY * Gdx.graphics.getDeltaTime();
                 this.vY = MathUtils.lerp(this.vY, 0.0F, Gdx.graphics.getDeltaTime() * 1.0F);
@@ -281,10 +274,12 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
                 }
             }
 
+            // Move horizontally
             if (this.vX != 0.0F) {
                 this.x += this.vX * Gdx.graphics.getDeltaTime();
             }
 
+            // If a card is being kindled, drift towards the card and increase in size and opacity
             if (AbstractMariCard.currentKindleTarget != null && AbstractMariCard.currentKindleTarget.equals(this.owner) && AbstractMariCard.currentlyKindledCard != null){
                 if(this.x > AbstractMariCard.currentlyKindledCard.current_x){
                     vX -= 0.8F * Settings.scale;
@@ -308,6 +303,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
                 }
             }
 
+            //Rush to card area when a card is kindled
             if(justKindled){
                 this.x = Interpolation.pow3Out.apply(x,this.kindleTargetX,Gdx.graphics.getDeltaTime()*2);
                 this.y = Interpolation.pow3Out.apply(y,this.kindleTargetY,Gdx.graphics.getDeltaTime()*2);
@@ -315,6 +311,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
                 this.duration -= Gdx.graphics.getDeltaTime();
             }
 
+            //Scale size with time
             float t = (this.effectDuration - this.duration) * 2.0F;
             if (t > 1.0F) {
                 t = 1.0F;
@@ -328,6 +325,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
             }
         }
 
+        //Rush to card area when a card is kindled
         public void kindleSeek(){
             if(this.isKindleSpark){
                 this.justKindled = true;

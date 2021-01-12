@@ -1,6 +1,6 @@
 package mari_mod.relics;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import mari_mod.MariMod;
 import mari_mod.cards.AbstractMariCard;
+import mari_mod.cards.Mari_Debut;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.patches.EphemeralCardPatch;
-import mari_mod.powers.Intensity_Power;
 import mari_mod.rewards.MariFadingReward;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,7 +33,7 @@ public class MariTheSpark extends AbstractMariRelic
         this.flash();
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(p, this));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Intensity_Power(p, 3), 3));
+        addToTop(new MakeTempCardInHandAction(new Mari_Debut()));
         MariMod.gainGold(10);
 
         updateCost();

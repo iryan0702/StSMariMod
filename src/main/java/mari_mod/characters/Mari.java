@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import mari_mod.MariMod;
 import mari_mod.abstracts.MariOrb;
-import mari_mod.cards.Mari_Debut;
 import mari_mod.cards.Mari_Defend;
 import mari_mod.cards.Mari_Reminisce;
 import mari_mod.cards.Mari_Strike;
@@ -165,7 +164,6 @@ public class Mari extends CustomPlayer {
         retVal.add(Mari_Defend.ID);
         retVal.add(Mari_Defend.ID);
         retVal.add(Mari_Reminisce.ID);
-        retVal.add(Mari_Debut.ID);
 
 
 
