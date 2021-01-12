@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import mari_mod.MariMod;
 import mari_mod.cards.AbstractMariCard;
-import mari_mod.cards.Mari_Debut;
+import mari_mod.cards.Mari_First_Light;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.patches.EphemeralCardPatch;
 import mari_mod.rewards.MariFadingReward;
@@ -33,7 +33,7 @@ public class MariTheSpark extends AbstractMariRelic
         this.flash();
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(p, this));
-        addToTop(new MakeTempCardInHandAction(new Mari_Debut()));
+        addToTop(new MakeTempCardInHandAction(new Mari_First_Light()));
         MariMod.gainGold(10);
 
         updateCost();

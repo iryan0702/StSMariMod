@@ -791,6 +791,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Repression());
             BaseMod.addCard(new Mari_$Choose_Pain());
             BaseMod.addCard(new Mari_$Choose_Grief());
+            BaseMod.addCard(new Mari_First_Light());
 
 
 //            BaseMod.addCard(new Mari_Flaunt());

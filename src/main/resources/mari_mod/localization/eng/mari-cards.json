@@ -4,6 +4,10 @@
     "DESCRIPTION": "Deal !D! damage.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance."
   },
+  "MariMod:Mari_First_Light": {
+    "NAME": "First Light",
+    "DESCRIPTION": "marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
+  },
   "MariMod:Mari_Glow": {
     "NAME": "Glow",
     "DESCRIPTION": "marimod:Fading. NL Gain [E] [E]. NL Deal !D! damage and apply !MARI_RADIANCE! marimod:Radiance to ALL enemies."
@@ -95,7 +99,7 @@
   },
   "MariMod:Mari_Debut": {
     "NAME": "Debut",
-    "DESCRIPTION": "Innate. marimod:Fading. NL Apply !MARI_RADIANCE! marimod:Radiance to ALL characters. NL marimod:Reflect: Gain [E]."
+    "DESCRIPTION": "marimod:Fading. NL Deal !D! Damage twice. NL Gain !MARI_RADIANCE! marimod:Radiance twice."
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
