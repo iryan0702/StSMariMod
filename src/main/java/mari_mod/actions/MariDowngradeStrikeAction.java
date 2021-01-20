@@ -18,7 +18,7 @@ public class MariDowngradeStrikeAction extends AbstractGameAction { //ONLY EQUIP
     }
 
     public void update() {
-        card.downgrade();
+        //card.downgrade();
         this.isDone = true;
     }
 }

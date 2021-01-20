@@ -786,14 +786,14 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Toss_Uniform());
             BaseMod.addCard(new Mari_Spark());
 
-            //BaseMod.addCard(new Mari_Drama1());
-            //BaseMod.addCard(new Mari_Drama2());
             BaseMod.addCard(new Mari_Repression());
             BaseMod.addCard(new Mari_$Choose_Pain());
             BaseMod.addCard(new Mari_$Choose_Grief());
             BaseMod.addCard(new Mari_First_Light());
 
 
+            //BaseMod.addCard(new Mari_Drama1());
+            //BaseMod.addCard(new Mari_Drama2());
 //            BaseMod.addCard(new Mari_Flaunt());
 //            BaseMod.addCard(new Mari_Cash_Back());
 //            BaseMod.addCard(new Mari_Delicacy());
