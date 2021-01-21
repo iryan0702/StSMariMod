@@ -4,8 +4,9 @@
     "DESCRIPTIONS": ["Whenever a creature gains Radiance, it loses HP equal to its total #yRadiance [REMOVE_SPACE].",
       " NL (Decreases to #b",
       " at the end of this creature's turn.)",
-      "Mari's attacks have base damage increased up to #b",
-      " [REMOVE_SPACE].",
+      "Mari's attacks have base damage increased by #b",
+      "% or up to #b",
+      " [REMOVE_SPACE], whichever is greater.",
       " NL (Decreases to #b",
       " at the end of your turn.)"
     ]

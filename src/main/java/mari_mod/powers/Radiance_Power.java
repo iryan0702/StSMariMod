@@ -30,7 +30,7 @@ import java.util.ArrayList;
     RADIANCE:
     Main mechanic in MariMod
     Enemies take damage after gaining Radiance equal to the amount of Radiance it has
-    Mari's attacks have base damage increased to her amount of Radiance
+    Mari's attacks have base damage increased to her amount of Radiance or increased by a %, whichever is greater
     After a character gains Radiance, it loses 1 Radiance at the end of turn
 
     Radiance is a TwoAmountPower, amount2 displays the Radiance a character will have at the end of turn
@@ -152,7 +152,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if(this.owner.isPlayer) {
-            return type == DamageInfo.DamageType.NORMAL ? Math.max(damage, this.amount) : damage;
+            return type == DamageInfo.DamageType.NORMAL ? Math.max(damage * (1.0f + this.amount * 0.05f), this.amount) : damage;
         }
         else return damage;
     }
@@ -160,9 +160,9 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     public void updateDescription() {
         if(this.owner.isPlayer) {
-            this.description = DESCRIPTION[3] + this.amount + DESCRIPTION[4];
+            this.description = DESCRIPTION[3] + this.amount * 0.05 + DESCRIPTION[4] + this.amount + DESCRIPTION[5];
             if(this.amount2 >= 0){
-                this.description += DESCRIPTION[5] + this.amount2 + DESCRIPTION[6];
+                this.description += DESCRIPTION[6] + this.amount2 + DESCRIPTION[7];
             }
         }else{
             this.description = DESCRIPTION[0];
