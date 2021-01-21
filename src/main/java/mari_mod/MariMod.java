@@ -292,6 +292,22 @@ public class MariMod implements
 
     }
 
+    // RECEIVE POST INITIALIZE STARTER DECK:
+    // Allows Mari's cards to start with a few upgraded cards
+    public static void receivePostInitializeStarterDeck(){
+        int strikesToUpgrade = 2;
+        for(AbstractCard c: AbstractDungeon.player.masterDeck.group){
+            if(c.cardID.equals(Mari_Strike.ID) && !c.upgraded){
+                c.upgrade();
+                strikesToUpgrade--;
+                if(strikesToUpgrade <= 0){
+                    break;
+                }
+            }
+        }
+
+    }
+
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
         if(abstractRelic instanceof Turnip && AbstractDungeon.player.chosenClass == PlayerClassEnum.MARI){

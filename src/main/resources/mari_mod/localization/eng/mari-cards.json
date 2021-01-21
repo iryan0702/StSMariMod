@@ -1,7 +1,8 @@
 {
   "MariMod:Mari_Strike": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance."
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance."
   },
   "MariMod:Mari_First_Light": {
     "NAME": "First Light",
