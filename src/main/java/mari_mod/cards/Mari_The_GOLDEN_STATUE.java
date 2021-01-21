@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariSpendGoldAction;
+import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.actions.MariWaitAction;
 import mari_mod.effects.MariGoldenStatueEffect;
 import org.apache.logging.log4j.LogManager;
@@ -48,7 +48,7 @@ public class Mari_The_GOLDEN_STATUE extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new MariSpendGoldAction(this));
+        addToBot(new MariInvestGoldAction(this));
         addToBot(new VFXAction(new MariGoldenStatueEffect(m.hb.cX),0.1F));
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new MariWaitAction(MariGoldenStatueEffect.ANIMATION_START-MariGoldenStatueEffect.FALL_END-0.6F));

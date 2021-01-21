@@ -44,7 +44,7 @@ public class Mari_Unveiled_Secret extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Gold_Gain_No_Block_Power(p, this.magicNumber), this.magicNumber));
-        MariMod.spendGold(this.goldCost);
+        MariMod.investGold(this.goldCost);
     }
 
     public void upgrade() {

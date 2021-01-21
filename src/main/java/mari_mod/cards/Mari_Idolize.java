@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariIdolizeAction;
-import mari_mod.actions.MariSpendGoldAction;
+import mari_mod.actions.MariInvestGoldAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,7 +36,7 @@ public class Mari_Idolize extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
+        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new MariIdolizeAction());
     }
 

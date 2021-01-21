@@ -39,7 +39,7 @@ public class Mari_Stewshine_Old extends AbstractMariCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, this.magicNumber));
-        MariMod.spendGold(this.goldCost);
+        MariMod.investGold(this.goldCost);
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {

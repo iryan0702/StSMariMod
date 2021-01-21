@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariSpendGoldAction;
+import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.actions.MariTheHelicopterAction;
 import mari_mod.effects.MariHelicopterEffect;
 import org.apache.logging.log4j.LogManager;
@@ -42,7 +42,7 @@ public class Mari_The_HELICOPTER extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
+        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
 
         this.magicNumber = ATTACK_TIMES;
         if(this.upgraded) this.magicNumber += ATTACK_TIME_UPGRADE;

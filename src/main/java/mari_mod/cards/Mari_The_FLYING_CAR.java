@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariSpendGoldAction;
+import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.effects.MariTheFlyingCarEffect;
 import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
@@ -50,7 +50,7 @@ public class Mari_The_FLYING_CAR extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
+        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new MariTheFlyingCarEffect(m.hb.cX, m.hb.cY),1.5F));

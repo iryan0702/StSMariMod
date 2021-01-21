@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.actions.MariPurgeCardsFromExhaustAction;
 import mari_mod.actions.MariRecallAction;
-import mari_mod.actions.MariSpendGoldAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +44,7 @@ public class Mari_Collect_Thoughts extends AbstractMariCard {
 //        }else{
 //            target = p;
 //        }
-        AbstractDungeon.actionManager.addToBottom(new MariSpendGoldAction(this));
+        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new MariPurgeCardsFromExhaustAction(true));
 
 

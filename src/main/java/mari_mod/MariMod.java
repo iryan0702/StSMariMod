@@ -370,38 +370,38 @@ public class MariMod implements
         saveableKeeper.brilliance += goldInvested;
     }
 
-    public static void spendGold(int goldCost){ //TODO: Work on checking if goldCost > 0 if necessary
+    public static void investGold(int investAmount){ //TODO: Work on checking if goldCost > 0 if necessary
         AbstractPlayer p = AbstractDungeon.player;
 
-        if(p.gold >= goldCost) {
-            gainBrillianceIndependently(goldCost);
+        if(p.gold >= investAmount) {
+            gainBrillianceIndependently(investAmount);
 
-            if (goldCost > 0) {
+            if (investAmount > 0) {
                 timesMariSpentGoldThisCombat++;
-                MariStatTracker.investAmountsThisCombat.add(goldCost);
-                goldSpentByMariThisCombat += goldCost;
+                MariStatTracker.investAmountsThisCombat.add(investAmount);
+                goldSpentByMariThisCombat += investAmount;
             }
 
-            p.loseGold(goldCost);
+            p.loseGold(investAmount);
             if (p.hasPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID)) {
                 AbstractPower power = p.getPower(Gold_Loss_Start_Of_Turn_Power.POWER_ID);
-                int reduction = Math.min(power.amount, goldCost);
+                int reduction = Math.min(power.amount, investAmount);
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p, p, power, reduction));
                 power.flashWithoutSound();
             }
-            if (p.hasPower(Delicacy_Power.POWER_ID) && goldCost > 0) {
+            if (p.hasPower(Delicacy_Power.POWER_ID) && investAmount > 0) {
                 AbstractPower power = p.getPower(Delicacy_Power.POWER_ID);
                 power.onSpecificTrigger();
             }
-            if (p.hasPower(Flaunt_Power.POWER_ID) && goldCost > 0) {
+            if (p.hasPower(Flaunt_Power.POWER_ID) && investAmount > 0) {
                 AbstractPower power = p.getPower(Flaunt_Power.POWER_ID);
                 power.onSpecificTrigger();
             }
-            if (p.hasPower(Cash_Back_Power.POWER_ID) && goldCost > 0) {
+            if (p.hasPower(Cash_Back_Power.POWER_ID) && investAmount > 0) {
                 AbstractPower power = p.getPower(Cash_Back_Power.POWER_ID);
                 power.onSpecificTrigger();
             }
-            if (p.hasRelic(MariTheSpark.ID) && goldCost > 0) {
+            if (p.hasRelic(MariTheSpark.ID) && investAmount > 0) {
                 AbstractRelic relic = p.getRelic(MariTheSpark.ID);
                 relic.onSpendGold();
             }
