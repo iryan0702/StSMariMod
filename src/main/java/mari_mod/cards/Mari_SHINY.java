@@ -36,6 +36,7 @@ public class Mari_SHINY extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.QUOTATIONS);
         this.tags.add(MariCustomTags.RADIANCE);
+        this.radiance = this.baseRadiance = 1;
         this.isAnyTarget = true;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }

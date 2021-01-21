@@ -366,15 +366,16 @@ public class MariMod implements
 //        }
     }
 
-    public static void gainBrillianceIndependently(int goldInvested){
-        saveableKeeper.brilliance += goldInvested;
+    public static void investGoldIndependently(int goldInvested){
+        saveableKeeper.investedGold += goldInvested * 2;
+        saveableKeeper.lifetimeInvestedGold += goldInvested;
     }
 
     public static void investGold(int investAmount){ //TODO: Work on checking if goldCost > 0 if necessary
         AbstractPlayer p = AbstractDungeon.player;
 
         if(p.gold >= investAmount) {
-            gainBrillianceIndependently(investAmount);
+            investGoldIndependently(investAmount);
 
             if (investAmount > 0) {
                 timesMariSpentGoldThisCombat++;

@@ -10,7 +10,9 @@ public class MariSavables {
     public boolean firstEventYet;
     public AbstractCard.CardTags currentClass;
     //GOLD INVESTS
-    public int brilliance;
+    public int investedGold;
+    public int lifetimeInvestedGold;
+    public int lifetimeInvestedGoldReturns;
 
     //STEWSHINE SAVES
     public CardSave stewshineCardA;
@@ -42,7 +44,9 @@ public class MariSavables {
         this.firstEventYet = loadedSavables.firstEventYet;
         this.currentClass = loadedSavables.currentClass;
 
-        this.brilliance = loadedSavables.brilliance;
+        this.investedGold = loadedSavables.investedGold;
+        this.lifetimeInvestedGold = loadedSavables.lifetimeInvestedGold;
+        this.lifetimeInvestedGoldReturns = loadedSavables.lifetimeInvestedGoldReturns;
 
         this.stewshineCardA = loadedSavables.stewshineCardA;
         this.stewshineCardB = loadedSavables.stewshineCardB;
@@ -63,7 +67,9 @@ public class MariSavables {
     public void resetStats(){
         this.firstEventYet = false;
 
-        this.brilliance = 0;
+        this.investedGold = 0;
+        this.lifetimeInvestedGold = 0;
+        this.lifetimeInvestedGoldReturns = 0;
         //this.currentClass = null; //do not reset – setter is handled beforehand in initializeCardPoolsPatch
         this.stewshineCardA = null;
         this.stewshineCardB = null;

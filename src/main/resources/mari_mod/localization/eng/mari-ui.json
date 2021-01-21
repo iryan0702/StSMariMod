@@ -53,11 +53,14 @@
       "Choose any number of cards in your exhaust pile to purge."
     ]
   },
-  "MariBrillianceTip": {
+  "MariInvestedGoldTip": {
     "TEXT": [
-      "Brilliance",
+      "Invested Gold",
       "You have #b",
-      " Brilliance!"
+      " #yInvested #yGold. NL Convert #b",
+      " #yInvested #yGold into #yGold at the end of combat. NL You have #yInvested #b",
+      " #yGold and gained #b",
+      " #yGold in your lifetime."
     ]
   },
   "MariCharSelectDefault": {

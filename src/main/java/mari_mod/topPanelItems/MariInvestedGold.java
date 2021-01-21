@@ -25,7 +25,7 @@ public class MariInvestedGold extends TopPanelItem {
 
     public MariInvestedGold(){
         super(IMG, ID);
-        displayBrilliance = MariMod.saveableKeeper.brilliance;
+        displayBrilliance = MariMod.saveableKeeper.investedGold;
         updatedTip = updateTips();
         justUpdatedTip = false;
     }
@@ -56,26 +56,29 @@ public class MariInvestedGold extends TopPanelItem {
 
     private String updateTips(){
         String construct = "";
-        construct += TEXT[1] + MariMod.saveableKeeper.brilliance;
-        construct += TEXT[2];
+        construct += TEXT[1] + MariMod.saveableKeeper.investedGold;
+        construct += TEXT[2] + MariMod.saveableKeeper.investedGold/10;
+        construct += TEXT[3] + MariMod.saveableKeeper.lifetimeInvestedGold;
+        construct += TEXT[4] + MariMod.saveableKeeper.lifetimeInvestedGoldReturns;
+        construct += TEXT[5];
         return construct;
     }
 
     @Override
     public void update() {
         super.update();
-        if (MariMod.saveableKeeper.brilliance < displayBrilliance) {
-            if (displayBrilliance - MariMod.saveableKeeper.brilliance > 99) {
+        if (MariMod.saveableKeeper.investedGold < displayBrilliance) {
+            if (displayBrilliance - MariMod.saveableKeeper.investedGold > 99) {
                 displayBrilliance -= 10;
-            } else if (displayBrilliance - MariMod.saveableKeeper.brilliance > 9) {
+            } else if (displayBrilliance - MariMod.saveableKeeper.investedGold > 9) {
                 displayBrilliance -= 3;
             } else {
                 --displayBrilliance;
             }
-        } else if (MariMod.saveableKeeper.brilliance > displayBrilliance) {
-            if (MariMod.saveableKeeper.brilliance - displayBrilliance > 99) {
+        } else if (MariMod.saveableKeeper.investedGold > displayBrilliance) {
+            if (MariMod.saveableKeeper.investedGold - displayBrilliance > 99) {
                 displayBrilliance += 10;
-            } else if (MariMod.saveableKeeper.brilliance - displayBrilliance > 9) {
+            } else if (MariMod.saveableKeeper.investedGold - displayBrilliance > 9) {
                 displayBrilliance += 3;
             } else {
                 ++displayBrilliance;
@@ -97,7 +100,7 @@ public class MariInvestedGold extends TopPanelItem {
     static{
         TIP_Y = (float)Settings.HEIGHT - 120.0F * Settings.scale;
         TOP_RIGHT_TIP_X = 1550.0F * Settings.scale;
-        uiStrings = CardCrawlGame.languagePack.getUIString("MariBrillianceTip");
+        uiStrings = CardCrawlGame.languagePack.getUIString("MariInvestedGoldTip");
         TEXT = uiStrings.TEXT;
     }
 }
