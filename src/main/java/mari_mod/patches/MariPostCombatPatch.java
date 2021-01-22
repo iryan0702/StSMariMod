@@ -2,7 +2,6 @@ package mari_mod.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -22,8 +21,7 @@ public class MariPostCombatPatch {
             locator = Locator.class
     )
     public static void Insert(AbstractRoom __instance) {
-        System.out.println(AbstractDungeon.player.chosenClass);
-        if(AbstractDungeon.player.chosenClass == AbstractPlayer.PlayerClass.valueOf(PlayerClassEnum.MARI.toString())) {
+        if(AbstractDungeon.player.chosenClass == PlayerClassEnum.MARI) {
             int maxCards = 1;
             for (int i = 2; i <= AbstractDungeon.floorNum; i += i + 2) maxCards++;
             for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
