@@ -1,5 +1,6 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariPurgeSpecificCardAction;
+import mari_mod.actions.MariRecallAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,8 +22,8 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 3;
-    private static final int ENERGY_GAIN = 2;
+    private static final int COST = 2;
+    private static final int ENERGY_GAIN = 1;
     private static final CardType TYPE = CardType.STATUS;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -33,7 +35,8 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        //addToBot(new GainEnergyAction(ENERGY_GAIN));
+        addToBot(new MariRecallAction());
+        addToBot(new GainEnergyAction(ENERGY_GAIN));
     }
 
     @Override
