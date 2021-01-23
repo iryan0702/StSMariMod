@@ -127,7 +127,7 @@
   },
   "MariMod:Mari_Spontaneous_Strike": {
     "NAME": "Spontaneous Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Deals 2 more for each [E] spent this turn."
+    "DESCRIPTION": "Deal !D! damage, NL +2 for each [E] spent this turn."
   },
   "MariMod:Mari_Tea_Time": {
     "NAME": "Tea Time",
