@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.watcher.MasterRealityPower;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
+import mari_mod.cards.AbstractMariCard;
 import mari_mod.patches.MariCardPoolPatches;
 
 import java.util.ArrayList;
@@ -21,10 +22,12 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
 
 public class PlanisphereAction extends AbstractGameAction {
     private boolean retrieveCard = false;
+    private boolean fadedCards;
 
-    public PlanisphereAction() {
+    public PlanisphereAction(boolean faded) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = Settings.ACTION_DUR_FAST;
+        this.fadedCards = faded;
     }
 
     public void update() {
@@ -75,7 +78,11 @@ public class PlanisphereAction extends AbstractGameAction {
             }
 
             if (!dupe) {
-                fadingCards.add(tmp.makeCopy());
+                AbstractCard copy = tmp.makeCopy();
+                if(fadedCards){
+                    ((AbstractMariCard) copy).setFadedStats();
+                }
+                fadingCards.add(copy);
             }
         }
 

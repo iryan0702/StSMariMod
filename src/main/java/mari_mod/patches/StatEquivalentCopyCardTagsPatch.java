@@ -28,10 +28,9 @@ public class StatEquivalentCopyCardTagsPatch {
             EphemeralCardPatch.EphemeralField.ephemeral.set(castCard,EphemeralCardPatch.EphemeralField.ephemeral.get(castInstance));
 
             //Extra initializeDescription to ensure that the copy has the keyword Fading replaced with Faded.
-            castCard.faded = castInstance.faded;
             if(castInstance.faded){
-                castCard.initializeDescription();
                 castCard.setFadedStats();
+                castCard.initializeDescription();
             }else{
                 castCard.baseRadiance = castInstance.baseRadiance;
                 castCard.radiance = castInstance.baseRadiance;

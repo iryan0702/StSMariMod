@@ -173,6 +173,7 @@ public abstract class AbstractMariCard extends CustomCard {
 
     //Placed in a separate function as it is accessed by applyPowers, statEquivalentCopy patch, and ephemeralCard patch
     public void setFadedStats(){
+        this.faded = true;
         this.baseRadiance = Math.min(1, baseRadiance);
         this.radiance = Math.min(1, radiance);
         this.upgradedRadiance = false;
