@@ -164,8 +164,11 @@
   },
   "MariMod:Mari_Lets_Go": {
     "NAME": "\"Let's Go!\"",
-    "DESCRIPTION": "Draw X cards. NL Gain X-1 [E].",
-    "UPGRADE_DESCRIPTION": "Draw X+1 cards. NL Gain X-1 [E]."
+    "DESCRIPTION": "Draw a card for each [E] spent this turn. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Draw a card for each [E] spent this turn.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Draw !M! cards.)"
+    ]
   },
   "MariMod:Mari_Defiance": {
     "NAME": "Defiance",
