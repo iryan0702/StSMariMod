@@ -435,7 +435,8 @@
   },
   "MariMod:Mari_Shiny_Swap": {
     "NAME": "Shiny Swap",
-    "DESCRIPTION": "marimod:Recall. NL Put a card on top of your draw pile."
+    "DESCRIPTION": "Exhaust a card. NL marimod:Recall.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Exhaust a card. NL marimod:Recall."
   },
   "MariMod:Mari_Anticipate": {
     "NAME": "Anticipate",
