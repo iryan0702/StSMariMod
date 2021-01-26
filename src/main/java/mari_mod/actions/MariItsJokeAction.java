@@ -10,20 +10,16 @@ import org.apache.logging.log4j.Logger;
 public class MariItsJokeAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariItsJokeAction.class.getName());
     public AbstractMonster monster;
-    public int hpLossThreashold;
-    public int healAmount;
 
-    public MariItsJokeAction(AbstractMonster monster, int originalHP, int hpLossThreashold, int healAmount) {
+    public MariItsJokeAction(AbstractMonster monster, int originalHP) {
         this.actionType = ActionType.HEAL;
         this.monster = monster;
         this.amount = originalHP;
-        this.hpLossThreashold = hpLossThreashold;
-        this.healAmount = healAmount;
     }
 
     public void update() {
-        if(!monster.halfDead && !monster.isDead && this.amount - this.monster.currentHealth >= hpLossThreashold) {
-            AbstractDungeon.actionManager.addToTop(new HealAction(this.monster, AbstractDungeon.player, healAmount));
+        if(!monster.halfDead && !monster.isDead) {
+            AbstractDungeon.actionManager.addToTop(new HealAction(this.monster, AbstractDungeon.player, this.amount - this.monster.currentHealth));
         }
         this.isDone = true;
     }
