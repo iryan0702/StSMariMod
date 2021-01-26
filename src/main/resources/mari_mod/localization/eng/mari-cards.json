@@ -360,8 +360,8 @@
   },
   "MariMod:Mari_Fragile_Hope": {
     "NAME": "Fragile Hope",
-    "DESCRIPTION": "Gain 1 Frail. NL marimod:Kindle: marimod:Recall until you return a card without marimod:Glaring.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall until you return a card without marimod:Glaring."
+    "DESCRIPTION": "Gain 1 Frail. NL marimod:Kindle: marimod:Recall until you return a marimod:Faded card.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Gain 1 Frail. NL marimod:Kindle: marimod:Recall until you return a marimod:Faded card."
   },
   "MariMod:Mari_Research": {
     "NAME": "Research",
