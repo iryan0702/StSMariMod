@@ -1,6 +1,5 @@
 package mari_mod.cards;
 
-import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,8 +14,6 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static mari_mod.MariMod.energySpentThisTurn;
-
 public class Mari_Sparkle extends AbstractMariCard implements OnRecallCard {
     public static final Logger logger = LogManager.getLogger(Mari_Sparkle.class.getName());
     public static final String ID = "MariMod:Mari_Sparkle";
@@ -27,8 +24,8 @@ public class Mari_Sparkle extends AbstractMariCard implements OnRecallCard {
     private static final int COST = 1;
     private static final int RADIANCE = 4;
     private static final int UPGRADE_RADIANCE = 1;
-    private static final int BLOCK = 4;
-    private static final int BLOCK_UPGRADE = 2;
+    private static final int BLOCK = 6;
+    private static final int BLOCK_UPGRADE = 3;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;

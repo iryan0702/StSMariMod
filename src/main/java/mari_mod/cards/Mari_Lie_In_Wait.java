@@ -25,7 +25,7 @@ public class Mari_Lie_In_Wait extends AbstractMariCard implements OnRecallCard {
     private static final int COST = 1;
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_DAMAGE = 4;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
