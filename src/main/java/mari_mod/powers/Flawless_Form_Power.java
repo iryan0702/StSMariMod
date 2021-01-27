@@ -70,9 +70,7 @@ public class Flawless_Form_Power extends TwoAmountPowerByKiooehtButIJustChangedI
     }
 
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        int cost = card.costForTurn;
-        if(card.cost == -1) cost = card.energyOnUse;
-        if(card.freeToPlayOnce) cost = 0;
+        int cost = MariMod.calculateEffectiveCardCost(card);
         if(cost == this.lastCost + 1){
             AbstractDungeon.actionManager.addToBottom(new MariDelayedDelayedActionActionAction(new GainEnergyAction(cost)));
             this.flashWithoutSound();

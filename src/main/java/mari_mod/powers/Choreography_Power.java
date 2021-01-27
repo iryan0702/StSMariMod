@@ -69,9 +69,7 @@ public class Choreography_Power extends TwoAmountPowerByKiooehtButIJustChangedIt
     }
 
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        int cost = card.costForTurn;
-        if(card.cost == -1) cost = card.energyOnUse;
-        if(card.freeToPlayOnce) cost = 0;
+        int cost = MariMod.calculateEffectiveCardCost(card);
         if(cost < this.lastCost){
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,this.amount,false));
             this.flashWithoutSound();
