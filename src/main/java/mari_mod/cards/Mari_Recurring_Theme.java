@@ -1,13 +1,12 @@
 package mari_mod.cards;
 
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.DrawPileToHandByCardIdAction;
 import mari_mod.actions.MariRecallAction;
-import mari_mod.patches.EphemeralCardPatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,14 +25,15 @@ public class Mari_Recurring_Theme extends AbstractMariCard{
     public Mari_Recurring_Theme(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.recallPreview = true;
+        this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MariRecallAction());
-        if(this.upgraded){
-            //addToBot(new DrawPileToHandByCardIdAction(1, ID));
-        }
+        AbstractCard weeeee = new Mari_Recurring_Theme();
+        if(this.upgraded) weeeee.upgrade();
+        addToBot(new MakeTempCardInDrawPileAction(weeeee, 1, false, true, false));
     }
 
     @Override
@@ -44,6 +44,7 @@ public class Mari_Recurring_Theme extends AbstractMariCard{
     @Override
     public void upgrade() {
         if (!this.upgraded) {
+            this.retain = true;
             upgradeName();
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

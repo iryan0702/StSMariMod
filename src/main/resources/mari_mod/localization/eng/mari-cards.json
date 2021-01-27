@@ -444,8 +444,8 @@
   },
   "MariMod:Mari_Recurring_Theme": {
     "NAME": "Recurring Theme",
-    "DESCRIPTION": "marimod:Recall.",
-    "UPGRADE_DESCRIPTION": "marimod:Recall, then put a *Recurring *Theme from your draw pile into your hand."
+    "DESCRIPTION": "marimod:Recall, then put a copy of this card on top of your draw pile. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL marimod:Recall, then put a copy of this card on top of your draw pile. NL Exhaust."
   },
   "MariMod:Mari_Toss_Uniform": {
     "NAME": "Toss Uniform",
