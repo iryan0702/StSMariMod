@@ -19,7 +19,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "You can target #yANY character with this card. Consume #b1 #yRadiance from the character to trigger an effect."
+    "DESCRIPTION": "You can target #rANY character with this card. Consume #b1 #yRadiance from the character to trigger an effect."
   },
   {
     "PROPER_NAME": "Fading",
@@ -30,7 +30,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "If a #yFading card is in your discard pile, it #yexhausts. After playing a #yFading card, it becomes #yFaded. #yFaded cards can only apply #b1 #yRadiance at once."
+    "DESCRIPTION": "If a #yFading card is in your discard pile, it is #yExhausted. After playing a #yFading card, it becomes #yFaded. #yFaded cards can only apply #b1 #yRadiance at a time."
   },
   {
     "PROPER_NAME": "Faded",
@@ -41,7 +41,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "If a #yFaded card is in your discard pile, it #yexhausts. #yFaded cards can only apply #b1 #yRadiance at once."
+    "DESCRIPTION": "If a #yFaded card is in your discard pile, it is #yExhausted. #yFaded cards can only apply #b1 #yRadiance at a time."
   },
   {
     "PROPER_NAME": "Recall",
@@ -53,17 +53,6 @@
       "UNUSED_RESERVE"
     ],
     "DESCRIPTION": "Return the bottom-most #yGlaring card in your exhaust pile to your hand. NL If you have none, return the bottom-most #yFading #yRadiance card. NL If you have none, return the bottom-most #yFaded #yRadiance card."
-  },
-  {
-    "PROPER_NAME": "Recalled",
-    "NAMES":[
-      "Recalled",
-      "recalled",
-      "UNUSED_RESERVE",
-      "UNUSED_RESERVE",
-      "UNUSED_RESERVE"
-    ],
-    "DESCRIPTION": "Returned from the exhaust pile by a #yRecall effect."
   },
   {
     "PROPER_NAME": "Glaring",
@@ -85,7 +74,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Like regular exhaust, but louder."
+    "DESCRIPTION": "Like regular #yExhaust, but LOUDER."
   },
   {
     "PROPER_NAME": "Invest",
@@ -110,6 +99,36 @@
     "DESCRIPTION": "When played, add a #yRepression to the bottom of your exhaust pile. #yRepression cards have #yGlaring and are #yRecalled first."
   },
   {
+    "PROPER_NAME": "Reflect",
+    "NAMES":[
+      "Reflect",
+      "reflect",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Trigger an effect when returned from the exhaust pile by a #yRecall effect."
+  },
+  {
+    "PROPER_NAME": "Dim",
+    "NAMES":[
+      "Dim",
+      "dim",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "If a Dim card is in your discard pile, it is #yPurged."
+  },
+  {
+  "PROPER_NAME": "CURRENTLY UNUSED",
+  "NAMES":[
+    "ALL KEYWORDS BELOW ARE UNUSED, NO NEED TO TRANSLATE"
+  ],
+  "DESCRIPTION": "Convert an amount of #yInvested Gold into regular Gold."
+}
+  ,
+  {
     "PROPER_NAME": "Brilliance",
     "NAMES":[
       "Brilliance",
@@ -132,14 +151,14 @@
     "DESCRIPTION": "Immediately recover all but #b1 energy cost when played."
   },
   {
-    "PROPER_NAME": "Reflect",
+    "PROPER_NAME": "Recalled",
     "NAMES":[
-      "Reflect",
-      "reflect",
+      "Recalled",
+      "recalled",
       "UNUSED_RESERVE",
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Trigger an effect when returned from the exhaust pile by a #yRecall effect."
+    "DESCRIPTION": "Returned from the exhaust pile by a #yRecall effect."
   }
 ]

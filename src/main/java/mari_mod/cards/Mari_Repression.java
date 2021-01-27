@@ -31,6 +31,7 @@ public class Mari_Repression extends AbstractMariCard implements OnRecallCard{
     public Mari_Repression(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
         tags.add(MariCustomTags.GLARING);
+        this.recallPreview = true;
     }
 
     @Override
