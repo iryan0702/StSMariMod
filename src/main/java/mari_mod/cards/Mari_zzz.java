@@ -64,7 +64,7 @@ public class Mari_zzz extends AbstractMariCard {
         ArrayList<AbstractGameAction> things = new ArrayList<>();
         things.add((new MariReducePowerIfHavePowerAction(p,p, VulnerablePower.POWER_ID,this.magicNumber)));
 
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, things));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, things, this));
     }
 
     public void upgrade() {

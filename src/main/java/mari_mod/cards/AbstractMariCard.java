@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -23,7 +24,7 @@ import com.megacrit.cardcrawl.random.Random;
 import mari_mod.MariMod;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.patches.CardColorEnum;
-import mari_mod.patches.MariKindleArrowPatch;
+import mari_mod.patches.MariKindleEffectsPatch;
 import mari_mod.powers.Radiance_Power;
 
 import java.util.ArrayList;
@@ -34,10 +35,6 @@ public abstract class AbstractMariCard extends CustomCard {
 
 
     private static final UIStrings noGoldDialogue = CardCrawlGame.languagePack.getUIString("NoGoldDialogue");
-
-    public static AbstractCard currentlyKindledCard;
-    public static AbstractCreature currentKindleTarget;
-    public static float kindleTimer;
 
     public int baseGoldCost = 0;
     public int goldCost = 0;
@@ -50,10 +47,15 @@ public abstract class AbstractMariCard extends CustomCard {
     public boolean upgradedRadiance = false;
     public boolean faded = false;
 
+    public static AbstractCard currentlyKindledCard;
+    public static AbstractCreature currentKindleTarget;
+    public static AbstractCreature currentEnemyTarget;
+    public static float kindleTimer;
     public boolean isAnyTarget = false;
-    private boolean targetingEnemy = false;
-    private boolean isKindled = false;
-    private boolean stillKindled = false;
+    public boolean isKindle = false;
+    public boolean isKindled = false;
+    public boolean noKindle = false;
+    public boolean wasJustDragged = false;
     public Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
 
     public boolean recallPreview = false;
@@ -141,8 +143,6 @@ public abstract class AbstractMariCard extends CustomCard {
 
         applyPowersToRadiance();
 
-        this.glowColor = getNotKindledColor();
-
         if(recallPreview){
             AbstractCard target = MariRecallAction.findRecallTarget(recallIthCard);
             if(target == null){
@@ -153,10 +153,14 @@ public abstract class AbstractMariCard extends CustomCard {
                     ((AbstractMariCard)this.cardsToPreview).baseRadiance = 1;
                     ((AbstractMariCard)this.cardsToPreview).radiance = 1;
                 }
-                System.out.println("creating new preview for: " + this.cardsToPreview.name);
             }
         }
+    }
 
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        this.glowColor = getNotKindledColor();
     }
 
     public void applyPowersToRadiance(){
@@ -191,14 +195,21 @@ public abstract class AbstractMariCard extends CustomCard {
     @Override
     public void update() {
         super.update();
-        isKindled = false;
-        if(AbstractMariCard.currentlyKindledCard == this) {
-            AbstractMariCard.currentlyKindledCard = null;
-            AbstractMariCard.currentKindleTarget = null;
-        }
         if(isAnyTarget && AbstractDungeon.player != null) {
             AbstractPlayer p = AbstractDungeon.player;
             if (p.isDraggingCard && p.hoveredCard.equals(this)) {
+                if(!wasJustDragged) {
+                    this.targetDrawScale = 1.0f;
+                    wasJustDragged = true;
+                    if(this.isKindle) {
+                        this.target = CardTarget.NONE;
+                        noKindle = true;
+                    }else{
+                        this.target = CardTarget.SELF;
+                        noKindle = false;
+                    }
+                }
+
                 AbstractMonster hoveredEnemy = null;
                 for (AbstractMonster enemy : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if (enemy.hb.hovered && !enemy.isDead && !enemy.halfDead) {
@@ -206,57 +217,78 @@ public abstract class AbstractMariCard extends CustomCard {
                     }
                 }
                 if (hoveredEnemy != null) {
-                    if(!this.targetingEnemy) {
+                    if(this.target != CardTarget.ENEMY || AbstractMariCard.currentEnemyTarget != hoveredEnemy) {
+                        AbstractMariCard.currentlyKindledCard = null;
+                        AbstractMariCard.currentKindleTarget = null;
                         AbstractMariCard.kindleTimer = 0.0f;
-                        this.targetingEnemy = true;
+                        isKindled = false;
                         p.inSingleTargetMode = true;
                         this.target = CardTarget.ENEMY;
+                        AbstractMariCard.currentEnemyTarget = hoveredEnemy;
                         this.target_x = hoveredEnemy.hb.cX - this.hb.width * 0.6F - hoveredEnemy.hb_w * 0.6F;
                         this.target_y = hoveredEnemy.hb.cY;
                         this.applyPowers();
+                        if(isKindle && hoveredEnemy.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
+                            AbstractMariCard.currentlyKindledCard = this;
+                            AbstractMariCard.currentKindleTarget = hoveredEnemy;
+                            this.glowColor = Color.GOLD.cpy();
+                            isKindled = true;
+                        }
                     }
-                    if(hoveredEnemy.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
-                        AbstractMariCard.currentlyKindledCard = this;
-                        AbstractMariCard.currentKindleTarget = hoveredEnemy;
-                        this.glowColor = Color.GOLD.cpy();
-                        isKindled = true;
-                        stillKindled = true;
-                    }
+                    this.targetDrawScale = 0.80f;
                 } else {
-                    if(this.targetingEnemy) {
-                        AbstractMariCard.kindleTimer = 0.0f;
-                        this.targetingEnemy = false;
-                        p.inSingleTargetMode = false;
-                        this.target = CardTarget.SELF;
-                        this.applyPowers();
-                    }
-                    if(p.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
-                        AbstractMariCard.currentlyKindledCard = this;
-                        AbstractMariCard.currentKindleTarget = p;
-                        this.glowColor = Color.GOLD.cpy();
-                        isKindled = true;
-                        stillKindled = true;
+                    if(isKindle && InputHelper.mX < Settings.WIDTH/8f){
+                        if (this.target != CardTarget.NONE) {
+                            AbstractMariCard.currentlyKindledCard = null;
+                            AbstractMariCard.currentKindleTarget = null;
+                            AbstractMariCard.kindleTimer = 0.0f;
+                            isKindled = false;
+                            p.inSingleTargetMode = false;
+                            this.target = CardTarget.NONE;
+                            this.applyPowers();
+                        }
+                        this.targetDrawScale = 0.90f;
+                    }else {
+                        if (this.target != CardTarget.SELF) {
+                            AbstractMariCard.currentlyKindledCard = null;
+                            AbstractMariCard.currentKindleTarget = null;
+                            AbstractMariCard.kindleTimer = MariKindleEffectsPatch.MariKindleArrowTailPatch.kindleTime;
+                            isKindled = false;
+                            p.inSingleTargetMode = false;
+                            this.target = CardTarget.SELF;
+                            this.applyPowers();
+                            if (isKindle && p.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)) {
+                                AbstractMariCard.currentlyKindledCard = this;
+                                AbstractMariCard.currentKindleTarget = p;
+                                this.glowColor = Color.GOLD.cpy();
+                                isKindled = true;
+                            }
+                        }
+                        this.targetDrawScale = 1f;
                     }
                 }
-            }else if(this.targetingEnemy){
-                this.targetingEnemy = false;
-                this.target = CardTarget.SELF;
+            }else if(wasJustDragged){
+                AbstractMariCard.currentlyKindledCard = null;
+                AbstractMariCard.currentKindleTarget = null;
+                AbstractMariCard.currentEnemyTarget = null;
+                this.wasJustDragged = false;
+                this.noKindle = false;
+                this.isKindled = false;
+                AbstractMariCard.kindleTimer = 0.0f;
+                this.glowColor = getNotKindledColor();
             }
         }
 
-        if(stillKindled && isKindled){
+        if(isKindled){
             AbstractMariCard.kindleTimer += Gdx.graphics.getDeltaTime();
-        }else if(stillKindled){
-            stillKindled = false;
-            AbstractMariCard.kindleTimer = 0.0f;
-            this.glowColor = getNotKindledColor();
         }
 
         for(KindleParticle p : particles){
             p.update();
         }
+
         particles.removeIf(KindleParticle::isDead);
-        if(isKindled && kindleTimer > MariKindleArrowPatch.MariKindleArrowTailPatch.kindleTime) {
+        if(isKindled && kindleTimer > MariKindleEffectsPatch.MariKindleArrowTailPatch.kindleTime) {
             if (this.particles.size() < 100 && !Settings.DISABLE_EFFECTS) {
                 for (int i = 0; i < FPS_SCALE; i++) {
                     if (Math.random() < 0.2) {
@@ -269,7 +301,7 @@ public abstract class AbstractMariCard extends CustomCard {
 
     }
 
-    protected void successfulKindle(AbstractCreature kindledTarget){
+    public void successfulKindle(AbstractCreature kindledTarget){
         if (!Settings.DISABLE_EFFECTS) {
             for (int i = 0; i < 50; i++) {
                 Vector2 point = generateRandomPointAlongEdgeOfHitbox();
@@ -340,15 +372,18 @@ public abstract class AbstractMariCard extends CustomCard {
 
             lifeSpan = MathUtils.random(0.5f, 1.5f);
 
-            color = new Color(1.0F, MathUtils.random(0.5F, 1.0F), MathUtils.random(0.0F, 0.2F), 1.0F);
+            float red = MathUtils.random(0.90F, 1.0F);
+            float green = MathUtils.random(0.90F, red);
+            float blue = MathUtils.random(0.40F, green-0.1F);
+            color = new Color(red, green, blue, 1.0F);
 
             double random = Math.random();
 
-            if(random < 0.008){
+            if(random < 0.002){
                 color = Colors.get("PURPLE").cpy();
-            }else if(random < 0.011){
+            }else if(random < 0.003){
                 color = Colors.get("CYAN").cpy();
-            }else if(random < 0.013){
+            }else if(random < 0.004){
                 color = Colors.get("RED").cpy();
             }
 
@@ -356,7 +391,7 @@ public abstract class AbstractMariCard extends CustomCard {
 
 
             Texture kindleImg = ImageMaster.loadImage("mari_mod/images/effects/MariKindle.png");
-            imgKindle = ImageMaster.vfxAtlas.addRegion("MariKindleEffect", kindleImg, 0,0,64,64);
+            imgKindle = ImageMaster.ROOM_SHINE_2;//ImageMaster.vfxAtlas.addRegion("MariKindleEffect", kindleImg, 0,0,64,64);
         }
 
         public void update() {
@@ -400,8 +435,8 @@ public abstract class AbstractMariCard extends CustomCard {
         }
 
         public void render(SpriteBatch sb) {
-            float scaleScaleScale = MathUtils.random(0.6F,1.0F);
-            if(this.visibleFlicker) {
+            float scaleScaleScale = MathUtils.random(0.8F,1.3F);//0.6, 1.0
+            if(true) {
                 sb.setColor(color);
                 sb.draw(imgKindle,
                         pos.x - 40f,
@@ -410,8 +445,8 @@ public abstract class AbstractMariCard extends CustomCard {
                         32f,
                         64f,
                         64f,
-                        Math.min(drawScale * (lifeSpan * 1.5f), 1.0f) * scaleScaleScale,
-                        Math.min(drawScale * (lifeSpan * 1.5f), 1.0f) * scaleScaleScale,
+                        Math.min(drawScale * (lifeSpan * 1.5f), 1.0f) * scaleScaleScale * MathUtils.random(0.9F, 1.1F),
+                        Math.min(drawScale * (lifeSpan * 1.5f), 1.0f) * scaleScaleScale * MathUtils.random(0.7F, 1.3F),
                         0f);
             }
         }

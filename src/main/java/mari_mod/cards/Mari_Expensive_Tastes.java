@@ -49,7 +49,7 @@ public class Mari_Expensive_Tastes extends AbstractMariCard {
         }
 
         AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new MariExpensiveTastesAction(false)));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariExpensiveTastesAction(true)));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariExpensiveTastesAction(true), this));
 
     }
 

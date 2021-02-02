@@ -64,7 +64,7 @@ public class Mari_Self_Care extends AbstractMariCard {
 
         ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
         kindleActions.add(new GainBlockAction(p, this.block));
-        addToBot(new MariSuccessfulKindleAction(target, kindleActions));
+        addToBot(new MariSuccessfulKindleAction(target, kindleActions, this));
 
     }
 

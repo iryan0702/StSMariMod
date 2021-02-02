@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -226,6 +227,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
         private float targetScale;
         private float masterScale;
         private boolean isKindleSpark;
+        private float kindleYOffset; // Offset for particle travel when a card is being held and kindled
         private boolean justKindled;
         private float kindleTargetX;
         private float kindleTargetY;
@@ -255,6 +257,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
                 this.masterAlpha = 1.0F;
             }
             this.isKindleSpark = isKindleSpark;
+            this.kindleYOffset = (AbstractCard.IMG_HEIGHT/3f) * MathUtils.random(0F, 1F);
             this.justKindled = false;
             this.owner = owner;
             this.color = new Color(1.0F, 1.0F, MathUtils.random(0.6F, 0.9F), this.alpha);
@@ -281,17 +284,14 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
             // If a card is being kindled, drift towards the card and increase in size and opacity
             if (AbstractMariCard.currentKindleTarget != null && AbstractMariCard.currentKindleTarget.equals(this.owner) && AbstractMariCard.currentlyKindledCard != null){
-                if(this.x > AbstractMariCard.currentlyKindledCard.current_x){
-                    vX -= 0.8F * Settings.scale;
-                }else{
-                    vX += 0.8F * Settings.scale;
-                }
-                if(this.masterScale <= 1.5F){
-                    this.masterScale += 0.01F;
+                vX += 0.01F * (AbstractMariCard.currentlyKindledCard.current_x - this.x);
+                vY += 0.005F * (AbstractMariCard.currentlyKindledCard.current_y - this.y + kindleYOffset) * (3.0f - this.duration) * (3.0f - this.duration);
+                if(this.masterScale <= 2F){
+                    this.masterScale += 0.02F;
                 }
 
                 if(this.masterAlpha < 1.0F){
-                    this.masterAlpha += 0.01F * Gdx.graphics.getDeltaTime();
+                    this.masterAlpha += 0.02F * Gdx.graphics.getDeltaTime();
                 }
 
             }else{

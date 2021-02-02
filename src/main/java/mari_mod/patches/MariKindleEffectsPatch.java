@@ -5,12 +5,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Bezier;
 import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import javassist.CannotCompileException;
 import javassist.CtBehavior;
+import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 import mari_mod.cards.AbstractMariCard;
 
 
-public class MariKindleArrowPatch {
+public class MariKindleEffectsPatch {
     @SpirePatch(
             clz = AbstractPlayer.class,
             method = "drawCurvedLine",
@@ -19,7 +23,7 @@ public class MariKindleArrowPatch {
     public static class MariKindleArrowTailPatch {
 
         public static Color arrowColor = new Color(1f,0.85f,0.1f,1.0f);
-        public static final float kindleTime = 0.4f;
+        public static final float kindleTime = 0.1f;
         public static final int arrowNodes = 20;
 
         @SpireInsertPatch(
@@ -41,5 +45,31 @@ public class MariKindleArrowPatch {
                 return new int[]{found[0]};
             }
         }
+    }
+
+    @SpirePatch(clz= AbstractPlayer.class, method="updateInput")
+    public static class ReplaceDefaultCardDragScale {
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(FieldAccess a) throws CannotCompileException {
+                    if (a.getClassName().equals(AbstractCard.class.getName()) && (a.getFieldName().equals("drawScale") || a.getFieldName().equals("targetDrawScale"))) {
+                        a.replace(
+                        "{" +
+                            "if(!"+ MariKindleEffectsPatch.class.getName()+".shouldReplaceDefaultCardDragScale(this.hoveredCard) ) {" +
+                                "$proceed($$);" +
+                            "}" +
+                        "}");
+                    }
+                }
+            };
+        }
+    }
+
+    public static boolean shouldReplaceDefaultCardDragScale(AbstractCard c){
+        if(!(c instanceof AbstractMariCard) || !((AbstractMariCard)c).noKindle){
+            return false;
+        }
+        return true;
     }
 }

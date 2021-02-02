@@ -41,9 +41,9 @@ public class Mari_Awe extends AbstractMariCard {
         }else{
             target = p;
         }
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction()));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction()));
-        if(this.upgraded) AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction()));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction(), this));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction(), this));
+        if(this.upgraded) AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction(), this));
     }
 
     @Override

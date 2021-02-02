@@ -57,7 +57,7 @@ public class Mari_Defiance extends AbstractMariCard {
         success.add(new MariDefianceAction(this));
         success.add(new MariApplyPowersAction(this));
         success.add(new MariReducePowerIfHavePowerAction(p,p,FrailPower.POWER_ID,1));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, success));
+        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, success, this));
     }
 
 
