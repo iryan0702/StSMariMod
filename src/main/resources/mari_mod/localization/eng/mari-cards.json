@@ -174,7 +174,7 @@
     "NAME": "Defiance",
     "DESCRIPTION": "Gain !B! Block. NL marimod:Kindle: Lose 1 Frail to gain !B! more Block.",
     "EXTENDED_DESCRIPTION": [
-      "(!M! Block total)"
+      "(!M! Block total.)"
     ]
   },
   "MariMod:Mari_Undying_Spark": {
@@ -271,11 +271,11 @@
   },
   "MariMod:Mari_Dolphin_Strike": {
     "NAME": "Dolphin Strike",
-    "DESCRIPTION": "marimod:Glaring. Ethereal. NL Deal !D! damage twice. NL marimod:Reflect: Deals !M! more damage this combat."
+    "DESCRIPTION": "marimod:Glaring. Ethereal. NL Deal !D! damage for each Strike played this turn. NL marimod:Reflect: Gain [E]. NL Exhaust."
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge the next card you would marimod:Recall, NL then marimod:Recall. NL marimod:Kindle: Gain !B! Block."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. marimod:Recall. NL marimod:Kindle: First, Purge the next card you would Recall and gain !B! Block."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",
