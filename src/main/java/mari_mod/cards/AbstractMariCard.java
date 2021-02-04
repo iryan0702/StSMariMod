@@ -143,6 +143,10 @@ public abstract class AbstractMariCard extends CustomCard {
 
         applyPowersToRadiance();
 
+        updateRecallPreview();
+    }
+
+    public void updateRecallPreview(){
         if(recallPreview){
             AbstractCard target = MariRecallAction.findRecallTarget(recallIthCard);
             if(target == null){

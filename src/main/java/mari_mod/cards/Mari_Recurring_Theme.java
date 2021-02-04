@@ -31,7 +31,7 @@ public class Mari_Recurring_Theme extends AbstractMariCard{
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MariRecallAction());
-        AbstractCard weeeee = new Mari_Recurring_Theme();
+        AbstractCard weeeee = this.makeStatEquivalentCopy();
         if(this.upgraded) weeeee.upgrade();
         addToBot(new MakeTempCardInDrawPileAction(weeeee, 1, false, true, false));
     }

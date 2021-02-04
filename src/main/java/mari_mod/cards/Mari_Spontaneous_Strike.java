@@ -54,7 +54,7 @@ public class Mari_Spontaneous_Strike extends AbstractMariCard {
     public void applyPowers() {
         this.baseDamage = this.magicNumber;
 
-        this.baseDamage += MariMod.energySpentThisTurn;
+        this.baseDamage += MariMod.energySpentThisTurn * 2;
         super.applyPowers();
 
         this.baseDamage = this.magicNumber;

@@ -25,7 +25,7 @@ public class Mari_Debut extends AbstractMariCard{
     private static final int BASE_RADIANCE = 2;
     private static final int BASE_DAMAGE = 1;
     private static final int RADIANCE_UPGRADE = 1;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
