@@ -431,6 +431,13 @@ public class MariMod implements
         p.hand.glowCheck();
     }
 
+    public static void instantDamageAction(AbstractCreature target, DamageInfo info, AbstractGameAction.AttackEffect effect){
+        AbstractGameAction action = new DamageAction(target, info, effect);
+        for(int i = 0; i < 600 && !action.isDone; i++){
+            action.update();
+        }
+    }
+
     public static int calculateEffectiveCardCost(AbstractCard card){
         int cost = card.costForTurn;
         if (card.cost == -1) cost = card.energyOnUse;
