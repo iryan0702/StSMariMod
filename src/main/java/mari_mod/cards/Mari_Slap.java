@@ -3,6 +3,7 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,21 +20,20 @@ public class Mari_Slap extends AbstractMariCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final int COST = 1;
     private static final int DAMAGE = 8;
-    private static final int UPGRADE_DAMAGE = 0;
+    private static final int UPGRADE_DAMAGE = 2;
     private static final int SCALING = 2;
     private static final int UPGRADE_SCALING = 1;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private int veryBaseDamage;
 
     public Mari_Slap(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
 
-        this.baseDamage = DAMAGE;
-        veryBaseDamage = this.damage = this.baseDamage;
+        this.damage = this.baseDamage = DAMAGE;
 
         this.baseMagicNumber = SCALING;
         this.magicNumber = this.baseMagicNumber;
@@ -48,27 +48,72 @@ public class Mari_Slap extends AbstractMariCard {
         if(this.damage > this.baseDamage * 2) effect = AbstractGameAction.AttackEffect.BLUNT_HEAVY;
         if(this.damage > this.baseDamage * 5) AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F)));;
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), effect));
-        this.baseDamage = veryBaseDamage;
+        this.misc = 0;
+    }
+
+    @Override
+    public void applyPowers() {
+        int originalBase = this.baseDamage;
+        this.baseDamage += misc;
+
+        super.applyPowers();
+
+        this.isDamageModified = this.damage != originalBase;
+        this.baseDamage = originalBase;
+
+        initializeDescription();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int originalBase = this.baseDamage;
+        this.baseDamage += misc;
+
+        super.calculateCardDamage(mo);
+
+        this.isDamageModified = this.damage != originalBase;
+        this.baseDamage = originalBase;
+
+        initializeDescription();
+    }
+
+    @Override
+    public void initializeDescription() {
+        if(!CardCrawlGame.isInARun() || AbstractDungeon.player == null || AbstractDungeon.player.hand.contains(this)){
+            this.rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
+        }else if(this.misc > 0){
+            this.rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[1] + (this.misc) + EXTENDED_DESCRIPTION[2] + EXTENDED_DESCRIPTION[0];
+        }else{
+            this.rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
+        }
+        super.initializeDescription();
     }
 
     public void boost(){
-        this.baseDamage += this.magicNumber;
+        this.misc += this.magicNumber;
         if(AbstractDungeon.player.hand.contains(this)){
             applyPowers();
         }
+        initializeDescription();
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_SCALING);
-            //upgradeDamage(UPGRADE_DAMAGE);
-            veryBaseDamage += UPGRADE_DAMAGE;
+            upgradeDamage(UPGRADE_DAMAGE);
             this.initializeDescription();
         }
     }
 
-//    public class SlapMod extends AbstractCardModifier{
+    @Override
+    public AbstractCard makeCopy() {
+        Mari_Slap returnCopy = new Mari_Slap();
+        returnCopy.misc = this.misc;
+        return returnCopy;
+    }
+
+    //    public class SlapMod extends AbstractCardModifier{
 //
 //        public int boost;
 //

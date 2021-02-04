@@ -263,7 +263,12 @@
   },
   "MariMod:Mari_Slap": {
     "NAME": "Slap!",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you gain a debuff you do not have, this deals !M! more until played."
+    "DESCRIPTION": "Deal !D!",
+    "EXTENDED_DESCRIPTION": [
+      " damage. NL Whenever you gain a debuff you do not have, this deals !M! more until played.",
+      " (+",
+      ")"
+    ]
   },
   "MariMod:Mari_Approved": {
     "NAME": "\"Approved!\"",
@@ -441,6 +446,11 @@
   "MariMod:Mari_Anticipate": {
     "NAME": "Anticipate",
     "DESCRIPTION": "Gain !B! Block X times. NL If this costs less than the last card played this combat, gain X [E]."
+  },
+  "MariMod:Mari_Toss_Uniform": {
+    "NAME": "Toss Uniform",
+    "DESCRIPTION": "Deal !D! damage to ANY character and gain twice the *Blocked damage as Block.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Deal !D! damage to ANY character and gain twice the Blocked damage as Block."
   },
   "MariMod:Mari_Recurring_Theme": {
     "NAME": "Recurring Theme",
