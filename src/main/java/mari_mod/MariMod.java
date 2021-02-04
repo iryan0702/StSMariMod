@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -807,8 +808,10 @@ public class MariMod implements
             BaseMod.addCard(new Mari_$Choose_Pain());
             BaseMod.addCard(new Mari_$Choose_Grief());
             BaseMod.addCard(new Mari_First_Light());
+            BaseMod.addCard(new Mari_ForeHindsight());
 
 
+            BaseMod.addCard(new Mari_Light_Taps());
             //BaseMod.addCard(new Mari_Drama1());
             //BaseMod.addCard(new Mari_Drama2());
 //            BaseMod.addCard(new Mari_Flaunt());

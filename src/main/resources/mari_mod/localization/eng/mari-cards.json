@@ -447,15 +447,19 @@
     "DESCRIPTION": "marimod:Recall, then put a copy of this card on top of your draw pile. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Retain. NL marimod:Recall, then put a copy of this card on top of your draw pile. NL Exhaust."
   },
-  "MariMod:Mari_Toss_Uniform": {
-    "NAME": "Toss Uniform",
-    "DESCRIPTION": "Deal !D! damage to ANY character, it gains twice the damage taken as Block.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Deal !D! damage to ANY character, it gains twice the damage taken as Block."
+  "MariMod:Mari_Light_Taps": {
+    "NAME": "Light Taps",
+    "DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. NL Add a *Spark to your hand.",
+    "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. NL Add a *Spark+ to your hand."
   },
   "MariMod:Mari_Spark": {
     "NAME": "Spark",
     "DESCRIPTION": "marimod:Fading. NL If you target an enemy, deal !D! damage. NL Otherwise, marimod:Recall.",
     "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL If you target an enemy, deal !D! damage. NL Otherwise, marimod:Recall."
+  },
+  "MariMod:Mari_ForeHindsight": {
+    "NAME": "Fore/Hindsight",
+    "DESCRIPTION": "Scry !M!. NL Deal !D! damage. NL marimod:Recall."
   },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
