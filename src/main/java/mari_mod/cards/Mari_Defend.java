@@ -30,7 +30,6 @@ public class Mari_Defend extends AbstractMariCard {
         this.baseBlock = BLOCK;
         this.block =  this.baseBlock;
         this.tags.add(CardTags.STARTER_DEFEND);
-        this.tags.add(MariCustomTags.KINDLE);
         this.isAnyTarget = true;
         this.isKindle = true;
     }

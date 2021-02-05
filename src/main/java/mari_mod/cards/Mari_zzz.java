@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import mari_mod.actions.MariReducePowerIfHavePowerAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,8 +36,8 @@ public class Mari_zzz extends AbstractMariCard {
         this.baseBlock = BLOCK;
         this.block = this.baseBlock;
         this.magicNumber = this.baseMagicNumber = VULN_LOSS;
-        this.tags.add(MariCustomTags.KINDLE);
         this.isAnyTarget = true;
+        this.isKindle = true;
     }
 
     @Override
@@ -51,14 +50,11 @@ public class Mari_zzz extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
-        }
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
         }
 
         ArrayList<AbstractGameAction> things = new ArrayList<>();

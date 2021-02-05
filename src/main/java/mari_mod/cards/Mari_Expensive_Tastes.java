@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariExpensiveTastesAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
 import mari_mod.actions.MariUnsuccessfulKindleAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,23 +28,16 @@ public class Mari_Expensive_Tastes extends AbstractMariCard {
     public Mari_Expensive_Tastes(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+        this.isKindle = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
-        }
-
-
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
         }
 
         AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new MariExpensiveTastesAction(false)));

@@ -25,7 +25,6 @@ public class Mari_The_Planisphere extends AbstractMariCard {
 
     public Mari_The_Planisphere(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.tags.add(MariCustomTags.KINDLE);
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
     }
 

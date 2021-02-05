@@ -12,7 +12,6 @@ import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.actions.MariPurgeNextRecallAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,7 +38,7 @@ public class Mari_Self_Care extends AbstractMariCard {
         this.block = this.baseBlock;
         this.baseGoldCost = BASE_GOLD_COST;
         this.goldCost = this.baseGoldCost;
-        this.tags.add(MariCustomTags.KINDLE);
+        this.isKindle = true;
         this.isAnyTarget = true;
         this.recallPreview = true;
         this.recallIthCard = 2;
@@ -48,19 +47,16 @@ public class Mari_Self_Care extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
         }
+
         addToBot(new MariInvestGoldAction(this));
         addToBot(new MariPurgeNextRecallAction());
         addToBot(new MariRecallAction());
-
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
 
         ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
         kindleActions.add(new GainBlockAction(p, this.block));

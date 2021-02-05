@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.powers.FrailPower;
 import mari_mod.actions.MariFragileHopeAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,28 +30,21 @@ public class Mari_Fragile_Hope extends AbstractMariCard {
     public Mari_Fragile_Hope(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+        this.isKindle = true;
         this.recallPreview = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
         }
 
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, 1, false), 1));
-        //AbstractDungeon.actionManager.addToBottom(new MariFragileHopeAction());
-        //if(this.upgraded) {
-        //    AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-        //}
 
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
         addToBot(new MariSuccessfulKindleAction(target, new MariRecallAction(new MariFragileHopeAction()), this));
 
     }

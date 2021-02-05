@@ -30,17 +30,18 @@ public class Mari_Awe extends AbstractMariCard {
         this.baseMagicNumber = BASE_CONVERT;
         this.magicNumber = this.baseMagicNumber;
         this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+        this.isKindle = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
         }
+
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction(), this));
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction(), this));
         if(this.upgraded) AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariAweAction(), this));

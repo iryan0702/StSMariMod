@@ -232,7 +232,7 @@ public abstract class AbstractMariCard extends CustomCard {
                         this.target_x = hoveredEnemy.hb.cX - this.hb.width * 0.6F - hoveredEnemy.hb_w * 0.6F;
                         this.target_y = hoveredEnemy.hb.cY;
                         this.applyPowers();
-                        if(isKindle && hoveredEnemy.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)){
+                        if(isKindle && hoveredEnemy.hasPower(Radiance_Power.POWER_ID)){
                             AbstractMariCard.currentlyKindledCard = this;
                             AbstractMariCard.currentKindleTarget = hoveredEnemy;
                             this.glowColor = Color.GOLD.cpy();
@@ -261,7 +261,7 @@ public abstract class AbstractMariCard extends CustomCard {
                             p.inSingleTargetMode = false;
                             this.target = CardTarget.SELF;
                             this.applyPowers();
-                            if (isKindle && p.hasPower(Radiance_Power.POWER_ID) && this.hasTag(MariCustomTags.KINDLE)) {
+                            if (isKindle && p.hasPower(Radiance_Power.POWER_ID)) {
                                 AbstractMariCard.currentlyKindledCard = this;
                                 AbstractMariCard.currentKindleTarget = p;
                                 this.glowColor = Color.GOLD.cpy();

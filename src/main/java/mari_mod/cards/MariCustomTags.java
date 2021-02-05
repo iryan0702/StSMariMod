@@ -7,7 +7,7 @@ public class MariCustomTags {
     @SpireEnum public static AbstractCard.CardTags SPEND;
     @SpireEnum public static AbstractCard.CardTags RADIANCE;
     @SpireEnum public static AbstractCard.CardTags QUOTATIONS;
-    @SpireEnum public static AbstractCard.CardTags KINDLE;
+    //@SpireEnum public static AbstractCard.CardTags KINDLE;
     @SpireEnum public static AbstractCard.CardTags GLARING;
 
     @SpireEnum public static AbstractCard.CardTags DRAMA;

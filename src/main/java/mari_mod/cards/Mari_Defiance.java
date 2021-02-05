@@ -38,15 +38,15 @@ public class Mari_Defiance extends AbstractMariCard {
         this.block = this.baseBlock;
 
         this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+        this.isKindle = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
         }
         //AbstractDungeon.actionManager.addToBottom(new MariDefianceAction(this.block));

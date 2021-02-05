@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,23 +33,21 @@ public class Mari_Well_Kept_Secret extends AbstractMariCard {
         this.baseBlock = BLOCK;
         this.block = this.baseBlock;
         this.isAnyTarget = true;
-        this.tags.add(MariCustomTags.KINDLE);
+        this.isKindle = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
         }
+
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new BlurPower(p,1),1));
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
+
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new ApplyPowerAction(p, p, new EquilibriumPower(p, 1), 1), this));
 
     }

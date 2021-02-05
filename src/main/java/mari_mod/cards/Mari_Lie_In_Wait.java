@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,8 +37,10 @@ public class Mari_Lie_In_Wait extends AbstractMariCard implements OnRecallCard {
         this.baseBlock = BLOCK;
         this.block = this.baseBlock;
         this.exhaust = true;
-        this.tags.add(MariCustomTags.KINDLE);
+
         this.isAnyTarget = true;
+        this.isKindle = true;
+
         tags.add(MariCustomTags.GLARING);
     }
 
@@ -50,17 +51,13 @@ public class Mari_Lie_In_Wait extends AbstractMariCard implements OnRecallCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature target;
+        AbstractCreature target = null;
         if(m != null) {
             target = m;
-        }else{
+        }else if(this.target == CardTarget.SELF){
             target = p;
         }
 
-        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Lie_In_Wait_Power(p, this.magicNumber), this.magicNumber));
-        if(target.hasPower(Radiance_Power.POWER_ID) && target.getPower(Radiance_Power.POWER_ID).amount >= 1){
-            this.successfulKindle(target);
-        }
         AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new GainBlockAction(p,p,this.block, true), this));
     }
 
