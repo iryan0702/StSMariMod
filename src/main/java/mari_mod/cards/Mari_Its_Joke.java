@@ -34,16 +34,15 @@ public class Mari_Its_Joke extends AbstractMariCard {
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(MariCustomTags.QUOTATIONS);
         this.tags.add(MariCustomTags.RADIANCE);
-        this.exhaust = true;
         this.baseRadiance = this.radiance = RADIANCE;
         this.baseDamage = this.damage = DAMAGE;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        if(this.upgraded) addToBot(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
         addToBot(new ApplyPowerAction(m, p, new Radiance_Power(m, this.radiance), this.radiance));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(new MariItsJokeAction(m, m.currentHealth));
     }
 
@@ -57,7 +56,6 @@ public class Mari_Its_Joke extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.exhaust = false;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
