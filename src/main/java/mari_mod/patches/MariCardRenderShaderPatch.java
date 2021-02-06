@@ -18,13 +18,17 @@ public class MariCardRenderShaderPatch {
 
         @SpirePrefixPatch
         public static void Prefix(AbstractCard instance, SpriteBatch sb) {
-            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance && AbstractMariCard.kindleTimer > MariKindleEffectsPatch.MariKindleArrowTailPatch.kindleTime || instance.hasTag(MariCustomTags.GLARING)) {
+            if(instance.color == CardColorEnum.MARI && AbstractMariCard.currentlyKindledCard == instance && AbstractMariCard.kindleTimer > MariKindleEffectsPatch.MariKindleArrowTailPatch.kindleTime) {
                 sb.end();
                 sb.setShader(MariMod.goldShader);
                 sb.begin();
             }else if(instance instanceof AbstractMariCard && (((AbstractMariCard)instance).faded || ((AbstractMariCard)instance).noKindle)){
                 sb.end();
                 sb.setShader(MariMod.greyShader);
+                sb.begin();
+            }else if(instance.hasTag(MariCustomTags.GLARING)) {
+                sb.end();
+                sb.setShader(MariMod.orangeShader);
                 sb.begin();
             }
         }
