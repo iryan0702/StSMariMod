@@ -4,12 +4,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mari_mod.actions.MariExpensiveTastesAction;
+import mari_mod.actions.MariExpensiveTastesReorderAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
-import mari_mod.actions.MariUnsuccessfulKindleAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,8 +39,9 @@ public class Mari_Expensive_Tastes extends AbstractMariCard {
             target = p;
         }
 
-        AbstractDungeon.actionManager.addToBottom(new MariUnsuccessfulKindleAction(target, new MariExpensiveTastesAction(false)));
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new MariExpensiveTastesAction(true), this));
+
+        addToBot(new MariExpensiveTastesReorderAction());
+        addToBot(new MariSuccessfulKindleAction(target, new MariExpensiveTastesAction(), this));
 
     }
 
