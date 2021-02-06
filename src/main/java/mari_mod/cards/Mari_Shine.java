@@ -22,7 +22,8 @@ public class Mari_Shine extends AbstractMariCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 0;
     private static final int BASE_RADIANCE = 2;
-    private static final int UPGRADE_RADIANCE = 1;
+    private static final int RADIANCE_SCALING = 2;
+    private static final int UPGRADE_RADIANCE_SCALING = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -32,7 +33,8 @@ public class Mari_Shine extends AbstractMariCard {
         this.tags.add(MariCustomTags.RADIANCE);
         this.baseRadiance = BASE_RADIANCE;
         this.radiance = this.baseRadiance;
-        this.baseMagicNumber = BASE_RADIANCE;
+
+        this.baseMagicNumber = RADIANCE_SCALING;
         this.magicNumber = baseMagicNumber;
         EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
         this.isAnyTarget = true;
@@ -52,32 +54,34 @@ public class Mari_Shine extends AbstractMariCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
 
-        this.baseRadiance = this.magicNumber;
+        int originalBase = this.baseRadiance;
         for (AbstractPower p : AbstractDungeon.player.powers) {
             if (p.type == AbstractPower.PowerType.DEBUFF) {
-                this.baseRadiance += 2;
+                this.baseRadiance += this.magicNumber;
             }
         }
 
         super.calculateCardDamage(mo);
 
-        this.baseRadiance = this.magicNumber;
+        this.baseRadiance = originalBase;
         this.modifiedRadiance = this.baseRadiance != this.radiance;
     }
 
     @Override
     public void applyPowers() {
 
-        this.baseRadiance = this.magicNumber;
+        int originalBase = this.baseRadiance;
         for (AbstractPower p : AbstractDungeon.player.powers) {
             if (p.type == AbstractPower.PowerType.DEBUFF) {
-                this.baseRadiance += 2;
+                this.baseRadiance += this.magicNumber;
             }
         }
 
         super.applyPowers();
-        this.baseRadiance = this.magicNumber;
+
+        this.baseRadiance = originalBase;
         this.modifiedRadiance = this.baseRadiance != this.radiance;
+
     }
 
     @Override
@@ -89,8 +93,7 @@ public class Mari_Shine extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_RADIANCE);
-            upgradeRadiance(UPGRADE_RADIANCE);
+            upgradeMagicNumber(UPGRADE_RADIANCE_SCALING);
         }
     }
 }
