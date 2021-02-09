@@ -276,7 +276,7 @@
   },
   "MariMod:Mari_Dolphin_Strike": {
     "NAME": "Dolphin Strike",
-    "DESCRIPTION": "marimod:Glaring. Ethereal. NL Deal !D! damage for each Strike played this turn. NL marimod:Reflect: Gain [E]. NL Exhaust."
+    "DESCRIPTION": "marimod:Glaring. NL Deal !D! damage. NL marimod:Reflect: Gain [E] [E]. NL Exhaust."
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
