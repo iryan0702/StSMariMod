@@ -21,6 +21,7 @@ public class MariRecallAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariRecallAction.class.getName());
     public static AbstractCard recalledCard;
     public AbstractGameAction followUpAction;
+    public AbstractCard directRecallCard = null;
     private AbstractPlayer p;
 
     public MariRecallAction() {
@@ -33,8 +34,22 @@ public class MariRecallAction extends AbstractGameAction {
         this.followUpAction = followUpAction;
     }
 
+    public MariRecallAction(AbstractCard directRecall, boolean isDirectRecall, AbstractGameAction followUpAction) {
+        this.actionType = ActionType.CARD_MANIPULATION;
+        this.p = AbstractDungeon.player;
+        this.followUpAction = followUpAction;
+        if(isDirectRecall) {
+            this.directRecallCard = directRecall;
+        }
+    }
+
     public void update() {
-        AbstractCard c = findRecallTarget();
+        AbstractCard c;
+        if(directRecallCard != null){
+            c = directRecallCard;
+        }else{
+            c = findRecallTarget();
+        }
         recalledCard = c;
 
         if(c != null) {
@@ -83,6 +98,10 @@ public class MariRecallAction extends AbstractGameAction {
         }
 
         this.isDone = true;
+    }
+
+    public static boolean isRecallable(AbstractCard c){
+        return c.hasTag(MariCustomTags.GLARING) || EphemeralCardPatch.EphemeralField.ephemeral.get(c) && c.hasTag(MariCustomTags.RADIANCE);
     }
 
     public static AbstractCard findRecallTarget(){

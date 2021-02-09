@@ -324,7 +324,7 @@
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Purge any number of cards in your exhaust pile, then marimod:Recall."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall !M! cards and shuffle them into your draw pile."
   },
   "MariMod:Mari_Lock_On": {
     "NAME": "\"Lock on!\"",
