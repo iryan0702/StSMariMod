@@ -280,7 +280,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. marimod:Recall. NL marimod:Kindle: First, Purge the next card you would Recall and gain !B! Block."
+    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Kindle: Purge the next card you would marimod:Recall and gain !B! Block. NL marimod:Recall."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",

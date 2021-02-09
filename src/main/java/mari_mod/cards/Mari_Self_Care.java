@@ -41,7 +41,7 @@ public class Mari_Self_Care extends AbstractMariCard {
         this.isKindle = true;
         this.isAnyTarget = true;
         this.recallPreview = true;
-        this.recallIthCard = 2;
+        this.recallIthCard = 1;
 
     }
 
@@ -54,13 +54,14 @@ public class Mari_Self_Care extends AbstractMariCard {
             target = p;
         }
 
-        addToBot(new MariInvestGoldAction(this));
-        addToBot(new MariPurgeNextRecallAction());
-        addToBot(new MariRecallAction());
 
         ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
         kindleActions.add(new GainBlockAction(p, this.block));
+        kindleActions.add(new MariPurgeNextRecallAction());
         addToBot(new MariSuccessfulKindleAction(target, kindleActions, this));
+
+        addToBot(new MariInvestGoldAction(this));
+        addToBot(new MariRecallAction());
 
     }
 
