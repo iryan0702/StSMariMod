@@ -204,12 +204,12 @@ public abstract class AbstractMariCard extends CustomCard {
             if (p.isDraggingCard && p.hoveredCard.equals(this)) {
                 if(!wasJustDragged) {
                     this.targetDrawScale = 1.0f;
-                    wasJustDragged = true;
+                    this.wasJustDragged = true;
                     if(this.isKindle) {
                         this.target = CardTarget.NONE;
                         noKindle = true;
                     }else{
-                        this.target = CardTarget.SELF;
+                        this.target = CardTarget.NONE;
                         noKindle = false;
                     }
                 }
@@ -237,6 +237,8 @@ public abstract class AbstractMariCard extends CustomCard {
                             AbstractMariCard.currentKindleTarget = hoveredEnemy;
                             this.glowColor = Color.GOLD.cpy();
                             isKindled = true;
+                        }else{
+                            this.glowColor = getNotKindledColor();
                         }
                     }
                     this.targetDrawScale = 0.80f;
@@ -246,6 +248,7 @@ public abstract class AbstractMariCard extends CustomCard {
                             AbstractMariCard.currentlyKindledCard = null;
                             AbstractMariCard.currentKindleTarget = null;
                             AbstractMariCard.kindleTimer = 0.0f;
+                            this.glowColor = getNotKindledColor();
                             isKindled = false;
                             p.inSingleTargetMode = false;
                             this.target = CardTarget.NONE;
@@ -266,11 +269,14 @@ public abstract class AbstractMariCard extends CustomCard {
                                 AbstractMariCard.currentKindleTarget = p;
                                 this.glowColor = Color.GOLD.cpy();
                                 isKindled = true;
+                            }else{
+                                this.glowColor = getNotKindledColor();
                             }
+                            this.targetDrawScale = 1.00f;
                         }
-                        this.targetDrawScale = 1f;
                     }
                 }
+                wasJustDragged = true;
             }else if(wasJustDragged){
                 AbstractMariCard.currentlyKindledCard = null;
                 AbstractMariCard.currentKindleTarget = null;
@@ -283,8 +289,8 @@ public abstract class AbstractMariCard extends CustomCard {
             }
         }
 
-        if(isKindled){
-            AbstractMariCard.kindleTimer += Gdx.graphics.getDeltaTime();
+        if(isKindled && kindleTimer <= MariKindleEffectsPatch.MariKindleArrowTailPatch.kindleTime){
+            AbstractMariCard.kindleTimer += (1.5f + AbstractMariCard.kindleTimer * 2f) * Gdx.graphics.getDeltaTime();
         }
 
         for(KindleParticle p : particles){

@@ -23,7 +23,7 @@ public class MariKindleEffectsPatch {
     public static class MariKindleArrowTailPatch {
 
         public static Color arrowColor = new Color(1f,0.85f,0.1f,1.0f);
-        public static final float kindleTime = 0.1f;
+        public static final float kindleTime = 1f;
         public static final int arrowNodes = 20;
 
         @SpireInsertPatch(
