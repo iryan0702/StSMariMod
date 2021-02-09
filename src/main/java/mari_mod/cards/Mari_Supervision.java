@@ -18,7 +18,6 @@ public class Mari_Supervision extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
     private static final int ENERGY_GAIN = 3;
     private static final int ENERGY_GAIN_UPGRADE = 1;
     private static final CardType TYPE = CardType.POWER;
@@ -35,7 +34,7 @@ public class Mari_Supervision extends AbstractMariCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
 
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Supervision_Power(p, this.magicNumber), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new MariSetCostOfALLCardsAction(2));
+        AbstractDungeon.actionManager.addToBottom(new MariSetCostOfALLCardsAction(1));
 
         /*if(!p.hasPower(Supervision_Power.POWER_ID)){
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Supervision_Power(p, this.magicNumber), this.magicNumber));
@@ -48,7 +47,6 @@ public class Mari_Supervision extends AbstractMariCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeMagicNumber(ENERGY_GAIN_UPGRADE);
-            upgradeBaseCost(UPGRADE_COST);
         }
     }
 }

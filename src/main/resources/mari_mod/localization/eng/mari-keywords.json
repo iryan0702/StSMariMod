@@ -107,7 +107,7 @@
       "UNUSED_RESERVE",
       "UNUSED_RESERVE"
     ],
-    "DESCRIPTION": "Trigger an effect when returned from the exhaust pile by a #yRecall effect."
+    "DESCRIPTION": "Trigger an effect when moved by a #yRecall effect."
   },
   {
     "PROPER_NAME": "Dim",
