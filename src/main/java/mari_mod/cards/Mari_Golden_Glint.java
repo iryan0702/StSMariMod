@@ -1,6 +1,7 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,7 +14,7 @@ import mari_mod.powers.Radiance_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Mari_Golden_Glint extends AbstractMariCard {
+public class Mari_Golden_Glint extends AbstractMariCard implements OnRecallCard{
     public static final Logger logger = LogManager.getLogger(Mari_Golden_Glint.class.getName());
     public static final String ID = "MariMod:Mari_Golden_Glint";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -25,6 +26,7 @@ public class Mari_Golden_Glint extends AbstractMariCard {
     private static final int UPGRADE_RADIANCE_GAIN = 1;
     private static final int BASE_BLOCK = 4;
     private static final int UPGRADE_BLOCK_GAIN = 2;
+    private static final int BASE_DRAW = 1;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -40,6 +42,8 @@ public class Mari_Golden_Glint extends AbstractMariCard {
         this.goldCost = this.baseGoldCost;
         this.baseBlock = BASE_BLOCK;
         this.block = this.baseBlock;
+        this.baseMagicNumber = BASE_DRAW;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
@@ -47,6 +51,11 @@ public class Mari_Golden_Glint extends AbstractMariCard {
         AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Radiance_Power(p, this.radiance), this.radiance));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block, true));
+    }
+
+    @Override
+    public void onRecall() {
+        addToBot(new DrawCardAction(this.magicNumber, true));
     }
 
     public void upgrade() {
