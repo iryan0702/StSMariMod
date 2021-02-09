@@ -49,6 +49,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
     private DamageInfo radianceInfo;
     private float particleDelay;
     private int radianceDecayThisTurn;
+    public float exponentDamageBoost = 1.0f;
 
     private static final float FPS_SCALE = (240f / Settings.MAX_FPS);
 
@@ -153,7 +154,7 @@ public class Radiance_Power extends TwoAmountPowerByKiooehtButIJustChangedItABit
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if(this.owner.isPlayer) {
-            return type == DamageInfo.DamageType.NORMAL ? Math.max(damage * (1.0f + this.amount * 0.05f), this.amount) : damage;
+            return type == DamageInfo.DamageType.NORMAL ? Math.max(damage * (float)Math.pow(1.0f + this.amount * 0.05f, exponentDamageBoost), this.amount) : damage;
         }
         else return damage;
     }
