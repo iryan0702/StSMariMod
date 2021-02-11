@@ -68,6 +68,10 @@
     "DESCRIPTIONS": ["At the start of your turn, gain #b",
       " [E] ."]
   },
+  "MariMod:Practice_Outfit_Power": {
+    "NAME": "Practice Outfit",
+    "DESCRIPTIONS": ["Whenever a character with #yBlock receives attack damage, it gains #b1 #yRadiance."]
+  },
   "MariMod:Practice_Outfit_Buff_Power": {
     "NAME": "\"Ehehe...\"",
     "DESCRIPTIONS": ["Whenever this character's #yBlock is broken, gain #b",

@@ -124,6 +124,7 @@ public class MariMod implements
     public static int timesMariSpentGoldThisCombat = 0;
     public static int timesMariPlayedAttacksThisCombat = 0;
     public static int timesMariPlayedSkillsThisCombat = 0;
+    public static int blockLostToFrailThisCombat = 0;
     public static boolean played0Cost = false;
     public static boolean played1Cost = false;
     public static boolean played2Cost = false;
@@ -324,6 +325,7 @@ public class MariMod implements
         timesMariPlayedAttacksThisCombat = 0;
         timesMariPlayedSkillsThisCombat = 0;
         timesMariSpentGoldThisCombat = 0;
+        blockLostToFrailThisCombat = 0;
         recentDebuffs.clear();
         played0Cost = false;
         played1Cost = false;
@@ -821,6 +823,7 @@ public class MariMod implements
 
 
             BaseMod.addCard(new Mari_Light_Taps());
+            BaseMod.addCard(new Mari_Lost_Potential());
             //BaseMod.addCard(new Mari_Drama1());
             //BaseMod.addCard(new Mari_Drama2());
 //            BaseMod.addCard(new Mari_Flaunt());

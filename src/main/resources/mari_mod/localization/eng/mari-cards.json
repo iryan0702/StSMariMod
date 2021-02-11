@@ -226,7 +226,7 @@
   },
   "MariMod:Mari_Practice_Outfit": {
     "NAME": "Practice Outfits",
-    "DESCRIPTION": "ALL characters gain NL !B! Block and do not lose Block at end of turn. NL Exhaust.",
+    "DESCRIPTION": "Whenever a character with Block receives attack damage, it gains 1 marimod:Radiance.",
     "UPGRADE_DESCRIPTION": "ALL characters gain NL !B! (20) Block and do not lose Block at end of turn. NL Exhaust."
   },
   "MariMod:Mari_Limelight": {
