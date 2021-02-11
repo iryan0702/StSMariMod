@@ -471,6 +471,11 @@
     "NAME": "Fore/Hindsight",
     "DESCRIPTION": "Scry !M!. NL Deal !D! damage. NL marimod:Recall."
   },
+  "MariMod:Mari_Lost_Potential": {
+    "NAME": "Lost Potential",
+    "DESCRIPTION": "Deal damage and gain Block equal your Block lost to Frail this combat.",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage and gain !B! Block, equal your Block lost to Frail this combat."]
+  },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",
     "DESCRIPTION": "Swap any character's marimod:Radiance with this card's. Has !M! marimod:Radiance."
