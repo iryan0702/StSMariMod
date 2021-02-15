@@ -59,6 +59,7 @@ import mari_mod.potions.ShiningPotion;
 import mari_mod.powers.*;
 import mari_mod.relics.*;
 import mari_mod.screens.MariReminisceScreen;
+import mari_mod.screens.MariShinyShopScreen;
 import mari_mod.topPanelItems.MariInvestedGold;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -120,6 +121,7 @@ public class MariMod implements
     public static MariSavables saveableKeeper = new MariSavables();
     public static ArrayList<AbstractPower> recentDebuffs = new ArrayList<>();
     public static MariInvestedGold investedGoldTopPanelItem;
+    public static MariShinyShopScreen shinyShopScreen;
     public static int goldSpentByMariThisCombat = 0;
     public static int timesMariSpentGoldThisCombat = 0;
     public static int timesMariPlayedAttacksThisCombat = 0;

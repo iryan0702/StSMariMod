@@ -71,7 +71,7 @@
   },
   "MariMod:Mari_Devilish_Assistant": {
     "NAME": "Devilish Assistant",
-    "DESCRIPTION": "At the start of your turn, Exhaust a card and gain [E] equal to its cost."
+    "DESCRIPTION": "At the start of your turn, add a random maybe helpful card to your hand and give it marimod:Fading."
   },
   "MariMod:Mari_Character_Development": {
     "NAME": "Character Development",

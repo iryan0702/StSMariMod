@@ -6,10 +6,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import mari_mod.MariMod;
+import mari_mod.patches.MariShinyShopPatch;
+import mari_mod.screens.MariShinyShopScreen;
 
 public class MariInvestedGold extends TopPanelItem {
     private static final Texture IMG = new Texture("mari_mod/images/ui/mariInvestedGold.png");
@@ -31,7 +34,23 @@ public class MariInvestedGold extends TopPanelItem {
     }
     @Override
     protected void onClick() {
-
+        if(!AbstractDungeon.isFadingOut && !AbstractDungeon.player.viewingRelics) {
+            if (AbstractDungeon.screen == MariShinyShopPatch.SHINY_SHOP) {
+                AbstractDungeon.closeCurrentScreen();
+            }else{
+                if (MariMod.shinyShopScreen == null) {
+                    MariMod.shinyShopScreen = new MariShinyShopScreen();
+                    MariMod.shinyShopScreen.initTextures();
+                }
+                if (AbstractDungeon.previousScreen == MariShinyShopPatch.SHINY_SHOP) {
+                    AbstractDungeon.closeCurrentScreen();
+                    MariMod.shinyShopScreen.reopen();
+                } else {
+                    AbstractDungeon.closeCurrentScreen();
+                    MariMod.shinyShopScreen.open();
+                }
+            }
+        }
     }
 
     @Override
