@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.powers.Exchange_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,7 +37,7 @@ public class Mari_Wishing_Fountain extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
+//        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
 //        AbstractDungeon.actionManager.addToBottom(new MariGainGoldAction(this.magicNumber));
 //        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_GAIN));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Exchange_Power(p, this.magicNumber), this.magicNumber));

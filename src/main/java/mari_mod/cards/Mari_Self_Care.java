@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariInvestGoldAction;
 import mari_mod.actions.MariPurgeNextRecallAction;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.actions.MariSuccessfulKindleAction;
@@ -60,7 +59,7 @@ public class Mari_Self_Care extends AbstractMariCard {
         kindleActions.add(new MariPurgeNextRecallAction());
         addToBot(new MariSuccessfulKindleAction(target, kindleActions, this));
 
-        addToBot(new MariInvestGoldAction(this));
+//        addToBot(new MariInvestGoldAction(this));
         addToBot(new MariRecallAction());
 
     }

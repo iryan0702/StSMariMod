@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariInvestGoldAction;
 
 public class Mari_Boundless_Energy extends AbstractMariCard {
     public static final String ID = "MariMod:Mari_Boundless_Energy";
@@ -39,7 +38,7 @@ public class Mari_Boundless_Energy extends AbstractMariCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
+//        AbstractDungeon.actionManager.addToBottom(new MariInvestGoldAction(this));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
 

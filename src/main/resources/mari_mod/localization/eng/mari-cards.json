@@ -45,11 +45,11 @@
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage. NL *Radiance affects this card !M! times."
+    "DESCRIPTION": "Deal !D! damage. NL *Radiance affects this card !M! times."
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Reduce your Weak, Frail, and Vulnerable to 1. NL Gain !B! Block."
+    "DESCRIPTION": "Reduce your Weak, Frail, and Vulnerable to 1. NL Gain !B! Block."
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
@@ -62,7 +62,7 @@
   },
   "MariMod:Mari_Reminisce": {
     "NAME": "Reminisce",
-    "DESCRIPTION": "Retain. marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall."
+    "DESCRIPTION": "Retain. NL marimod:Recall."
   },
   "MariMod:Mari_Expensive_Tastes": {
     "NAME": "Expensive Tastes",
@@ -103,7 +103,7 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block. NL marimod:Reflect: Draw !M! card."
+    "DESCRIPTION": "marimod:Fading. Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block. NL marimod:Reflect: Draw !M! card."
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
@@ -201,11 +201,11 @@
   },
   "MariMod:Mari_The_GOLDEN_STATUE": {
     "NAME": "The GOLDEN STATUE",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !B! Block NL Deal !D! damage. NL If Fatal, gain !M! Gold."
+    "DESCRIPTION": "Gain !B! Block NL Deal !D! damage. NL If Fatal, gain !M! Gold."
   },
   "MariMod:Mari_The_HELICOPTER": {
     "NAME": "The HELICOPTER",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Deal !D! damage to a random enemy !M! times."
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
   },
   "MariMod:Mari_Pent_Up_Emotions": {
     "NAME": "Pent-up Emotions",
@@ -217,7 +217,7 @@
   },
   "MariMod:Mari_Boundless_Energy": {
     "NAME": "Boundless Energy",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL Gain !M! [E]. NL Draw !M! cards. NL Infinitely Upgradable. NL Exhaust."
+    "DESCRIPTION": "Gain !M! [E]. NL Draw !M! cards. NL Infinitely Upgradable. NL Exhaust."
   },
   "MariMod:Mari_Supervision": {
     "NAME": "Supervision",
@@ -244,8 +244,8 @@
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL At the end of your turn, ALL enemies lose HP equal to the total cost of your hand.",
-    "UPGRADE_DESCRIPTION": "Innate. marimod:Invest !MARI_GOLD_COST!. NL At the end of your turn, ALL enemies lose HP equal to the total cost of your hand."
+    "DESCRIPTION": "At the end of your turn, ALL enemies lose HP equal to the total cost of your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, ALL enemies lose HP equal to the total cost of your hand."
   },
   "MariMod:Mari_All_Or_Nothing": {
     "NAME": "\"All or Nothing!\"",
@@ -279,7 +279,7 @@
   },
   "MariMod:Mari_Self_Care": {
     "NAME": "Self-Care",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Kindle: Purge the next card you would marimod:Recall and gain !B! Block. NL marimod:Recall."
+    "DESCRIPTION": "marimod:Kindle: Purge the next card you would marimod:Recall and gain !B! Block. NL marimod:Recall."
   },
   "MariMod:Mari_Awe": {
     "NAME": "Awe",
@@ -296,8 +296,8 @@
   },
   "MariMod:Mari_Wishing_Fountain": {
     "NAME": "Wishing Fountain",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL The next card you play regains all energy costs and draws a card instead.",
-    "UPGRADE_DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL The next !M! cards you play regains all energy costs and draws a card instead."
+    "DESCRIPTION": "The next card you play regains all energy costs and draws a card instead.",
+    "UPGRADE_DESCRIPTION": "The next !M! cards you play regains all energy costs and draws a card instead."
   },
   "MariMod:Mari_Flawless_Form": {
     "NAME": "Flawless Form",
@@ -323,7 +323,7 @@
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
-    "DESCRIPTION": "marimod:Invest !MARI_GOLD_COST!. NL marimod:Recall !M! cards and shuffle them into your draw pile."
+    "DESCRIPTION": "marimod:Recall !M! cards and shuffle them into your draw pile."
   },
   "MariMod:Mari_Lock_On": {
     "NAME": "\"Lock on!\"",
@@ -357,11 +357,11 @@
   },
   "MariMod:Mari_Reflection": {
     "NAME": "Reflection",
-    "DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL Apply marimod:Radiance equal to your marimod:Radiance.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. marimod:Invest !MARI_GOLD_COST!. NL You and an enemy gain marimod:Radiance equal to each other's marimod:Radiance.",
+    "DESCRIPTION": "marimod:Fading. NL Apply marimod:Radiance equal to your marimod:Radiance.",
+    "UPGRADE_DESCRIPTION": "marimod:Fading. NL You and an enemy gain marimod:Radiance equal to each other's marimod:Radiance.",
     "EXTENDED_DESCRIPTION": [
-      "marimod:Faded. marimod:Invest !MARI_GOLD_COST!. NL If you have marimod:Radiance, apply !MARI_RADIANCE! marimod:Radiance.",
-      "marimod:Faded. marimod:Invest !MARI_GOLD_COST!. NL You and an enemy gain !MARI_RADIANCE! marimod:Radiance if the other has marimod:Radiance."
+      "marimod:Faded. NL If you have marimod:Radiance, apply !MARI_RADIANCE! marimod:Radiance.",
+      "marimod:Faded. NL You and an enemy gain !MARI_RADIANCE! marimod:Radiance if the other has marimod:Radiance."
     ]
 
   },
