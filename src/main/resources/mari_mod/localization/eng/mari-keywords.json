@@ -121,6 +121,28 @@
     "DESCRIPTION": "If a Dim card is in your discard pile, it is #yPurged."
   },
   {
+    "PROPER_NAME": "Blur",
+    "NAMES":[
+      "Blur",
+      "blur",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Characters with Blur do not lose Block at the start of turn."
+  },
+  {
+    "PROPER_NAME": "Barricade",
+    "NAMES":[
+      "Barricade",
+      "barricade",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Characters with Barricade do not lose Block at the start of turn."
+  },
+  {
   "PROPER_NAME": "CURRENTLY UNUSED",
   "NAMES":[
     "ALL KEYWORDS BELOW ARE UNUSED, NO NEED TO TRANSLATE"

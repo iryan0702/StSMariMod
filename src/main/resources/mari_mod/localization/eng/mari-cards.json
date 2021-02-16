@@ -135,7 +135,7 @@
   },
   "MariMod:Mari_Well_Kept_Secret": {
     "NAME": "Well-Kept Secret",
-    "DESCRIPTION": "Gain !B! Block and keep your Block at the start of your next turn. NL marimod:Kindle: Retain your hand this turn."
+    "DESCRIPTION": "Gain !B! Block and 1 marimod:Blur. NL marimod:Kindle: Retain your hand this turn."
   },
   "MariMod:Mari_$Memories_Of_Loss": {
     "NAME": "Memories of Loss",
