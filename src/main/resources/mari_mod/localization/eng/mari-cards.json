@@ -103,7 +103,7 @@
   },
   "MariMod:Mari_Golden_Glint": {
     "NAME": "Golden Glint",
-    "DESCRIPTION": "marimod:Fading. Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block. NL marimod:Reflect: Draw !M! card."
+    "DESCRIPTION": "marimod:Fading. NL Gain !MARI_RADIANCE! marimod:Radiance. NL Gain !B! Block. NL marimod:Reflect: Draw !M! card."
   },
   "MariMod:Mari_Flaunt": {
     "NAME": "Flaunt",
