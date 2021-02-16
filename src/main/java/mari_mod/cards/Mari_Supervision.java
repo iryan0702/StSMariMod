@@ -18,7 +18,7 @@ public class Mari_Supervision extends AbstractMariCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final int COST = 2;
-    private static final int ENERGY_GAIN = 3;
+    private static final int ENERGY_GAIN = 2;
     private static final int ENERGY_GAIN_UPGRADE = 1;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.RARE;

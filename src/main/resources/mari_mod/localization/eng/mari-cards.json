@@ -221,7 +221,7 @@
   },
   "MariMod:Mari_Supervision": {
     "NAME": "Supervision",
-    "DESCRIPTION": "Set the cost of ALL your cards to 2. NL At the start of your turn, gain !M! [E]."
+    "DESCRIPTION": "Set the cost of ALL your cards to 1. NL At the start of your turn, gain !M! [E]."
   },
   "MariMod:Mari_Practice_Outfit": {
     "NAME": "Practice Outfits",
