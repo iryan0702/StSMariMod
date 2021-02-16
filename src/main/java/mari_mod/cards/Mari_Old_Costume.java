@@ -53,14 +53,20 @@ public class Mari_Old_Costume extends AbstractMariCard {
         }else{
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.magicNumber));
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new VulnerablePower(target, VULNERABLE, false), this.VULNERABLE));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new VulnerablePower(target, VULNERABLE, false), VULNERABLE));
     }
 
     @Override
     public void applyPowers() {
         this.baseBlock = BLOCK;
         super.applyPowers();
-        if(this.target == CardTarget.SELF){
+
+
+        this.magicNumber = this.block;
+        if(this.magicNumber != this.baseMagicNumber) {
+            this.isMagicNumberModified = true;
+        }
+        /*if(this.target == CardTarget.SELF){
             this.magicNumber = this.block;
             if(this.magicNumber != this.baseMagicNumber) {
                 this.isMagicNumberModified = true;
@@ -68,7 +74,8 @@ public class Mari_Old_Costume extends AbstractMariCard {
         }else{
             this.magicNumber = this.baseMagicNumber;
             this.isMagicNumberModified = false;
-        }
+        }*/
+
         this.baseBlock = SELF_BLOCK;
         super.applyPowers();
 
