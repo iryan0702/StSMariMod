@@ -41,8 +41,7 @@
   },
   "MariMod:Mari_Its_Joke": {
     "NAME": "\"It's Joke!\"",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance. NL Draw a card. NL Heal the enemy for all damage dealt.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !MARI_RADIANCE! marimod:Radiance twice. NL Draw a card. NL Heal the enemy for all damage dealt."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy loses less than !M! HP, apply !MARI_RADIANCE! marimod:Radiance twice."
   },
   "MariMod:Mari_The_FLYING_CAR": {
     "NAME": "The FLYING CAR",
