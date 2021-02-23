@@ -1,8 +1,10 @@
 package mari_mod.actions;
 
 import basemod.BaseMod;
+import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,25 +13,27 @@ import org.apache.logging.log4j.Logger;
 
 public class MariOverexertionDrawFollowUpAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariOverexertionDrawFollowUpAction.class.getName());
+    AbstractCard targetCard;
 
-    public MariOverexertionDrawFollowUpAction(int upTo) {
+    public MariOverexertionDrawFollowUpAction(AbstractCard targetCard) {
         this.duration = 0.001F;
-        this.amount = upTo;
+        this.targetCard = targetCard;
     }
 
     public void update() {
-        this.tickDuration();
-        AbstractPlayer p = AbstractDungeon.player;
-        int usable = 0;
-        for(AbstractCard c: p.hand.group){
-            if(c.canUse(p, null)){
-                usable++;
+        if(DrawCardAction.drawnCards.size() > 0) {
+            AbstractCard drawn = DrawCardAction.drawnCards.get(0);
+            AbstractPlayer p = AbstractDungeon.player;
+
+            if (!drawn.canUse(p, null)) {
+                for (AbstractGameAction a : AbstractDungeon.actionManager.actions) {
+                    if (a instanceof UseCardAction && ReflectionHacks.getPrivate(a, UseCardAction.class, "targetCard") == targetCard) {
+                        if(p.hand.size() < BaseMod.MAX_HAND_SIZE) targetCard.returnToHand = true;
+                    }
+                }
             }
         }
 
-        if(usable < this.amount && p.hand.size() < BaseMod.MAX_HAND_SIZE){
-            addToTop(new DrawCardAction(1, new MariOverexertionDrawFollowUpAction(this.amount)));
-        }
-
+        this.isDone = true;
     }
 }

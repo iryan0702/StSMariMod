@@ -123,8 +123,8 @@
   },
   "MariMod:Mari_Overexertion": {
     "NAME": "Overexertion",
-    "DESCRIPTION": "marimod:Repress. NL Gain [E]. NL Draw cards until you have !M! playable cards.",
-    "UPGRADE_DESCRIPTION": "marimod:Repress. NL Draw cards until you have !M! playable cards. NL Gain [E]."
+    "DESCRIPTION": "Ethereal. marimod:Repress. NL Gain [E] and draw a card, then return this to your hand if you cannot play the card.",
+    "UPGRADE_DESCRIPTION": "marimod:Repress. NL Gain [E] and draw a card, then return this to your hand if you cannot play the card."
   },
   "MariMod:Mari_Spontaneous_Strike": {
     "NAME": "Spontaneous Strike",
