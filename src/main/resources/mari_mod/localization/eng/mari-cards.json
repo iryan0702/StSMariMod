@@ -188,8 +188,7 @@
   },
   "MariMod:Mari_Second_Season": {
     "NAME": "Second Season",
-    "DESCRIPTION": "marimod:Fading. NL Replace ALL marimod:Faded marimod:Radiance cards with marimod:Fading copies and shuffle them into your draw pile.",
-    "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL Replace ALL marimod:Faded marimod:Radiance cards with marimod:Fading copies and shuffle them into your draw pile."
+    "DESCRIPTION": "marimod:Fading. Retain. NL Replace marimod:Faded marimod:Radiance cards in your exhaust pile with marimod:Fading copies."
   },
   "MariMod:Mari_Pretty_Bomber_Head": {
     "NAME": "\"Pretty Bomber Head!\"",
