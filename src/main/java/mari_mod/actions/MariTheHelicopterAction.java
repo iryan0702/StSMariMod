@@ -1,53 +1,44 @@
 package mari_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import mari_mod.MariMod;
 import mari_mod.effects.MariHelicopterEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class MariTheHelicopterAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(MariTheHelicopterAction.class.getName());
-    private static final float DURATION = 0.01F;
-    private static final float POST_ATTACK_WAIT_DUR = 0.1F;
-    private DamageInfo helicopterDamage;
-    private int damage;
-    private int numTimes;
-    private int amount;
+    private int maxDamage;
+    private int totalDamage;
+    public static final float MAX_DUR = 20f;
+    public static final float TIME_PER_HIT = 0.1f;
 
-    public MariTheHelicopterAction(int numTimes, int damage) {
+    public MariTheHelicopterAction(int damage) {
         this.actionType = ActionType.DAMAGE;
-        this.duration = 0.001F;
-        this.numTimes = numTimes;
-        this.damage = damage;
-        this.helicopterDamage = new DamageInfo(AbstractDungeon.player,damage, DamageInfo.DamageType.NORMAL);
+        this.duration = MAX_DUR;
+        this.maxDamage = damage;
+        this.totalDamage = 0;
     }
 
     public void update() {
 
-        this.duration = 0F;
-        if (this.numTimes >= 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-
-            --this.numTimes;
-            AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-
-            if(randomMonster != null) {
-                helicopterDamage.applyPowers(AbstractDungeon.player, randomMonster);
-
-                AbstractDungeon.actionManager.addToTop(new MariTheHelicopterAction(this.numTimes, this.damage));
-                AbstractDungeon.actionManager.addToTop(new DamageAction(randomMonster, helicopterDamage, AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-            }else{
+        if((MAX_DUR - this.duration)/TIME_PER_HIT > totalDamage) {
+            if (totalDamage < maxDamage) {
+                totalDamage++;
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    MariMod.instantDamageAction(m, new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.NORMAL), AttackEffect.SLASH_HORIZONTAL);
+                }
+            } else {
                 endAnimation();
+                this.isDone = true;
             }
-        }else{
-            endAnimation();
         }
-        this.isDone = true;
 
+        tickDuration();
     }
 
     public void endAnimation(){

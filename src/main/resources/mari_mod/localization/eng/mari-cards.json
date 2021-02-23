@@ -205,7 +205,7 @@
   },
   "MariMod:Mari_The_HELICOPTER": {
     "NAME": "The HELICOPTER",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
+    "DESCRIPTION": "Deal !D! damage. NL Deal 1 unmodifiable damage to ALL enemies once for each damage dealt."
   },
   "MariMod:Mari_Pent_Up_Emotions": {
     "NAME": "Pent-up Emotions",
