@@ -69,6 +69,11 @@
       "The #yShiniest Idol set out to find her elusive #yradiance. NL Harnesses the power of being a rich main character."
     ]
   },
+  "MariAdministratorAction": {
+    "TEXT": [
+      "Choose 2 cards and swap their costs."
+    ]
+  },
   "MariCharSelectDrama": {
     "TEXT": [
       "Grant up to 3 cards 1 additional Radiance."

@@ -244,8 +244,7 @@
   },
   "MariMod:Mari_Administrator_Privilege": {
     "NAME": "Administrator Privilege",
-    "DESCRIPTION": "At the end of your turn, ALL enemies lose HP equal to the total cost of your hand.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, ALL enemies lose HP equal to the total cost of your hand."
+    "DESCRIPTION": "At the start of your turn, choose 2 cards in your hand and swap their costs for a turn."
   },
   "MariMod:Mari_All_Or_Nothing": {
     "NAME": "\"All or Nothing!\"",

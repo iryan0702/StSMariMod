@@ -146,7 +146,7 @@
   },
   "MariMod:Administrator_Privilege_Power": {
     "NAME": "Administrator Privilege",
-    "DESCRIPTIONS": ["At the start of your turn, choose cards from the draw pile to put into your hand instead of regularly drawing."]
+    "DESCRIPTIONS": ["At the start of your turn, choose 2 card in your hand and swap their costs for a turn."]
   },
   "MariMod:Lie_In_Wait_Power": {
     "NAME": "Lie In Wait",

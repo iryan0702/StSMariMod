@@ -20,8 +20,7 @@ public class Mari_Administrator_Privilege extends AbstractMariCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
     private static final int BASE_GOLD_COST = 25;
-    private static final int BASE_CARD_FETCH = 3;
-    private static final int UPGRADE_CARD_FETCH = 2;
+    private static final int UPGRADE_COST = 0;
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -51,9 +50,7 @@ public class Mari_Administrator_Privilege extends AbstractMariCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.isInnate = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            upgradeBaseCost(UPGRADE_COST);
         }
     }
 
