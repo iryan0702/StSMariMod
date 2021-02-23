@@ -381,7 +381,7 @@
   },
   "MariMod:Mari_Lie_In_Wait": {
     "NAME": "Lie In Wait",
-    "DESCRIPTION": "marimod:Glaring. NL marimod:Kindle: Gain !B! Block. NL marimod:Reflect: deal !M! damage to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "marimod:Glaring. NL marimod:Kindle: All characters gain !B! Block. NL marimod:Reflect: deal !M! damage to ALL enemies. NL Exhaust."
   },
   "MariMod:Mari_Emotional_Episode": {
     "NAME": "Emotional Episode",

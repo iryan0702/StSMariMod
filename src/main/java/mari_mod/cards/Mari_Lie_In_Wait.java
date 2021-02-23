@@ -14,6 +14,8 @@ import mari_mod.actions.MariSuccessfulKindleAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+
 public class Mari_Lie_In_Wait extends AbstractMariCard implements OnRecallCard {
     public static final Logger logger = LogManager.getLogger(Mari_Lie_In_Wait.class.getName());
     public static final String ID = "MariMod:Mari_Lie_In_Wait";
@@ -24,7 +26,7 @@ public class Mari_Lie_In_Wait extends AbstractMariCard implements OnRecallCard {
     private static final int COST = 1;
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int DAMAGE = 10;
+    private static final int DAMAGE = 12;
     private static final int UPGRADE_DAMAGE = 4;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -58,7 +60,13 @@ public class Mari_Lie_In_Wait extends AbstractMariCard implements OnRecallCard {
             target = p;
         }
 
-        AbstractDungeon.actionManager.addToBottom(new MariSuccessfulKindleAction(target, new GainBlockAction(p,p,this.block, true), this));
+
+        ArrayList<AbstractGameAction> kindleActions = new ArrayList<>();
+        kindleActions.add(0, new GainBlockAction(p, this.block, true));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            kindleActions.add(0, new GainBlockAction(mo, p, this.block, true ));
+        }
+        addToBot(new MariSuccessfulKindleAction(target, kindleActions, this));
     }
 
     public void upgrade() {
