@@ -231,7 +231,7 @@
   },
   "MariMod:Mari_Limelight": {
     "NAME": "Limelight",
-    "DESCRIPTION": "marimod:Fading. NL At the end of your turn, apply !MARI_RADIANCE! marimod:Radiance to ALL characters."
+    "DESCRIPTION": "marimod:Fading. NL At the end of your turn, apply 1 marimod:Radiance to ALL characters !M! times."
   },
   "MariMod:Mari_From_Zero": {
     "NAME": "From Zero...",
@@ -255,7 +255,7 @@
     "NAME": "Perfect Performance",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Can only be played if you have spent at least 12 [E] on cards this turn.",
     "EXTENDED_DESCRIPTION": [
-      "NL ( You have spent !M! [E] )",
+      " NL ( You have spent !M! [E] )",
       "Can only be played if you spend !M! more [E] on cards this turn."
     ],
     "UPGRADE_DESCRIPTION": "More practice!"
@@ -481,8 +481,8 @@
   },
   "MariMod:Mari_Lost_Potential": {
     "NAME": "Lost Potential",
-    "DESCRIPTION": "Deal damage and gain Block equal your Block lost to Frail this combat.",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage and gain !B! Block, equal your Block lost to Frail this combat."]
+    "DESCRIPTION": "Deal damage and gain Block equal to Block reduced by your Frail this combat.",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage and gain !B! Block, equal to Block reduced by your Frail this combat."]
   },
   "MariMod:Mari_Glow??? ALL CARDS BEYOND THIS POINT ARE REMOVED/UNUSED CARDS": {
     "NAME": "Glow",

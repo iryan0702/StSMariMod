@@ -27,6 +27,7 @@ public class Mari_Light_Taps extends AbstractMariCard {
     public Mari_Light_Taps(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.radiance = this.baseRadiance = RADIANCE;
+        this.tags.add(MariCustomTags.RADIANCE);
         this.cardsToPreview = new Mari_Spark();
     }
 

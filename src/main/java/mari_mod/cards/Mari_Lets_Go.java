@@ -32,6 +32,7 @@ public class Mari_Lets_Go extends AbstractMariCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        applyPowers();
         AbstractDungeon.actionManager.addToBottom(new MariLetsGoAction());
     }
 

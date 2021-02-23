@@ -182,6 +182,11 @@
       "The next #b",
       " cards you spend 3 or more [E] on are played twice."]
   },
+  "MariMod:Optimism_Power": {
+    "NAME": "Optimism Power",
+    "DESCRIPTIONS": ["The next non-#yFaded #yRadiance card you play has #b",
+      " more #yRadiance."]
+  },
   "MariMod:The_Tea_Power": {
     "NAME": "The Tea",
     "DESCRIPTIONS": ["At the end of this turn, gain ",

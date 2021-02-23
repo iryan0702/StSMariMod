@@ -769,7 +769,7 @@ public class MariMod implements
             BaseMod.addCard(new Mari_Approved());
             BaseMod.addCard(new Mari_All_Or_Nothing());
             BaseMod.addCard(new Mari_The_Planisphere());
-            BaseMod.addCard(new Mari_Expenses());
+            //BaseMod.addCard(new Mari_Expenses());
 
             BaseMod.addCard(new Mari_Grand_Scheme());
             BaseMod.addCard(new Mari_Higher_Ups());
