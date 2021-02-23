@@ -419,8 +419,8 @@
   },
   "MariMod:Mari_Let_Loose": {
     "NAME": "Let Loose",
-    "DESCRIPTION": "Gain [E] and deal !D! damage, then replace each card you cannot play with a *Spark.",
-    "UPGRADE_DESCRIPTION": "Gain [E] and deal !D! damage, then replace each card you cannot play with a *Spark+."
+    "DESCRIPTION": "Gain [E] and deal !D! damage, then Exhaust and replace each card you cannot play with a *Spark.",
+    "UPGRADE_DESCRIPTION": "Gain [E] and deal !D! damage, then Exhaust and replace each card you cannot play with a *Spark+."
   },
   "MariMod:Mari_Repression": {
     "NAME": "Repression",

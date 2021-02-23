@@ -3,7 +3,6 @@ package mari_mod.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -34,8 +33,6 @@ public class Mari_Let_Loose extends AbstractMariCard {
 
         this.baseDamage = ATTACK_DMG;
         this.damage = this.baseDamage;
-
-        this.tags.add(CardTags.STRIKE);
 
         this.cardsToPreview = new Mari_Spark();
     }
