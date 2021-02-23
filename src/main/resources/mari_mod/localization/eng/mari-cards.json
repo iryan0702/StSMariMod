@@ -49,7 +49,8 @@
   },
   "MariMod:Mari_The_MANSION": {
     "NAME": "The MANSION",
-    "DESCRIPTION": "Reduce your Weak, Frail, and Vulnerable to 1. NL Gain !B! Block."
+    "DESCRIPTION": "Apply !B! Block and !M! marimod:Blur to ALL characters. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !B! Block and !M! marimod:Blur to ALL characters. NL You gain marimod:Barricade instead. NL Exhaust."
   },
   "MariMod:Mari_Choreography": {
     "NAME": "Choreography",
