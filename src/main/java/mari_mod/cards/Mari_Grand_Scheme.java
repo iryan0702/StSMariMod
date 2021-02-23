@@ -1,15 +1,14 @@
 package mari_mod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mari_mod.actions.MariGainGoldAction;
-import mari_mod.patches.EphemeralCardPatch;
-import mari_mod.powers.Gold_Spend_Start_Of_Turn_Power;
+import mari_mod.powers.Grand_Scheme_Power;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,34 +16,27 @@ public class Mari_Grand_Scheme extends AbstractMariCard {
     public static final Logger logger = LogManager.getLogger(Mari_Grand_Scheme.class.getName());
     public static final String ID = "MariMod:Mari_Grand_Scheme";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final UIStrings noGoldDialogue = CardCrawlGame.languagePack.getUIString("NoGoldDialogue");
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final int COST = 1;
-    private static final int GOLD_GAIN_TURNS = 2;
-    private static final int GOLD_GAIN_TURNS_UPGRADE = 1;
-    private static final int GOLD_GAIN = 15;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    private static final int COST = 0;
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
 
     public Mari_Grand_Scheme(){
         super(ID, NAME, COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.tags.add(MariCustomTags.SPEND);
-        this.baseMagicNumber = GOLD_GAIN_TURNS;
-        this.magicNumber = this.baseMagicNumber;
-        this.goldCost = this.baseGoldCost = GOLD_GAIN;
-        this.limitedByGoldCost = false;
-        EphemeralCardPatch.EphemeralField.ephemeral.set(this, true);
+        this.exhaust = true;
+        this.cardsToPreview = new Mari_Relit();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for(int i = 0; i < this.magicNumber; i++) {
-            addToBot(new MariGainGoldAction(GOLD_GAIN));
+        addToBot(new ApplyPowerAction(p, p, new Grand_Scheme_Power(p)));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            addToBot(new ApplyPowerAction(mo, p, new Grand_Scheme_Power(mo)));
         }
-        addToBot(new ApplyPowerAction(p, p, new Gold_Spend_Start_Of_Turn_Power(p, this.magicNumber, GOLD_GAIN)));
-        this.goldCost = this.baseGoldCost = 0;
+        this.addToBot(new MakeTempCardInHandAction(new Mari_Relit()));// 37
     }
 
     /*
@@ -70,7 +62,8 @@ public class Mari_Grand_Scheme extends AbstractMariCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            this.upgradeMagicNumber(GOLD_GAIN_TURNS_UPGRADE);
+            this.retain = true;
+            this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
             upgradeName();
         }

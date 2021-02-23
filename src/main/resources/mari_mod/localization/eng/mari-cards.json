@@ -318,7 +318,8 @@
   },
   "MariMod:Mari_Grand_Scheme": {
     "NAME": "Grand Scheme",
-    "DESCRIPTION": "marimod:Fading. NL Gain 15 Gold !M! times. At the start of your next !M! turns, marimod:Invest !MARI_GOLD_COST!."
+    "DESCRIPTION": "ALL characters lose all marimod:Radiance and cannot gain any marimod:Radiance. NL Add *Relit to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL ALL characters lose all marimod:Radiance and cannot gain any marimod:Radiance. NL Add *Relit to your hand. NL Exhaust."
   },
   "MariMod:Mari_Collect_Thoughts": {
     "NAME": "Collect Thoughts",
@@ -459,6 +460,10 @@
     "NAME": "Light Taps",
     "DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. NL Add a *Spark to your hand.",
     "UPGRADE_DESCRIPTION": "Apply !MARI_RADIANCE! marimod:Radiance. NL Add a *Spark+ to your hand."
+  },
+  "MariMod:Mari_Relit": {
+    "NAME": "Relit",
+    "DESCRIPTION": "Retain. NL ALL characters regain all marimod:Radiance lost from *Grand *Scheme. NL Exhaust."
   },
   "MariMod:Mari_Spark": {
     "NAME": "Spark",

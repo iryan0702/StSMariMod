@@ -190,6 +190,16 @@
       ".",
       "At the end of this turn, do nothing."]
   },
+  "MariMod:Grand_Scheme_Power": {
+    "NAME": "Grand Scheme",
+    "DESCRIPTIONS": ["This character cannot gain any #yRadiance. When #yRelit is played, gains #b",
+      " #b+ #b",
+      " #yRadiance.",
+      " NL #yExpected #ydamage: #b",
+      " NL #yExpected #ytotal: #b",
+      " #b(",
+      ")"]
+  },
   "MariMod:Gleam_And_Glean_Power ALL POWERS BEYOND THIS POINT ARE REMOVED/UNUSED": {
     "NAME": "Gleam and Glean",
     "DESCRIPTIONS": ["Whenever you apply #yRadiance to an enemy, gain #b",

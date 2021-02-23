@@ -870,6 +870,7 @@ public class MariMod implements
 
             BaseMod.addCard(new Mari_Test_Card());
             BaseMod.addCard(new Mari_Stewshine());
+            BaseMod.addCard(new Mari_Relit());
 
         } catch (Exception e) {
             logger.error("Error while adding cards",e);
