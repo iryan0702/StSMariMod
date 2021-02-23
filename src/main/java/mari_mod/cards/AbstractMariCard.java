@@ -25,6 +25,7 @@ import mari_mod.MariMod;
 import mari_mod.actions.MariRecallAction;
 import mari_mod.patches.CardColorEnum;
 import mari_mod.patches.MariKindleEffectsPatch;
+import mari_mod.powers.ModifyRadiancePower;
 import mari_mod.powers.Radiance_Power;
 
 import java.util.ArrayList;
@@ -107,6 +108,10 @@ public abstract class AbstractMariCard extends CustomCard {
         return true;
     }
 
+    @Override
+    public void setOrbTexture(String orbSmallImg, String orbLargeImg) {
+        super.setOrbTexture(orbSmallImg, orbLargeImg);
+    }
 
     @Override
     public void resetAttributes() {
@@ -168,31 +173,43 @@ public abstract class AbstractMariCard extends CustomCard {
     }
 
     public void applyPowersToRadiance(){
+        modifiedRadiance = false;
         float tmpRadiance = baseRadiance;
+        for(AbstractPower p: AbstractDungeon.player.powers){
+            if(p instanceof ModifyRadiancePower){
+                tmpRadiance = ((ModifyRadiancePower)p).modifyRadiance(tmpRadiance);
+            }
+        }
         radiance = MathUtils.floor(tmpRadiance);
-
-        float tmpGoldCost = baseGoldCost;
-        goldCost = MathUtils.floor(tmpGoldCost);
 
         if(faded){
             setFadedStats();
         }
+
+        if(radiance != baseRadiance){
+            modifiedRadiance = true;
+        }
+
+
+        float tmpGoldCost = baseGoldCost;
+        goldCost = MathUtils.floor(tmpGoldCost);
+
     }
 
     //Placed in a separate function as it is accessed by applyPowers, statEquivalentCopy patch, and ephemeralCard patch
     public void setFadedStats(){
         this.faded = true;
-        this.baseRadiance = Math.min(1, baseRadiance);
-        this.radiance = Math.min(1, radiance);
+        this.baseRadiance = 1;
+        this.radiance = 1;
         this.upgradedRadiance = false;
         this.rawDescription = this.rawDescription.replace("Fading", "Faded");
         this.initializeDescription();
     }
 
     public Color getNotKindledColor(){
-        if(this.goldCost > AbstractDungeon.player.gold && this.limitedByGoldCost){
-            return Color.RED.cpy();
-        }
+//        if(this.goldCost > AbstractDungeon.player.gold && this.limitedByGoldCost){
+//            return Color.RED.cpy();
+//        }
         return defaultGlowColor;
     }
 
