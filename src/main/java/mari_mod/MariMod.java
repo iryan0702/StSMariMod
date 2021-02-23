@@ -826,6 +826,7 @@ public class MariMod implements
 
             BaseMod.addCard(new Mari_Light_Taps());
             BaseMod.addCard(new Mari_Lost_Potential());
+            BaseMod.addCard(new Mari_Optimism());
             //BaseMod.addCard(new Mari_Drama1());
             //BaseMod.addCard(new Mari_Drama2());
 //            BaseMod.addCard(new Mari_Flaunt());

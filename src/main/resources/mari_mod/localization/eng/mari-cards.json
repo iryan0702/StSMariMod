@@ -466,6 +466,10 @@
     "DESCRIPTION": "marimod:Fading. NL If you target an enemy, deal !D! damage. NL Otherwise, marimod:Recall.",
     "UPGRADE_DESCRIPTION": "marimod:Fading. Retain. NL If you target an enemy, deal !D! damage. NL Otherwise, marimod:Recall."
   },
+  "MariMod:Mari_Optimism": {
+    "NAME": "Optimism",
+    "DESCRIPTION": "marimod:Fading. NL Your next *non-Faded marimod:Radiance card applies !M! more marimod:Radiance."
+  },
   "MariMod:Mari_ForeHindsight": {
     "NAME": "Fore/Hindsight",
     "DESCRIPTION": "Scry !M!. NL Deal !D! damage. NL marimod:Recall."
