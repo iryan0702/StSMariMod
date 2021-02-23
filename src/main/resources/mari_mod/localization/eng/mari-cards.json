@@ -70,7 +70,8 @@
   },
   "MariMod:Mari_Devilish_Assistant": {
     "NAME": "Devilish Assistant",
-    "DESCRIPTION": "At the start of your turn, add a random maybe helpful card to your hand and give it marimod:Fading."
+    "DESCRIPTION": "At the start of your turn, marimod:Yoshiko adds a random card to your hand. It has marimod:Fading.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, marimod:Yohane adds a random card to your hand. It has marimod:Fading."
   },
   "MariMod:Mari_Character_Development": {
     "NAME": "Character Development",

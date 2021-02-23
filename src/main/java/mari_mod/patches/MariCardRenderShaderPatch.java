@@ -26,7 +26,7 @@ public class MariCardRenderShaderPatch {
                 sb.end();
                 sb.setShader(MariMod.greyShader);
                 sb.begin();
-            }else if(instance instanceof AbstractMariCard && EphemeralCardPatch.EphemeralField.ephemeral.get(instance)){
+            }else if(EphemeralCardPatch.EphemeralField.ephemeral.get(instance)){
                 sb.end();
                 sb.setShader(MariMod.goldShader);
                 sb.begin();

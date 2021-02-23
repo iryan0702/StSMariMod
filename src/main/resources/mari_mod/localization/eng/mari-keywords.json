@@ -143,6 +143,28 @@
     "DESCRIPTION": "Characters with Barricade do not lose Block at the start of turn."
   },
   {
+    "PROPER_NAME": "Yoshiko",
+    "NAMES":[
+      "Yoshiko",
+      "yoshiko",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Mari's devilish assistant randomly picks from a set of base game cards."
+  },
+  {
+    "PROPER_NAME": "Yohane",
+    "NAMES":[
+      "Yohane",
+      "yohane",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE",
+      "UNUSED_RESERVE"
+    ],
+    "DESCRIPTION": "Mari's devilish assistant picks from a set of base game cards. NL She tries her best to pick the card you need."
+  },
+  {
   "PROPER_NAME": "CURRENTLY UNUSED",
   "NAMES":[
     "ALL KEYWORDS BELOW ARE UNUSED, NO NEED TO TRANSLATE"

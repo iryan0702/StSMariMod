@@ -21,7 +21,8 @@
   },
   "MariMod:Devilish_Assistant_Power": {
     "NAME": "Devilish Assistant",
-    "DESCRIPTIONS": ["At the start your turn, #yexhaust a card and gain [E] equal to its cost."]
+    "DESCRIPTIONS": ["At the start of your turn, #yYoshiko adds a random card to your hand. It has #yFading.",
+      "At the start of your turn, #yYoshiko tries to add a helpful card to your hand. It has #yFading."]
   },
   "MariMod:Character_Development_Power": {
     "NAME": "Character Development",

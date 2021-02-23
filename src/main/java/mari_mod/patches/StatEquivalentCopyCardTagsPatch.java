@@ -20,12 +20,14 @@ public class StatEquivalentCopyCardTagsPatch {
             localvars={"card"}
     )
     public static void Insert(AbstractCard __instance,  AbstractCard card) {
+
+        EphemeralCardPatch.EphemeralField.ephemeral.set(card,EphemeralCardPatch.EphemeralField.ephemeral.get(__instance));
+
         if(__instance instanceof AbstractMariCard && card instanceof AbstractMariCard){
             AbstractMariCard castInstance = (AbstractMariCard)__instance;
             AbstractMariCard castCard = (AbstractMariCard)card;
             castCard.goldCost = castInstance.baseGoldCost;
             castCard.baseGoldCost = castInstance.baseGoldCost;
-            EphemeralCardPatch.EphemeralField.ephemeral.set(castCard,EphemeralCardPatch.EphemeralField.ephemeral.get(castInstance));
 
             //Extra initializeDescription to ensure that the copy has the keyword Fading replaced with Faded.
             if(castInstance.faded){
